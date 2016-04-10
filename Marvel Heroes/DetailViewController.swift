@@ -10,8 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
+    var hero : Hero?
 
     var detailItem: AnyObject? {
         didSet {

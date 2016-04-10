@@ -15,6 +15,9 @@
 		492D08E01CBA7E930086D348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 492D08DE1CBA7E930086D348 /* LaunchScreen.storyboard */; };
 		492D08EB1CBA7E930086D348 /* Marvel_HeroesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08EA1CBA7E930086D348 /* Marvel_HeroesTests.swift */; };
 		492D08F61CBA7E930086D348 /* Marvel_HeroesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08F51CBA7E930086D348 /* Marvel_HeroesUITests.swift */; };
+		492D090A1CBA82730086D348 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D09091CBA82730086D348 /* Hero.swift */; };
+		492D090D1CBA87AF0086D348 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D090C1CBA87AF0086D348 /* HeroCell.swift */; };
+		492D09111CBAA2C10086D348 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D09101CBAA2C10086D348 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		492D08F11CBA7E930086D348 /* Marvel HeroesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel HeroesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D08F51CBA7E930086D348 /* Marvel_HeroesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_HeroesUITests.swift; sourceTree = "<group>"; };
 		492D08F71CBA7E930086D348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		492D09091CBA82730086D348 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		492D090C1CBA87AF0086D348 /* HeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
+		492D09101CBAA2C10086D348 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +105,11 @@
 		492D08D21CBA7E930086D348 /* Marvel Heroes */ = {
 			isa = PBXGroup;
 			children = (
+				492D09101CBAA2C10086D348 /* Constants.swift */,
 				492D08D31CBA7E930086D348 /* AppDelegate.swift */,
-				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
-				492D08D71CBA7E930086D348 /* DetailViewController.swift */,
+				492D090B1CBA827B0086D348 /* Model */,
+				492D090F1CBAA09B0086D348 /* Controllers */,
+				492D090E1CBA87BA0086D348 /* Views */,
 				492D08D91CBA7E930086D348 /* Main.storyboard */,
 				492D08DC1CBA7E930086D348 /* Assets.xcassets */,
 				492D08DE1CBA7E930086D348 /* LaunchScreen.storyboard */,
@@ -126,6 +134,31 @@
 				492D08F71CBA7E930086D348 /* Info.plist */,
 			);
 			path = "Marvel HeroesUITests";
+			sourceTree = "<group>";
+		};
+		492D090B1CBA827B0086D348 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				492D09091CBA82730086D348 /* Hero.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		492D090E1CBA87BA0086D348 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				492D090C1CBA87AF0086D348 /* HeroCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		492D090F1CBAA09B0086D348 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
+				492D08D71CBA7E930086D348 /* DetailViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492D090D1CBA87AF0086D348 /* HeroCell.swift in Sources */,
+				492D090A1CBA82730086D348 /* Hero.swift in Sources */,
 				492D08D81CBA7E930086D348 /* DetailViewController.swift in Sources */,
 				492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */,
 				492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */,
+				492D09111CBAA2C10086D348 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
