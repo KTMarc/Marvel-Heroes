@@ -25,15 +25,15 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.Done
         
-//        heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
-//        
-//        heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
+        heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
         
-        sendCharactersHeroesRequest()
+        heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
+        
+        sendRequestforHeroes()
     }
     
 
-    func sendCharactersHeroesRequest() {
+    func sendRequestforHeroes() {
         /**
          Characters (Heroes)
          GET http://gateway.marvel.com/v1/public/characters
@@ -51,11 +51,11 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 if (response.result.error == nil) {
-                    debugPrint("HTTP Response Body: \(response.result.value)")
+                    //debugPrint("HTTP Response Body: \(response.result.value)")
                     
                 }
                 else {
-                    debugPrint("HTTP Request failed: \(response.result.error)")
+                    //debugPrint("HTTP Request failed: \(response.result.error)")
                 }
         }
     }
@@ -133,11 +133,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         } else {
             inSearchMode = true
             let lower = searchBar.text!.lowercaseString
-            
-            filteredHeroes = heroes.filter({$0.name.rangeOfString(lower) != nil})
+            filteredHeroes = heroes.filter({$0.name.lowercaseString.containsString(lower)})
             collection.reloadData()
         }
     }
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {

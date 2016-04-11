@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MARVEL HEROES-->
@@ -21,13 +22,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmP-LT-Eho">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="krO-73-uAD">
-                                        <rect key="frame" x="0.0" y="-64" width="0.0" height="44"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="J0F-xy-8yd" id="tlD-zC-8qn"/>
-                                        </connections>
-                                    </searchBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="scQ-2V-EJD">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,7 +33,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeroCell" id="xXx-wu-edb" customClass="HeroCell" customModule="Marvel_Heroes" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="64" width="200" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -83,6 +77,14 @@
                                     <constraint firstAttribute="bottom" secondItem="scQ-2V-EJD" secondAttribute="bottom" id="sj6-Qg-uG7"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="krO-73-uAD">
+                                <rect key="frame" x="90" y="64" width="420" height="44"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.63137254899999995" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bVR-Ca-dls" id="0cD-Gf-gEn"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.96862745100000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -90,25 +92,18 @@
                             <constraint firstItem="xmP-LT-Eho" firstAttribute="leading" secondItem="lUs-xD-4T6" secondAttribute="leading" id="FtQ-Se-aJh"/>
                             <constraint firstItem="xmP-LT-Eho" firstAttribute="top" secondItem="Jx0-PT-rGa" secondAttribute="bottom" id="Trx-kc-UTw"/>
                             <constraint firstAttribute="trailing" secondItem="xmP-LT-Eho" secondAttribute="trailing" id="ap1-Dc-dus"/>
+                            <constraint firstItem="krO-73-uAD" firstAttribute="centerX" secondItem="lUs-xD-4T6" secondAttribute="centerX" id="dDF-Qr-D14"/>
+                            <constraint firstItem="krO-73-uAD" firstAttribute="width" secondItem="lUs-xD-4T6" secondAttribute="width" multiplier="0.7" id="gqC-pi-fg2"/>
+                            <constraint firstItem="krO-73-uAD" firstAttribute="top" secondItem="Jx0-PT-rGa" secondAttribute="bottom" id="pJ6-Ce-fXR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MARVEL HEROES" id="bVR-Ca-dls"/>
                     <connections>
                         <outlet property="collection" destination="scQ-2V-EJD" id="xcm-E3-96z"/>
                         <outlet property="searchBar" destination="krO-73-uAD" id="b2T-5e-Q9s"/>
-                        <outlet property="searchDisplayController" destination="aHh-s8-ljD" id="Hi5-Cp-b6X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aHr-aO-0O1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="aHh-s8-ljD">
-                    <connections>
-                        <outlet property="delegate" destination="J0F-xy-8yd" id="Tax-p6-gEJ"/>
-                        <outlet property="searchBar" destination="krO-73-uAD" id="lR0-WE-8US"/>
-                        <outlet property="searchContentsController" destination="J0F-xy-8yd" id="Aoy-u5-ROW"/>
-                        <outlet property="searchResultsDataSource" destination="J0F-xy-8yd" id="zUh-9z-XgG"/>
-                        <outlet property="searchResultsDelegate" destination="J0F-xy-8yd" id="uQl-if-1uC"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1415" y="75"/>
         </scene>
