@@ -53,6 +53,11 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
             
             cell.configureCell(hero)
+//            cell.thumbImg.layer.borderWidth = 1
+//            cell.thumbImg.layer.masksToBounds = false
+//            cell.thumbImg.layer.borderColor = UIColor.whiteColor().CGColor
+//            cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.height / 2
+//            cell.thumbImg.clipsToBounds = true
             return cell
             
         } else {
