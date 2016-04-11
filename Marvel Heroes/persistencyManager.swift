@@ -11,6 +11,7 @@ import Haneke
 
 class PersistencyManager: NSObject {
     private var heroes : [Hero] = []
+    private var parse : parser?
     
     override init() {
         super.init()
@@ -40,12 +41,17 @@ class PersistencyManager: NSObject {
         let URL = NSURL(string: URL_BASE + URL_CHARACTERS + URL_CREDENTIALS)!
         
         cache.fetch(URL: URL).onSuccess { JSON in
-            print(JSON.dictionary?["data"])
+            //print(JSON.dictionary?["data"])
+            self.heroes = parser(data: JSON.dictionary).parseJSON()
         }
     }
     
     func getHeroes() -> [Hero] {
         return heroes
+    }
+    
+    func saveHeroes(heroes: [Hero]) {
+        
     }
     
     

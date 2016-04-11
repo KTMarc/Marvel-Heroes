@@ -45,7 +45,7 @@ private let urlParams = [
      
      */
     
-    func fetchHeroes() -> [Hero] {
+    func fetchHeroes() {
         
         //Fetch Request
         Alamofire.request(.GET, URL_BASE + URL_CHARACTERS, parameters: urlParams)
@@ -53,13 +53,14 @@ private let urlParams = [
             .responseJSON { response in
                 if (response.result.error == nil) {
                     //debugPrint("HTTP Response Body: \(response.result.value)")
+                    let heroes : [Hero] = []
+                    
+                    self.persistencyManager.saveHeroes(heroes)
                 }
                 else {
                     //debugPrint("HTTP Request failed: \(response.result.error)")
                 }
         }
-        
-        return persistencyManager.getHeroes()
     }
     
     
