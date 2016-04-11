@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Haneke
 
 class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
@@ -25,42 +26,11 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.Done
         
-        heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
-        
-        heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/510c08f345938.jpg"))
-        
-        sendRequestforHeroes()
+        //Get the model
+        heroes = apiClient.sharedInstance.getHeroes()
     }
     
 
-    func sendRequestforHeroes() {
-        /**
-         Characters (Heroes)
-         GET http://gateway.marvel.com/v1/public/characters
-         */
-        
-        // Add URL parameters
-        let urlParams = [
-            "ts":"1",
-            "apikey":"c88613ef9c4edc6dee9b496c6f0d0a93",
-            "hash":"27861456bf9a405a5e8320359485b698",
-            ]
-        
-        // Fetch Request
-        Alamofire.request(.GET, URL_BASE + URL_CHARACTERS, parameters: urlParams)
-            .validate(statusCode: 200..<300)
-            .responseJSON { response in
-                if (response.result.error == nil) {
-                    //debugPrint("HTTP Response Body: \(response.result.value)")
-                    
-                }
-                else {
-                    //debugPrint("HTTP Request failed: \(response.result.error)")
-                }
-        }
-    }
-
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HERO_CELL, forIndexPath: indexPath) as? HeroCell {
@@ -96,7 +66,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             hero = heroes[indexPath.row]
         }
         
-        print(hero.name)
+        //print(hero.name)
         performSegueWithIdentifier(SEGUE_TO_HERO_DETAIL_VC, sender: hero)
         
     }
