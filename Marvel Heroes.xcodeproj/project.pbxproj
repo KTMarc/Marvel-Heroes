@@ -21,6 +21,7 @@
 		492D09111CBAA2C10086D348 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D09101CBAA2C10086D348 /* Constants.swift */; };
 		4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8B1CBBD2400094B53F /* apiClient.swift */; };
 		4968BE901CBBD3580094B53F /* persistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8F1CBBD3580094B53F /* persistencyManager.swift */; };
+		4968BE921CBBF08B0094B53F /* parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE911CBBF08B0094B53F /* parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		492D09101CBAA2C10086D348 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4968BE8B1CBBD2400094B53F /* apiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiClient.swift; sourceTree = "<group>"; };
 		4968BE8F1CBBD3580094B53F /* persistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = persistencyManager.swift; sourceTree = "<group>"; };
+		4968BE911CBBF08B0094B53F /* parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = parser.swift; sourceTree = "<group>"; };
 		B6F12BC302BB7F5282B2B983 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 			children = (
 				4968BE8B1CBBD2400094B53F /* apiClient.swift */,
 				4968BE8F1CBBD3580094B53F /* persistencyManager.swift */,
+				4968BE911CBBF08B0094B53F /* parser.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4968BE921CBBF08B0094B53F /* parser.swift in Sources */,
 				492D090D1CBA87AF0086D348 /* HeroCell.swift in Sources */,
 				4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */,
 				492D090A1CBA82730086D348 /* Hero.swift in Sources */,
