@@ -31,4 +31,8 @@ class Hero {
         return _heroId
     }
     
+    var thumbnailUrl: String {
+        return _thumbnailUrl
+    }
+    
 }

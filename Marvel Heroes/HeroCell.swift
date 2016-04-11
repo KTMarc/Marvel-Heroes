@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class HeroCell: UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
@@ -17,7 +18,7 @@ class HeroCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        layer.cornerRadius = 5.0
+        layer.cornerRadius = 30.0
         
     }
     
@@ -25,7 +26,9 @@ class HeroCell: UICollectionViewCell {
         self.hero = hero
         
         nameLbl.text = self.hero.name.capitalizedString
-        //thumbImg.image = UIImage(named: "\(self.hero.heroId)")
+        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
+            thumbImg.hnk_setImageFromURL(url)
+        }
         
     }
 }
