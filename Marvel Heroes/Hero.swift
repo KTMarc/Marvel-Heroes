@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//import Argo
 
 class Hero {
 
@@ -31,8 +32,51 @@ class Hero {
         return _heroId
     }
     
+    var desc: String {
+        if _desc != nil{
+            return _desc
+        }else{
+            return ""
+        }
+        
+    }
+    
     var thumbnailUrl: String {
         return _thumbnailUrl
     }
     
 }
+
+extension Hero: CustomStringConvertible {
+    var description : String {
+        return "\(name) (\(heroId)) {\(desc) :: \(thumbnailUrl)}"
+    }
+}
+
+
+//extension NSURL: JSONDecodable {
+//    public class func decode(j: JSON) -> NSURL? {
+//        switch j {
+//        case .String(let s):
+//            return NSURL(string: s)
+//        default:
+//            return nil
+//        }
+//    }
+//}
+//
+//extension Hero: JSONDecodable {
+//    static func create(name: String, heroId: Int, desc: String, modified: NSDate, thumbnailUrl: String) -> Hero {
+//        return Hero(create(name:name, heroId: heroId, desc: desc, modified: modified, thumbnailUrl: thumbnailUrl)
+//    }
+//    
+//    static func decode(j: JSON) -> Hero? {
+//        return Hero.create
+//            <^> j <|  "id"
+//            <*> j <|  "name"
+//            <*> j <|? "description"
+//            <*> j <|  "url"
+//            <*> j <|? "homepage"
+//            <*> j <|  "fork"
+//    }
+//}

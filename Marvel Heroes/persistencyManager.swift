@@ -43,10 +43,15 @@ class PersistencyManager: NSObject {
         cache.fetch(URL: URL).onSuccess { JSON in
             //print(JSON.dictionary?["data"])
             self.heroes = parser(data: JSON.dictionary).parseJSON()
+            print("Heroes in parsing closure")
+            print(self.heroes.count)
         }
     }
     
     func getHeroes() -> [Hero] {
+        print("Heroes in getHeroes")
+        print(self.heroes.count)
+        
         return heroes
     }
     

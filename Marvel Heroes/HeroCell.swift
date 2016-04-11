@@ -28,8 +28,9 @@ class HeroCell: UICollectionViewCell {
         
         if let url = NSURL.init(string: self.hero.thumbnailUrl) {
             thumbImg.hnk_setImageFromURL(url)
-            self.thumbImg.layer.cornerRadius = self.thumbImg.frame.size.width / 2;
-            self.thumbImg.clipsToBounds = true
+            thumbImg.layer.cornerRadius = 20.0
+            thumbImg.clipsToBounds = true
+            thumbImg.layer.borderColor = UIColor.whiteColor().CGColor
         }
     }
 }

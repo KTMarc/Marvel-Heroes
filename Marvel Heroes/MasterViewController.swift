@@ -28,9 +28,18 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         //Get the model
         heroes = apiClient.sharedInstance.getHeroes()
+
+        
+        let delayInSeconds = 2.0
+        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
+        dispatch_after(delay, dispatch_get_main_queue()) {
+            self.heroes = apiClient.sharedInstance.getHeroes()
+            self.collection.reloadData()
+            print("Heroes in CollectionView")
+            print(self.heroes.count)
+        }
     }
     
-
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HERO_CELL, forIndexPath: indexPath) as? HeroCell {
@@ -42,9 +51,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             } else {
                 hero = heroes[indexPath.row]
             }
-            
-            print(hero.name)
-
             
             cell.configureCell(hero)
             return cell
