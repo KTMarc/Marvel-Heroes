@@ -51,9 +51,13 @@ private let urlParams = [
     
     
     //COMICS
-//    func getComics() -> [Comic]{
-//        return persistencyManager.getComics()
-//    }
+    func fetchComics(heroId: Int){
+         persistencyManager.fetchComics(heroId)
+    }
+    
+    func getComics() -> [Comic]{
+        return persistencyManager.getComics()
+    }
     
     
     /**

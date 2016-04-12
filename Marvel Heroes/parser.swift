@@ -21,7 +21,30 @@ class parser: NSObject {
         self.init(data: [:])
     }
     
-    func parseJSON() -> [Hero]{
+//    func parseJSON(type: String) -> [AnyObject]{
+//        var anyThing : AnyObject?
+//        switch(type){
+//            case URL_CHARACTERS:
+//            anyThing = parseHero()
+//            break
+//
+//        case URL_COMICS:
+//            anyThing = parseComics()
+//            break
+//
+//        default:
+//            break
+//        }
+//        
+//        return [anyThing!]
+//    }
+
+    func parseJSON(type: String) -> [Hero]{
+        
+        return parseHero()
+    }
+
+    func parseHero() -> [Hero]{
         var heroes : [Hero] = []
         let json = JSON(_data)
         if let results = json["data"]["results"].array {
@@ -33,20 +56,48 @@ class parser: NSObject {
                         if let theDescription = subJson["description"].string{
                             if let theThumbnail = subJson["thumbnail"].dictionary{
                                 let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
-                                        heroes.append(Hero(
-                                            name: theName,
-                                            heroId: theId,
-                                            desc: theDescription,
-                                            modified:NSDate(),
-                                            thumbnailUrl: thumbnailCompletePath))
+                                heroes.append(Hero(
+                                    name: theName,
+                                    heroId: theId,
+                                    desc: theDescription,
+                                    modified:NSDate(),
+                                    thumbnailUrl: thumbnailCompletePath))
                             }
                         }
                     }
                 }
             }
+            //print(heroes)
         }
-        //print(heroes)
         return heroes
     }
+    
+    func parseComics() -> [Comic]{
+        var comics : [Comic] = []
+        let json = JSON(_data)
+        if let results = json["data"]["results"].array {
+            print("Received \(results.count) comics\n")
+            for (_,subJson):(String, JSON) in JSON(results) {
+                //print(subJson["title"].string)
+                if let theId = subJson["id"].int {
+                    if let theTitle = subJson["title"].string {
+                            if let theThumbnail = subJson["thumbnail"].dictionary{
+                                let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
+                                
+                                comics.append(Comic(
+                                    title: theTitle,
+                                    comicId: theId,
+                                    thumbnailUrl: thumbnailCompletePath))
+                                print(comics.count)
+                        }
+                    }
+                }
+            }
+        }
+        //print(comics)
+        return comics
+    }
+    
 }
+
 

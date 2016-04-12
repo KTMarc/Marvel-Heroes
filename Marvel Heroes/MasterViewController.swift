@@ -30,19 +30,19 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //Get the model
         apiClient.sharedInstance
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.heroesReady), name: "heroesDownloadedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
+            self.heroes = apiClient.sharedInstance.getHeroes()
+            self.collection.reloadData()
+            print("Heroes in notification")
+            print(self.heroes.count)
+        }
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    func heroesReady(){
-        heroes = apiClient.sharedInstance.getHeroes()
-        self.collection.reloadData()
-        print("Heroes in notification")
-        print(self.heroes.count)
-    }
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -133,7 +133,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
-            if let detailsVC = segue.destinationViewController as? DetailViewController {
+            if let detailsVC = segue.destinationViewController as? HeroDetailVC {
                 if let hero = sender as? Hero {
                     detailsVC.hero = hero
                 }

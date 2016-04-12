@@ -11,14 +11,14 @@ import Haneke
 
 class PersistencyManager: NSObject {
     private var heroes : [Hero] = []
-    
+    private var comics : [Comic] = []
 
     override init() {
         super.init()
-        fetchData(URL_CHARACTERS, offset: 0)
+        fetchData(URL_CHARACTERS, offset: 0, notification: NOTIFICATION_HEROES)
     }
     
-    func fetchData(endPoint: String, offset: Int){
+    func fetchData(endPoint: String, offset: Int, notification: String){
         //Persisting JSON
         let cache = Shared.JSONCache
         let URL = NSURL(string: URL_BASE + endPoint + "?" + "offset=\(offset)&" + URL_CREDENTIALS)!
@@ -27,18 +27,22 @@ class PersistencyManager: NSObject {
             //print(JSON.dictionary?["data"])
             
             //TODO: this should go in the apiClient
-            self.heroes = parser(data: JSON.dictionary).parseJSON()
+            if (notification == NOTIFICATION_HEROES){
+                self.heroes = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
+            } else if (notification == NOTIFICATION_COMICS){
+                self.comics = parser(data: JSON.dictionary).parseComics()
+            }
             
             //TODO: This should go in the apiClient
             NSNotificationCenter.defaultCenter().postNotificationName(
-                "heroesDownloadedNotification", object: self)
+                notification, object: self)
             
             } .onFailure { (error) in
                 print("Could not fetch from network")
         }
     }
     
-
+    //HEROES
     func getHeroes() -> [Hero] {
 //        print("Heroes in getHeroes")
 //        print(self.heroes.count)
@@ -46,12 +50,20 @@ class PersistencyManager: NSObject {
     }
     
     func getMoreHeroes() {
-        fetchData(URL_CHARACTERS, offset: 20)
+        fetchData(URL_CHARACTERS, offset: 20, notification: NOTIFICATION_HEROES)
     }
     
     func saveHeroes(heroes: [Hero]) {
     }
     
+    //COMICS
+    func fetchComics(heroId:Int) {
+        fetchData(URL_CHARACTERS + "/\(heroId)/" + URL_COMICS, offset: 0, notification: NOTIFICATION_COMICS)
+     
+    }
+    func getComics() -> [Comic] {
+        return comics
+    }
     
 //    func saveHeroes() {
 //        let filename = NSHomeDirectory().stringByAppendingString("/Documents/heroes")
