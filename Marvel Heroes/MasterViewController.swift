@@ -18,6 +18,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     var heroes = [Hero]()
     var filteredHeroes = [Hero]()
     var inSearchMode = false
+    var currentOffset = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +28,20 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchBar.returnKeyType = UIReturnKeyType.Done
         
         //Get the model
-        heroes = apiClient.sharedInstance.getHeroes()
-
+        apiClient.sharedInstance
         
-        let delayInSeconds = 2.0
-        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
-        dispatch_after(delay, dispatch_get_main_queue()) {
-            self.heroes = apiClient.sharedInstance.getHeroes()
-            self.collection.reloadData()
-            print("Heroes in CollectionView")
-            print(self.heroes.count)
-        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.heroesReady), name: "heroesDownloadedNotification", object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func heroesReady(){
+        heroes = apiClient.sharedInstance.getHeroes()
+        self.collection.reloadData()
+        print("Heroes in notification")
+        print(self.heroes.count)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -58,12 +62,18 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 //            cell.thumbImg.layer.borderColor = UIColor.whiteColor().CGColor
 //            cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.height / 2
 //            cell.thumbImg.clipsToBounds = true
+            
+            if (indexPath.row == heroes.count - 1) && (heroes.count < currentOffset){
+//                print("fetching more stuff")
+//                currentOffset += 20
+//                apiClient.sharedInstance.moreHeroes()
+            }
+            
             return cell
             
         } else {
             return UICollectionViewCell()
         }
-        
     }
     
     

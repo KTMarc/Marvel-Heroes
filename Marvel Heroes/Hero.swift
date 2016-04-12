@@ -38,7 +38,6 @@ class Hero {
         }else{
             return ""
         }
-        
     }
     
     var thumbnailUrl: String {

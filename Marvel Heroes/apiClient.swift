@@ -7,12 +7,13 @@
 //
 
 import Foundation
-import Alamofire
+//import Alamofire
 
 class apiClient: NSObject {
     
 private let persistencyManager: PersistencyManager
 private let isOnline: Bool
+private let parseManager : parser
 private let urlParams = [
         "ts":"1",
         "apikey":"c88613ef9c4edc6dee9b496c6f0d0a93",
@@ -29,12 +30,31 @@ private let urlParams = [
     override init() {
         persistencyManager = PersistencyManager()
         isOnline = false
+        parseManager = parser()
         super.init()
     }
     
-    func getHeroes() -> [Hero] {
+    //HEROES
+    func getHeroes() -> [Hero]{
         return persistencyManager.getHeroes()
     }
+    
+    
+    func moreHeroes(){
+        persistencyManager.getMoreHeroes()
+    }
+    
+    func searchHeroes() -> [Hero]{
+        return persistencyManager.getHeroes()
+    }
+    
+    
+    
+    //COMICS
+//    func getComics() -> [Comic]{
+//        return persistencyManager.getComics()
+//    }
+    
     
     /**
      GET http://gateway.marvel.com/v1/public/characters
@@ -45,23 +65,23 @@ private let urlParams = [
      
      */
     
-    func fetchHeroes() {
-        
-        //Fetch Request
-        Alamofire.request(.GET, URL_BASE + URL_CHARACTERS, parameters: urlParams)
-            .validate(statusCode: 200..<300)
-            .responseJSON { response in
-                if (response.result.error == nil) {
-                    //debugPrint("HTTP Response Body: \(response.result.value)")
-                    let heroes : [Hero] = []
-                    
-                    self.persistencyManager.saveHeroes(heroes)
-                }
-                else {
-                    //debugPrint("HTTP Request failed: \(response.result.error)")
-                }
-        }
-    }
+//    func fetchHeroes() {
+//        
+//        //Fetch Request
+//        Alamofire.request(.GET, URL_BASE + URL_CHARACTERS, parameters: urlParams)
+//            .validate(statusCode: 200..<300)
+//            .responseJSON { response in
+//                if (response.result.error == nil) {
+//                    //debugPrint("HTTP Response Body: \(response.result.value)")
+//                    let heroes : [Hero] = []
+//                    
+//                    self.persistencyManager.saveHeroes(heroes)
+//                }
+//                else {
+//                    //debugPrint("HTTP Request failed: \(response.result.error)")
+//                }
+//        }
+//    }
     
     
     

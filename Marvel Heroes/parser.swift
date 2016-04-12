@@ -17,12 +17,15 @@ class parser: NSObject {
         self._data = data
     }
     
+    convenience override init(){
+        self.init(data: [:])
+    }
+    
     func parseJSON() -> [Hero]{
-        
         var heroes : [Hero] = []
         let json = JSON(_data)
         if let results = json["data"]["results"].array {
-            print("Received \(results.count) elements\n")
+            //print("Received \(results.count) elements\n")
             for (_,subJson):(String, JSON) in JSON(results) {
                 ///print(subJson["name"].string)
                 if let theId = subJson["id"].int {
@@ -37,7 +40,6 @@ class parser: NSObject {
                                             modified:NSDate(),
                                             thumbnailUrl: thumbnailCompletePath))
                             }
-                            
                         }
                     }
                 }
