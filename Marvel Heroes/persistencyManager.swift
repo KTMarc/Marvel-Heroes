@@ -11,31 +11,44 @@ import Haneke
 
 class PersistencyManager: NSObject {
     private var heroes : [Hero] = []
+    private var suggestions : [Hero] = []
     private var comics : [Comic] = []
 
     override init() {
         super.init()
-        fetchData(URL_CHARACTERS, offset: 0, notification: NOTIFICATION_HEROES)
+        fetchData(URL_CHARACTERS, parameter: "", offset: 0, notification: NOTIFICATION_HEROES)
     }
     
-    func fetchData(endPoint: String, offset: Int, notification: String){
+    func fetchData(endPoint: String, parameter: String, offset: Int, notification: String){
         //Persisting JSON
+
         let cache = Shared.JSONCache
-        let URL = NSURL(string: URL_BASE + endPoint + "?" + "offset=\(offset)&" + URL_CREDENTIALS)!
+        let URL = NSURL(string: URL_BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + URL_CREDENTIALS)!
         print(URL)
         cache.fetch(URL: URL).onSuccess { JSON in
             //print(JSON.dictionary?["data"])
             
             //TODO: this should go in the apiClient
-            if (notification == NOTIFICATION_HEROES){
+            switch(notification){
+            case NOTIFICATION_HEROES:
                 
                 let newElements = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
                 self.heroes.appendContentsOf(newElements)
-            
-            } else if (notification == NOTIFICATION_COMICS){
+                break
+                
+            case NOTIFICATION_COMICS:
                 
                 let newElements = parser(data: JSON.dictionary).parseComics()
                 self.comics.appendContentsOf(newElements)
+                break
+                
+            case NOTIFICATION_SUGGESTIONS:
+                let newElements = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
+                self.suggestions = newElements
+                break
+                
+            default:
+                break
             }
             
             //TODO: This should go in the apiClient
@@ -55,15 +68,32 @@ class PersistencyManager: NSObject {
     }
     
     func getMoreHeroes(offset: Int) {
-        fetchData(URL_CHARACTERS, offset: offset, notification: NOTIFICATION_HEROES)
+        fetchData(URL_CHARACTERS, parameter: "", offset: offset, notification: NOTIFICATION_HEROES)
     }
     
-    func saveHeroes(heroes: [Hero]) {
+    //SUGGESTIONS FOR HEROES
+    func searchHeroes(keystrokes: String) {
+        //http://gateway.marvel.com/v1/public/characters?nameStartsWith=x-men&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
+        
+        fetchData(URL_CHARACTERS, parameter: "nameStartsWith=\(keystrokes)&", offset: 0, notification: NOTIFICATION_SUGGESTIONS)
+    }
+    
+    func getHeroSuggestions() -> [Hero]{
+     return suggestions
+    }
+    
+    func resetHeroSuggestions(){
+        suggestions = []
+        NSNotificationCenter.defaultCenter().postNotificationName(
+            NOTIFICATION_SUGGESTIONS, object: self)
     }
     
     //COMICS
     func fetchComics(heroId:Int) {
-        fetchData(URL_CHARACTERS + "/\(heroId)/" + URL_COMICS, offset: 0, notification: NOTIFICATION_COMICS)
+        
+        //http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
+        
+        fetchData(URL_CHARACTERS + "/\(heroId)/" + URL_COMICS, parameter: "", offset: 0, notification: NOTIFICATION_COMICS)
      
     }
     func getComics() -> [Comic] {

@@ -9,14 +9,16 @@
 import UIKit
 import Haneke
 
-class HeroDetailVC: UIViewController {
+class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var collection: UICollectionView!
     
     var hero : Hero?
     var comics = [Comic]()
+    var comicOffset = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +37,45 @@ class HeroDetailVC: UIViewController {
             self.comics = apiClient.sharedInstance.getComics()
             print("Comics coming from notification")
             print(self.comics.count)
+            self.collection.reloadData()
+            
         }
-        
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    //MARK: Collection View Data Source
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(COMIC_CELL, forIndexPath: indexPath) as? ComicCell {
+            
+            let comic: Comic!
+            comic = comics[indexPath.row]
+            cell.configureCell(comic)
+            
+            if (indexPath.item == comics.count - 1) && (comics.count > comicOffset){
+                print("fetching more comics")
+                comicOffset += 20
+                //TODO
+                //apiClient.sharedInstance.moreComics(comicOffset)
+            }
+            
+            return cell
+            
+        } else {
+            return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return comics.count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
     
     

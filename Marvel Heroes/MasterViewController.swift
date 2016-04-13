@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
 import Haneke
 
-class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    var searchController: UISearchController!
     
     var heroes = [Hero]()
     var filteredHeroes = [Hero]()
@@ -30,11 +31,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //Get the model
         apiClient.sharedInstance
         
+        configureSearchController()
+        
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroes()
             self.collection.reloadData()
-            print("Heroes in notification")
-            print(self.heroes.count)
+            print("Hero suggestions from notification: \(self.heroes.count)")
         }
     }
     
@@ -43,6 +45,36 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     
+    func configureSearchController() {
+        searchController = UISearchController(searchResultsController: SuggestionsViewController())
+        searchController.searchResultsUpdater = self
+        //searchController.obscuresBackgroundDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "Search remotely.."
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        let searchBarPointer = searchController.searchBar
+        collection.addSubview(searchBarPointer)
+//        let verticalConstraint = NSLayoutConstraint(item: searchBarPointer, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: collection, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
+//        searchBarPointer.addConstraint(verticalConstraint)
+        
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        //Sending a new request..
+        if let keystrokes = searchController.searchBar.text where keystrokes != "" {
+            apiClient.sharedInstance.searchHeroes(keystrokes)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        apiClient.sharedInstance.resetHeroSuggestions()
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        apiClient.sharedInstance.resetHeroSuggestions()
+    }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         

@@ -20,7 +20,9 @@ let SEGUE_TO_HERO_DETAIL_VC = "DetailViewController"
 //Hero Detail View Controller
 let HERO_DETAIL_CELL = "heroDetailCell"
 let HERO_DETAIL_HEADER = "collectionHeroHeader"
+let COMIC_CELL = "ComicCell"
 
 //Notifications
 let NOTIFICATION_HEROES = "heroesDownloadedNotification"
 let NOTIFICATION_COMICS = "comicsDownloadedNotification"
+let NOTIFICATION_SUGGESTIONS = "suggestionsDownloadedNotification"

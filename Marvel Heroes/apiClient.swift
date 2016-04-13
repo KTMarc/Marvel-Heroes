@@ -44,9 +44,20 @@ private let urlParams = [
         persistencyManager.getMoreHeroes(offset)
     }
     
-    func searchHeroes() -> [Hero]{
-        return persistencyManager.getHeroes()
+    
+    //SUGGESTIONS
+    func searchHeroes(keystrokes: String){
+        return persistencyManager.searchHeroes(keystrokes)
     }
+    
+    func getHeroSuggestions() -> [Hero]{
+        return persistencyManager.getHeroSuggestions()
+    }
+    
+    func resetHeroSuggestions(){
+        return persistencyManager.resetHeroSuggestions()
+    }
+    
     
     
     
