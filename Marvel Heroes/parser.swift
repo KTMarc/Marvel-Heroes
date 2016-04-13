@@ -54,6 +54,7 @@ class parser: NSObject {
                 if let theId = subJson["id"].int {
                     if let theName = subJson["name"].string {
                         if let theDescription = subJson["description"].string{
+                            print(theDescription)
                             if let theThumbnail = subJson["thumbnail"].dictionary{
                                 let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
                                 heroes.append(Hero(
@@ -67,7 +68,7 @@ class parser: NSObject {
                     }
                 }
             }
-            //print(heroes)
+            print(heroes)
         }
         return heroes
     }

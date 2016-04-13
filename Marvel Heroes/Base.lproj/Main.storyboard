@@ -185,7 +185,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itD-q0-bQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2093" y="-143"/>
+            <point key="canvasLocation" x="1938" y="-359"/>
         </scene>
         <!--Hero DetailVC-->
         <scene sceneID="15v-mL-EsB">
@@ -211,11 +211,18 @@
                                     <constraint firstAttribute="width" constant="259" id="K0N-ep-Agh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ia-nm-F90">
-                                <rect key="frame" x="44" y="308" width="414" height="175"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ia-nm-F90">
+                                <rect key="frame" x="44" y="339" width="414" height="175"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.63137254899999995" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="yrb-fu-5m4"/>
+                                    <constraint firstAttribute="height" constant="175" id="u8H-eN-Cxv"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Af-uy-IwV">
+                                <rect key="frame" x="520" y="309" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -224,24 +231,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PpP-i9-4OB" firstAttribute="leading" secondItem="2ym-np-0p7" secondAttribute="leadingMargin" constant="24" id="278-7E-J40"/>
-                            <constraint firstItem="PpP-i9-4OB" firstAttribute="leading" secondItem="0Ia-nm-F90" secondAttribute="leading" id="8yQ-2x-s4Q"/>
-                            <constraint firstItem="GOV-zh-3vZ" firstAttribute="top" secondItem="0Ia-nm-F90" secondAttribute="bottom" constant="86" id="AjN-2I-ZJS"/>
                             <constraint firstItem="PpP-i9-4OB" firstAttribute="centerY" secondItem="2ym-np-0p7" secondAttribute="centerY" id="Evn-tU-XmK"/>
                             <constraint firstItem="PpP-i9-4OB" firstAttribute="top" secondItem="aoq-tQ-eWr" secondAttribute="bottom" constant="23" id="Fc8-aj-8OD"/>
+                            <constraint firstItem="0Ia-nm-F90" firstAttribute="leading" secondItem="2ym-np-0p7" secondAttribute="leadingMargin" constant="24" id="LLa-yo-Bwu"/>
+                            <constraint firstItem="0Ia-nm-F90" firstAttribute="top" secondItem="PpP-i9-4OB" secondAttribute="bottom" constant="29" id="QsE-ht-B1e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Ia-nm-F90" secondAttribute="trailing" constant="122" id="VYi-dl-rEb"/>
                             <constraint firstItem="aoq-tQ-eWr" firstAttribute="top" secondItem="fne-Vo-btP" secondAttribute="bottom" constant="32" id="VxE-Sb-acn"/>
-                            <constraint firstItem="0Ia-nm-F90" firstAttribute="top" secondItem="PpP-i9-4OB" secondAttribute="bottom" constant="29" id="aEp-nm-BZ3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Af-uy-IwV" secondAttribute="trailing" constant="18" id="g9o-ow-aGM"/>
+                            <constraint firstItem="1Af-uy-IwV" firstAttribute="centerY" secondItem="PpP-i9-4OB" secondAttribute="centerY" constant="20" id="hRB-gJ-Vnh"/>
                             <constraint firstItem="aoq-tQ-eWr" firstAttribute="leading" secondItem="2ym-np-0p7" secondAttribute="leadingMargin" constant="9" id="rfc-du-dFV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="0Ia-nm-F90" id="AaC-Oy-Xq8"/>
+                        <outlet property="idLabel" destination="1Af-uy-IwV" id="rR1-Fh-Ew0"/>
                         <outlet property="image" destination="aoq-tQ-eWr" id="Scr-7b-Vom"/>
                         <outlet property="nameLabel" destination="PpP-i9-4OB" id="DUF-e7-GY7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eaz-e8-7br" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973" y="596"/>
+            <point key="canvasLocation" x="2049" y="217"/>
         </scene>
     </scenes>
 </document>

@@ -20,6 +20,7 @@ class Hero {
     init(name: String, heroId: Int, desc: String, modified: NSDate , thumbnailUrl: String) {
         self._name = name
         self._heroId = heroId
+        self._desc = desc
         self._modified = modified
         self._thumbnailUrl = thumbnailUrl
     }
@@ -36,7 +37,7 @@ class Hero {
         if _desc != nil{
             return _desc
         }else{
-            return ""
+            return "Not description available"
         }
     }
     

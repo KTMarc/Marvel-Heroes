@@ -13,6 +13,7 @@ class HeroDetailVC: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
     
     var hero : Hero?
     var comics = [Comic]()
@@ -26,6 +27,8 @@ class HeroDetailVC: UIViewController {
         }
         nameLabel.text = hero!.name
         detailDescriptionLabel.text = hero!.desc
+        idLabel.text = String(hero!.heroId)
+        
         apiClient.sharedInstance.fetchComics(hero!.heroId)
 
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_COMICS, object: nil, queue: nil) {  (_) in
