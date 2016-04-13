@@ -40,8 +40,8 @@ private let urlParams = [
     }
     
     
-    func moreHeroes(){
-        persistencyManager.getMoreHeroes()
+    func moreHeroes(offset: Int){
+        persistencyManager.getMoreHeroes(offset)
     }
     
     func searchHeroes() -> [Hero]{

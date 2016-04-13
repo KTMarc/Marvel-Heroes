@@ -63,10 +63,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 //            cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.height / 2
 //            cell.thumbImg.clipsToBounds = true
             
-            if (indexPath.row == heroes.count - 1) && (heroes.count < currentOffset){
-//                print("fetching more stuff")
-//                currentOffset += 20
-//                apiClient.sharedInstance.moreHeroes()
+            if (indexPath.item == heroes.count - 1) && (heroes.count > currentOffset){
+                print("fetching more stuff")
+                currentOffset += 20
+                apiClient.sharedInstance.moreHeroes(currentOffset)
             }
             
             return cell

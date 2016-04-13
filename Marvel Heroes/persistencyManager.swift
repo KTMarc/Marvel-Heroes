@@ -28,9 +28,14 @@ class PersistencyManager: NSObject {
             
             //TODO: this should go in the apiClient
             if (notification == NOTIFICATION_HEROES){
-                self.heroes = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
+                
+                let newElements = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
+                self.heroes.appendContentsOf(newElements)
+            
             } else if (notification == NOTIFICATION_COMICS){
-                self.comics = parser(data: JSON.dictionary).parseComics()
+                
+                let newElements = parser(data: JSON.dictionary).parseComics()
+                self.comics.appendContentsOf(newElements)
             }
             
             //TODO: This should go in the apiClient
@@ -49,8 +54,8 @@ class PersistencyManager: NSObject {
         return heroes
     }
     
-    func getMoreHeroes() {
-        fetchData(URL_CHARACTERS, offset: 20, notification: NOTIFICATION_HEROES)
+    func getMoreHeroes(offset: Int) {
+        fetchData(URL_CHARACTERS, offset: offset, notification: NOTIFICATION_HEROES)
     }
     
     func saveHeroes(heroes: [Hero]) {
