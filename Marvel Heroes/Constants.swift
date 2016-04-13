@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+//API parameters
 let URL_BASE = "http://gateway.marvel.com/v1/public/"
 let URL_CHARACTERS = "characters"
 let URL_COMICS = "comics"
@@ -18,8 +20,6 @@ let HERO_CELL = "HeroCell"
 let SEGUE_TO_HERO_DETAIL_VC = "DetailViewController"
 
 //Hero Detail View Controller
-let HERO_DETAIL_CELL = "heroDetailCell"
-let HERO_DETAIL_HEADER = "collectionHeroHeader"
 let COMIC_CELL = "ComicCell"
 
 //Notifications
