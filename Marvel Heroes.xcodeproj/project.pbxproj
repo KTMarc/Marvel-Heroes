@@ -10,6 +10,8 @@
 		3C15F338B524EE9CF5EEDCD4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359BD187187A716F280703BE /* Pods.framework */; };
 		490EA9961CBD78C100F7071D /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490EA9951CBD78C100F7071D /* Comic.swift */; };
 		491466CC1CBEA58E00DAD512 /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491466CB1CBEA58E00DAD512 /* ComicCell.swift */; };
+		491466D01CBECB2900DAD512 /* suggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491466CF1CBECB2900DAD512 /* suggestionCell.xib */; };
+		491466D21CBECBB000DAD512 /* suggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491466D11CBECBB000DAD512 /* suggestionCell.swift */; };
 		491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */; };
 		492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D31CBA7E930086D348 /* AppDelegate.swift */; };
 		492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D51CBA7E930086D348 /* MasterViewController.swift */; };
@@ -53,6 +55,8 @@
 		47426F8E3E0136B65725C3C2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		490EA9951CBD78C100F7071D /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comic.swift; path = Model/Comic.swift; sourceTree = "<group>"; };
 		491466CB1CBEA58E00DAD512 /* ComicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicCell.swift; path = Views/ComicCell.swift; sourceTree = "<group>"; };
+		491466CF1CBECB2900DAD512 /* suggestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = suggestionCell.xib; path = Views/suggestionCell.xib; sourceTree = "<group>"; };
+		491466D11CBECBB000DAD512 /* suggestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = suggestionCell.swift; path = Views/suggestionCell.swift; sourceTree = "<group>"; };
 		491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailVC.swift; sourceTree = "<group>"; };
 		492D08D01CBA7E930086D348 /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D08D31CBA7E930086D348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 		492D090E1CBA87BA0086D348 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				491466CF1CBECB2900DAD512 /* suggestionCell.xib */,
+				491466D11CBECBB000DAD512 /* suggestionCell.swift */,
 				492D08D91CBA7E930086D348 /* Main.storyboard */,
 				492D08DE1CBA7E930086D348 /* LaunchScreen.storyboard */,
 				492D090C1CBA87AF0086D348 /* HeroCell.swift */,
@@ -352,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				497ADC0D1CBD96E800E3040F /* comicsByCharacter.json in Resources */,
+				491466D01CBECB2900DAD512 /* suggestionCell.xib in Resources */,
 				492D08E01CBA7E930086D348 /* LaunchScreen.storyboard in Resources */,
 				492D08DD1CBA7E930086D348 /* Assets.xcassets in Resources */,
 				497ADC0E1CBD96E800E3040F /* listCharacters.json in Resources */,
@@ -436,6 +443,7 @@
 				4968BE921CBBF08B0094B53F /* parser.swift in Sources */,
 				492D090D1CBA87AF0086D348 /* HeroCell.swift in Sources */,
 				4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */,
+				491466D21CBECBB000DAD512 /* suggestionCell.swift in Sources */,
 				491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */,
 				492D090A1CBA82730086D348 /* Hero.swift in Sources */,
 				492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */,

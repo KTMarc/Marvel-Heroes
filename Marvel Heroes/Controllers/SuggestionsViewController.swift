@@ -9,7 +9,7 @@
 import UIKit
 import Haneke
 
-class SuggestionsViewController: UITableViewController/*,UISearchResultsUpdating*/ {
+class SuggestionsViewController: UITableViewController{
 
     
     var heroes = [Hero]()
@@ -17,9 +17,8 @@ class SuggestionsViewController: UITableViewController/*,UISearchResultsUpdating
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //createSampleData()
         
-        self.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        self.tableView.registerNib(UINib(nibName: SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: SUGGESTION_CELL)
         
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_SUGGESTIONS, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroSuggestions()
@@ -42,14 +41,10 @@ class SuggestionsViewController: UITableViewController/*,UISearchResultsUpdating
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = heroes[indexPath.row].name
-//        cell.detailTextLabel!.text = String(heroes[indexPath.row].heroId)
-//        if let url = NSURL.init(string: self.heroes[indexPath.row].thumbnailUrl) {
-//            cell.imageView!.hnk_setImageFromURL(url)
-//        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! suggestionCell
         
-        heroes[indexPath.row].name
+        cell.configureCell(heroes[indexPath.row])
+
         return cell
     }
     
@@ -68,8 +63,6 @@ class SuggestionsViewController: UITableViewController/*,UISearchResultsUpdating
 //            
 //        }
         
-    
-        
 //        if let navController = navigationController {
 //            navController.pushViewController(vc, animated: true)
 //        } else {
@@ -86,21 +79,8 @@ class SuggestionsViewController: UITableViewController/*,UISearchResultsUpdating
 //        }
 
         
-        //        performSegueWithIdentifier(SEGUE_TO_HERO_DETAIL_VC, sender: self)
     }
 
-
-
-
-// MARK: - Segues
-
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
-//            let vc = (segue.destinationViewController as! UINavigationController).topViewController as! HeroDetailVC
-//                vc.hero = selectedHero
-//                vc.navigationItem.leftItemsSupplementBackButton = true
-//        }
-//    }
 }
 
 

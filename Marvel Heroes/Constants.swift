@@ -19,6 +19,9 @@ let URL_CREDENTIALS = "ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=2786145
 let HERO_CELL = "HeroCell"
 let SEGUE_TO_HERO_DETAIL_VC = "DetailViewController"
 
+//Suggestions table view Controller
+let SUGGESTION_CELL = "suggestionCell"
+
 //Hero Detail View Controller
 let COMIC_CELL = "ComicCell"
 let NO_DESCRIPTION_AVAILABLE_COPY = "No description available, please check out the wiki"
