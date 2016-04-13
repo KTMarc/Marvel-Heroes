@@ -32,7 +32,7 @@ class SuggestionsViewController: UITableViewController/*,UISearchResultsUpdating
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    // MARK: - Table View
+    // MARK: - Table View Data Source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -53,6 +53,7 @@ class SuggestionsViewController: UITableViewController/*,UISearchResultsUpdating
         return cell
     }
     
+    //MARK: Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //selectedHero = heroes[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

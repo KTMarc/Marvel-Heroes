@@ -62,8 +62,6 @@ class PersistencyManager: NSObject {
     
     //HEROES
     func getHeroes() -> [Hero] {
-//        print("Heroes in getHeroes")
-//        print(self.heroes.count)
         return heroes
     }
     
@@ -75,7 +73,7 @@ class PersistencyManager: NSObject {
     func searchHeroes(keystrokes: String) {
         //http://gateway.marvel.com/v1/public/characters?nameStartsWith=x-men&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
         
-        fetchData(URL_CHARACTERS, parameter: "nameStartsWith=\(keystrokes)&", offset: 0, notification: NOTIFICATION_SUGGESTIONS)
+        fetchData(URL_CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: NOTIFICATION_SUGGESTIONS)
     }
     
     func getHeroSuggestions() -> [Hero]{
@@ -100,6 +98,12 @@ class PersistencyManager: NSObject {
         return comics
     }
     
+    func strokeSanitizer(strokes: String) -> String{
+        
+        let sanitizedStrokes = strokes.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+        
+        return sanitizedStrokes
+    }
 //    func saveHeroes() {
 //        let filename = NSHomeDirectory().stringByAppendingString("/Documents/heroes")
 //        let data = NSKeyedArchiver.archivedDataWithRootObject(heroes)

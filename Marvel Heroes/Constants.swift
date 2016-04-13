@@ -21,6 +21,7 @@ let SEGUE_TO_HERO_DETAIL_VC = "DetailViewController"
 
 //Hero Detail View Controller
 let COMIC_CELL = "ComicCell"
+let NO_DESCRIPTION_AVAILABLE_COPY = "No description available, please check out the wiki"
 
 //Notifications
 let NOTIFICATION_HEROES = "heroesDownloadedNotification"

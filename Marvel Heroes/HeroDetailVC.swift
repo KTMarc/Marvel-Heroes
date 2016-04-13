@@ -15,6 +15,14 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBAction func dismissButton(sender: AnyObject) {
+        //self.presentingViewController!.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        //self.presentedViewController?.dismissViewControllerAnimated(true, completion: {_ in })
+        //self.presentingViewController?.dismissViewControllerAnimated(true, completion: {_ in })
+        self.dismissViewControllerAnimated(true, completion: {_ in })
+    }
     
     var hero : Hero?
     var comics = [Comic]()
@@ -23,13 +31,19 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         if let url = NSURL.init(string: self.hero!.thumbnailUrl) {
-            //let _ = Shared.imageCache
-            
             self.image.hnk_setImageFromURL(url)
         }
         nameLabel.text = hero!.name
         detailDescriptionLabel.text = hero!.desc
         idLabel.text = String(hero!.heroId)
+        
+        print("Presenting viewController: \(self.presentingViewController)")
+//        
+//        if (self.presentingViewController != nil) {
+//            closeButton.hidden = false
+//        } else {
+//            closeButton.hidden = true
+//        }
         
         apiClient.sharedInstance.fetchComics(hero!.heroId)
 
@@ -38,7 +52,6 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             print("Comics coming from notification")
             print(self.comics.count)
             self.collection.reloadData()
-            
         }
     }
     

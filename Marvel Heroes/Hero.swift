@@ -35,9 +35,10 @@ class Hero {
     
     var desc: String {
         if _desc != nil{
+         if _desc == "" { _desc = NO_DESCRIPTION_AVAILABLE_COPY }
             return _desc
-        }else{
-            return "Not description available"
+        } else {
+            return ""
         }
     }
     

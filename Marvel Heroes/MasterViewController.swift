@@ -25,8 +25,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
-        searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.Done
+        //searchBar.delegate = self
+        //searchBar.returnKeyType = UIReturnKeyType.Done
+        searchBar.hidden = true
         
         //Get the model
         apiClient.sharedInstance
@@ -36,14 +37,22 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroes()
             self.collection.reloadData()
-            print("Hero suggestions from notification: \(self.heroes.count)")
+            //print("Heros from notification: \(self.heroes.count)")
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        collection.reloadData()
+    }
+    
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    
+    // MARK: Search Results Controller.
     
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsViewController())
@@ -55,9 +64,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.searchBar.sizeToFit()
         
         let searchBarPointer = searchController.searchBar
-        collection.addSubview(searchBarPointer)
-//        let verticalConstraint = NSLayoutConstraint(item: searchBarPointer, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: collection, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
-//        searchBarPointer.addConstraint(verticalConstraint)
+        collection.superview!.addSubview(searchBarPointer)
         
     }
     
@@ -70,10 +77,15 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         apiClient.sharedInstance.resetHeroSuggestions()
+        collection.reloadData()
+        print("Heroes in master view controller \(heroes.count)")
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         apiClient.sharedInstance.resetHeroSuggestions()
+        collection.reloadData()
+        print(heroes.count)
+        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

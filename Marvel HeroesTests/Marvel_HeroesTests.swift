@@ -26,9 +26,14 @@ class Marvel_HeroesTests: XCTestCase {
     }
     
     func testCharactersParsing() {
-        var heroes = [Hero]()
+        let heroes = [Hero]()
     
         
+        //        if let path = NSBundle.mainBundle().pathForResource("stationList", ofType: "json") {
+        //            if let data = NSData(contentsOfFile: path) {
+        //                let json = JSON(data: data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+        //
+        //                for dict in json.arrayValue {
 //        let bundle = NSBundle(forClass: self.dynamicType)
 //        if let path = bundle.pathForResource("listCharacters", ofType: "json"){
             

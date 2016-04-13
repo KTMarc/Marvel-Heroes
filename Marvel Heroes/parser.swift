@@ -37,6 +37,7 @@ class parser: NSObject {
                         if let theDescription = subJson["description"].string{
                             if let theThumbnail = subJson["thumbnail"].dictionary{
                                 let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
+                                
                                 heroes.append(Hero(
                                     name: theName,
                                     heroId: theId,
@@ -69,7 +70,7 @@ class parser: NSObject {
                                     title: theTitle,
                                     comicId: theId,
                                     thumbnailUrl: thumbnailCompletePath))
-                                print(comics.count)
+                                //print(comics.count)
                         }
                     }
                 }
