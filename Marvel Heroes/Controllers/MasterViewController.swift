@@ -35,6 +35,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         imageView.image = image
         navigationItem.titleView = imageView
         
+        
         //Get the model
         apiClient.sharedInstance
         

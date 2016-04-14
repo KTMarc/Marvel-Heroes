@@ -55,15 +55,22 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             let blurEffect: UIBlurEffect = UIBlurEffect(style: .Dark)
             let effectView = UIVisualEffectView(effect: blurEffect)
             effectView.frame = self.view.frame
-            
             self.blurImage.hnk_setImageFromURL(url)
             self.blurImage.addSubview(effectView)
-            
             blurView = UIVisualEffectView(effect: blurEffect)
             blurView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(blurView)
             blurView.alpha = 0.0
         }
+
+        //Navigation Bar Setup
+        self.navigationItem.title = hero.name
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+        imageView.contentMode = .ScaleAspectFit
+        let backImage = UIImage(named: "backButton.png")
+        let backButton = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HeroDetailVC.popVC))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.redColor()
         
         closeButton.tintColor = UIColor.redColor()
         nameLabel.text = hero.name
@@ -73,6 +80,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         closeButton.hidden = presentedModally ? false : true
         
+        //Get the comics
         apiClient.sharedInstance.fetchComics(hero.heroId)
         listenToNotifications()
         
@@ -138,6 +146,10 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         return 1
     }
     
+    //MARK: Navigation
+    func popVC(){
+        navigationController?.popViewControllerAnimated(true)
+    }
     
     
 }

@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate/*, UISplitViewControllerDe
 //        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
 //        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
 //        splitViewController.delegate = self
-        
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "GothamLight", size: 15)!
+        ]
         return true
     }
 

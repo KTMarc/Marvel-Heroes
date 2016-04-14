@@ -239,7 +239,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="1wD-dU-Tb8">
-                                                                    <rect key="frame" x="0.0" y="105" width="55" height="12"/>
+                                                                    <rect key="frame" x="0.0" y="90" width="55" height="12"/>
                                                                     <fontDescription key="fontDescription" name="GothamXNarrow-Book" family="Gotham XNarrow" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -253,7 +253,7 @@
                                                             <constraint firstItem="TJj-Sg-ncf" firstAttribute="width" secondItem="OVo-nz-ssn" secondAttribute="width" id="LbK-8t-moW"/>
                                                             <constraint firstItem="1wD-dU-Tb8" firstAttribute="leading" secondItem="OVo-nz-ssn" secondAttribute="leading" id="W4P-Yc-ir4"/>
                                                             <constraint firstItem="TJj-Sg-ncf" firstAttribute="top" secondItem="OVo-nz-ssn" secondAttribute="top" id="Zci-Vt-bMg"/>
-                                                            <constraint firstItem="1wD-dU-Tb8" firstAttribute="top" secondItem="TJj-Sg-ncf" secondAttribute="bottom" constant="20" id="qgP-Qu-AsF"/>
+                                                            <constraint firstItem="1wD-dU-Tb8" firstAttribute="top" secondItem="TJj-Sg-ncf" secondAttribute="bottom" constant="5" id="qgP-Qu-AsF"/>
                                                         </constraints>
                                                         <size key="customSize" width="55" height="85"/>
                                                         <connections>
@@ -304,7 +304,7 @@
                                             <constraint firstAttribute="height" constant="35" id="ItR-le-V3x"/>
                                         </constraints>
                                         <size key="titleShadowOffset" width="1" height="1"/>
-                                        <state key="normal" image="close_button">
+                                        <state key="normal" image="closeButton">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -386,6 +386,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close_button" width="17" height="17"/>
+        <image name="closeButton" width="66" height="69"/>
     </resources>
 </document>
