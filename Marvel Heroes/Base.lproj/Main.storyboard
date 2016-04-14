@@ -22,7 +22,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Marvel Heroes-->
+        <!--Heroes-->
         <scene sceneID="6KB-BL-FMB">
             <objects>
                 <viewController id="J0F-xy-8yd" customClass="MasterViewController" customModule="Marvel_Heroes" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="scQ-2V-EJD">
-                                        <rect key="frame" x="0.0" y="20" width="600" height="516"/>
+                                        <rect key="frame" x="0.0" y="10" width="600" height="526"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="5" id="XVw-zv-99v">
                                             <size key="itemSize" width="45" height="45"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -86,7 +86,7 @@
                                 <constraints>
                                     <constraint firstItem="scQ-2V-EJD" firstAttribute="top" secondItem="xmP-LT-Eho" secondAttribute="top" id="5nA-dV-V9s"/>
                                     <constraint firstAttribute="trailing" secondItem="scQ-2V-EJD" secondAttribute="trailing" id="6VL-rJ-iBD"/>
-                                    <constraint firstItem="scQ-2V-EJD" firstAttribute="top" secondItem="xmP-LT-Eho" secondAttribute="top" constant="20" id="O2K-Qy-M5W"/>
+                                    <constraint firstItem="scQ-2V-EJD" firstAttribute="top" secondItem="xmP-LT-Eho" secondAttribute="top" constant="10" id="O2K-Qy-M5W"/>
                                     <constraint firstItem="scQ-2V-EJD" firstAttribute="leading" secondItem="xmP-LT-Eho" secondAttribute="leading" id="XB8-OF-TBX"/>
                                     <constraint firstAttribute="bottom" secondItem="scQ-2V-EJD" secondAttribute="bottom" id="sj6-Qg-uG7"/>
                                 </constraints>
@@ -120,7 +120,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Marvel Heroes" id="bVR-Ca-dls"/>
+                    <navigationItem key="navigationItem" title="Heroes" id="bVR-Ca-dls"/>
                     <connections>
                         <outlet property="collection" destination="scQ-2V-EJD" id="xcm-E3-96z"/>
                         <outlet property="searchBar" destination="krO-73-uAD" id="b2T-5e-Q9s"/>
@@ -318,7 +318,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.63137254899999995" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="cFG-Oo-jRL" firstAttribute="top" secondItem="pnD-pj-onT" secondAttribute="bottom" constant="35" id="3Dg-Ul-eMm"/>
                                     <constraint firstItem="fra-eB-8J4" firstAttribute="leading" secondItem="ieP-a9-3PX" secondAttribute="leading" id="6Bc-qG-9EV"/>

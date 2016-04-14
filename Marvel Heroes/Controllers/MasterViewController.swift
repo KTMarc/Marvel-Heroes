@@ -28,6 +28,13 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //searchBar.returnKeyType = UIReturnKeyType.Done
         searchBar.hidden = true
         
+        //UI
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+        imageView.contentMode = .ScaleAspectFit
+        let image = UIImage(named: "navBarLogo.png")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        
         //Get the model
         apiClient.sharedInstance
         
@@ -70,7 +77,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.searchResultsUpdater = self
         //searchController.obscuresBackgroundDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = "Search remotely.."
+        searchController.searchBar.placeholder = "Search more Heroes, i.e. X-Men"
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         
@@ -79,6 +86,26 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
 
+    
+    //MARK: Search Bar Delegate
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            collection.reloadData()
+        } else {
+            //Uncomment to have the local search filter
+            //inSearchMode = true
+            let lower = searchBar.text!.lowercaseString
+            filteredHeroes = heroes.filter({$0.name.lowercaseString.containsString(lower)})
+            collection.reloadData()
+        }
+    }
+    
     // MARK: API request to get suggestions 📡
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if let keystrokes = searchController.searchBar.text where keystrokes != "" {
@@ -99,6 +126,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
+    //MARK: Collection View Data Soure
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HERO_CELL, forIndexPath: indexPath) as? HeroCell {
@@ -126,6 +154,27 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if inSearchMode {
+            //Uncomment to have the local search filter
+            // return filteredHeroes.count
+        }
+        
+        return heroes.count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        return CGSizeMake(105, 105)
+    }
+
+    
+    //MARK: Collection View Delegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
@@ -142,45 +191,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if inSearchMode {
-            //Uncomment to have the local search filter
-           // return filteredHeroes.count
-        }
-        
-        return heroes.count
-    }
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        return CGSizeMake(105, 105)
-    }
-    
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        view.endEditing(true)
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == nil || searchBar.text == "" {
-            inSearchMode = false
-            view.endEditing(true)
-            collection.reloadData()
-        } else {
-            //Uncomment to have the local search filter
-            //inSearchMode = true
-            let lower = searchBar.text!.lowercaseString
-            filteredHeroes = heroes.filter({$0.name.lowercaseString.containsString(lower)})
-            collection.reloadData()
-        }
-    }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
             if let detailsVC = segue.destinationViewController as? HeroDetailVC {
