@@ -26,7 +26,7 @@ class Marvel_HeroesTests: XCTestCase {
     }
     
     func testCharactersParsing() {
-        let heroes = [Hero]()
+        //let heroes = [Hero]()
     
         
         //        if let path = NSBundle.mainBundle().pathForResource("stationList", ofType: "json") {
@@ -47,8 +47,7 @@ class Marvel_HeroesTests: XCTestCase {
 //                }
 //            }
 //        }
-        XCTAssertEqual(heroes.count, 0)
-        
+     //   XCTAssertEqual(heroes.count, 0)
     }
     
     func testPerformanceExample() {
