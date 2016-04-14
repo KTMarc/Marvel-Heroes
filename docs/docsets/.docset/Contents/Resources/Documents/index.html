@@ -13,7 +13,7 @@
     <a title="  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (9% documented)</p>
+        <p><a href="index.html"> Docs</a> (16% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -111,6 +111,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -122,50 +130,75 @@
 <p>This App fetches characters from the Mavel Comics API and shows the comics where they appear.</p>
 
 <p>There are 3 View Controllers:</p>
-<a href='#master_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='master_vc'>Master VC:</h1>
+<a href='#master_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='master_vc'>Master VC:</h2>
 
 <ul>
 <li>Holds a CollectionView which is compatible with iPhone/iPad</li>
 <li>Contains the suggestions VC</li>
-<li>There is an infinite scroll to load more items (batches of 20)</li>
+<li>There is an infinite scroll to load more items (batches of 20)
+***</li>
 </ul>
-<a href='#suggestions_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='suggestions_vc'>Suggestions VC:</h1>
+<a href='#suggestions_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='suggestions_vc'>Suggestions VC:</h2>
 
 <ul>
 <li>Is created programmatically</li>
 <li>Holds a table view to show results from the remote server API calls</li>
+<li>Sends a new request every time the user writes in the search Bar
+***</li>
 </ul>
-<a href='#hero_detail_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='hero_detail_vc'>Hero Detail VC:</h1>
+<a href='#hero_detail_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='hero_detail_vc'>Hero Detail VC:</h2>
 
 <ul>
 <li>Holds information about the Characters inside a scroll view</li>
-<li>Has a collection View with comics from that Character</li>
+<li>Has a collection View with comics from that Character
+***</li>
 </ul>
+<a href='#architecture' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='architecture'>Architecture</h2>
 
 <p>There is API Client interface where all the objects request data. 
 This interface holds:</p>
 
 <ul>
-<li>Network connections</li>
-<li>JSON Parser</li>
-<li>Object serializer</li>
-<li>Persistency manager</li>
+<li>[x] Network connections</li>
+<li>[x] JSON Parser</li>
+<li>[x] Object serializer</li>
+<li>[x] Persistency manager</li>
 </ul>
 
 <p>Documentation can be found in Marvel Heroes/Docs</p>
-<a href='#considerations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='considerations'>Considerations</h1>
 
-<p>Didn&rsquo;t chose CORE DATA as the persistancy. The reason is that the Marvel service has less than 2k character records. 
-For simplicity JSON files and images are cached using Haneke framework. </p>
+<ul>
+<li>[x] Custom icon</li>
+<li>[x] Custom fonts</li>
+<li>[x] Custom buttons</li>
+</ul>
+<a href='#considerations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='considerations'>Considerations</h2>
+
+<p>Didn&rsquo;t chose CORE DATA as the persistancy. The reason is that the Marvel service has less than 1.5k character records. 
+For simplicity JSON files and images are cached using <strong>Haneke</strong> framework. </p>
 
 <p>The character API doesn&rsquo;t have a lot of information. Only name, description (most of them are empty), modification date and Id. 
-There is a wiki page for each character. This page has more information, but it would require web scrapping, which I think is out of the scope of this project.
-We are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.</p>
+There is a wiki page for each character. This page has more information, but it would require web scrapping, which I think is out of the scope of this project. We could add a webView and load the html of the wiki.</p>
+
+<p>We are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.</p>
+
+<p>There are two search bars, one is hidden and was providing the <q>local</q> search results. I decided to comment that implementation and leave only the one that searches remotely, which is far more complex and interesting. As a future task, we could have both working and showing local and remote results. Similiar to the Safari search bar, which gives google suggestions and matches from the currently displayed web.</p>
+<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='documentation'>Documentation</h2>
+
+<p>Look for &lsquo;Docs&rsquo; folder for generated HTML files in Apple Documentation style.</p>
+
+<p>To generate docs again, first install jazzy</p>
+<pre class="highlight shell"><code>sudo gem install jazzy 
+</code></pre>
+
+<p>and from the same folder where this README.md file is run:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>jazzy --min-acl private 
+</code></pre>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-04-14)</p>
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-04-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

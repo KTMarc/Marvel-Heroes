@@ -9,6 +9,10 @@
 import UIKit
 import Haneke
 
+/**
+Collection View with Hero objects
+ */
+
 class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var collection: UICollectionView!

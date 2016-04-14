@@ -9,6 +9,11 @@
 import UIKit
 import Haneke
 
+/**
+ Table View with results from remote search
+ It is created programmatically
+ */
+
 class SuggestionsViewController: UITableViewController{
 
     

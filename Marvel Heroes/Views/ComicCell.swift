@@ -9,6 +9,10 @@
 import UIKit
 import Haneke
 
+/**
+ Custom Cell for Hero Detail view Collection View of Comics
+ */
+
 class ComicCell: UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!

@@ -9,6 +9,10 @@
 import UIKit
 import Haneke
 
+/**
+ Custom Cell for Master table view
+ */
+
 class HeroCell: UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!

@@ -9,6 +9,10 @@
 import UIKit
 import Haneke
 
+/**
+ Custom Cell for Suggestions table view
+ */
+
 class suggestionCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!

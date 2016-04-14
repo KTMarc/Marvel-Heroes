@@ -8,6 +8,11 @@
 
 import Foundation
 
+/**
+ Visible Interface for the View Controllers
+ Behind it there are other files that are not accessible for them
+ */
+
 class apiClient: NSObject {
 
 private let persistencyManager: PersistencyManager

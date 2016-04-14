@@ -11,6 +11,11 @@
 import UIKit
 import Haneke
 
+/**
+ Detail View for Hero 
+ Includes a Collection View with Comics
+ */
+
 class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var avatarImage: UIImageView!

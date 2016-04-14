@@ -7,7 +7,10 @@
 //
 
 import Foundation
-//import Argo
+
+/**
+ Holds Character entity information. Called hero for simplicity
+ */
 
 class Hero {
 

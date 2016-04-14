@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+Holds some short hand animations
+ */
+
 extension UIView {
 
     func fadeIn(duration: NSTimeInterval = 0.5, delay: NSTimeInterval = 0.0, completion: ((Bool) -> Void) = {(finished: Bool) -> Void in}) {

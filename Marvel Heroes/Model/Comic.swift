@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+ Holds Comic entity information.
+ */
+
 class Comic {
         
         private var _title: String!
