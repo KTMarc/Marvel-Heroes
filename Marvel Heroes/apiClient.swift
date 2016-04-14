@@ -9,15 +9,12 @@
 import Foundation
 
 class apiClient: NSObject {
-    
+
 private let persistencyManager: PersistencyManager
 private let isOnline: Bool
 private let parseManager : parser
-private let urlParams = [
-        "ts":"1",
-        "apikey":"c88613ef9c4edc6dee9b496c6f0d0a93",
-        "hash":"27861456bf9a405a5e8320359485b698",
-        ]
+
+    
 
     class var sharedInstance: apiClient {
         struct Singleton {
@@ -33,29 +30,62 @@ private let urlParams = [
         super.init()
     }
     
-    //HEROES
+    //MARK: HEROES
+    
+    /**
+     Example API Call:
+     http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
+     
+     - parameter heroId: The Id of the Hero to get the comics from
+     */
+    
     func fetchHeroes(){
         return persistencyManager.fetchHeroes()
     }
+    
+    /**
+     Returns the list of previously fetched elements
+     - returns: An array of heroes
+     */
     
     func getHeroes() -> [Hero]{
         return persistencyManager.getHeroes()
     }
     
+    /**
+    Fetches more elements with a given offset
+     - parameter offset: An int representing the next batch start: 0, 20, 40
+     - returns: An array of comics
+     */
     
     func moreHeroes(offset: Int){
         persistencyManager.getMoreHeroes(offset)
     }
     
     
-    //SUGGESTIONS
+    //MARK: SUGGESTIONS
+    
+    /**
+     Finds characters matching name
+     - parameter keystrokes: The text that user introduced in the searchBar
+     */
+    
     func searchHeroes(keystrokes: String){
         return persistencyManager.searchHeroes(keystrokes)
     }
     
+    /**
+     Returns the list of previously fetched elements
+     - returns: An array of comics
+     */
+    
     func getHeroSuggestions() -> [Hero]{
         return persistencyManager.getHeroSuggestions()
     }
+    
+    /**
+     Cleans the Suggestions Ciew Controller and leaves it ready for the next keystroke or deletion
+     */
     
     func resetHeroSuggestions(){
         return persistencyManager.resetHeroSuggestions()
@@ -64,51 +94,25 @@ private let urlParams = [
     
     
     
-    //COMICS
+    //MARK: COMICS
+    
+    /**
+     Starts the loading process for a particular Characrter Comic list
+     
+     - parameter heroId: The Id of the Hero to get the comics from
+     */
+    
     func fetchComics(heroId: Int){
          persistencyManager.fetchComics(heroId)
     }
     
+    /**
+     Returns the list of previously fetched elements
+     - returns: An array of comics
+     */
+    
     func getComics() -> [Comic]{
         return persistencyManager.getComics()
     }
-    
-    
-    /**
-     GET http://gateway.marvel.com/v1/public/characters
-     
-     - parameter ts: TimeStamp
-     - parameter apikey: Your public Key
-     - parameter Hash: MD5 (ts + privateKey + publicKey)
-     
-     */
-    
-//    func fetchHeroes() {
-//        
-//        //Fetch Request
-//        Alamofire.request(.GET, URL_BASE + URL_CHARACTERS, parameters: urlParams)
-//            .validate(statusCode: 200..<300)
-//            .responseJSON { response in
-//                if (response.result.error == nil) {
-//                    //debugPrint("HTTP Response Body: \(response.result.value)")
-//                    let heroes : [Hero] = []
-//                    
-//                    self.persistencyManager.saveHeroes(heroes)
-//                }
-//                else {
-//                    //debugPrint("HTTP Request failed: \(response.result.error)")
-//                }
-//        }
-//    }
-    
-    
-    
-    
-    
-    
-
-
-
-
 
 }

@@ -223,12 +223,20 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		495BF0921CBFF9B600BCECD8 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				4968BE8F1CBBD3580094B53F /* persistencyManager.swift */,
+				4968BE911CBBF08B0094B53F /* parser.swift */,
+			);
+			name = APIs;
+			sourceTree = "<group>";
+		};
 		4968BE8D1CBBD2460094B53F /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				4968BE8B1CBBD2400094B53F /* apiClient.swift */,
-				4968BE8F1CBBD3580094B53F /* persistencyManager.swift */,
-				4968BE911CBBF08B0094B53F /* parser.swift */,
+				495BF0921CBFF9B600BCECD8 /* APIs */,
 			);
 			name = Services;
 			sourceTree = "<group>";

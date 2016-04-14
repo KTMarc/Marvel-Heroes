@@ -16,15 +16,12 @@ class Marvel_HeroesTests: XCTestCase {
     override func setUp() {
         super.setUp()
         apiClient.sharedInstance
-
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         NSNotificationCenter.defaultCenter().removeObserver(self)
-
-        
     }
     
     /**
@@ -35,7 +32,7 @@ class Marvel_HeroesTests: XCTestCase {
      local path would be loaded like path = NSBundle(forClass: self.dynamicType).pathForResource("listCharacters", ofType: "json")
  */
     
-    func testJSONCharactersFileIsDownloadedAndParsed() {
+    func testCharactersJSONFileIsDownloadedAndParsed() {
         var heroes = [Hero]()
         let expectation = expectationWithDescription("Download, Parse and create objects")
         

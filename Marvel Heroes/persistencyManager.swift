@@ -20,15 +20,24 @@ class PersistencyManager: NSObject {
         fetchHeroes()
     }
     
+    /**
+     Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache
+     
+     Params:
+     
+     - endPoint: API endpoint
+     - extra parameters: like 'nameStartsWith='
+     - offset: to download the next batch of elements. ex: 0,20,40 ..
+     - notification: who should be aware of the task end
+     */
+    
     func fetchData(endPoint: String, parameter: String, offset: Int, notification: String){
-        //Persisting JSON
-
+        
         let URL = NSURL(string: URL_BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + URL_CREDENTIALS)!
         print(URL)
         cache.fetch(URL: URL).onSuccess { JSON in
             //print(JSON.dictionary?["data"])
             
-            //TODO: this should go in the apiClient
             switch(notification){
             case NOTIFICATION_HEROES:
                 
@@ -51,7 +60,6 @@ class PersistencyManager: NSObject {
                 break
             }
             
-            //TODO: This should go in the apiClient
             NSNotificationCenter.defaultCenter().postNotificationName(
                 notification, object: self)
             
@@ -61,10 +69,12 @@ class PersistencyManager: NSObject {
     }
     
     
-    //HEROES
+    
+    //MARK: HEROES
     func fetchHeroes(){
         fetchData(URL_CHARACTERS, parameter: "", offset: 0, notification: NOTIFICATION_HEROES)
     }
+    
     
     func getHeroes() -> [Hero] {
         return heroes
@@ -74,10 +84,16 @@ class PersistencyManager: NSObject {
         fetchData(URL_CHARACTERS, parameter: "", offset: offset, notification: NOTIFICATION_HEROES)
     }
     
-    //SUGGESTIONS FOR HEROES
+    //MARK: SUGGESTIONS
+    
+    /**
+     API Call example:
+     http://gateway.marvel.com/v1/public/characters?nameStartsWith=x-men&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
+     - parameter keystrokes: The text that user introduced in the searchBar
+     */
+    
     func searchHeroes(keystrokes: String) {
-        //http://gateway.marvel.com/v1/public/characters?nameStartsWith=x-men&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
-        
+       
         fetchData(URL_CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: NOTIFICATION_SUGGESTIONS)
     }
     
@@ -91,38 +107,41 @@ class PersistencyManager: NSObject {
             NOTIFICATION_SUGGESTIONS, object: self)
     }
     
-    //COMICS
+    //MARK: COMICS
+    /**
+     Example API Call:
+     http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
+     
+     - parameter heroId: The Id of the Hero to get the comics from
+     */
+    
     func fetchComics(heroId:Int) {
-        //Clean cache first
-//        Shared.imageCache.removeAll()
-        //http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
-        
         fetchData(URL_CHARACTERS + "/\(heroId)/" + URL_COMICS, parameter: "", offset: 0, notification: NOTIFICATION_COMICS)
      
     }
+    
     func getComics() -> [Comic] {
         return comics
     }
     
-    func strokeSanitizer(strokes: String) -> String{
-        
-        let sanitizedStrokes = strokes.stringByReplacingOccurrencesOfString(" ", withString: "%20")
-        
-        return sanitizedStrokes
-    }
-//    func saveHeroes() {
-//        let filename = NSHomeDirectory().stringByAppendingString("/Documents/heroes")
-//        let data = NSKeyedArchiver.archivedDataWithRootObject(heroes)
-//        data.writeToFile(filename, atomically: true)
-//    }
+    /** 
+    Prevents bad URLs containing spaces
+     */
     
-//    func createSampleData() {
-//        //Dummy Heroes
-//        heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
-//        
-//        heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/510c08f345938.jpg"))
-//        //saveHeroes()
-//    }
-//    
+    //TODO: Cover more edge cases
+    func strokeSanitizer(strokes: String) -> String{
+        return strokes.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+    }
+
+    /** 
+     Dummy Heroes creation
+     */
+    func createSampleData() {
+        
+        heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
+        
+        heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/510c08f345938.jpg"))
+    }
+    
     
 }

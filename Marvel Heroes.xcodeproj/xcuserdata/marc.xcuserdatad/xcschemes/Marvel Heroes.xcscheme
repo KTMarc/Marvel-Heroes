@@ -39,6 +39,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "Marvel_HeroesTests/testCharactersJSONFileIsDownloadedAndParsed()">
+               </Test>
+               <Test
                   Identifier = "Marvel_HeroesTests/testJSONCharactersFileIsDownloadedAndParsed()">
                </Test>
             </SkippedTests>
