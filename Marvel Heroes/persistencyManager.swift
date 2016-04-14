@@ -17,7 +17,7 @@ class PersistencyManager: NSObject {
 
     override init() {
         super.init()
-        fetchData(URL_CHARACTERS, parameter: "", offset: 0, notification: NOTIFICATION_HEROES)
+        fetchHeroes()
     }
     
     func fetchData(endPoint: String, parameter: String, offset: Int, notification: String){
@@ -39,7 +39,7 @@ class PersistencyManager: NSObject {
             case NOTIFICATION_COMICS:
                 
                 let newElements = parser(data: JSON.dictionary).parseComics()
-                self.comics.appendContentsOf(newElements)
+                self.comics = newElements
                 break
                 
             case NOTIFICATION_SUGGESTIONS:
@@ -60,7 +60,12 @@ class PersistencyManager: NSObject {
         }
     }
     
+    
     //HEROES
+    func fetchHeroes(){
+        fetchData(URL_CHARACTERS, parameter: "", offset: 0, notification: NOTIFICATION_HEROES)
+    }
+    
     func getHeroes() -> [Hero] {
         return heroes
     }
@@ -88,7 +93,8 @@ class PersistencyManager: NSObject {
     
     //COMICS
     func fetchComics(heroId:Int) {
-        
+        //Clean cache first
+//        Shared.imageCache.removeAll()
         //http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
         
         fetchData(URL_CHARACTERS + "/\(heroId)/" + URL_COMICS, parameter: "", offset: 0, notification: NOTIFICATION_COMICS)

@@ -27,30 +27,31 @@ class Marvel_HeroesTests: XCTestCase {
         
     }
     
-    func testCharactersParsing() {
-        let heroes = [Hero]()
+    /**
+ Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache. 
+     
+     If not available, Haneke will fetch the JSON from the source, return it and then cache it. In this case, the URL itself is used as the key
+ 
+     local path would be loaded like path = NSBundle(forClass: self.dynamicType).pathForResource("listCharacters", ofType: "json")
+ */
     
-        if let path = NSBundle.mainBundle().pathForResource("stationList", ofType: "json") {
-            if let data = NSData(contentsOfFile: path) {
-                        let json = JSON(data: data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+    func testJSONCharactersFileIsDownloadedAndParsed() {
+        var heroes = [Hero]()
+        let expectation = expectationWithDescription("Download, Parse and create objects")
         
-                        for dict in json.arrayValue {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        if let path = bundle.pathForResource("listCharacters", ofType: "json"){
+        apiClient.sharedInstance.fetchHeroes()
+
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
             
-            let jsonData = NSData(contentsOfFile: path!)
-            if let URL = NSURL.fileURLWithPath(path) {
-                print("We found the file")
-                let cache = Shared.JSONCache
-            
-                cache.fetch(URL: URL).onSuccess { JSON in
-                heroes = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
-                }
-            }
+            heroes = apiClient.sharedInstance.getHeroes()
+            expectation.fulfill()
         }
-        XCTAssertEqual(heroes.count, 0)
+        
+        waitForExpectationsWithTimeout(5, handler: nil)
+        XCTAssertGreaterThan(heroes.count, 0)
     }
-                        
+    
+    
     func testThatWeCanFindSpiderMan() {
         
         //3D Man
@@ -99,5 +100,6 @@ class Marvel_HeroesTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }
+    
+

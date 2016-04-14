@@ -37,6 +37,11 @@
                BlueprintName = "Marvel HeroesTests"
                ReferencedContainer = "container:Marvel Heroes.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "Marvel_HeroesTests/testJSONCharactersFileIsDownloadedAndParsed()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

@@ -34,6 +34,10 @@ private let urlParams = [
     }
     
     //HEROES
+    func fetchHeroes(){
+        return persistencyManager.fetchHeroes()
+    }
+    
     func getHeroes() -> [Hero]{
         return persistencyManager.getHeroes()
     }
