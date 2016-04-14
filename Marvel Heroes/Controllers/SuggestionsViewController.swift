@@ -46,7 +46,7 @@ class SuggestionsViewController: UITableViewController{
         let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! suggestionCell
         
         cell.configureCell(heroes[indexPath.row])
-
+        cell.fadeIn()
         return cell
     }
     

@@ -147,7 +147,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 currentOffset += 20
                 apiClient.sharedInstance.moreHeroes(currentOffset)
             }
-            
+            cell.fadeIn()
             return cell
             
         } else {

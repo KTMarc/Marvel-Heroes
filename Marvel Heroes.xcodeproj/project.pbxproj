@@ -32,6 +32,7 @@
 		4968BE901CBBD3580094B53F /* persistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8F1CBBD3580094B53F /* persistencyManager.swift */; };
 		4968BE921CBBF08B0094B53F /* parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE911CBBF08B0094B53F /* parser.swift */; };
 		498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */; };
+		49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA5A051CC05784005A9710 /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		4968BE8F1CBBD3580094B53F /* persistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = persistencyManager.swift; path = Services/persistencyManager.swift; sourceTree = "<group>"; };
 		4968BE911CBBF08B0094B53F /* parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = parser.swift; path = Services/parser.swift; sourceTree = "<group>"; };
 		498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsViewController.swift; path = Controllers/SuggestionsViewController.swift; sourceTree = "<group>"; };
+		49DA5A051CC05784005A9710 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		B6F12BC302BB7F5282B2B983 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +211,7 @@
 				492D08DE1CBA7E930086D348 /* LaunchScreen.storyboard */,
 				492D090C1CBA87AF0086D348 /* HeroCell.swift */,
 				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
+				49DA5A051CC05784005A9710 /* UIViewExtensions.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */,
 				491466D21CBECBB000DAD512 /* suggestionCell.swift in Sources */,
 				491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */,
+				49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */,
 				492D090A1CBA82730086D348 /* Hero.swift in Sources */,
 				492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */,
 				492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */,

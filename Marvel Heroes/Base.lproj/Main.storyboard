@@ -195,8 +195,8 @@
                                             <constraint firstAttribute="width" constant="100" id="gRh-4y-0hq"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-rn-VuO" userLabel="Id Num">
-                                        <rect key="frame" x="465" y="344.5" width="80" height="15.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-rn-VuO" userLabel="Id Num">
+                                        <rect key="frame" x="465" y="345" width="80" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="WGM-QE-pm7"/>
                                         </constraints>
@@ -277,7 +277,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Hlx-ve-mxr">
-                                                <rect key="frame" x="290" y="45" width="20" height="20"/>
+                                                <rect key="frame" x="290" y="85" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <constraints>
@@ -288,7 +288,7 @@
                                             <constraint firstItem="Uaw-p3-hiL" firstAttribute="centerX" secondItem="VHB-CD-TpE" secondAttribute="centerX" id="SBK-vZ-U0t"/>
                                             <constraint firstItem="38x-x3-ccL" firstAttribute="leading" secondItem="VHB-CD-TpE" secondAttribute="leading" id="kdx-F9-a3L"/>
                                             <constraint firstItem="Hlx-ve-mxr" firstAttribute="centerX" secondItem="VHB-CD-TpE" secondAttribute="centerX" id="pO5-jU-ihP"/>
-                                            <constraint firstItem="Hlx-ve-mxr" firstAttribute="centerY" secondItem="VHB-CD-TpE" secondAttribute="centerY" constant="-80" id="vIe-aC-pRP"/>
+                                            <constraint firstItem="Hlx-ve-mxr" firstAttribute="centerY" secondItem="VHB-CD-TpE" secondAttribute="centerY" constant="-40" id="vIe-aC-pRP"/>
                                             <constraint firstAttribute="bottom" secondItem="38x-x3-ccL" secondAttribute="bottom" id="xnz-rx-iwA"/>
                                         </constraints>
                                         <variation key="default">
