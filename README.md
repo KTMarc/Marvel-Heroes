@@ -37,6 +37,7 @@ The character API doesn't have a lot of information. Only name, description (mos
 There is a wiki page for each character. This page has more information, but it would require web scrapping, which I think is out of the scope of this project.
 We are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.
 
+There are two search bars, one is hidden and was providing the "local" search results. I decided to comment that implementation and leave only the one that searches remotely, which is far more complex and interesting. As a future task, we could have both working and showing local and remote results. Similiar to the Safari search bar, that gives google suggestions and matches from the currently displayed web.
 
 #Notes
 To generate docs again, first install jazzy (sudo gem install jazzy) and then run (jazzy --min-acl private) from the same folder where this README.md file is.

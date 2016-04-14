@@ -32,12 +32,30 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         apiClient.sharedInstance
         
         configureSearchController()
-        
+        listenToNotifications()
+
+    }
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    //MARK: API request 📡
+    func listenToNotifications(){
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroes()
             self.collection.reloadData()
             //print("Heros from notification: \(self.heroes.count)")
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    /**
+     Adjust Search Bar size when rotating devices
+     */
+    func rotationDetected(){
+        
+        searchController.searchBar.sizeToFit()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,13 +64,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    
-    // MARK: Search Results Controller.
-    
+    // MARK: Search Results Controller 🔍
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsViewController())
         searchController.searchResultsUpdater = self
@@ -66,9 +78,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.superview!.addSubview(searchBarPointer)
         
     }
-    
+
+    // MARK: API request to get suggestions 📡
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        //Sending a new request..
         if let keystrokes = searchController.searchBar.text where keystrokes != "" {
             apiClient.sharedInstance.searchHeroes(keystrokes)
         }
@@ -90,9 +102,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HERO_CELL, forIndexPath: indexPath) as? HeroCell {
-            
             let hero: Hero!
             
+            //Uncomment to have the local search filter
 //            if inSearchMode {
 //                hero = filteredHeroes[indexPath.row]
 //            } else {
@@ -100,11 +112,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 //            }
             
             cell.configureCell(hero)
-//            cell.thumbImg.layer.borderWidth = 1
-//            cell.thumbImg.layer.masksToBounds = false
-//            cell.thumbImg.layer.borderColor = UIColor.whiteColor().CGColor
-//            cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.height / 2
-//            cell.thumbImg.clipsToBounds = true
             
             if (indexPath.item == heroes.count - 1) && (heroes.count > currentOffset){
                 print("fetching more stuff")
@@ -139,6 +146,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if inSearchMode {
+            //Uncomment to have the local search filter
            // return filteredHeroes.count
         }
         
@@ -165,14 +173,13 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             view.endEditing(true)
             collection.reloadData()
         } else {
+            //Uncomment to have the local search filter
             //inSearchMode = true
             let lower = searchBar.text!.lowercaseString
             filteredHeroes = heroes.filter({$0.name.lowercaseString.containsString(lower)})
             collection.reloadData()
         }
     }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
