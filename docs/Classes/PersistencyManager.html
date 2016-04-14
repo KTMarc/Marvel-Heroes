@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PersistencyManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/PersistencyManager" class="dashAnchor"></a>
+    <a title="PersistencyManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (9% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        PersistencyManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Comic.html">Comic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ComicCell.html">ComicCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Hero.html">Hero</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/HeroCell.html">HeroCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/HeroDetailVC.html">HeroDetailVC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MasterViewController.html">MasterViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PersistencyManager.html">PersistencyManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SuggestionsViewController.html">SuggestionsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/apiClient.html">apiClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/parser.html">parser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/suggestionCell.html">suggestionCell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes10COMIC_CELLSS">COMIC_CELL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes9HERO_CELLSS">HERO_CELL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes19NOTIFICATION_COMICSSS">NOTIFICATION_COMICS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes19NOTIFICATION_HEROESSS">NOTIFICATION_HEROES</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes24NOTIFICATION_SUGGESTIONSSS">NOTIFICATION_SUGGESTIONS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes29NO_DESCRIPTION_AVAILABLE_COPYSS">NO_DESCRIPTION_AVAILABLE_COPY</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes23SEGUE_TO_HERO_DETAIL_VCSS">SEGUE_TO_HERO_DETAIL_VC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes15SUGGESTION_CELLSS">SUGGESTION_CELL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes8URL_BASESS">URL_BASE</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes14URL_CHARACTERSSS">URL_CHARACTERS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes10URL_COMICSSS">URL_COMICS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes15URL_CREDENTIALSSS">URL_CREDENTIALS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13Marvel_Heroes9urlParamsGVs10DictionarySSSS_">urlParams</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>PersistencyManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Responsible of managing network and local cache of images and JSON files
+Works together with the parser class to serialize objects from JSON.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D66heroesGSaCS_4Hero_"></a>
+                    <a name="//apple_ref/swift/Property/heroes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D66heroesGSaCS_4Hero_">heroes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D611suggestionsGSaCS_4Hero_"></a>
+                    <a name="//apple_ref/swift/Property/suggestions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D611suggestionsGSaCS_4Hero_">suggestions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D66comicsGSaCS_5Comic_"></a>
+                    <a name="//apple_ref/swift/Property/comics" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D66comicsGSaCS_5Comic_">comics</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D65cacheERR"></a>
+                    <a name="//apple_ref/swift/Property/cache" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13Marvel_Heroes18PersistencyManagerP33_3F8ED95CB49544795A933356067486D65cacheERR">cache</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManagercFT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManagercFT_S0_">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager9fetchDataFTSS9parameterSS6offsetSi12notificationSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchData(_:parameter:offset:notification:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager9fetchDataFTSS9parameterSS6offsetSi12notificationSS_T_">fetchData(_:parameter:offset:notification:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchData</span><span class="p">(</span><span class="nv">endPoint</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameter</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>endPoint</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>API endpoint</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>extra parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>like &lsquo;nameStartsWith=&rsquo;</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>to download the next batch of elements. ex: 0,20,40 ..</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notification</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>who should be aware of the task end</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/HEROES"></a>
+                <a name="//apple_ref/swift/Section/HEROES" class="dashAnchor"></a>
+                <a href="#/HEROES">
+                  <h3 class="section-name">HEROES</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager11fetchHeroesFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchHeroes()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager11fetchHeroesFT_T_">fetchHeroes()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager9getHeroesFT_GSaCS_4Hero_"></a>
+                    <a name="//apple_ref/swift/Method/getHeroes()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager9getHeroesFT_GSaCS_4Hero_">getHeroes()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager13getMoreHeroesFSiT_"></a>
+                    <a name="//apple_ref/swift/Method/getMoreHeroes(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager13getMoreHeroesFSiT_">getMoreHeroes(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/SUGGESTIONS"></a>
+                <a name="//apple_ref/swift/Section/SUGGESTIONS" class="dashAnchor"></a>
+                <a href="#/SUGGESTIONS">
+                  <h3 class="section-name">SUGGESTIONS</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager12searchHeroesFSST_"></a>
+                    <a name="//apple_ref/swift/Method/searchHeroes(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager12searchHeroesFSST_">searchHeroes(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>API Call example:
+<a href="http://gateway.marvel.com/v1/public/characters?nameStartsWith=x-men&amp;ts=1&amp;apikey=c88613ef9c4edc6dee9b496c6f0d0a93&amp;hash=27861456bf9a405a5e8320359485b698">http://gateway.marvel.com/v1/public/characters?nameStartsWith=x-men&amp;ts=1&amp;apikey=c88613ef9c4edc6dee9b496c6f0d0a93&amp;hash=27861456bf9a405a5e8320359485b698</a>
+- parameter keystrokes: The text that user introduced in the searchBar</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">searchHeroes</span><span class="p">(</span><span class="nv">keystrokes</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keystrokes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The text that user introduced in the searchBar</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager18getHeroSuggestionsFT_GSaCS_4Hero_"></a>
+                    <a name="//apple_ref/swift/Method/getHeroSuggestions()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager18getHeroSuggestionsFT_GSaCS_4Hero_">getHeroSuggestions()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager20resetHeroSuggestionsFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/resetHeroSuggestions()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager20resetHeroSuggestionsFT_T_">resetHeroSuggestions()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/COMICS"></a>
+                <a name="//apple_ref/swift/Section/COMICS" class="dashAnchor"></a>
+                <a href="#/COMICS">
+                  <h3 class="section-name">COMICS</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager11fetchComicsFSiT_"></a>
+                    <a name="//apple_ref/swift/Method/fetchComics(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager11fetchComicsFSiT_">fetchComics(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Example API Call:
+<a href="http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&amp;ts=1&amp;apikey=c88613ef9c4edc6dee9b496c6f0d0a93&amp;hash=27861456bf9a405a5e8320359485b698">http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&amp;ts=1&amp;apikey=c88613ef9c4edc6dee9b496c6f0d0a93&amp;hash=27861456bf9a405a5e8320359485b698</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchComics</span><span class="p">(</span><span class="nv">heroId</span><span class="p">:</span><span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>heroId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Id of the Hero to get the comics from</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager9getComicsFT_GSaCS_5Comic_"></a>
+                    <a name="//apple_ref/swift/Method/getComics()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager9getComicsFT_GSaCS_5Comic_">getComics()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/TODO:%20Cover%20more%20edge%20cases"></a>
+                <a name="//apple_ref/swift/Section/TODO: Cover more edge cases" class="dashAnchor"></a>
+                <a href="#/TODO:%20Cover%20more%20edge%20cases">
+                  <h3 class="section-name">TODO: Cover more edge cases</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager15strokeSanitizerFSSSS"></a>
+                    <a name="//apple_ref/swift/Method/strokeSanitizer(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager15strokeSanitizerFSSSS">strokeSanitizer(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersistencyManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13Marvel_Heroes18PersistencyManager16createSampleDataFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/createSampleData()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13Marvel_Heroes18PersistencyManager16createSampleDataFT_T_">createSampleData()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dummy Heroes creation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">createSampleData</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-04-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

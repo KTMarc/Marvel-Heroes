@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (9% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+          Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Comic.html">Comic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ComicCell.html">ComicCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Hero.html">Hero</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/HeroCell.html">HeroCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/HeroDetailVC.html">HeroDetailVC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MasterViewController.html">MasterViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PersistencyManager.html">PersistencyManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SuggestionsViewController.html">SuggestionsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/apiClient.html">apiClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/parser.html">parser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/suggestionCell.html">suggestionCell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes10COMIC_CELLSS">COMIC_CELL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes9HERO_CELLSS">HERO_CELL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes19NOTIFICATION_COMICSSS">NOTIFICATION_COMICS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes19NOTIFICATION_HEROESSS">NOTIFICATION_HEROES</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes24NOTIFICATION_SUGGESTIONSSS">NOTIFICATION_SUGGESTIONS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes29NO_DESCRIPTION_AVAILABLE_COPYSS">NO_DESCRIPTION_AVAILABLE_COPY</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes23SEGUE_TO_HERO_DETAIL_VCSS">SEGUE_TO_HERO_DETAIL_VC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes15SUGGESTION_CELLSS">SUGGESTION_CELL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes8URL_BASESS">URL_BASE</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes14URL_CHARACTERSSS">URL_CHARACTERS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes10URL_COMICSSS">URL_COMICS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes15URL_CREDENTIALSSS">URL_CREDENTIALS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v13Marvel_Heroes9urlParamsGVs10DictionarySSSS_">urlParams</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#marvel_heroes' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='marvel_heroes'>Marvel-Heroes</h1>
+
+<p>This App fetches characters from the Mavel Comics API and shows the comics where they appear.</p>
+
+<p>There are 3 View Controllers:</p>
+<a href='#master_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='master_vc'>Master VC:</h1>
+
+<ul>
+<li>Holds a CollectionView which is compatible with iPhone/iPad</li>
+<li>Contains the suggestions VC</li>
+<li>There is an infinite scroll to load more items (batches of 20)</li>
+</ul>
+<a href='#suggestions_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='suggestions_vc'>Suggestions VC:</h1>
+
+<ul>
+<li>Is created programmatically</li>
+<li>Holds a table view to show results from the remote server API calls</li>
+</ul>
+<a href='#hero_detail_vc' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='hero_detail_vc'>Hero Detail VC:</h1>
+
+<ul>
+<li>Holds information about the Characters inside a scroll view</li>
+<li>Has a collection View with comics from that Character</li>
+</ul>
+
+<p>There is API Client interface where all the objects request data. 
+This interface holds:</p>
+
+<ul>
+<li>Network connections</li>
+<li>JSON Parser</li>
+<li>Object serializer</li>
+<li>Persistency manager</li>
+</ul>
+
+<p>Documentation can be found in Marvel Heroes/Docs</p>
+<a href='#considerations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='considerations'>Considerations</h1>
+
+<p>Didn&rsquo;t chose CORE DATA as the persistancy. The reason is that the Marvel service has less than 2k character records. 
+For simplicity JSON files and images are cached using Haneke framework. </p>
+
+<p>The character API doesn&rsquo;t have a lot of information. Only name, description (most of them are empty), modification date and Id. 
+There is a wiki page for each character. This page has more information, but it would require web scrapping, which I think is out of the scope of this project.
+We are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-04-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
