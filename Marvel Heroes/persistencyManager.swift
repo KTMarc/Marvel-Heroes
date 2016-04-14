@@ -9,6 +9,12 @@
 import Foundation
 import Haneke
 
+
+/**
+ Responsible of managing network and local cache of images and JSON files
+ Works together with the parser class to serialize objects from JSON.
+ */
+
 class PersistencyManager: NSObject {
     private var heroes : [Hero] = []
     private var suggestions : [Hero] = []
@@ -23,12 +29,10 @@ class PersistencyManager: NSObject {
     /**
      Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache
      
-     Params:
-     
-     - endPoint: API endpoint
-     - extra parameters: like 'nameStartsWith='
-     - offset: to download the next batch of elements. ex: 0,20,40 ..
-     - notification: who should be aware of the task end
+     - parameter endPoint: API endpoint
+     - parameter extra parameters: like 'nameStartsWith='
+     - parameter offset: to download the next batch of elements. ex: 0,20,40 ..
+     - parameter notification: who should be aware of the task end
      */
     
     func fetchData(endPoint: String, parameter: String, offset: Int, notification: String){

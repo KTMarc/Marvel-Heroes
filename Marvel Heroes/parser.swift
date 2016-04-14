@@ -9,6 +9,12 @@
 import Foundation
 import SwiftyJSON
 
+/**
+ Parses JSON files
+ 
+ - parameter data: Needs to be initialized with a Dictionary
+ */
+
 class parser: NSObject {
 
     private let _data : NSDictionary
