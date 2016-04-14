@@ -43,7 +43,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             
             //Smaller Hero image
             self.avatarImage.hnk_setImageFromURL(url)
-            self.avatarImage.layer.borderWidth = 1
+            self.avatarImage.layer.borderWidth = 3
             self.avatarImage.layer.masksToBounds = false
             self.avatarImage.layer.borderColor = UIColor.blackColor().CGColor
             //thumbImg.layer.cornerRadius = thumbImg.frame.height / 2
@@ -64,6 +64,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             blurView.alpha = 0.0
         }
         
+        closeButton.tintColor = UIColor.redColor()
         nameLabel.text = hero.name
         detailDescriptionLabel.text = hero.desc
         idLabel.text = String(hero.heroId)
