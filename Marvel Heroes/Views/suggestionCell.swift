@@ -29,7 +29,6 @@ class suggestionCell: UITableViewCell {
 
     func configureCell(hero: Hero) {
         self.hero = hero
-        //print(self.hero)
         nameLabel.text = self.hero.name.capitalizedString
         
         if let url = NSURL.init(string: self.hero.thumbnailUrl) {

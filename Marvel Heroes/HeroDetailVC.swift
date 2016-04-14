@@ -23,49 +23,69 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var comicsEmptyStateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var blurImage: UIImageView!
     @IBAction func dismissButton(sender: AnyObject) {
-        
-        
-        //self.presentingViewController!.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-        //self.presentedViewController?.dismissViewControllerAnimated(true, completion: {_ in })
-        //self.presentingViewController?.dismissViewControllerAnimated(true, completion: {_ in })
         self.dismissViewControllerAnimated(true, completion: {_ in })
     }
     @IBOutlet weak var comicsActivityIndicator: UIActivityIndicatorView!
     
-    var hero : Hero?
+    var hero : Hero!
     var comics = [Comic]()
     var comicOffset = 0
-    
+    var blurView = UIVisualEffectView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let url = NSURL.init(string: self.hero!.thumbnailUrl) {
+        
+        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
+            //Big Hero image
             self.image.hnk_setImageFromURL(url)
+            
+            //Smaller Hero image
             self.avatarImage.hnk_setImageFromURL(url)
             self.avatarImage.layer.borderWidth = 1
             self.avatarImage.layer.masksToBounds = false
-            self.avatarImage.layer.borderColor = UIColor.whiteColor().CGColor
+            self.avatarImage.layer.borderColor = UIColor.blackColor().CGColor
             //thumbImg.layer.cornerRadius = thumbImg.frame.height / 2
             self.avatarImage.layer.cornerRadius = 10
             self.avatarImage.clipsToBounds = true
+            
+            //Blurred image background
+            let blurEffect: UIBlurEffect = UIBlurEffect(style: .Dark)
+            let effectView = UIVisualEffectView(effect: blurEffect)
+            effectView.frame = self.view.frame
+            
+            self.blurImage.hnk_setImageFromURL(url)
+            self.blurImage.addSubview(effectView)
+            
+            blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(blurView)
+            blurView.alpha = 0.0
         }
-        nameLabel.text = hero!.name
-        detailDescriptionLabel.text = hero!.desc
-        idLabel.text = String(hero!.heroId)
+        
+        nameLabel.text = hero.name
+        detailDescriptionLabel.text = hero.desc
+        idLabel.text = String(hero.heroId)
         comicsActivityIndicator.startAnimating()
         
-        
-        
-        print("Presenting viewController: \(self.presentingViewController)")
+//        print("Presenting viewController: \(self.presentingViewController)")
 //        
-//        if (self.presentingViewController != nil) {
+//        if (self.presentingViewController != nil) && (self.presentingViewController?.isKindOfClass(SuggestionsViewController))! {
+//            print("Coming from suggestions VC, show button")
 //            closeButton.hidden = false
 //        } else {
+//            print("Coming from main VC, hide button")
 //            closeButton.hidden = true
 //        }
         
-        apiClient.sharedInstance.fetchComics(hero!.heroId)
-
+        apiClient.sharedInstance.fetchComics(hero.heroId)
+        listenToNotifications()
+        
+    }
+    //MARK: API request 📡
+    func listenToNotifications(){
+        
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_COMICS, object: nil, queue: nil) {  (_) in
             self.comicsActivityIndicator.stopAnimating()
             self.comics = apiClient.sharedInstance.getComics()
@@ -102,9 +122,9 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             cell.configureCell(comic)
             
             if (indexPath.item == comics.count - 1) && (comics.count > comicOffset){
-                print("fetching more comics")
-                comicOffset += 20
                 //TODO
+                //print("fetching more comics")
+                //comicOffset += 20
                 //apiClient.sharedInstance.moreComics(comicOffset)
             }
             
