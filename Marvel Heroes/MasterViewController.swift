@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Alamofire
 import Haneke
 
 class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating {

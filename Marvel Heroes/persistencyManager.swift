@@ -13,6 +13,7 @@ class PersistencyManager: NSObject {
     private var heroes : [Hero] = []
     private var suggestions : [Hero] = []
     private var comics : [Comic] = []
+    private let cache = Shared.JSONCache
 
     override init() {
         super.init()
@@ -22,7 +23,6 @@ class PersistencyManager: NSObject {
     func fetchData(endPoint: String, parameter: String, offset: Int, notification: String){
         //Persisting JSON
 
-        let cache = Shared.JSONCache
         let URL = NSURL(string: URL_BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + URL_CREDENTIALS)!
         print(URL)
         cache.fetch(URL: URL).onSuccess { JSON in

@@ -20,6 +20,7 @@ class parser: NSObject {
     convenience override init(){
         self.init(data: [:])
     }
+    
     func parseJSON(type: String) -> [Hero]{
         
         return parseHero()
