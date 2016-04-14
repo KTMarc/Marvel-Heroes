@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3C15F338B524EE9CF5EEDCD4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359BD187187A716F280703BE /* Pods.framework */; };
+		490A10071CBF79F700A334A3 /* GOTHAM-BOLD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 490A10061CBF79F700A334A3 /* GOTHAM-BOLD.TTF */; };
+		490A10091CBF7BF900A334A3 /* GothamLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 490A10081CBF7BF900A334A3 /* GothamLight.ttf */; };
+		490A100B1CBF850000A334A3 /* GothamXNarrow-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 490A100A1CBF7F5800A334A3 /* GothamXNarrow-Book.otf */; };
 		490EA9961CBD78C100F7071D /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490EA9951CBD78C100F7071D /* Comic.swift */; };
 		491466CC1CBEA58E00DAD512 /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491466CB1CBEA58E00DAD512 /* ComicCell.swift */; };
 		491466D01CBECB2900DAD512 /* suggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491466CF1CBECB2900DAD512 /* suggestionCell.xib */; };
@@ -53,6 +56,9 @@
 /* Begin PBXFileReference section */
 		359BD187187A716F280703BE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47426F8E3E0136B65725C3C2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		490A10061CBF79F700A334A3 /* GOTHAM-BOLD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GOTHAM-BOLD.TTF"; path = "UI/GOTHAM-BOLD.TTF"; sourceTree = "<group>"; };
+		490A10081CBF7BF900A334A3 /* GothamLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamLight.ttf; path = UI/GothamLight.ttf; sourceTree = "<group>"; };
+		490A100A1CBF7F5800A334A3 /* GothamXNarrow-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GothamXNarrow-Book.otf"; path = "UI/GothamXNarrow-Book.otf"; sourceTree = "<group>"; };
 		490EA9951CBD78C100F7071D /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comic.swift; path = Model/Comic.swift; sourceTree = "<group>"; };
 		491466CB1CBEA58E00DAD512 /* ComicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicCell.swift; path = Views/ComicCell.swift; sourceTree = "<group>"; };
 		491466CF1CBECB2900DAD512 /* suggestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = suggestionCell.xib; path = Views/suggestionCell.xib; sourceTree = "<group>"; };
@@ -109,6 +115,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490A10051CBF79E400A334A3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				490A100A1CBF7F5800A334A3 /* GothamXNarrow-Book.otf */,
+				490A10061CBF79F700A334A3 /* GOTHAM-BOLD.TTF */,
+				490A10081CBF7BF900A334A3 /* GothamLight.ttf */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		490EA98E1CBD1C4500F7071D /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +163,7 @@
 				4968BE8D1CBBD2460094B53F /* Services */,
 				492D090B1CBA827B0086D348 /* Model */,
 				492D090F1CBAA09B0086D348 /* Controllers */,
+				490A10051CBF79E400A334A3 /* UI */,
 				492D090E1CBA87BA0086D348 /* Views */,
 				490EA98E1CBD1C4500F7071D /* Layouts */,
 				492D08DC1CBA7E930086D348 /* Assets.xcassets */,
@@ -360,7 +377,10 @@
 				497ADC0D1CBD96E800E3040F /* comicsByCharacter.json in Resources */,
 				491466D01CBECB2900DAD512 /* suggestionCell.xib in Resources */,
 				492D08E01CBA7E930086D348 /* LaunchScreen.storyboard in Resources */,
+				490A10091CBF7BF900A334A3 /* GothamLight.ttf in Resources */,
 				492D08DD1CBA7E930086D348 /* Assets.xcassets in Resources */,
+				490A10071CBF79F700A334A3 /* GOTHAM-BOLD.TTF in Resources */,
+				490A100B1CBF850000A334A3 /* GothamXNarrow-Book.otf in Resources */,
 				497ADC0E1CBD96E800E3040F /* listCharacters.json in Resources */,
 				492D08DB1CBA7E930086D348 /* Main.storyboard in Resources */,
 			);

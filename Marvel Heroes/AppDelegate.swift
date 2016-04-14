@@ -20,6 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate/*, UISplitViewControllerDe
 //        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
 //        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
 //        splitViewController.delegate = self
+        
+        
+        3
+        4
+        5
+        6
+        7
+        8
+        for family: String in UIFont.familyNames()
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNamesForFamilyName(family)
+            {
+                print("== \(names)")
+            }
+        }
+        
         return true
     }
 

@@ -19,6 +19,8 @@ class SuggestionsViewController: UITableViewController{
         super.viewDidLoad()
         
         self.tableView.registerNib(UINib(nibName: SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: SUGGESTION_CELL)
+        tableView.backgroundColor = UIColor.blackColor()
+        tableView.separatorColor = UIColor.lightGrayColor()
         
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_SUGGESTIONS, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroSuggestions()
