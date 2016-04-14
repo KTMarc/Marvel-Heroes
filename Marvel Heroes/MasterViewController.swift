@@ -94,11 +94,11 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             let hero: Hero!
             
-            if inSearchMode {
-                hero = filteredHeroes[indexPath.row]
-            } else {
+//            if inSearchMode {
+//                hero = filteredHeroes[indexPath.row]
+//            } else {
                 hero = heroes[indexPath.row]
-            }
+//            }
             
             cell.configureCell(hero)
 //            cell.thumbImg.layer.borderWidth = 1
@@ -140,7 +140,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if inSearchMode {
-            return filteredHeroes.count
+           // return filteredHeroes.count
         }
         
         return heroes.count
@@ -166,7 +166,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             view.endEditing(true)
             collection.reloadData()
         } else {
-            inSearchMode = true
+            //inSearchMode = true
             let lower = searchBar.text!.lowercaseString
             filteredHeroes = heroes.filter({$0.name.lowercaseString.containsString(lower)})
             collection.reloadData()

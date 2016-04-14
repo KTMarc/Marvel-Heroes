@@ -54,8 +54,8 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dFA-7q-ibe" userLabel="image">
                                                             <rect key="frame" x="30" y="8" width="240" height="240"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzf-8H-JXG" userLabel="nameLabel">
-                                                            <rect key="frame" x="0.0" y="253" width="300" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzf-8H-JXG" userLabel="nameLabel">
+                                                            <rect key="frame" x="0.0" y="253" width="300" height="12"/>
                                                             <fontDescription key="fontDescription" name="GothamXNarrow-Book" family="Gotham XNarrow" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -162,7 +162,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieP-a9-3PX">
                                 <rect key="frame" x="0.0" y="64" width="600" height="792"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fra-eB-8J4">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fra-eB-8J4">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="258"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="fra-eB-8J4" secondAttribute="height" multiplier="100:43" id="cV8-0f-bm7"/>
@@ -257,17 +257,9 @@
                                             <constraint firstAttribute="trailing" secondItem="38x-x3-ccL" secondAttribute="trailing" id="Fug-ZG-XtS"/>
                                             <constraint firstAttribute="width" secondItem="38x-x3-ccL" secondAttribute="height" multiplier="200:107" id="NL0-xq-wVf"/>
                                             <constraint firstItem="38x-x3-ccL" firstAttribute="top" secondItem="VHB-CD-TpE" secondAttribute="top" id="OYB-Sw-rwb"/>
-                                            <constraint firstAttribute="width" secondItem="VHB-CD-TpE" secondAttribute="height" multiplier="200:107" id="XAW-s6-1iJ"/>
                                             <constraint firstItem="38x-x3-ccL" firstAttribute="leading" secondItem="VHB-CD-TpE" secondAttribute="leading" id="kdx-F9-a3L"/>
-                                            <constraint firstAttribute="height" constant="321" id="sAN-eN-0J0"/>
                                             <constraint firstAttribute="bottom" secondItem="38x-x3-ccL" secondAttribute="bottom" id="xnz-rx-iwA"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="XAW-s6-1iJ"/>
-                                                <exclude reference="sAN-eN-0J0"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yQ-xI-BTX" userLabel="CloseButton">
                                         <rect key="frame" x="525" y="20" width="35" height="35"/>
@@ -334,6 +326,7 @@
                         <outlet property="idLabel" destination="UfJ-rn-VuO" id="yMR-NG-THh"/>
                         <outlet property="image" destination="fra-eB-8J4" id="yZX-Cw-yJ9"/>
                         <outlet property="nameLabel" destination="cFG-Oo-jRL" id="dIP-vh-wvz"/>
+                        <outlet property="scrollView" destination="ieP-a9-3PX" id="9cB-1r-A9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eaz-e8-7br" userLabel="First Responder" sceneMemberID="firstResponder"/>
