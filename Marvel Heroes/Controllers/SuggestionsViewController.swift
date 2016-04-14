@@ -56,30 +56,8 @@ class SuggestionsViewController: UITableViewController{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("HeroDetailVC") as! HeroDetailVC
         vc.hero = heroes[indexPath.row]
+        vc.presentedModally = true
         presentViewController(vc, animated: true) {_ in }
-        
-        
-        //let vc = HeroDetailVC(nibName: "HeroDetailVC", bundle: nil)
-        
-//        if let navControllerExists = navigationController?.pushViewController(vc, animated: true){
-//            
-//        }
-        
-//        if let navController = navigationController {
-//            navController.pushViewController(vc, animated: true)
-//        } else {
-//            let newNavControler = UINavigationController()
-//            newNavControler.pushViewController(vc, animated: true)
-        //}
-        
-//        if let navController = navigationController {
-//            let destination = navController.topViewController as! HeroDetailVC
-//            destination.hero = heroes[indexPath.row]
-//            self.navigationController!.presentViewController(navController, animated: true, completion: nil)
-//        } else {
-//            let newNav = UINavigationController.init(coder: <#T##NSCoder#>)
-//        }
-
         
     }
 

@@ -33,6 +33,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var comics = [Comic]()
     var comicOffset = 0
     var blurView = UIVisualEffectView()
+    var presentedModally = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,15 +71,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         idLabel.text = String(hero.heroId)
         comicsActivityIndicator.startAnimating()
         
-//        print("Presenting viewController: \(self.presentingViewController)")
-//        
-//        if (self.presentingViewController != nil) && (self.presentingViewController?.isKindOfClass(SuggestionsViewController))! {
-//            print("Coming from suggestions VC, show button")
-//            closeButton.hidden = false
-//        } else {
-//            print("Coming from main VC, hide button")
-//            closeButton.hidden = true
-//        }
+        closeButton.hidden = presentedModally ? false : true
         
         apiClient.sharedInstance.fetchComics(hero.heroId)
         listenToNotifications()
