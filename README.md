@@ -51,14 +51,13 @@ $ jazzy --min-acl private
 
 
 ##Considerations
-Didn't chose CORE DATA as the persistancy. The reason is that the Marvel service has less than 1.5k character records. 
-For simplicity JSON files and images are cached using **Haneke** framework. 
+Didn't chose CORE DATA as the persistancy. The reason is that the Marvel service has less than 1.5k character records and 
+for simplicity JSON files are enough. The data is unlikely to change, so we save it in a cache using **Haneke** framework. Haneke persists the requests as key value pairs, so it can check in the future if the same network request already exists in the cache before requesting it to the server.
 
-
-The character API doesn't have a lot of information. Only name, description (most of them are empty), modification date and Id. 
+Marvel character API doesn't offer a lot of information. Only name, description (most of them are empty), modification date and Id. 
 There is a wiki page for each character. This page has more information, but it would require web scrapping, which I think is out of the scope of this project. We could add a webView and load the html of the wiki.
 
-We are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.
+In the Hero Detail page we are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.
 
 There are two search bars, one is hidden and was providing the "local" search results. I decided to comment that implementation and leave only the one that searches remotely, which is far more complex and interesting. As a future task, we could have both working and showing local and remote results. Similiar to the Safari search bar, which gives google suggestions and matches from the currently displayed web.
 
