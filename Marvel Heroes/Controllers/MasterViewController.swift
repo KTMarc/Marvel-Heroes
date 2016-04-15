@@ -24,6 +24,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     var inSearchMode = false
     var currentOffset = 0
     
+    
+    //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.delegate = self
@@ -38,7 +40,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         let image = UIImage(named: "navBarLogo.png")
         imageView.image = image
         navigationItem.titleView = imageView
-        
+
         
         //Get the model
         apiClient.sharedInstance
@@ -50,6 +52,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        collection.reloadData()
+    }
+    
     
     //MARK: API request 📡
     func listenToNotifications(){
@@ -66,35 +74,28 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
      Adjust Search Bar size when rotating devices
      */
     func rotationDetected(){
-        
         searchController.searchBar.sizeToFit()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        collection.reloadData()
-    }
-    
     
     // MARK: Search Results Controller 🔍
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsViewController())
+        searchController.definesPresentationContext = false
         searchController.searchResultsUpdater = self
-        //searchController.obscuresBackgroundDuringPresentation = true
-        searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Search more Heroes, i.e. X-Men"
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
+        collection.superview!.addSubview(searchController.searchBar)
         
-        let searchBarPointer = searchController.searchBar
-        collection.superview!.addSubview(searchBarPointer)
-        
+        self.definesPresentationContext = true
+        //searchController.obscuresBackgroundDuringPresentation = false
+        //searchController.dimsBackgroundDuringPresentation = true
     }
 
     
     //MARK: Search Bar Delegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        view.endEditing(true)
+        //view.endEditing(true)
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -121,14 +122,11 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         apiClient.sharedInstance.resetHeroSuggestions()
         collection.reloadData()
-        print("Heroes in master view controller \(heroes.count)")
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         apiClient.sharedInstance.resetHeroSuggestions()
         collection.reloadData()
-        print(heroes.count)
-        
     }
     
     //MARK: Collection View Data Soure

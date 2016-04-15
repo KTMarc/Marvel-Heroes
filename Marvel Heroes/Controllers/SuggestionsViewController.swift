@@ -19,25 +19,41 @@ class SuggestionsViewController: UITableViewController{
     
     var heroes = [Hero]()
     
+    
+    //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerNib(UINib(nibName: SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: SUGGESTION_CELL)
-        tableView.backgroundColor = UIColor.blackColor()
-        tableView.separatorColor = UIColor.lightGrayColor()
+        setupUI()
+        listenToNotifications()
+    }
+
+    override func viewWillAppear(animated: Bool) {
         
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
+    //MARK: API request 📡
+    func listenToNotifications(){
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_SUGGESTIONS, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroSuggestions()
             print("Suggestion heroes coming: \(self.heroes.count)")
             self.tableView.reloadData()
         }
     }
-
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    
+    //MARK: UI
+    func setupUI(){
+        self.tableView.registerNib(UINib(nibName: SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: SUGGESTION_CELL)
+        tableView.backgroundColor = UIColor.blackColor()
+        tableView.separatorColor = UIColor.lightGrayColor()
     }
     
-    // MARK: - Table View Data Source
+    // MARK: Table View Data Source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
