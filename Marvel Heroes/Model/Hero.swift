@@ -57,30 +57,3 @@ extension Hero: CustomStringConvertible {
     }
 }
 
-
-//extension NSURL: JSONDecodable {
-//    public class func decode(j: JSON) -> NSURL? {
-//        switch j {
-//        case .String(let s):
-//            return NSURL(string: s)
-//        default:
-//            return nil
-//        }
-//    }
-//}
-//
-//extension Hero: JSONDecodable {
-//    static func create(name: String, heroId: Int, desc: String, modified: NSDate, thumbnailUrl: String) -> Hero {
-//        return Hero(create(name:name, heroId: heroId, desc: desc, modified: modified, thumbnailUrl: thumbnailUrl)
-//    }
-//    
-//    static func decode(j: JSON) -> Hero? {
-//        return Hero.create
-//            <^> j <|  "id"
-//            <*> j <|  "name"
-//            <*> j <|? "description"
-//            <*> j <|  "url"
-//            <*> j <|? "homepage"
-//            <*> j <|  "fork"
-//    }
-//}

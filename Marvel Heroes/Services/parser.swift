@@ -86,27 +86,6 @@ class parser: NSObject {
         //print(comics)
         return comics
     }
-    
-    
-    //    func parseJSON(type: String) -> [AnyObject]{
-    //        var anyThing : AnyObject?
-    //        switch(type){
-    //            case URL_CHARACTERS:
-    //            anyThing = parseHero()
-    //            break
-    //
-    //        case URL_COMICS:
-    //            anyThing = parseComics()
-    //            break
-    //
-    //        default:
-    //            break
-    //        }
-    //        
-    //        return [anyThing!]
-    //    }
-
-    
 }
 
 

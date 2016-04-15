@@ -180,7 +180,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     
     //MARK: Collection View Delegate
-    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let hero: Hero!
@@ -190,8 +189,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         } else {
             hero = heroes[indexPath.row]
         }
-        
-        //print(hero.name)
+    
         performSegueWithIdentifier(SEGUE_TO_HERO_DETAIL_VC, sender: hero)
         
     }

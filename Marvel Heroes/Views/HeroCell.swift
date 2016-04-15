@@ -21,9 +21,6 @@ class HeroCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        //layer.cornerRadius = 30.0
-        
     }
     
     func configureCell(hero: Hero) {
@@ -31,14 +28,10 @@ class HeroCell: UICollectionViewCell {
         nameLbl.text = self.hero.name.capitalizedString
         
         if let url = NSURL.init(string: self.hero.thumbnailUrl) {
-            //let _ = Shared.imageCache
-            
             thumbImg.hnk_setImageFromURL(url)
-            //thumbImg.image = UIImage(data: NSData(contentsOfURL: url)!)
             thumbImg.layer.borderWidth = 1
             thumbImg.layer.masksToBounds = false
             thumbImg.layer.borderColor = UIColor.whiteColor().CGColor
-            //thumbImg.layer.cornerRadius = thumbImg.frame.height / 2
             thumbImg.layer.cornerRadius = 10
             thumbImg.clipsToBounds = true
         }

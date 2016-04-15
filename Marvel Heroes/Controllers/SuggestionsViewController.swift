@@ -18,7 +18,6 @@ class SuggestionsViewController: UITableViewController{
 
     
     var heroes = [Hero]()
-    var selectedHero : Hero!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +56,6 @@ class SuggestionsViewController: UITableViewController{
     
     //MARK: Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //selectedHero = heroes[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("HeroDetailVC") as! HeroDetailVC
         vc.hero = heroes[indexPath.row]
