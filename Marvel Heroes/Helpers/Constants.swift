@@ -43,3 +43,4 @@ let NO_DESCRIPTION_AVAILABLE_COPY = "No description available, please check out 
 let NOTIFICATION_HEROES = "heroesDownloadedNotification"
 let NOTIFICATION_COMICS = "comicsDownloadedNotification"
 let NOTIFICATION_SUGGESTIONS = "suggestionsDownloadedNotification"
+let NOTIFICATION_MODAL_HERODETAIL_DISMISSED = "heroDetailVCWasDismissed"

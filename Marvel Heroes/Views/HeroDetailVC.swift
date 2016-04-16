@@ -40,9 +40,48 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var blurView = UIVisualEffectView()
     var presentedModally = false
 
+    //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+        //Ask for comics
+        apiClient.sharedInstance.fetchComics(hero.heroId)
+        listenToNotifications()
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if presentedModally {
+            NSNotificationCenter.defaultCenter().postNotificationName(
+            NOTIFICATION_MODAL_HERODETAIL_DISMISSED, object: self)
+        }
+    }
+    
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    //MARK: API request 📡
+    func listenToNotifications(){
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_COMICS, object: nil, queue: nil) {  (_) in
+            self.comicsActivityIndicator.stopAnimating()
+            self.comics = apiClient.sharedInstance.getComics()
+            print("Received Comics: \(self.comics.count)")
+            
+            if self.comics.count == 0{
+                self.comicsEmptyStateLabel.hidden = false
+            }
+            self.collection.reloadData()
+        }
+    }
+    
+    
+    //MARK: UI
+    func setupUI(){
         if let url = NSURL.init(string: self.hero.thumbnailUrl) {
             //Big Hero image
             self.image.hnk_setImageFromURL(url)
@@ -67,13 +106,13 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             self.view.addSubview(blurView)
             blurView.alpha = 0.0
         }
-
+        
         //Navigation Bar Setup
         self.navigationItem.title = hero.name
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
         imageView.contentMode = .ScaleAspectFit
         let backImage = UIImage(named: "backButton.png")
-        let backButton = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HeroDetailVC.popVC))
+        let backButton = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HeroDetailVC.dismissVC))
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.redColor()
         
@@ -84,30 +123,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         comicsActivityIndicator.startAnimating()
         
         closeButton.hidden = presentedModally ? false : true
-        
-        //Get the comics
-        apiClient.sharedInstance.fetchComics(hero.heroId)
-        listenToNotifications()
-        
-    }
-    //MARK: API request 📡
-    func listenToNotifications(){
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_COMICS, object: nil, queue: nil) {  (_) in
-            self.comicsActivityIndicator.stopAnimating()
-            self.comics = apiClient.sharedInstance.getComics()
-            print("Comics coming from notification")
-            print(self.comics.count)
-            
-            if self.comics.count == 0{
-                self.comicsEmptyStateLabel.hidden = false
-            }
-            self.collection.reloadData()
-        }
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+
     }
     
     //MARK: Scroll View Delegate
@@ -143,7 +159,6 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return comics.count
     }
     
@@ -152,7 +167,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: Navigation
-    func popVC(){
+    func dismissVC(){
         navigationController?.popViewControllerAnimated(true)
     }
     

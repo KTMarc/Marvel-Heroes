@@ -38,9 +38,8 @@ class PersistencyManager: NSObject {
     func fetchData(endPoint: String, parameter: String, offset: Int, notification: String){
         
         let URL = NSURL(string: URL_BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + URL_CREDENTIALS)!
-        print(URL)
+        //print(URL)
         cache.fetch(URL: URL).onSuccess { JSON in
-            //print(JSON.dictionary?["data"])
             
             switch(notification){
             case NOTIFICATION_HEROES:

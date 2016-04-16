@@ -41,7 +41,7 @@ class SuggestionsViewController: UITableViewController{
     func listenToNotifications(){
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_SUGGESTIONS, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroSuggestions()
-            print("Suggestion heroes coming: \(self.heroes.count)")
+            //print("Suggested results count: \(self.heroes.count)")
             self.tableView.reloadData()
         }
     }
@@ -77,7 +77,6 @@ class SuggestionsViewController: UITableViewController{
         vc.hero = heroes[indexPath.row]
         vc.presentedModally = true
         presentViewController(vc, animated: true) {_ in }
-        
     }
 
 }

@@ -13,7 +13,7 @@ import Haneke
 Collection View with Hero objects
  */
 
-class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating {
+class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
     
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -68,6 +68,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        
+         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_MODAL_HERODETAIL_DISMISSED, object: nil, queue: nil) {  (_) in
+            self.searchController.searchBar.becomeFirstResponder()
+        }
     }
     
     /**
@@ -80,18 +84,39 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     // MARK: Search Results Controller 🔍
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsViewController())
+        
         searchController.definesPresentationContext = false
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search more Heroes, i.e. X-Men"
         searchController.searchBar.delegate = self
+        searchController.delegate = self
         searchController.searchBar.sizeToFit()
         collection.superview!.addSubview(searchController.searchBar)
-        
+        print(searchController.delegate)
         self.definesPresentationContext = true
-        //searchController.obscuresBackgroundDuringPresentation = false
-        //searchController.dimsBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
     }
 
+    
+    //MARK: UI Search Controller Delegate
+    func didPresentSearchController(searchController: UISearchController) {
+        searchController.searchBar.becomeFirstResponder()
+    }
+    
+    func willPresentSearchController(searchController: UISearchController) {
+        //Tap on the search bar
+    }
+    
+    func didDismissSearchController(searchController: UISearchController) {
+        //cancel button press
+    }
+    
+    func willDismissSearchController(searchController: UISearchController) {
+        //cancel button press
+    }
+    
+    
     
     //MARK: Search Bar Delegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
