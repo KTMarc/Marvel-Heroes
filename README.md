@@ -3,6 +3,10 @@ This App fetches characters from the Mavel Comics API and shows the comics where
 It also allows to search for more characters remotely via REST calls.
 
 
+##Instructions
+Pods are not inside the repository.
+Run pod install and then open the .xcworkspace file to run the project.
+
 ##Architecture
 There is API Client interface where all the objects request data. 
 This interface holds:
@@ -34,7 +38,7 @@ Sketch file is provided with the assets that were used.
 - [x] Custom fonts
 - [x] Custom buttons
 
-#interesting
+#Testing
 - There are some unit tests that check the apiClient
 - In final product a lot more tests should be tested. But it's out of scope here.
 
