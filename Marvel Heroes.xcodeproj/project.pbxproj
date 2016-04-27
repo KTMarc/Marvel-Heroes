@@ -167,7 +167,6 @@
 				492D090E1CBA87BA0086D348 /* Views */,
 				490EA98E1CBD1C4500F7071D /* Layouts */,
 				492D08DC1CBA7E930086D348 /* Assets.xcassets */,
-				497ADC0A1CBD96D700E3040F /* JSON examples */,
 				492D08E11CBA7E930086D348 /* Info.plist */,
 			);
 			path = "Marvel Heroes";
@@ -250,13 +249,6 @@
 				492D09101CBAA2C10086D348 /* Constants.swift */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		497ADC0A1CBD96D700E3040F /* JSON examples */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "JSON examples";
 			sourceTree = "<group>";
 		};
 		B0250A2616F514AA73141C16 /* Pods */ = {

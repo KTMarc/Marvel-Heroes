@@ -80,8 +80,8 @@ private let parseManager : parser
     }
     
     /**
-     Returns the list of previously fetched elements
-     - returns: An array of comics
+     Returns the list of previously fetched Heroes
+     - returns: An array of characters
      */
     
     func getHeroSuggestions() -> [Hero]{
@@ -102,7 +102,7 @@ private let parseManager : parser
     //MARK: COMICS
     
     /**
-     Starts the loading process for a particular Characrter Comic list
+     Starts the loading process for a particular Character Comic list
      
      - parameter heroId: The Id of the Hero to get the comics from
      */

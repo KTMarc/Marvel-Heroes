@@ -145,7 +145,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             cell.configureCell(comic)
             
             if (indexPath.item == comics.count - 1) && (comics.count > comicOffset){
-                //TODO Fetch More comics like we do it with heroes in the Master VC
+                //TODO: Fetch More comics with infinite scroll like we do it with heroes in the Master VC
                 //print("fetching more comics")
                 //comicOffset += 20
                 //apiClient.sharedInstance.moreComics(comicOffset)

@@ -27,10 +27,6 @@ class SuggestionsViewController: UITableViewController{
         setupUI()
         listenToNotifications()
     }
-
-    override func viewWillAppear(animated: Bool) {
-        
-    }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
