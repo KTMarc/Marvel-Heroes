@@ -41,7 +41,7 @@ class parser: NSObject {
                 ///print(subJson["name"].string)
                 if let theId = subJson["id"].int {
                     if let theName = subJson["name"].string {
-                        if let theDescription = subJson["description"].string{
+                        if let theDescription = subJson["description"].string{ //This is never nil, returns "" if no description
                             if let theThumbnail = subJson["thumbnail"].dictionary{
                                 let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
                                 
@@ -51,10 +51,11 @@ class parser: NSObject {
                                     desc: theDescription,
                                     modified:NSDate(),
                                     thumbnailUrl: thumbnailCompletePath))
-                            }
-                        }
+                            } else { print("Thumbnail of \(theName) was nil")}
+                        }else{ print("Description of \(theName) was nil")}
                     }
                 }
+                
             }
             //print(heroes)
         }

@@ -70,7 +70,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     //MARK: API request 📡
     func listenToNotifications(){
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
-            //FIXME: This could be better
+            
+            //FIXME: ARC should do the job here and deallocate all objects from the old struct. This could be better.
             self.model = Model()
             _ = apiClient.sharedInstance.getHeroes().map{self.model.append($0)}
             
@@ -134,6 +135,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //view.endEditing(true)
     }
     
+    /*
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
             inSearchMode = false
@@ -146,7 +148,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             filteredHeroes = model.heroes.filter({$0.name.lowercaseString.containsString(lower)})
             collection.reloadData()
         }
-    }
+    }*/
     
     // MARK: API request to get suggestions 📡
     func updateSearchResultsForSearchController(searchController: UISearchController) {
