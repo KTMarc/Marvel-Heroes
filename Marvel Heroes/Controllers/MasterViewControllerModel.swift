@@ -29,7 +29,7 @@ struct MasterViewControllerModel{
         return _heroes.removeLast()
     }
     
-    subscript(HeroAt index: Int) -> Hero {
+    subscript(heroAt index: Int) -> Hero {
         get {
             return _heroes[index]
         }

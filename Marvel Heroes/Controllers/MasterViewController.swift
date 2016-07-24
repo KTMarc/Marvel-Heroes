@@ -192,8 +192,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
             if let detailsVC = segue.destinationViewController as? HeroDetailVC {
                 if let selectedHeroIndex = collection.indexPathsForSelectedItems() where selectedHeroIndex.count == 1{
-                    let hero = model.heroes[selectedHeroIndex[0].row]
-                detailsVC.hero = hero
+                    let selectedHeroIndex = selectedHeroIndex[0].row
+                    let hero = model[heroAt: selectedHeroIndex]
+                    detailsVC.hero = hero
                 }
 
             }
