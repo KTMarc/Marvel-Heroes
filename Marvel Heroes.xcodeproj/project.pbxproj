@@ -223,7 +223,7 @@
 		492D090F1CBAA09B0086D348 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
+				4985E2BD1D45133C004C4AE6 /* MasterVC */,
 				498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */,
 				491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */,
 			);
@@ -254,6 +254,14 @@
 				492D09101CBAA2C10086D348 /* Constants.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		4985E2BD1D45133C004C4AE6 /* MasterVC */ = {
+			isa = PBXGroup;
+			children = (
+				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
+			);
+			name = MasterVC;
 			sourceTree = "<group>";
 		};
 		B0250A2616F514AA73141C16 /* Pods */ = {

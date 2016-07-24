@@ -205,15 +205,15 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     //MARK: Collection View Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let hero: Hero!
-        
-        if inSearchMode {
-            hero = filteredHeroes[indexPath.row]
-        } else {
-            hero = heroes[indexPath.row]
-        }
+//        let hero: Hero!
+//        
+//        if inSearchMode {
+//            hero = filteredHeroes[indexPath.row]
+//        } else {
+//            hero = heroes[indexPath.row]
+//        }
     
-        performSegueWithIdentifier(SEGUE_TO_HERO_DETAIL_VC, sender: hero)
+        performSegueWithIdentifier(SEGUE_TO_HERO_DETAIL_VC, sender: nil)
         
     }
     
@@ -221,9 +221,11 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
             if let detailsVC = segue.destinationViewController as? HeroDetailVC {
-                if let hero = sender as? Hero {
-                    detailsVC.hero = hero
-                }
+                 let selectedHeroIndex = collection.indexPathsForSelectedItems()!
+                
+                let hero = heroes[selectedHeroIndex[0].row]
+                detailsVC.hero = hero
+
             }
         }
     }

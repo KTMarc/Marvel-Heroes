@@ -12,7 +12,7 @@ import Foundation
  Holds Character entity information. Called hero for simplicity
  */
 
-class Hero /*:Hashable*/{
+struct Hero /*:Hashable*/{
 
     private var _name: String
     private var _heroId: Int
