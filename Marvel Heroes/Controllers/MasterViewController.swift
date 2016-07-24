@@ -22,17 +22,13 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     var searchController: UISearchController!
-    
+    var currentOffset = 0
 
     //private var state = State.viewing
     private var model = Model()
     
-    //MARK: Fix or delete
-    var filteredHeroes = [Hero]()
-    var inSearchMode = false
-    var currentOffset = 0
-    
-    
+
+
     //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +46,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         navigationItem.titleView = imageView
 
         
-        //Get the model
         apiClient.sharedInstance
-        
         configureSearchController()
         listenToNotifications()
 
@@ -129,27 +123,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     
-    
     //MARK: Search Bar Delegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         //view.endEditing(true)
     }
     
-    /*
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == nil || searchBar.text == "" {
-            inSearchMode = false
-            view.endEditing(true)
-            collection.reloadData()
-        } else {
-            //Uncomment to have the local search filter
-            //inSearchMode = true
-            let lower = searchBar.text!.lowercaseString
-            filteredHeroes = model.heroes.filter({$0.name.lowercaseString.containsString(lower)})
-            collection.reloadData()
-        }
-    }*/
-    
+
     // MARK: API request to get suggestions 📡
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if let keystrokes = searchController.searchBar.text where keystrokes != "" {
@@ -173,13 +152,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HERO_CELL, forIndexPath: indexPath) as? HeroCell {
             let hero: Hero!
             
-            //Uncomment to have the local search filter
-//            if inSearchMode {
-//                hero = filteredHeroes[indexPath.row]
-//            } else {
-                hero = model.heroes[indexPath.row]
-//            }
-            
+            hero = model.heroes[indexPath.row]
             cell.configureCell(hero)
             
             if (indexPath.item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
@@ -196,12 +169,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if inSearchMode {
-            //Uncomment to have the local search filter
-            // return filteredmodel.model.heroes.count
-        }
-        
         return model.heroes.count
     }
     
@@ -217,17 +184,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: Collection View Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-//        let hero: Hero!
-//        
-//        if inSearchMode {
-//            hero = filteredHeroes[indexPath.row]
-//        } else {
-//            hero = heroes[indexPath.row]
-//        }
-    
         performSegueWithIdentifier(SEGUE_TO_HERO_DETAIL_VC, sender: nil)
-        
     }
     
 
