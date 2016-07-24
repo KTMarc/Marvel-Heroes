@@ -33,7 +33,7 @@ let HERO_CELL = "HeroCell"
 let SEGUE_TO_HERO_DETAIL_VC = "DetailViewController"
 
 //Suggestions table view Controller
-let SUGGESTION_CELL = "suggestionCell"
+let SUGGESTION_CELL = "SuggestionCell"
 
 //Hero Detail View Controller
 let COMIC_CELL = "ComicCell"

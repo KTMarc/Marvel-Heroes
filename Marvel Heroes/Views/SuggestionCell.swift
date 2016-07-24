@@ -1,5 +1,5 @@
 //
-//  suggestionCell.swift
+//  SuggestionCell.swift
 //  Marvel Heroes
 //
 //  Created by Marc Humet on 13/4/16.
@@ -13,7 +13,7 @@ import Haneke
  Custom Cell for Suggestions table view
  */
 
-class suggestionCell: UITableViewCell {
+class SuggestionCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var thumbImg: UIImageView!

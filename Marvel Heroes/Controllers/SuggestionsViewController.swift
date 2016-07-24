@@ -59,7 +59,7 @@ class SuggestionsViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! suggestionCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(SUGGESTION_CELL, forIndexPath: indexPath) as! SuggestionCell
         
         cell.configureCell(heroes[indexPath.row])
         cell.fadeIn()
