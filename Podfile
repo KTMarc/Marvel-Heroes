@@ -1,4 +1,6 @@
 platform :ios, '9.0'
-use_frameworks!
-pod 'HanekeSwift'
-pod 'SwiftyJSON'
+target 'Marvel Heroes' do
+	use_frameworks!
+	pod 'HanekeSwift'
+	pod 'SwiftyJSON'
+end
