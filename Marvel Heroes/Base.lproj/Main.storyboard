@@ -195,8 +195,8 @@
                                             <constraint firstAttribute="width" constant="100" id="gRh-4y-0hq"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-rn-VuO" userLabel="Id Num">
-                                        <rect key="frame" x="465" y="345" width="80" height="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-rn-VuO" userLabel="Id Num">
+                                        <rect key="frame" x="465" y="344" width="80" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="WGM-QE-pm7"/>
                                         </constraints>

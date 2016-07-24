@@ -12,20 +12,32 @@ import Foundation
  Holds Character entity information. Called hero for simplicity
  */
 
-class Hero {
+class Hero /*:Hashable*/{
 
-    private var _name: String!
-    private var _heroId: Int!
-    private var _desc: String!
-    private var _modified: NSDate!
-    private var _thumbnailUrl: String!
+    private var _name: String
+    private var _heroId: Int
+    private var _desc: String
+    private var _modified: NSDate
+    private var _thumbnailUrl: String
     
-    init(name: String, heroId: Int, desc: String, modified: NSDate , thumbnailUrl: String) {
+    
+//    internal var hashValue: Int {
+//        return self.name.hashValue
+//    }
+    
+    init(name: String, heroId: Int, desc: String?, modified: NSDate , thumbnailUrl: String) {
         self._name = name
         self._heroId = heroId
-        self._desc = desc
+        
+        if let x = desc where x == ""{
+            self._desc = NO_DESCRIPTION_AVAILABLE_COPY
+        } else {
+            self._desc = desc!
+        }
+        
         self._modified = modified
         self._thumbnailUrl = thumbnailUrl
+        
     }
     
     var name: String {
@@ -37,23 +49,23 @@ class Hero {
     }
     
     var desc: String {
-        if _desc != nil{
-         if _desc == "" { _desc = NO_DESCRIPTION_AVAILABLE_COPY }
-            return _desc
-        } else {
-            return ""
-        }
+        return _desc
     }
     
     var thumbnailUrl: String {
         return _thumbnailUrl
     }
-    
 }
+
+//MARK: Protocols
+//func ==(lhs: Hero, rhs: Hero) -> Bool {
+//    return lhs.hashValue == rhs.hashValue
+//}
 
 extension Hero: CustomStringConvertible {
     var description : String {
         return "\(name) (\(heroId)) {\(desc) :: \(thumbnailUrl)}"
     }
 }
+
 
