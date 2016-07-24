@@ -31,6 +31,7 @@
 		4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8B1CBBD2400094B53F /* apiClient.swift */; };
 		4968BE901CBBD3580094B53F /* persistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8F1CBBD3580094B53F /* persistencyManager.swift */; };
 		4968BE921CBBF08B0094B53F /* parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE911CBBF08B0094B53F /* parser.swift */; };
+		4985E2BF1D4518A1004C4AE6 /* MasterViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */; };
 		498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */; };
 		49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA5A051CC05784005A9710 /* UIViewExtensions.swift */; };
 		8187239B5221E44781E55B47 /* Pods_Marvel_Heroes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABEE65A720C0A809E0D40D2 /* Pods_Marvel_Heroes.framework */; };
@@ -86,6 +87,7 @@
 		4968BE8B1CBBD2400094B53F /* apiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = apiClient.swift; path = Services/apiClient.swift; sourceTree = "<group>"; };
 		4968BE8F1CBBD3580094B53F /* persistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = persistencyManager.swift; path = Services/persistencyManager.swift; sourceTree = "<group>"; };
 		4968BE911CBBF08B0094B53F /* parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = parser.swift; path = Services/parser.swift; sourceTree = "<group>"; };
+		4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewControllerModel.swift; path = Controllers/MasterViewControllerModel.swift; sourceTree = "<group>"; };
 		498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsViewController.swift; path = Controllers/SuggestionsViewController.swift; sourceTree = "<group>"; };
 		49DA5A051CC05784005A9710 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		B6AF9ADB75D1D77A9B66178C /* Pods-Marvel Heroes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel Heroes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel Heroes/Pods-Marvel Heroes.release.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
+				4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */,
 			);
 			name = MasterVC;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				492D090A1CBA82730086D348 /* Hero.swift in Sources */,
 				492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */,
 				492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */,
+				4985E2BF1D4518A1004C4AE6 /* MasterViewControllerModel.swift in Sources */,
 				492D09111CBAA2C10086D348 /* Constants.swift in Sources */,
 				4968BE901CBBD3580094B53F /* persistencyManager.swift in Sources */,
 			);

@@ -14,12 +14,20 @@ Collection View with Hero objects
  */
 
 class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
+
+    //Types
+    typealias Model = MasterViewControllerModel
     
+    //Properties
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     var searchController: UISearchController!
     
-    var heroes = [Hero]()
+
+    //private var state = State.viewing
+    private var model = Model()
+    
+    //MARK: Fix or delete
     var filteredHeroes = [Hero]()
     var inSearchMode = false
     var currentOffset = 0
@@ -62,9 +70,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     //MARK: API request 📡
     func listenToNotifications(){
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
-            self.heroes = apiClient.sharedInstance.getHeroes()
+            //FIXME: This could be better
+            self.model = Model()
+            _ = apiClient.sharedInstance.getHeroes().map{self.model.append($0)}
+            
             self.collection.reloadData()
-            //print("Heros from notification: \(self.heroes.count)")
+            //print("Heros from notification: \(self.model.heroes.count)")
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: UIDeviceOrientationDidChangeNotification, object: nil)
@@ -132,7 +143,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             //Uncomment to have the local search filter
             //inSearchMode = true
             let lower = searchBar.text!.lowercaseString
-            filteredHeroes = heroes.filter({$0.name.lowercaseString.containsString(lower)})
+            filteredHeroes = model.heroes.filter({$0.name.lowercaseString.containsString(lower)})
             collection.reloadData()
         }
     }
@@ -164,12 +175,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 //            if inSearchMode {
 //                hero = filteredHeroes[indexPath.row]
 //            } else {
-                hero = heroes[indexPath.row]
+                hero = model.heroes[indexPath.row]
 //            }
             
             cell.configureCell(hero)
             
-            if (indexPath.item == heroes.count - 1) && (heroes.count > currentOffset){
+            if (indexPath.item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
                 print("fetching more stuff")
                 currentOffset += 20
                 apiClient.sharedInstance.moreHeroes(currentOffset)
@@ -186,10 +197,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         if inSearchMode {
             //Uncomment to have the local search filter
-            // return filteredHeroes.count
+            // return filteredmodel.model.heroes.count
         }
         
-        return heroes.count
+        return model.heroes.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -221,10 +232,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
             if let detailsVC = segue.destinationViewController as? HeroDetailVC {
-                 let selectedHeroIndex = collection.indexPathsForSelectedItems()!
-                
-                let hero = heroes[selectedHeroIndex[0].row]
+                if let selectedHeroIndex = collection.indexPathsForSelectedItems() where selectedHeroIndex.count == 1{
+                    let hero = model.heroes[selectedHeroIndex[0].row]
                 detailsVC.hero = hero
+                }
 
             }
         }
