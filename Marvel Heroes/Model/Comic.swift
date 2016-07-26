@@ -12,11 +12,11 @@ import Foundation
  Holds Comic entity information.
  */
 
-class Comic {
+struct Comic: Equatable {
         
-        private var _title: String!
-        private var _comicId: Int!
-        private var _thumbnailUrl: String!
+        private var _title: String
+        private var _comicId: Int
+        private var _thumbnailUrl: String
         
         init(title: String, comicId: Int, thumbnailUrl: String) {
             self._title = title
@@ -31,7 +31,6 @@ class Comic {
         var comicId: Int {
             return _comicId
         }
-    
         
         var thumbnailUrl: String {
             return _thumbnailUrl
@@ -39,10 +38,17 @@ class Comic {
         
     }
     
-    extension Comic: CustomStringConvertible {
-        var description : String {
-            return "\(title) (\(comicId)) {:: \(thumbnailUrl)}"
-        }
+//MARK: Protocols and extensions
+
+func ==(lhs: Comic, rhs: Comic) -> Bool {
+    return  lhs.title == rhs.title &&
+        lhs.comicId == rhs.comicId &&
+        lhs.thumbnailUrl == rhs.thumbnailUrl
 }
 
+extension Comic: CustomStringConvertible {
+    var description : String {
+        return "\(title) (\(comicId)) {:: \(thumbnailUrl)}"
+    }
+}
 
