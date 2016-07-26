@@ -18,7 +18,7 @@ class SuggestionsViewController: UITableViewController{
 
     
     var heroes = [Hero]()
-    
+    let MasterVCModel = MasterViewControllerModel()
     
     //MARK: View LifeCycle
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class SuggestionsViewController: UITableViewController{
     
     //MARK: API request 📡
     func listenToNotifications(){
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_SUGGESTIONS, object: nil, queue: nil) {  (_) in
+        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.suggestions.rawValue, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroSuggestions()
             //print("Suggested results count: \(self.heroes.count)")
             self.tableView.reloadData()
@@ -44,7 +44,7 @@ class SuggestionsViewController: UITableViewController{
     
     //MARK: UI
     func setupUI(){
-        self.tableView.registerNib(UINib(nibName: SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: SUGGESTION_CELL)
+        self.tableView.registerNib(UINib(nibName:Consts.StoryboardIds.SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: Consts.StoryboardIds.SUGGESTION_CELL)
         tableView.backgroundColor = UIColor.blackColor()
         tableView.separatorColor = UIColor.lightGrayColor()
     }
@@ -59,7 +59,7 @@ class SuggestionsViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(SUGGESTION_CELL, forIndexPath: indexPath) as! SuggestionCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Consts.StoryboardIds.SUGGESTION_CELL, forIndexPath: indexPath) as! SuggestionCell
         
         cell.configureCell(heroes[indexPath.row])
         cell.fadeIn()
@@ -69,8 +69,8 @@ class SuggestionsViewController: UITableViewController{
     //MARK: Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("HeroDetailVC") as! HeroDetailVC
-        vc.hero = heroes[indexPath.row]
+        let vc = storyboard.instantiateViewControllerWithIdentifier(Consts.StoryboardIds.HERO_DETAIL_VC) as! HeroDetailVC
+        vc.setHero(heroes[indexPath.row])
         vc.presentedModally = true
         presentViewController(vc, animated: true) {_ in }
     }

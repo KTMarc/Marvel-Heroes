@@ -20,7 +20,7 @@ class PersistencyManager: NSObject {
     private var suggestions : [Hero] = []
     private var comics : [Comic] = []
     private let cache = Shared.JSONCache
-
+    
     override init() {
         super.init()
         fetchHeroes()
@@ -35,36 +35,33 @@ class PersistencyManager: NSObject {
      - parameter notification: who should be aware of the task end
      */
     
-    func fetchData(endPoint: String, parameter: String, offset: Int, notification: String){
+    func fetchData(endPoint: String, parameter: String, offset: Int, notification: Consts.Notifications){
         
-        let URL = NSURL(string: URL_BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + URL_CREDENTIALS)!
+        let URL = NSURL(string: Consts.ApiURLs.URL_BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURLs.URL_CREDENTIALS)!
         //print(URL)
         cache.fetch(URL: URL).onSuccess { JSON in
             
-            switch(notification){
-            case NOTIFICATION_HEROES:
-                
-                let newElements = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
+            switch notification {
+            case .heroes:
+                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURLs.URL_CHARACTERS)
                 self.heroes.appendContentsOf(newElements)
-                break
                 
-            case NOTIFICATION_COMICS:
-                
+            case .comics:
                 let newElements = parser(data: JSON.dictionary).parseComics()
                 self.comics = newElements
-                break
                 
-            case NOTIFICATION_SUGGESTIONS:
-                let newElements = parser(data: JSON.dictionary).parseJSON(URL_CHARACTERS)
+                
+            case .suggestions:
+                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURLs.URL_CHARACTERS)
                 self.suggestions = newElements
-                break
                 
-            default:
-                break
+                
+            case .modal_heroDetail_dismssed: break
+                
             }
             
             NSNotificationCenter.defaultCenter().postNotificationName(
-                notification, object: self)
+                notification.rawValue, object: self)
             
             } .onFailure { (error) in
                 print("Could not fetch from network")
@@ -75,7 +72,7 @@ class PersistencyManager: NSObject {
     
     //MARK: HEROES
     func fetchHeroes(){
-        fetchData(URL_CHARACTERS, parameter: "", offset: 0, notification: NOTIFICATION_HEROES)
+        fetchData(Consts.ApiURLs.URL_CHARACTERS, parameter: "", offset: 0, notification: Consts.Notifications.heroes)
     }
     
     
@@ -84,7 +81,7 @@ class PersistencyManager: NSObject {
     }
     
     func getMoreHeroes(offset: Int) {
-        fetchData(URL_CHARACTERS, parameter: "", offset: offset, notification: NOTIFICATION_HEROES)
+        fetchData(Consts.ApiURLs.URL_CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.heroes)
     }
     
     //MARK: SUGGESTIONS
@@ -96,18 +93,18 @@ class PersistencyManager: NSObject {
      */
     
     func searchHeroes(keystrokes: String) {
-       
-        fetchData(URL_CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: NOTIFICATION_SUGGESTIONS)
+        
+        fetchData(Consts.ApiURLs.URL_CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: Consts.Notifications.suggestions)
     }
     
     func getHeroSuggestions() -> [Hero]{
-     return suggestions
+        return suggestions
     }
     
     func resetHeroSuggestions(){
         suggestions = []
         NSNotificationCenter.defaultCenter().postNotificationName(
-            NOTIFICATION_SUGGESTIONS, object: self)
+            Consts.Notifications.suggestions.rawValue, object: self)
     }
     
     //MARK: COMICS
@@ -119,24 +116,24 @@ class PersistencyManager: NSObject {
      */
     
     func fetchComics(heroId:Int) {
-        fetchData(URL_CHARACTERS + "/\(heroId)/" + URL_COMICS, parameter: "", offset: 0, notification: NOTIFICATION_COMICS)
-     
+        fetchData(Consts.ApiURLs.URL_CHARACTERS + "/\(heroId)/" + Consts.ApiURLs.URL_COMICS, parameter: "", offset: 0, notification: Consts.Notifications.comics)
+        
     }
     
     func getComics() -> [Comic] {
         return comics
     }
     
-    /** 
-    Prevents bad URLs containing spaces
+    /**
+     Prevents bad URLs containing spaces
      */
     
     //TODO: Cover more edge cases
     func strokeSanitizer(strokes: String) -> String{
         return strokes.stringByReplacingOccurrencesOfString(" ", withString: "%20")
     }
-
-    /** 
+    
+    /**
      Dummy Heroes creation
      */
     func createSampleData() {

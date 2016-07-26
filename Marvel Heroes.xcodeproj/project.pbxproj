@@ -226,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				4985E2BD1D45133C004C4AE6 /* MasterVC */,
-				498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */,
 				49731CB81D48093300C19886 /* DetailVC */,
 			);
 			name = Controllers;
@@ -271,6 +270,7 @@
 			children = (
 				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
 				4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */,
+				498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */,
 			);
 			name = MasterVC;
 			sourceTree = "<group>";

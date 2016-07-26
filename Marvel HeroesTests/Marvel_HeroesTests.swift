@@ -38,7 +38,7 @@ class Marvel_HeroesTests: XCTestCase {
         
         apiClient.sharedInstance.fetchHeroes()
 
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
+        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.heroes.rawValue, object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
             expectation.fulfill()
@@ -59,7 +59,7 @@ class Marvel_HeroesTests: XCTestCase {
         
         let expectation = expectationWithDescription("Find Spider-Man")
         
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_SUGGESTIONS, object: nil, queue: nil) {  (_) in
+        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.suggestions.rawValue, object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
             expectation.fulfill()
@@ -80,7 +80,7 @@ class Marvel_HeroesTests: XCTestCase {
     
         let expectation = expectationWithDescription("Receive comics")
 
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_COMICS, object: nil, queue: nil) {  (_) in
+        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
             
             comics = apiClient.sharedInstance.getComics()
             expectation.fulfill()

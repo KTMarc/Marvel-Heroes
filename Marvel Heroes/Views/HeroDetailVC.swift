@@ -63,7 +63,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         super.viewWillDisappear(animated)
         if presentedModally {
             NSNotificationCenter.defaultCenter().postNotificationName(
-            NOTIFICATION_MODAL_HERODETAIL_DISMISSED, object: self)
+            Consts.Notifications.modal_heroDetail_dismssed.rawValue, object: self)
         }
     }
     
@@ -75,7 +75,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     //MARK: API request 📡
     func listenToNotifications(){
         
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_COMICS, object: nil, queue: nil) {  (_) in
+        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
             self.comicsActivityIndicator.stopAnimating()
             self.comics = apiClient.sharedInstance.getComics()
             print("Received Comics: \(self.comics.count)")
@@ -146,7 +146,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     //MARK: Collection View Data Source
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(COMIC_CELL, forIndexPath: indexPath) as? ComicCell {
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Consts.StoryboardIds.COMIC_CELL, forIndexPath: indexPath) as? ComicCell {
             
             let comic: Comic!
             comic = comics[indexPath.row]

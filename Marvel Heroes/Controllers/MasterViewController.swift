@@ -63,7 +63,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: API request 📡
     func listenToNotifications(){
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_HEROES, object: nil, queue: nil) {  (_) in
+        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.heroes.rawValue, object: nil, queue: nil) {  (_) in
             
             //FIXME: ARC should do the job here and deallocate all objects from the old struct. This could be better.
             self.model = Model()
@@ -75,7 +75,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: UIDeviceOrientationDidChangeNotification, object: nil)
         
-         NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_MODAL_HERODETAIL_DISMISSED, object: nil, queue: nil) {  (_) in
+         NSNotificationCenter.defaultCenter().addObserverForName(
+         Consts.Notifications.modal_heroDetail_dismssed.rawValue, object: nil, queue: nil) {  (_) in
             self.searchController.searchBar.becomeFirstResponder()
         }
     }
@@ -149,7 +150,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     //MARK: Collection View Data Soure
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HERO_CELL, forIndexPath: indexPath) as? HeroCell {
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Consts.StoryboardIds.HERO_CELL, forIndexPath: indexPath) as? HeroCell {
             let hero: Hero!
             
             hero = model.heroes[indexPath.row]
@@ -184,12 +185,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: Collection View Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(SEGUE_TO_HERO_DETAIL_VC, sender: nil)
+        performSegueWithIdentifier(Consts.Segues.TO_HERO_DETAIL_VC, sender: nil)
     }
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SEGUE_TO_HERO_DETAIL_VC {
+        if segue.identifier == Consts.Segues.TO_HERO_DETAIL_VC {
             if let detailsVC = segue.destinationViewController as? HeroDetailVC {
                 if let selectedHeroIndex = collection.indexPathsForSelectedItems() where selectedHeroIndex.count == 1{
                     let selectedHeroIndex = selectedHeroIndex[0].row

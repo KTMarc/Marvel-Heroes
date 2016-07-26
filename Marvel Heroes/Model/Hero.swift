@@ -25,7 +25,7 @@ struct Hero: Equatable{
         self._heroId = heroId
         
         if let x = desc where x == ""{
-            self._desc = NO_DESCRIPTION_AVAILABLE_COPY
+            self._desc = Consts.Copies.NO_DESCRIPTION_AVAILABLE_COPY
         } else {
             self._desc = desc!
         }
