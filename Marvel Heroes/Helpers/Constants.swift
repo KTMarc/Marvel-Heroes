@@ -24,11 +24,11 @@ struct Consts {
         ]
     
     //API parameters
-    struct ApiURLs {
-        static let URL_BASE = "http://gateway.marvel.com/v1/public/"
-        static let URL_CHARACTERS = "characters"
-        static let URL_COMICS = "comics"
-        static let URL_CREDENTIALS = "ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698"
+    struct ApiURL {
+        static let BASE = "http://gateway.marvel.com/v1/public/"
+        static let CHARACTERS = "characters"
+        static let COMICS = "comics"
+        static let CREDENTIALS = "ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698"
     }
     
     //SEGUES

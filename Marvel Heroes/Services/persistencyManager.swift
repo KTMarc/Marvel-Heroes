@@ -37,13 +37,13 @@ class PersistencyManager: NSObject {
     
     func fetchData(endPoint: String, parameter: String, offset: Int, notification: Consts.Notifications){
         
-        let URL = NSURL(string: Consts.ApiURLs.URL_BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURLs.URL_CREDENTIALS)!
+        let URL = NSURL(string: Consts.ApiURL.BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURL.CREDENTIALS)!
         //print(URL)
         cache.fetch(URL: URL).onSuccess { JSON in
             
             switch notification {
             case .heroes:
-                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURLs.URL_CHARACTERS)
+                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
                 self.heroes.appendContentsOf(newElements)
                 
             case .comics:
@@ -52,7 +52,7 @@ class PersistencyManager: NSObject {
                 
                 
             case .suggestions:
-                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURLs.URL_CHARACTERS)
+                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
                 self.suggestions = newElements
                 
                 
@@ -72,7 +72,7 @@ class PersistencyManager: NSObject {
     
     //MARK: HEROES
     func fetchHeroes(){
-        fetchData(Consts.ApiURLs.URL_CHARACTERS, parameter: "", offset: 0, notification: Consts.Notifications.heroes)
+        fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: 0, notification: Consts.Notifications.heroes)
     }
     
     
@@ -81,7 +81,7 @@ class PersistencyManager: NSObject {
     }
     
     func getMoreHeroes(offset: Int) {
-        fetchData(Consts.ApiURLs.URL_CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.heroes)
+        fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.heroes)
     }
     
     //MARK: SUGGESTIONS
@@ -94,7 +94,7 @@ class PersistencyManager: NSObject {
     
     func searchHeroes(keystrokes: String) {
         
-        fetchData(Consts.ApiURLs.URL_CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: Consts.Notifications.suggestions)
+        fetchData(Consts.ApiURL.CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: Consts.Notifications.suggestions)
     }
     
     func getHeroSuggestions() -> [Hero]{
@@ -116,7 +116,7 @@ class PersistencyManager: NSObject {
      */
     
     func fetchComics(heroId:Int) {
-        fetchData(Consts.ApiURLs.URL_CHARACTERS + "/\(heroId)/" + Consts.ApiURLs.URL_COMICS, parameter: "", offset: 0, notification: Consts.Notifications.comics)
+        fetchData(Consts.ApiURL.CHARACTERS + "/\(heroId)/" + Consts.ApiURL.COMICS, parameter: "", offset: 0, notification: Consts.Notifications.comics)
         
     }
     
