@@ -194,7 +194,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if let selectedHeroIndex = collection.indexPathsForSelectedItems() where selectedHeroIndex.count == 1{
                     let selectedHeroIndex = selectedHeroIndex[0].row
                     let hero = model[heroAt: selectedHeroIndex]
-                    detailsVC.hero = hero
+                    detailsVC.setHero(hero)
                 }
 
             }

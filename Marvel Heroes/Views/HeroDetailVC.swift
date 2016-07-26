@@ -34,12 +34,20 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     @IBOutlet weak var comicsActivityIndicator: UIActivityIndicatorView!
     
-    var hero : Hero!
+    private var hero : Hero!
     var comics = [Comic]()
     var comicOffset = 0
     var blurView = UIVisualEffectView()
     var presentedModally = false
 
+    /*
+     Another view controller can set up this view controller's model by calling
+     `setHero(_:)` on it.
+     */
+    func setHero(hero: Hero) {
+        self.hero = hero
+    }
+    
     //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
