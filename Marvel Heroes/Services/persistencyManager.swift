@@ -39,42 +39,42 @@ class PersistencyManager: NSObject {
         
         let URL = NSURL(string: Consts.ApiURL.BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURL.CREDENTIALS)!
         //print(URL)
-        cache.fetch(URL: URL).onSuccess { JSON in
-            
-            switch notification {
-            case .heroes:
-                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
-                self.heroes.appendContentsOf(newElements)
+        cache.fetch(URL: URL)
+            .onSuccess { JSON in
                 
-            case .comics:
-                let newElements = parser(data: JSON.dictionary).parseComics()
-                self.comics = newElements
-                
-                
-            case .suggestions:
-                let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
-                self.suggestions = newElements
-                
-                
-            case .modal_heroDetail_dismssed: break
-                
+                switch notification {
+
+                case .heroes:
+                    let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
+                    self.heroes.appendContentsOf(newElements)
+                    
+                case .comics:
+                    let newElements = parser(data: JSON.dictionary).parseComics()
+                    self.comics = newElements
+                    
+                case .suggestions:
+                    let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
+                    self.suggestions = newElements
+                    
+                case .modal_heroDetail_dismssed:
+                    break
+                    
+                }
+                //We completed our job and can the notification can be sent
+                NSNotificationCenter.defaultCenter().postNotificationName(
+                    notification.rawValue, object: self)
             }
             
-            NSNotificationCenter.defaultCenter().postNotificationName(
-                notification.rawValue, object: self)
-            
-            } .onFailure { (error) in
+            .onFailure { (error) in
                 print("Could not fetch from network")
         }
     }
-    
     
     
     //MARK: HEROES
     func fetchHeroes(){
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: 0, notification: Consts.Notifications.heroes)
     }
-    
     
     func getHeroes() -> [Hero] {
         return heroes
