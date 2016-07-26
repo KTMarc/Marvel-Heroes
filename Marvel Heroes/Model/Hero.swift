@@ -12,18 +12,13 @@ import Foundation
  Holds Character entity information. Called hero for simplicity
  */
 
-struct Hero /*:Hashable*/{
+struct Hero: Equatable{
 
     private var _name: String
     private var _heroId: Int
     private var _desc: String
     private var _modified: NSDate
     private var _thumbnailUrl: String
-    
-    
-//    internal var hashValue: Int {
-//        return self.name.hashValue
-//    }
     
     init(name: String, heroId: Int, desc: String?, modified: NSDate , thumbnailUrl: String) {
         self._name = name
@@ -52,20 +47,27 @@ struct Hero /*:Hashable*/{
         return _desc
     }
     
+    var modified: NSDate {
+        return _modified
+    }
+    
     var thumbnailUrl: String {
         return _thumbnailUrl
     }
 }
 
-//MARK: Protocols
-//func ==(lhs: Hero, rhs: Hero) -> Bool {
-//    return lhs.hashValue == rhs.hashValue
-//}
+
+//MARK: Protocols and extensions
+func ==(lhs: Hero, rhs: Hero) -> Bool {
+    return  lhs.name == rhs.name &&
+        lhs.heroId == rhs.heroId &&
+        lhs.desc == rhs.desc &&
+        lhs.modified.timeIntervalSince1970 == rhs.modified.timeIntervalSince1970 &&
+        lhs.thumbnailUrl == rhs.thumbnailUrl
+}
 
 extension Hero: CustomStringConvertible {
     var description : String {
         return "\(name) (\(heroId)) {\(desc) :: \(thumbnailUrl)}"
     }
 }
-
-
