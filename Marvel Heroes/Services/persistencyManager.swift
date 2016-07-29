@@ -20,6 +20,7 @@ class PersistencyManager: NSObject {
     private var suggestions : [Hero] = []
     private var comics : [Comic] = []
     private let cache = Shared.JSONCache
+    private let parser : Parser = Parser(parseType: .swifty)
     
     override init() {
         super.init()
@@ -45,15 +46,19 @@ class PersistencyManager: NSObject {
                 switch notification {
 
                 case .heroes:
-                    let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
+                    self.parser.setDict(JSON.dictionary)
+                    let newElements = self.parser.parseHeroes(Consts.ApiURL.CHARACTERS)
                     self.heroes.appendContentsOf(newElements)
                     
                 case .comics:
-                    let newElements = parser(data: JSON.dictionary).parseComics()
+                    self.parser.setDict(JSON.dictionary)
+                    let newElements = self.parser.parseComics()
+
                     self.comics = newElements
                     
                 case .suggestions:
-                    let newElements = parser(data: JSON.dictionary).parseJSON(Consts.ApiURL.CHARACTERS)
+                    self.parser.setDict(JSON.dictionary)
+                    let newElements = self.parser.parseHeroes(Consts.ApiURL.CHARACTERS)
                     self.suggestions = newElements
                     
                 case .modal_heroDetail_dismssed:

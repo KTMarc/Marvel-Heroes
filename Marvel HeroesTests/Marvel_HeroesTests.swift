@@ -58,30 +58,11 @@ class Marvel_HeroesTests: XCTestCase {
         
         if let data = NSData(contentsOfFile: path!){
             
-        guard let json = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                else { print("error creating JSON"); return } ///-->Exit now if this is not true
-            
-        guard let rootDict = json as? NSDictionary,
-            let dataDict = rootDict["data"] as? Payload,
-            let resultsArray = dataDict["results"] as? Array<NSDictionary>
-            else { print("error creating the main Dictionary"); return } ///-->Exit now if this is not true
-
-            heroes = resultsArray.flatMap({
-                //(resultsDict: NSDictionary) -> Hero in
-                guard let name = $0["name"] as? String,
-                    let heroId = $0["id"] as? Int,
-                    let desc = $0["description"] as? String
-                    else { return nil }
-                
-                guard let thumbnail = $0["thumbnail"] as? [String:String],
-                    let fileName = thumbnail["path"],
-                    let fileExtension = thumbnail["extension"],
-                    let thumbnailCompletePath : String = fileName + "." + fileExtension
-                    else { fatalError("no thumbnail path")  }
-                
-                    return Hero(name: name,heroId: heroId,desc: desc,modified: NSDate(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
-                })
-            
+            let parser = Parser(dict: nil, data: data, parseType: .functional)
+            ///call the parser
+        
+            heroes = parser.parseHeroes("kk")
+        
             print(heroes[0])
             print(heroes[1])
             print(heroes[2])

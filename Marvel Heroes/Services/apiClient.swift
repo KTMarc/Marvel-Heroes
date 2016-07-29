@@ -17,9 +17,6 @@ class apiClient: NSObject {
 
 private let persistencyManager: PersistencyManager
 private let isOnline: Bool
-private let parseManager : parser
-
-    
 
     class var sharedInstance: apiClient {
         struct Singleton {
@@ -31,7 +28,6 @@ private let parseManager : parser
     override init() {
         persistencyManager = PersistencyManager()
         isOnline = false
-        parseManager = parser()
         super.init()
     }
     
