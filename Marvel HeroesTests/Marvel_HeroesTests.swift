@@ -32,6 +32,64 @@ class Marvel_HeroesTests: XCTestCase {
      local path would be loaded like path = NSBundle(forClass: self.dynamicType).pathForResource("listCharacters", ofType: "json")
  */
     
+    func testThatWeCanParseLocalJSONfile(){
+        
+        var heroes = [Hero]()
+
+        
+        ///Data: NSData
+        ///Response: 200,400,etc..
+        ///Error
+    
+        //let path = NSBundle.mainBundle().pathForResource("listCharacters",ofType:"json") --> Doesn´t work in Tests
+//        let responsePath = NSBundle(forClass: Marvel_HeroesTests.self).pathForResource("listCharacters_response", ofType: "txt")
+//    
+//        let response = NSURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
+        
+//        let puta = NSHTTPURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
+//        //if let httpResponse = response as? NSHTTPURLResponse {
+//            print(puta.statusCode)
+//        //}
+    
+        let path = NSBundle(forClass: Marvel_HeroesTests.self).pathForResource("listCharacters", ofType: "json")
+        
+        //Make working with dictionaries easier
+        typealias Payload = [String: AnyObject]
+        
+        if let data = NSData(contentsOfFile: path!){
+            
+        guard let json = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                else { print("error creating JSON"); return } ///-->Exit now if this is not true
+            
+        guard let rootDict = json as? NSDictionary,
+            let dataDict = rootDict["data"] as? Payload,
+            let resultsArray = dataDict["results"] as? Array<NSDictionary>
+            else { print("error creating the main Dictionary"); return } ///-->Exit now if this is not true
+
+            heroes = resultsArray.flatMap({
+                //(resultsDict: NSDictionary) -> Hero in
+                guard let name = $0["name"] as? String,
+                    let heroId = $0["id"] as? Int,
+                    let desc = $0["description"] as? String
+                    else { return nil }
+                
+                guard let thumbnail = $0["thumbnail"] as? [String:String],
+                    let fileName = thumbnail["path"],
+                    let fileExtension = thumbnail["extension"],
+                    let thumbnailCompletePath : String = fileName + "." + fileExtension
+                    else { fatalError("no thumbnail path")  }
+                
+                    return Hero(name: name,heroId: heroId,desc: desc,modified: NSDate(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
+                })
+            
+            print(heroes[0])
+            print(heroes[1])
+            print(heroes[2])
+            XCTAssertEqual(heroes.count, 20)
+    }
+    }
+    
+    
     func testCharactersJSONFileIsDownloadedAndParsed() {
         var heroes = [Hero]()
         let expectation = expectationWithDescription("Download, Parse and create objects")

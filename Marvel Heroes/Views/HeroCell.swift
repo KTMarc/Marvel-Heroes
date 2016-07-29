@@ -17,7 +17,7 @@ class HeroCell: UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
-    var hero: Hero!
+    private var hero: Hero!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
