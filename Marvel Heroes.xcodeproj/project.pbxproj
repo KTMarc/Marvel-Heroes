@@ -29,7 +29,7 @@
 		496535811CBFE65D00EE587D /* comicsByCharacter.json in Resources */ = {isa = PBXBuildFile; fileRef = 4965357F1CBFE65D00EE587D /* comicsByCharacter.json */; };
 		496535821CBFE65D00EE587D /* listCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 496535801CBFE65D00EE587D /* listCharacters.json */; };
 		4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8B1CBBD2400094B53F /* apiClient.swift */; };
-		4968BE901CBBD3580094B53F /* persistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8F1CBBD3580094B53F /* persistencyManager.swift */; };
+		4968BE901CBBD3580094B53F /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8F1CBBD3580094B53F /* PersistencyManager.swift */; };
 		4968BE921CBBF08B0094B53F /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE911CBBF08B0094B53F /* Parser.swift */; };
 		4974530B1D49731400221C7B /* listCharacters_response.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4974530A1D49731400221C7B /* listCharacters_response.txt */; };
 		4974530D1D49739A00221C7B /* listCharacters_full.json in Resources */ = {isa = PBXBuildFile; fileRef = 4974530C1D49739A00221C7B /* listCharacters_full.json */; };
@@ -87,7 +87,7 @@
 		4965357F1CBFE65D00EE587D /* comicsByCharacter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comicsByCharacter.json; sourceTree = "<group>"; };
 		496535801CBFE65D00EE587D /* listCharacters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listCharacters.json; sourceTree = "<group>"; };
 		4968BE8B1CBBD2400094B53F /* apiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = apiClient.swift; path = Services/apiClient.swift; sourceTree = "<group>"; };
-		4968BE8F1CBBD3580094B53F /* persistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = persistencyManager.swift; path = Services/persistencyManager.swift; sourceTree = "<group>"; };
+		4968BE8F1CBBD3580094B53F /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistencyManager.swift; path = Services/PersistencyManager.swift; sourceTree = "<group>"; };
 		4968BE911CBBF08B0094B53F /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Services/Parser.swift; sourceTree = "<group>"; };
 		4974530A1D49731400221C7B /* listCharacters_response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = listCharacters_response.txt; sourceTree = "<group>"; };
 		4974530C1D49739A00221C7B /* listCharacters_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listCharacters_full.json; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		495BF0921CBFF9B600BCECD8 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				4968BE8F1CBBD3580094B53F /* persistencyManager.swift */,
+				4968BE8F1CBBD3580094B53F /* PersistencyManager.swift */,
 				4968BE911CBBF08B0094B53F /* Parser.swift */,
 			);
 			name = APIs;
@@ -509,7 +509,7 @@
 				492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */,
 				4985E2BF1D4518A1004C4AE6 /* MasterViewControllerModel.swift in Sources */,
 				492D09111CBAA2C10086D348 /* Constants.swift in Sources */,
-				4968BE901CBBD3580094B53F /* persistencyManager.swift in Sources */,
+				4968BE901CBBD3580094B53F /* PersistencyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
