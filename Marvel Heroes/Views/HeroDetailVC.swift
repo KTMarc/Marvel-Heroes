@@ -63,7 +63,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         super.viewWillDisappear(animated)
         if presentedModally {
             NSNotificationCenter.defaultCenter().postNotificationName(
-            Consts.Notifications.modal_heroDetail_dismssed.rawValue, object: self)
+            Consts.Notifications.modal_heroDetail_dismissed.rawValue, object: self)
         }
     }
     

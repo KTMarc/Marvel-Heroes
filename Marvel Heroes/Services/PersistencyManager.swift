@@ -61,7 +61,7 @@ class PersistencyManager: NSObject {
                     let newElements = self.parser.parseHeroes(Consts.ApiURL.CHARACTERS)
                     self.suggestions = newElements
                     
-                case .modal_heroDetail_dismssed:
+                case .modal_heroDetail_dismissed:
                     break
                     
                 }

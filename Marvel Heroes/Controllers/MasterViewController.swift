@@ -76,7 +76,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: UIDeviceOrientationDidChangeNotification, object: nil)
         
          NSNotificationCenter.defaultCenter().addObserverForName(
-         Consts.Notifications.modal_heroDetail_dismssed.rawValue, object: nil, queue: nil) {  (_) in
+         Consts.Notifications.modal_heroDetail_dismissed.rawValue, object: nil, queue: nil) {  (_) in
             self.searchController.searchBar.becomeFirstResponder()
         }
     }

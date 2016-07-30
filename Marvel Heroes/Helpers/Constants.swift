@@ -61,7 +61,7 @@ struct Consts {
         case heroes = "heroesDownloadedNotification"
         case comics = "comicsDownloadedNotification"
         case suggestions = "suggestionsDownloadedNotification"
-        case modal_heroDetail_dismssed = "heroDetailVCWasDismissed"
+        case modal_heroDetail_dismissed = "heroDetailVCWasDismissed"
     }
     
 }
