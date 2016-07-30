@@ -196,6 +196,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                     let selectedHeroIndex = selectedHeroIndex[0].row
                     let hero = model[heroAt: selectedHeroIndex]
                     detailsVC.setHero(hero)
+                    //Ask for comics asap so the detailVC will listen to the notification and receive them.
+                    apiClient.sharedInstance.fetchComics(hero.heroId)
                 }
 
             }

@@ -25,12 +25,12 @@ class Marvel_HeroesTests: XCTestCase {
     }
     
     /**
- Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache. 
+     Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache.
      
      If not available, Haneke will fetch the JSON from the source, return it and then cache it. In this case, the URL itself is used as the key
  
      local path would be loaded like path = NSBundle(forClass: self.dynamicType).pathForResource("listCharacters", ofType: "json")
- */
+     */
     
     func testThatWeCanParseLocalJSONfile(){
         
@@ -42,32 +42,26 @@ class Marvel_HeroesTests: XCTestCase {
         ///Error
     
         //let path = NSBundle.mainBundle().pathForResource("listCharacters",ofType:"json") --> Doesn´t work in Tests
-//        let responsePath = NSBundle(forClass: Marvel_HeroesTests.self).pathForResource("listCharacters_response", ofType: "txt")
-//    
-//        let response = NSURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
+        //let responsePath = NSBundle(forClass: Marvel_HeroesTests.self).pathForResource("listCharacters_response", ofType: "txt")
+
+        //let response = NSURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
         
-//        let puta = NSHTTPURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
-//        //if let httpResponse = response as? NSHTTPURLResponse {
-//            print(puta.statusCode)
-//        //}
+        //let puta = NSHTTPURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
+        //        //if let httpResponse = response as? NSHTTPURLResponse {
+        //            print(puta.statusCode)
+        //        //}
     
         let path = NSBundle(forClass: Marvel_HeroesTests.self).pathForResource("listCharacters", ofType: "json")
         
-        //Make working with dictionaries easier
-        typealias Payload = [String: AnyObject]
-        
         if let data = NSData(contentsOfFile: path!){
-            
-            let parser = Parser(dict: nil, data: data, parseType: .functional)
-            ///call the parser
         
-            heroes = parser.parseHeroes("kk")
+        //This should not be tested directly instantiating the parser
+        let parser = Parser(dict: nil, data: data, parseType: .functional)
+        ///call the parser
         
-            print(heroes[0])
-            print(heroes[1])
-            print(heroes[2])
-            XCTAssertEqual(heroes.count, 20)
-    }
+        heroes = parser.parseHeroes("kk")
+        XCTAssertEqual(heroes.count, 20)
+        }
     }
     
     

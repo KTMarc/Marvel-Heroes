@@ -54,7 +54,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         setupUI()
         //Ask for comics
-        apiClient.sharedInstance.fetchComics(hero.heroId)
+        //apiClient.sharedInstance.fetchComics(hero.heroId)
         listenToNotifications()
         
     }
