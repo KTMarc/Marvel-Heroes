@@ -66,16 +66,16 @@ class Marvel_HeroesTests: XCTestCase {
     
     
     func testCharactersJSONFileIsDownloadedAndParsed() {
-        var heroes = [Hero]()
         let expectation = expectationWithDescription("Download, Parse and create objects")
-        
-        apiClient.sharedInstance.fetchHeroes()
+        var heroes = [Hero]()
 
         NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.heroes.rawValue, object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
             expectation.fulfill()
         }
+        
+        apiClient.sharedInstance.fetchHeroes()
         
         waitForExpectationsWithTimeout(5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 0)
@@ -109,8 +109,6 @@ class Marvel_HeroesTests: XCTestCase {
         let heroId = 1011334
         var comics = [Comic]()
         
-        apiClient.sharedInstance.fetchComics(heroId)
-    
         let expectation = expectationWithDescription("Receive comics")
 
         NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
@@ -118,6 +116,9 @@ class Marvel_HeroesTests: XCTestCase {
             comics = apiClient.sharedInstance.getComics()
             expectation.fulfill()
         }
+        
+        apiClient.sharedInstance.fetchComics(heroId)
+        
         waitForExpectationsWithTimeout(5, handler: nil)
         XCTAssertEqual(comics.count, 11)
         

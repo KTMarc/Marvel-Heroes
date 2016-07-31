@@ -8,22 +8,26 @@
 
 import Foundation
 
-/**
- GET http://gateway.marvel.com/v1/public/characters
- 
- - parameter ts: TimeStamp
- - parameter apikey: Your public Key
- - parameter Hash: MD5 (ts + privateKey + publicKey)
- */
-
 struct Consts {
+    
+    
+    //API parameters
+    
+    /**
+     GET http://gateway.marvel.com/v1/public/characters
+     
+     - parameter ts: TimeStamp
+     - parameter apikey: Your public Key
+     - parameter Hash: MD5 (ts + privateKey + publicKey)
+     */
+    
     static let urlParams = [
         "ts":"1",
         "apikey":"c88613ef9c4edc6dee9b496c6f0d0a93",
         "hash":"27861456bf9a405a5e8320359485b698",
         ]
     
-    //API parameters
+    
     struct ApiURL {
         static let BASE = "http://gateway.marvel.com/v1/public/"
         static let CHARACTERS = "characters"

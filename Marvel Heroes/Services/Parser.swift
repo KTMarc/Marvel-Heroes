@@ -16,12 +16,6 @@ import SwiftyJSON
  */
 
 class Parser: NSObject {
-
-    // MARK: Types
-    enum ParseType {
-        case swifty
-        case functional
-    }
     
     typealias Payload = [String: AnyObject]
     

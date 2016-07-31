@@ -27,8 +27,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     //private var state = State.viewing
     private var model = Model()
     
-
-
     //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +43,20 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         imageView.image = image
         navigationItem.titleView = imageView
 
+        /// On init of apiClient we also init the persistencyManager and start fetching heroes
         
-        apiClient.sharedInstance
-        configureSearchController()
+        //apiClient.sharedInstance
+        //apiClient.fetchHeroes()
+        
         listenToNotifications()
-
+        
+        let kk = apiClient.sharedInstance
+        kk.fetchHeroes()
+        
+        configureSearchController()
+        
     }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -67,7 +73,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             //FIXME: ARC should do the job here and deallocate all objects from the old struct. This could be better.
             self.model = Model()
-            _ = apiClient.sharedInstance.getHeroes().map{self.model.append($0)}
+            _ = apiClient.sharedInstance.getHeroes().map{
+                self.model.append($0)
+            }
             
             self.collection.reloadData()
             //print("Heros from notification: \(self.model.heroes.count)")
@@ -75,7 +83,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: UIDeviceOrientationDidChangeNotification, object: nil)
         
-         NSNotificationCenter.defaultCenter().addObserverForName(
+        NSNotificationCenter.defaultCenter().addObserverForName(
          Consts.Notifications.modal_heroDetail_dismissed.rawValue, object: nil, queue: nil) {  (_) in
             self.searchController.searchBar.becomeFirstResponder()
         }
@@ -129,7 +137,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //view.endEditing(true)
     }
     
-
     // MARK: API request to get suggestions 📡
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if let keystrokes = searchController.searchBar.text where keystrokes != "" {
@@ -196,8 +203,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                     let selectedHeroIndex = selectedHeroIndex[0].row
                     let hero = model[heroAt: selectedHeroIndex]
                     detailsVC.setHero(hero)
-                    //Ask for comics asap so the detailVC will listen to the notification and receive them.
-                    apiClient.sharedInstance.fetchComics(hero.heroId)
                 }
 
             }

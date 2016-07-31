@@ -10,23 +10,45 @@ import Foundation
 
 /**
  Visible Interface for the View Controllers
- Behind it there are other files that are not accessible for them
+ Behind it there are other entities that are not accessible for them
  */
 
-class apiClient: NSObject {
+// MARK: Types
 
-private let persistencyManager: PersistencyManager
-private let isOnline: Bool
+/**
+ Select different ways of doing things.
+ It enforces thinking in a modular way to exchange the logic when necessary
+ */
+
+enum ParseType {
+    case swifty
+    case functional
+}
+
+enum StorageArchitecture {
+    case haneke
+    case other
+}
+
+class apiClient: NSObject {
+    
+    // MARK: Properties
+    private let persistencyManager: PersistencyManager
+    private let isOnline: Bool
+    private let _parseType: ParseType
+    private let _storageArchitecture : StorageArchitecture
 
     class var sharedInstance: apiClient {
         struct Singleton {
-            static let instance = apiClient()
+            static let instance = apiClient(parseType: .swifty, storageArchitecture: .haneke)
         }
         return Singleton.instance
     }
 
-    override init() {
-        persistencyManager = PersistencyManager()
+    init(parseType: ParseType, storageArchitecture: StorageArchitecture) {
+        _parseType = parseType
+        _storageArchitecture = storageArchitecture
+        persistencyManager = PersistencyManager(parseType: _parseType)
         isOnline = false
         super.init()
     }

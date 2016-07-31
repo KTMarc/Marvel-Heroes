@@ -53,10 +53,10 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         super.viewDidLoad()
         
         setupUI()
-        //Ask for comics
-        //apiClient.sharedInstance.fetchComics(hero.heroId)
-        listenToNotifications()
         
+        listenToNotifications()
+        //Ask for comics
+        apiClient.sharedInstance.fetchComics(hero.heroId)
     }
     
     override func viewWillDisappear(animated: Bool) {
