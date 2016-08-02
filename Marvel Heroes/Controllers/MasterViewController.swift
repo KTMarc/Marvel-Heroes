@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Haneke
 
 /**
 Collection View with Hero objects
