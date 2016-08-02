@@ -40,7 +40,7 @@ class apiClient: NSObject {
 
     class var sharedInstance: apiClient {
         struct Singleton {
-            static let instance = apiClient(parseType: .swifty, storageArchitecture: .haneke)
+            static let instance = apiClient(parseType: .functional, storageArchitecture: .haneke)
         }
         return Singleton.instance
     }
@@ -48,7 +48,7 @@ class apiClient: NSObject {
     init(parseType: ParseType, storageArchitecture: StorageArchitecture) {
         _parseType = parseType
         _storageArchitecture = storageArchitecture
-        persistencyManager = PersistencyManager(parseType: _parseType)
+        persistencyManager = PersistencyManager(parseType: _parseType, storageArchitecture: _storageArchitecture)
         isOnline = false
         super.init()
     }

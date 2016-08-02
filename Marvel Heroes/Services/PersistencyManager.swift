@@ -21,14 +21,16 @@ class PersistencyManager: NSObject {
     private var comics : [Comic] = []
     private let cache = Shared.JSONCache
     private let _parser : Parser
+    private let _storageArchitecture : StorageArchitecture
     
 //    override init() {
 //        super.init()
 //        fetchHeroes()
 //    }
     
-    init(parseType: ParseType){
+    init(parseType: ParseType, storageArchitecture: StorageArchitecture){
         _parser = Parser(parseType: parseType)
+        _storageArchitecture = storageArchitecture
         super.init()
     }
     
