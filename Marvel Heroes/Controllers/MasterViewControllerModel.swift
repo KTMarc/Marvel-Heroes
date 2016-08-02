@@ -31,6 +31,7 @@ struct MasterViewControllerModel{
     
     subscript(heroAt index: Int) -> Hero {
         get {
+            //Check if the image is in the cache and download it here if not.
             return _heroes[index]
         }
         
