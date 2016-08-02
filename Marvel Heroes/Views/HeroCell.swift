@@ -27,13 +27,15 @@ class HeroCell: UICollectionViewCell {
         self.hero = hero
         nameLbl.text = self.hero.name.capitalizedString
         
-        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
+        /*
+         guard let url = NSURL.init(string: self.hero.thumbnailUrl) else { print("Not a valid url"); return}
             thumbImg.hnk_setImageFromURL(url)
+         */
+            thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
             thumbImg.layer.borderWidth = 1
             thumbImg.layer.masksToBounds = false
             thumbImg.layer.borderColor = UIColor.whiteColor().CGColor
             thumbImg.layer.cornerRadius = 10
             thumbImg.clipsToBounds = true
-        }
     }
 }
