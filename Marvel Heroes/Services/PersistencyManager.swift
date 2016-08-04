@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Haneke
+//import Haneke
 
 
 /**
@@ -19,7 +19,7 @@ class PersistencyManager: NSObject {
     private var heroes : [Hero] = []
     private var suggestions : [Hero] = []
     private var comics : [Comic] = []
-    private let cache = Shared.JSONCache
+    //private let cache = Shared.JSONCache
     private let _parser : Parser
     private let _storageArchitecture : StorageArchitecture
     

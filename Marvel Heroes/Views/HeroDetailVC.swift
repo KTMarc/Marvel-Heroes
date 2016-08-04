@@ -9,7 +9,7 @@
 //
 
 import UIKit
-import Haneke
+//import Haneke
 
 /**
  Detail View for Hero 
@@ -95,12 +95,16 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: UI
     func setupUI(){
-        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
+        if let /*url*/ _ = NSURL.init(string: self.hero.thumbnailUrl) {
             //Big Hero image
-            self.image.hnk_setImageFromURL(url)
+            //self.image.hnk_setImageFromURL(url)
+            self.image.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
             
             //Smaller Hero image
-            self.avatarImage.hnk_setImageFromURL(url)
+            //self.avatarImage.hnk_setImageFromURL(url)
+            self.avatarImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+            
+            
             self.avatarImage.layer.borderWidth = 3
             self.avatarImage.layer.masksToBounds = false
             self.avatarImage.layer.borderColor = UIColor.blackColor().CGColor
@@ -112,7 +116,9 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             let blurEffect: UIBlurEffect = UIBlurEffect(style: .Dark)
             let effectView = UIVisualEffectView(effect: blurEffect)
             effectView.frame = self.view.frame
-            self.blurImage.hnk_setImageFromURL(url)
+            //self.blurImage.hnk_setImageFromURL(url)
+            self.blurImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+            
             self.blurImage.addSubview(effectView)
             blurView = UIVisualEffectView(effect: blurEffect)
             blurView.translatesAutoresizingMaskIntoConstraints = false

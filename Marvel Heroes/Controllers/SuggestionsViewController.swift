@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haneke
+//import Haneke
 
 /**
  Table View with results from remote search
