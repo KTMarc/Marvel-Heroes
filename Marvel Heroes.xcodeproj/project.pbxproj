@@ -314,12 +314,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 492D08FD1CBA7E930086D348 /* Build configuration list for PBXNativeTarget "Marvel HeroesTests" */;
 			buildPhases = (
-				6C384B480C943A65D24D0443 /* [CP] Check Pods Manifest.lock */,
 				492D08E21CBA7E930086D348 /* Sources */,
 				492D08E31CBA7E930086D348 /* Frameworks */,
 				492D08E41CBA7E930086D348 /* Resources */,
-				C36D627A048E39B43451E4E0 /* [CP] Embed Pods Frameworks */,
-				94D2915E076FF64738E8D634 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -433,54 +430,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		6C384B480C943A65D24D0443 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		94D2915E076FF64738E8D634 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Marvel HeroesTests/Pods-Marvel HeroesTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C36D627A048E39B43451E4E0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Marvel HeroesTests/Pods-Marvel HeroesTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		492D08CC1CBA7E930086D348 /* Sources */ = {
