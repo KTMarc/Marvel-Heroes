@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haneke
+//import Haneke
 
 /**
  Custom Cell for Suggestions table view
@@ -34,10 +34,10 @@ class SuggestionCell: UITableViewCell {
     func configureCell(hero: Hero) {
         self.hero = hero
         nameLabel.text = self.hero.name.capitalizedString
-        
-        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
-            thumbImg.hnk_setImageFromURL(url)
-        }
+        thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+//        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
+//            thumbImg.hnk_setImageFromURL(url)
+//        }
     }
 }
 

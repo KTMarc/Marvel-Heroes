@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haneke
+//import Haneke
 
 /**
  Custom Cell for Hero Detail view Collection View of Comics
@@ -26,9 +26,10 @@ class ComicCell: UICollectionViewCell {
     func configureCell(comic: Comic) {
         self.comic = comic
         nameLbl.text = self.comic.title
-        
-        if let url = NSURL.init(string: self.comic.thumbnailUrl) {
-            thumbImg.hnk_setImageFromURL(url)
-        }
+
+        thumbImg.downloadAsyncFrom(self.comic.thumbnailUrl, contentMode: .ScaleAspectFill)
+//        if let url = NSURL.init(string: self.comic.thumbnailUrl) {
+//            thumbImg.hnk_setImageFromURL(url)
+//        }
     }
 }
