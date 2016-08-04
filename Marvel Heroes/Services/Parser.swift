@@ -20,12 +20,12 @@ class Parser: NSObject {
     typealias Payload = [String: AnyObject]
     
     // MARK: Properties
-    private var _data : NSData?
+    private var _data : Data?
     private var _dict : NSDictionary?
     private let _parseType : ParseType
     
     // MARK: Initializers
-    init(dict: NSDictionary?, data: NSData?, parseType: ParseType) {
+    init(dict: NSDictionary?, data: Data?, parseType: ParseType) {
         self._dict = dict
         self._data = data
         self._parseType = parseType
@@ -35,16 +35,16 @@ class Parser: NSObject {
         self.init(dict: nil, data:nil, parseType: parseType)
     }
     
-    func setData(data: NSData){
+    func setData(_ data: Data){
         _data = data
     }
     
-    func setDict(dict: NSDictionary){
+    func setDict(_ dict: NSDictionary){
         _dict = dict
     }
     
     //MARK: Methods
-    func parseHeroes(type: String) -> [Hero]{
+    func parseHeroes(_ type: String) -> [Hero]{
         
         return parseHero()
     }
@@ -83,7 +83,7 @@ class Parser: NSObject {
             
         case .functional:
             
-            guard let json = try? NSJSONSerialization.JSONObjectWithData(_data!, options: .AllowFragments)
+            guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
                 else { print("error creating JSON"); break } ///-->Exit now if this is not true
             
             guard let rootDict = json as? NSDictionary,
@@ -104,7 +104,7 @@ class Parser: NSObject {
                     let thumbnailCompletePath : String = fileName + "." + fileExtension
                     else { fatalError("no thumbnail path")  }
                 
-                return Hero(name: name,heroId: heroId,desc: desc,modified: NSDate(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
+                return Hero(name: name,heroId: heroId,desc: desc,modified: Date(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
             })
             
         }
@@ -140,7 +140,7 @@ class Parser: NSObject {
 //        }
         case .functional:
             
-            guard let json = try? NSJSONSerialization.JSONObjectWithData(_data!, options: .AllowFragments)
+            guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
                 else { print("error creating JSON"); break } ///-->Exit now if this is not true
             
             guard let rootDict = json as? NSDictionary,

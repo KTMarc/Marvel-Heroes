@@ -43,16 +43,18 @@ class PersistencyManager: NSObject {
      - parameter notification: who should be aware of the task end
      */
     
-    func fetchData(endPoint: String, parameter: String, offset: Int, notification: Consts.Notifications){
+    func fetchData(_ endPoint: String, parameter: String, offset: Int, notification: Consts.Notifications){
         
-        let URL = NSURL(string: Consts.ApiURL.BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURL.CREDENTIALS)!
+        let URL = Foundation.URL(string: Consts.ApiURL.BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURL.CREDENTIALS)!
         //print(URL)
         
-        let mySession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let myRequest = NSMutableURLRequest(URL: URL)
-        myRequest.HTTPMethod = "GET"
+        let mySession = URLSession(configuration: URLSessionConfiguration.default)
+        let myRequest = URLRequest(url: URL)
+        //myRequest.httpMethod = "GET"
+        
+        
         //let myConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let task = mySession.dataTaskWithRequest(myRequest) { (data, response, error) in
+        let task = mySession.dataTask(with: myRequest){ (data, response, error) in
 
         
         ///Data: NSData
@@ -68,7 +70,7 @@ class PersistencyManager: NSObject {
                 case .heroes:
                     //self._parser.setDict(JSON.dictionary)
                     let newElements = self._parser.parseHeroes("nothing")
-                    self.heroes.appendContentsOf(newElements)
+                    self.heroes.append(contentsOf: newElements)
                     
                 case .comics:
                     //self._parser.setDict(JSON.dictionary)
@@ -86,8 +88,8 @@ class PersistencyManager: NSObject {
                     
                 } //End of switch
                 //We completed our job and can the notification can be sent
-                NSNotificationCenter.defaultCenter().postNotificationName(
-                    notification.rawValue, object: self)
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: notification.rawValue), object: self)
            // } //End of OnSuccess
             
             
@@ -113,7 +115,7 @@ class PersistencyManager: NSObject {
         return heroes
     }
     
-    func getMoreHeroes(offset: Int) {
+    func getMoreHeroes(_ offset: Int) {
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.heroes)
     }
     
@@ -125,7 +127,7 @@ class PersistencyManager: NSObject {
      - parameter keystrokes: The text that user introduced in the searchBar
      */
     
-    func searchHeroes(keystrokes: String) {
+    func searchHeroes(_ keystrokes: String) {
         
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: Consts.Notifications.suggestions)
     }
@@ -136,8 +138,8 @@ class PersistencyManager: NSObject {
     
     func resetHeroSuggestions(){
         suggestions = []
-        NSNotificationCenter.defaultCenter().postNotificationName(
-            Consts.Notifications.suggestions.rawValue, object: self)
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: self)
     }
     
     //MARK: COMICS
@@ -148,7 +150,7 @@ class PersistencyManager: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    func fetchComics(heroId:Int) {
+    func fetchComics(_ heroId:Int) {
         fetchData(Consts.ApiURL.CHARACTERS + "/\(heroId)/" + Consts.ApiURL.COMICS, parameter: "", offset: 0, notification: Consts.Notifications.comics)
         
     }
@@ -162,8 +164,8 @@ class PersistencyManager: NSObject {
      */
     
     //TODO: Cover more edge cases
-    func strokeSanitizer(strokes: String) -> String{
-        return strokes.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+    func strokeSanitizer(_ strokes: String) -> String{
+        return strokes.replacingOccurrences(of: " ", with: "%20")
     }
     
     /**
@@ -171,9 +173,9 @@ class PersistencyManager: NSObject {
      */
     func createSampleData() {
         
-        heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
+        heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: Date(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
         
-        heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: NSDate(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/510c08f345938.jpg"))
+        heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: Date(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/510c08f345938.jpg"))
     }
     
     

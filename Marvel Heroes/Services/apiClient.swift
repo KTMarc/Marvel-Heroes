@@ -81,7 +81,7 @@ class apiClient: NSObject {
      - returns: An array of comics
      */
     
-    func moreHeroes(offset: Int){
+    func moreHeroes(_ offset: Int){
         persistencyManager.getMoreHeroes(offset)
     }
     
@@ -93,7 +93,7 @@ class apiClient: NSObject {
      - parameter keystrokes: The text that user introduced in the searchBar
      */
     
-    func searchHeroes(keystrokes: String){
+    func searchHeroes(_ keystrokes: String){
         return persistencyManager.searchHeroes(keystrokes)
     }
     
@@ -125,7 +125,7 @@ class apiClient: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    func fetchComics(heroId: Int){
+    func fetchComics(_ heroId: Int){
          persistencyManager.fetchComics(heroId)
     }
     

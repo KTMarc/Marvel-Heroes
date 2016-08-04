@@ -23,11 +23,11 @@ class ComicCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configureCell(comic: Comic) {
+    func configureCell(_ comic: Comic) {
         self.comic = comic
         nameLbl.text = self.comic.title
 
-        thumbImg.downloadAsyncFrom(self.comic.thumbnailUrl, contentMode: .ScaleAspectFill)
+        thumbImg.downloadAsyncFrom(self.comic.thumbnailUrl, contentMode: .scaleAspectFill)
 //        if let url = NSURL.init(string: self.comic.thumbnailUrl) {
 //            thumbImg.hnk_setImageFromURL(url)
 //        }

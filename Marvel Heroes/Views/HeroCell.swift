@@ -22,14 +22,14 @@ class HeroCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configureCell(hero: Hero) {
+    func configureCell(_ hero: Hero) {
         self.hero = hero
-        nameLbl.text = self.hero.name.capitalizedString
+        nameLbl.text = self.hero.name.capitalized
         //FIXME: This should happen in the ViewModel
-        thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+        thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
         thumbImg.layer.borderWidth = 1
         thumbImg.layer.masksToBounds = false
-        thumbImg.layer.borderColor = UIColor.whiteColor().CGColor
+        thumbImg.layer.borderColor = UIColor.white.cgColor
         thumbImg.layer.cornerRadius = 10
         thumbImg.clipsToBounds = true
     }

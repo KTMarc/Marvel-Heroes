@@ -21,7 +21,7 @@ struct MasterViewControllerModel{
     
     // MARK: Entry Points to Modify / Query Underlying Model
     
-    mutating func append(hero: Hero) {
+    mutating func append(_ hero: Hero) {
         _heroes.append(hero)
     }
     

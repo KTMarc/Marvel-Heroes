@@ -29,8 +29,8 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var blurImage: UIImageView!
-    @IBAction func dismissButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {_ in })
+    @IBAction func dismissButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: {_ in })
     }
     @IBOutlet weak var comicsActivityIndicator: UIActivityIndicatorView!
     
@@ -44,7 +44,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
      Another view controller can set up this view controller's model by calling
      `setHero(_:)` on it.
      */
-    func setHero(hero: Hero) {
+    func setHero(_ hero: Hero) {
         self.hero = hero
     }
     
@@ -59,32 +59,32 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         apiClient.sharedInstance.fetchComics(hero.heroId)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if presentedModally {
-            NSNotificationCenter.defaultCenter().postNotificationName(
-            Consts.Notifications.modal_heroDetail_dismissed.rawValue, object: self)
+            NotificationCenter.default.post(
+            name: Notification.Name(rawValue: Consts.Notifications.modal_heroDetail_dismissed.rawValue), object: self)
         }
     }
     
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: API request 📡
     func listenToNotifications(){
         
-        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {  (_) in
             
             self.comics = apiClient.sharedInstance.getComics()
             print("Received Comics: \(self.comics.count)")
             
             if self.comics.count == 0{
-                self.comicsEmptyStateLabel.hidden = false
+                self.comicsEmptyStateLabel.isHidden = false
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
             self.comicsActivityIndicator.stopAnimating()
                 self.collection.reloadData()
             })
@@ -95,29 +95,29 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: UI
     func setupUI(){
-        if let /*url*/ _ = NSURL.init(string: self.hero.thumbnailUrl) {
+        if let /*url*/ _ = URL.init(string: self.hero.thumbnailUrl) {
             //Big Hero image
             //self.image.hnk_setImageFromURL(url)
-            self.image.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+            self.image.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             
             //Smaller Hero image
             //self.avatarImage.hnk_setImageFromURL(url)
-            self.avatarImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+            self.avatarImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             
             
             self.avatarImage.layer.borderWidth = 3
             self.avatarImage.layer.masksToBounds = false
-            self.avatarImage.layer.borderColor = UIColor.blackColor().CGColor
+            self.avatarImage.layer.borderColor = UIColor.black.cgColor
             //thumbImg.layer.cornerRadius = thumbImg.frame.height / 2
             self.avatarImage.layer.cornerRadius = 10
             self.avatarImage.clipsToBounds = true
             
             //Blurred image background
-            let blurEffect: UIBlurEffect = UIBlurEffect(style: .Dark)
+            let blurEffect: UIBlurEffect = UIBlurEffect(style: .dark)
             let effectView = UIVisualEffectView(effect: blurEffect)
             effectView.frame = self.view.frame
             //self.blurImage.hnk_setImageFromURL(url)
-            self.blurImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+            self.blurImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             
             self.blurImage.addSubview(effectView)
             blurView = UIVisualEffectView(effect: blurEffect)
@@ -129,41 +129,41 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         //Navigation Bar Setup
         self.navigationItem.title = hero.name
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         let backImage = UIImage(named: "backButton.png")
-        let backButton = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HeroDetailVC.dismissVC))
+        let backButton = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(HeroDetailVC.dismissVC))
         self.navigationItem.leftBarButtonItem = backButton
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.redColor()
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.red
         
-        closeButton.tintColor = UIColor.redColor()
+        closeButton.tintColor = UIColor.red
         nameLabel.text = hero.name
         detailDescriptionLabel.text = hero.desc
         idLabel.text = String(hero.heroId)
         comicsActivityIndicator.startAnimating()
         
-        closeButton.hidden = presentedModally ? false : true
+        closeButton.isHidden = presentedModally ? false : true
 
     }
     
     //MARK: Scroll View Delegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yOffset = self.scrollView.contentOffset.y * 0.2
         let availableOffset = min(yOffset, 60)
         let contentRectYOffset = availableOffset / avatarImage.frame.size.height
-        avatarImage.layer.contentsRect = CGRectMake(0.0, contentRectYOffset, 1, 1);
+        avatarImage.layer.contentsRect = CGRect(x: 0.0, y: contentRectYOffset, width: 1, height: 1);
     }
     
     
     //MARK: Collection View Data Source
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Consts.StoryboardIds.COMIC_CELL, forIndexPath: indexPath) as? ComicCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.COMIC_CELL, for: indexPath) as? ComicCell {
             
             let comic: Comic!
-            comic = comics[indexPath.row]
+            comic = comics[(indexPath as NSIndexPath).row]
             cell.configureCell(comic)
             
-            if (indexPath.item == comics.count - 1) && (comics.count > comicOffset){
+            if ((indexPath as NSIndexPath).item == comics.count - 1) && (comics.count > comicOffset){
                 //TODO: Fetch More comics with infinite scroll like we do it with heroes in the Master VC
                 //print("fetching more comics")
                 //comicOffset += 20
@@ -177,17 +177,17 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return comics.count
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     //MARK: Navigation
     func dismissVC(){
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     

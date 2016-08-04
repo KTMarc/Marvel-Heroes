@@ -33,11 +33,11 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.dataSource = self
         //searchBar.delegate = self
         //searchBar.returnKeyType = UIReturnKeyType.Done
-        searchBar.hidden = true
+        searchBar.isHidden = true
         
         //UI
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "navBarLogo.png")
         imageView.image = image
         navigationItem.titleView = imageView
@@ -57,10 +57,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collection.reloadData()
     }
@@ -68,7 +68,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: API request 📡
     func listenToNotifications(){
-        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.heroes.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  (_) in
             
             //FIXME: ARC should do the job here and deallocate all objects from the old struct. This could be better.
             self.model = Model()
@@ -76,17 +76,17 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.model.append($0)
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.collection.reloadData()
             })
             
             //print("Heros from notification: \(self.model.heroes.count)")
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
-         Consts.Notifications.modal_heroDetail_dismissed.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(
+         forName: NSNotification.Name(rawValue: Consts.Notifications.modal_heroDetail_dismissed.rawValue), object: nil, queue: nil) {  (_) in
             self.searchController.searchBar.becomeFirstResponder()
         }
     }
@@ -117,55 +117,55 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     
     //MARK: UI Search Controller Delegate
-    func didPresentSearchController(searchController: UISearchController) {
+    func didPresentSearchController(_ searchController: UISearchController) {
         searchController.searchBar.becomeFirstResponder()
     }
     
-    func willPresentSearchController(searchController: UISearchController) {
+    func willPresentSearchController(_ searchController: UISearchController) {
         //Tap on the search bar
     }
     
-    func didDismissSearchController(searchController: UISearchController) {
+    func didDismissSearchController(_ searchController: UISearchController) {
         //cancel button press
     }
     
-    func willDismissSearchController(searchController: UISearchController) {
+    func willDismissSearchController(_ searchController: UISearchController) {
         //cancel button press
     }
     
     
     //MARK: Search Bar Delegate
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //view.endEditing(true)
     }
     
     // MARK: API request to get suggestions 📡
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if let keystrokes = searchController.searchBar.text where keystrokes != "" {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let keystrokes = searchController.searchBar.text , keystrokes != "" {
             apiClient.sharedInstance.searchHeroes(keystrokes)
         }
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         apiClient.sharedInstance.resetHeroSuggestions()
         collection.reloadData()
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         apiClient.sharedInstance.resetHeroSuggestions()
         collection.reloadData()
     }
     
     //MARK: Collection View Data Soure
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Consts.StoryboardIds.HERO_CELL, forIndexPath: indexPath) as? HeroCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as? HeroCell {
             let hero: Hero!
             
-            hero = model.heroes[indexPath.row]
+            hero = model.heroes[(indexPath as NSIndexPath).row]
             cell.configureCell(hero)
             
-            if (indexPath.item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
+            if ((indexPath as NSIndexPath).item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
                 print("fetching more stuff")
                 currentOffset += 20
                 apiClient.sharedInstance.moreHeroes(currentOffset)
@@ -178,31 +178,31 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.heroes.count
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSizeMake(105, 105)
+        return CGSize(width: 105, height: 105)
     }
 
     
     //MARK: Collection View Delegate
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(Consts.Segues.TO_HERO_DETAIL_VC, sender: nil)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Consts.Segues.TO_HERO_DETAIL_VC, sender: nil)
     }
     
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Consts.Segues.TO_HERO_DETAIL_VC {
-            if let detailsVC = segue.destinationViewController as? HeroDetailVC {
-                if let selectedHeroIndex = collection.indexPathsForSelectedItems() where selectedHeroIndex.count == 1{
-                    let selectedHeroIndex = selectedHeroIndex[0].row
+            if let detailsVC = segue.destination as? HeroDetailVC {
+                if let selectedHeroIndex = collection.indexPathsForSelectedItems , selectedHeroIndex.count == 1{
+                    let selectedHeroIndex = (selectedHeroIndex[0] as NSIndexPath).row
                     let hero = model[heroAt: selectedHeroIndex]
                     detailsVC.setHero(hero)
                 }

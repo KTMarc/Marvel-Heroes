@@ -13,17 +13,17 @@ import UIKit
  http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
  */
 extension UIImageView {
-    func downloadAsyncFrom(link: String, contentMode mode: UIViewContentMode) {
-        guard let url = NSURL(string: link) else { return }
+    func downloadAsyncFrom(_ link: String, contentMode mode: UIViewContentMode) {
+        guard let url = URL(string: link) else { return }
         contentMode = mode
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard
-                let httpURLResponse = response as? NSHTTPURLResponse where httpURLResponse.statusCode == 200,
-                let mimeType = response?.MIMEType where mimeType.hasPrefix("image"),
-                let data = data where error == nil,
+                let httpURLResponse = response as? HTTPURLResponse , httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType , mimeType.hasPrefix("image"),
+                let data = data , error == nil,
                 let image = UIImage(data: data)
                 else { return }
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.image = image
             })
         }

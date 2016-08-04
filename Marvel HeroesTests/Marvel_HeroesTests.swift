@@ -21,7 +21,7 @@ class Marvel_HeroesTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     /**
@@ -51,9 +51,9 @@ class Marvel_HeroesTests: XCTestCase {
         //            print(puta.statusCode)
         //        //}
     
-        let path = NSBundle(forClass: Marvel_HeroesTests.self).pathForResource("listCharacters", ofType: "json")
+        let path = Bundle(for: Marvel_HeroesTests.self).path(forResource: "listCharacters", ofType: "json")
         
-        if let data = NSData(contentsOfFile: path!){
+        if let data = try? Data(contentsOf: URL(fileURLWithPath: path!)){
         
         //This should not be tested directly instantiating the parser
         let parser = Parser(dict: nil, data: data, parseType: .functional)
@@ -66,10 +66,10 @@ class Marvel_HeroesTests: XCTestCase {
     
     
     func testCharactersJSONFileIsDownloadedAndParsed() {
-        let expectation = expectationWithDescription("Download, Parse and create objects")
+        let expectation = self.expectation(description: "Download, Parse and create objects")
         var heroes = [Hero]()
 
-        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.heroes.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: Consts.Notifications.heroes.rawValue, object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
             expectation.fulfill()
@@ -77,7 +77,7 @@ class Marvel_HeroesTests: XCTestCase {
         
         apiClient.sharedInstance.fetchHeroes()
         
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 0)
     }
     
@@ -90,14 +90,14 @@ class Marvel_HeroesTests: XCTestCase {
         
         apiClient.sharedInstance.searchHeroes(partOfHeroName)
         
-        let expectation = expectationWithDescription("Find Spider-Man")
+        let expectation = self.expectation(description: "Find Spider-Man")
         
-        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.suggestions.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: Consts.Notifications.suggestions.rawValue, object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
             expectation.fulfill()
         }
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 1)
         
     }
@@ -109,9 +109,9 @@ class Marvel_HeroesTests: XCTestCase {
         let heroId = 1011334
         var comics = [Comic]()
         
-        let expectation = expectationWithDescription("Receive comics")
+        let expectation = self.expectation(description: "Receive comics")
 
-        NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
             
             comics = apiClient.sharedInstance.getComics()
             expectation.fulfill()
@@ -119,7 +119,7 @@ class Marvel_HeroesTests: XCTestCase {
         
         apiClient.sharedInstance.fetchComics(heroId)
         
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(comics.count, 11)
         
     }
@@ -127,7 +127,7 @@ class Marvel_HeroesTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

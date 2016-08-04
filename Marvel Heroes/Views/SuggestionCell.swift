@@ -26,15 +26,15 @@ class SuggestionCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
 
-    func configureCell(hero: Hero) {
+    func configureCell(_ hero: Hero) {
         self.hero = hero
-        nameLabel.text = self.hero.name.capitalizedString
-        thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .ScaleAspectFill)
+        nameLabel.text = self.hero.name.capitalized
+        thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
 //        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
 //            thumbImg.hnk_setImageFromURL(url)
 //        }

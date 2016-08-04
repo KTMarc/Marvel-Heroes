@@ -17,14 +17,14 @@ struct Hero: Equatable{
     private var _name: String
     private var _heroId: Int
     private var _desc: String
-    private var _modified: NSDate
+    private var _modified: Date
     private var _thumbnailUrl: String
     
-    init(name: String, heroId: Int, desc: String?, modified: NSDate , thumbnailUrl: String) {
+    init(name: String, heroId: Int, desc: String?, modified: Date , thumbnailUrl: String) {
         self._name = name
         self._heroId = heroId
         
-        if let x = desc where x == ""{
+        if let x = desc , x == ""{
             self._desc = Consts.Copies.NO_DESCRIPTION_AVAILABLE_COPY
         } else {
             self._desc = desc!
@@ -47,7 +47,7 @@ struct Hero: Equatable{
         return _desc
     }
     
-    var modified: NSDate {
+    var modified: Date {
         return _modified
     }
     
