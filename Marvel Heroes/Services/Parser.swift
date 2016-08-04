@@ -32,7 +32,7 @@ class Parser: NSObject {
     }
     
     convenience init(parseType: ParseType){
-        self.init(dict: nil, data:nil, parseType: .swifty)
+        self.init(dict: nil, data:nil, parseType: parseType)
     }
     
     func setData(data: NSData){
@@ -88,7 +88,7 @@ class Parser: NSObject {
             
             guard let rootDict = json as? NSDictionary,
                 let dataDict = rootDict["data"] as? Payload,
-                let resultsArray = dataDict["results"] as? Array<NSDictionary>
+                let resultsArray = dataDict["results"] as? [NSDictionary]
                 else { print("error creating the main Dictionary"); break } ///-->Exit now if this is not true
             
             heroes = resultsArray.flatMap({

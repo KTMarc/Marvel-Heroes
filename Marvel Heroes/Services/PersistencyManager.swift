@@ -47,40 +47,60 @@ class PersistencyManager: NSObject {
         
         let URL = NSURL(string: Consts.ApiURL.BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURL.CREDENTIALS)!
         //print(URL)
-        cache.fetch(URL: URL)
-            .onSuccess { JSON in
-                
+        
+        let mySession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let myRequest = NSMutableURLRequest(URL: URL)
+        myRequest.HTTPMethod = "GET"
+        //let myConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let task = mySession.dataTaskWithRequest(myRequest) { (data, response, error) in
+
+        
+        ///Data: NSData
+            ///Response: 200,400,etc..
+            ///Error
+//        cache.fetch(URL: URL)
+//            .onSuccess { JSON in
+//                self._parser.setDict(JSON.dictionary)
+//                
+                self._parser.setData(data!)
                 switch notification {
 
                 case .heroes:
-                    self._parser.setDict(JSON.dictionary)
-                    let newElements = self._parser.parseHeroes(Consts.ApiURL.CHARACTERS)
+                    //self._parser.setDict(JSON.dictionary)
+                    let newElements = self._parser.parseHeroes("nothing")
                     self.heroes.appendContentsOf(newElements)
                     
                 case .comics:
-                    self._parser.setDict(JSON.dictionary)
+                    //self._parser.setDict(JSON.dictionary)
                     let newElements = self._parser.parseComics()
 
                     self.comics = newElements
                     
                 case .suggestions:
-                    self._parser.setDict(JSON.dictionary)
-                    let newElements = self._parser.parseHeroes(Consts.ApiURL.CHARACTERS)
+                    //self._parser.setDict(JSON.dictionary)
+                    let newElements = self._parser.parseHeroes("nothing")
                     self.suggestions = newElements
                     
                 case .modal_heroDetail_dismissed:
                     break
                     
-                }
+                } //End of switch
                 //We completed our job and can the notification can be sent
                 NSNotificationCenter.defaultCenter().postNotificationName(
                     notification.rawValue, object: self)
-            }
+           // } //End of OnSuccess
             
-            .onFailure { (error) in
-                print("Could not fetch from network")
+//            .onFailure { (error) in
+//                print("Could not fetch from network")
+//        
+//        } //End of onFailure
+        
         }
-    }
+    
+        task.resume()
+    
+        } //End of fecthData
+    
     
     
     //MARK: HEROES

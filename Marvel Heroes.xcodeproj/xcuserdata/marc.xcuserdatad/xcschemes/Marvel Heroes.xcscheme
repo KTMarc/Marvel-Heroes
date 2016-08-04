@@ -37,6 +37,17 @@
                BlueprintName = "Marvel HeroesTests"
                ReferencedContainer = "container:Marvel Heroes.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "Marvel_HeroesTests/testPerformanceExample()">
+               </Test>
+               <Test
+                  Identifier = "Marvel_HeroesTests/testThat3DManHas11Comics()">
+               </Test>
+               <Test
+                  Identifier = "Marvel_HeroesTests/testThatWeCanFindSpiderMan()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
