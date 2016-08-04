@@ -15,7 +15,6 @@ import UIKit
 extension UIImageView {
     func downloadAsyncFrom(_ link: String, contentMode mode: UIViewContentMode) {
         guard let url = URL(string: link) else { return }
-        contentMode = mode
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard
                 let httpURLResponse = response as? HTTPURLResponse , httpURLResponse.statusCode == 200,
@@ -25,6 +24,7 @@ extension UIImageView {
                 else { return }
             DispatchQueue.main.async(execute: { () -> Void in
                 self.image = image
+                self.contentMode = mode
             })
         }
         task.resume()
