@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Haneke
+//import Haneke
 
 @testable import Marvel_Heroes
 
