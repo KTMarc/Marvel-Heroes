@@ -15,7 +15,7 @@ class Marvel_HeroesTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        apiClient.sharedInstance
+        _ = apiClient.sharedInstance
     }
     
     override func tearDown() {
@@ -69,7 +69,7 @@ class Marvel_HeroesTests: XCTestCase {
         let expectation = self.expectation(description: "Download, Parse and create objects")
         var heroes = [Hero]()
 
-        NotificationCenter.default.addObserver(forName: Consts.Notifications.heroes.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
             expectation.fulfill()
@@ -92,7 +92,7 @@ class Marvel_HeroesTests: XCTestCase {
         
         let expectation = self.expectation(description: "Find Spider-Man")
         
-        NotificationCenter.default.addObserver(forName: Consts.Notifications.suggestions.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
             expectation.fulfill()
@@ -111,7 +111,7 @@ class Marvel_HeroesTests: XCTestCase {
         
         let expectation = self.expectation(description: "Receive comics")
 
-        NotificationCenter.default.addObserver(forName: Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {  (_) in
             
             comics = apiClient.sharedInstance.getComics()
             expectation.fulfill()

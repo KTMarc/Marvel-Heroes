@@ -16,8 +16,11 @@ import Foundation
 // MARK: Types
 
 /**
- Select different ways of doing things.
+ Select different ways of doing tasks.
  It enforces thinking in a modular way to exchange the logic when necessary
+ So, we can have at some point different implementations of:
+ -Parser: with legacy JSON Serializer, SwiftyJSON, Gloss, etc..
+ -Storage Manager: Legacy NSCache, Haneke, Core Data, Realm, etc..
  */
 
 enum ParseType {
@@ -40,7 +43,7 @@ class apiClient: NSObject {
 
     class var sharedInstance: apiClient {
         struct Singleton {
-            static let instance = apiClient(parseType: .functional, storageArchitecture: .haneke)
+            static let instance = apiClient(parseType: .functional, storageArchitecture: .other)
         }
         return Singleton.instance
     }
@@ -107,7 +110,7 @@ class apiClient: NSObject {
     }
     
     /**
-     Cleans the Suggestions Ciew Controller and leaves it ready for the next keystroke or deletion
+     Cleans the Suggestions View Controller and leaves it ready for the next keystroke or deletion
      */
     
     func resetHeroSuggestions(){

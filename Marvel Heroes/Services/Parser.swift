@@ -49,12 +49,24 @@ class Parser: NSObject {
         return parseHero()
     }
 
+    func serialize() -> [NSDictionary]? {
+        guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
+            else { print("error creating JSON"); return nil } ///-->Exit now if this is not true
+        
+        guard let rootDict = json as? NSDictionary,
+            let dataDict = rootDict["data"] as? Payload,
+            let resultsArray = dataDict["results"] as? [NSDictionary]
+            else { print("error creating the main Dictionary"); return nil} ///-->Exit now if this is not true
+        return resultsArray
+    }
+    
     func parseHero() -> [Hero]{
         var heroes : [Hero] = []
         
         switch _parseType {
         case .swifty:
             break
+            //MARK: Uncomment when SwiftyJSON supports Swift3
 //            let json = JSON(_dict!)
 //            if let results = json["data"]["results"].array {
 //                //print("Received \(results.count) elements\n")
@@ -82,19 +94,12 @@ class Parser: NSObject {
 //            }
             
         case .functional:
-            
-            guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
-                else { print("error creating JSON"); break } ///-->Exit now if this is not true
-            
-            guard let rootDict = json as? NSDictionary,
-                let dataDict = rootDict["data"] as? Payload,
-                let resultsArray = dataDict["results"] as? [NSDictionary]
-                else { print("error creating the main Dictionary"); break } ///-->Exit now if this is not true
-            
+            guard let resultsArray : [NSDictionary] = serialize()
+            else { print("Couldn't serialize and we didn´t even start to create objects"); break }
             heroes = resultsArray.flatMap({
                 //(resultsDict: NSDictionary) -> Hero in
                 guard let name = $0["name"] as? String,
-                    let heroId = $0["id"] as? Int,
+                    let theId = $0["id"] as? Int,
                     let desc = $0["description"] as? String
                     else { return nil }
                 
@@ -104,7 +109,7 @@ class Parser: NSObject {
                     let thumbnailCompletePath : String = fileName + "." + fileExtension
                     else { fatalError("no thumbnail path")  }
                 
-                return Hero(name: name,heroId: heroId,desc: desc,modified: Date(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
+                return Hero(name: name,heroId: theId,desc: desc,modified: Date(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
             })
             
         }
@@ -117,7 +122,7 @@ class Parser: NSObject {
         switch _parseType {
         case .swifty:
             break
-        
+//MARK: Uncomment when SwiftyJSON supports Swift3
 //        let json = JSON(_dict!)
 //        if let results = json["data"]["results"].array {
 //            print("Received \(results.count) comics\n")
@@ -139,7 +144,8 @@ class Parser: NSObject {
 //            }
 //        }
         case .functional:
-            
+//            guard let resultsArray : [NSDictionary] = serialize()
+//                else { print("Couldn't serialize and we didn´t even start to create objects"); break }
             guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
                 else { print("error creating JSON"); break } ///-->Exit now if this is not true
             
@@ -147,26 +153,27 @@ class Parser: NSObject {
                 let dataDict = rootDict["data"] as? Payload,
                 let resultsArray = dataDict["results"] as? [NSDictionary]
                 else { print("error creating the main Dictionary"); break } ///-->Exit now if this is not true
-            
+
             comics = resultsArray.flatMap({
-                //(resultsDict: NSDictionary) -> Hero in
                 guard let name = $0["title"] as? String,
-                    let heroId = $0["id"] as? Int
+                    let theId = $0["id"] as? Int
                     else { return nil }
                 
                 guard let thumbnail = $0["thumbnail"] as? [String:String],
                     let fileName = thumbnail["path"],
                     let fileExtension = thumbnail["extension"],
                     let thumbnailCompletePath : String = fileName + "." + fileExtension
-                    else { fatalError("no thumbnail path")  }
+                    else { fatalError("no thumbnail path")}
                 
-                return  Comic(title: name,comicId: heroId, thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
-                
+                return  Comic(title: name,comicId: theId, thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
             })
-        }
+        }//Switch end
+        
         //print(comics)
         return comics
-    }
-}
+    
+    } //Function end
+    
+} //Class end
 
 

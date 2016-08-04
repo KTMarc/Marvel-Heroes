@@ -68,20 +68,13 @@ class PersistencyManager: NSObject {
                 switch notification {
 
                 case .heroes:
-                    //self._parser.setDict(JSON.dictionary)
-                    let newElements = self._parser.parseHeroes("nothing")
-                    self.heroes.append(contentsOf: newElements)
+                    self.heroes.append(contentsOf: self._parser.parseHeroes("nothing"))
                     
                 case .comics:
-                    //self._parser.setDict(JSON.dictionary)
-                    let newElements = self._parser.parseComics()
-
-                    self.comics = newElements
+                    self.comics = self._parser.parseComics()
                     
                 case .suggestions:
-                    //self._parser.setDict(JSON.dictionary)
-                    let newElements = self._parser.parseHeroes("nothing")
-                    self.suggestions = newElements
+                    self.suggestions = self._parser.parseHeroes("nothing")
                     
                 case .modal_heroDetail_dismissed:
                     break
@@ -89,7 +82,8 @@ class PersistencyManager: NSObject {
                 } //End of switch
                 //We completed our job and can the notification can be sent
                 NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: notification.rawValue), object: self)
+                    name: Notification.Name(notification.rawValue), object: self)
+            
            // } //End of OnSuccess
             
             
