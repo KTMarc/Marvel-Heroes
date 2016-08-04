@@ -38,7 +38,9 @@ class SuggestionsViewController: UITableViewController{
         NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.suggestions.rawValue, object: nil, queue: nil) {  (_) in
             self.heroes = apiClient.sharedInstance.getHeroSuggestions()
             //print("Suggested results count: \(self.heroes.count)")
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+            })
         }
     }
     

@@ -76,14 +76,19 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func listenToNotifications(){
         
         NSNotificationCenter.defaultCenter().addObserverForName(Consts.Notifications.comics.rawValue, object: nil, queue: nil) {  (_) in
-            self.comicsActivityIndicator.stopAnimating()
+            
             self.comics = apiClient.sharedInstance.getComics()
             print("Received Comics: \(self.comics.count)")
             
             if self.comics.count == 0{
                 self.comicsEmptyStateLabel.hidden = false
             }
-            self.collection.reloadData()
+            
+            dispatch_async(dispatch_get_main_queue(), {
+            self.comicsActivityIndicator.stopAnimating()
+                self.collection.reloadData()
+            })
+            
         }
     }
     

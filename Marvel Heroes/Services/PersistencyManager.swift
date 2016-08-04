@@ -90,6 +90,7 @@ class PersistencyManager: NSObject {
                     notification.rawValue, object: self)
            // } //End of OnSuccess
             
+            
 //            .onFailure { (error) in
 //                print("Could not fetch from network")
 //        

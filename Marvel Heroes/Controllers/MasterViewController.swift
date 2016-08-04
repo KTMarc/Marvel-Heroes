@@ -76,7 +76,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.model.append($0)
             }
             
-            self.collection.reloadData()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.collection.reloadData()
+            })
+            
             //print("Heros from notification: \(self.model.heroes.count)")
         }
         
