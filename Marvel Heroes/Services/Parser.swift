@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+//import SwiftyJSON
 
 /**
  Parses JSON files
@@ -54,32 +54,32 @@ class Parser: NSObject {
         
         switch _parseType {
         case .swifty:
-            
-            let json = JSON(_dict!)
-            if let results = json["data"]["results"].array {
-                //print("Received \(results.count) elements\n")
-                for (_,subJson):(String, JSON) in JSON(results) {
-                    ///print(subJson["name"].string)
-                    if let theId = subJson["id"].int {
-                        if let theName = subJson["name"].string {
-                            if let theDescription = subJson["description"].string{ //This is never nil, returns "" if no description
-                                if let theThumbnail = subJson["thumbnail"].dictionary{
-                                    let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
-                                    
-                                    heroes.append(Hero(
-                                        name: theName,
-                                        heroId: theId,
-                                        desc: theDescription,
-                                        modified:NSDate(),
-                                        thumbnailUrl: thumbnailCompletePath))
-                                } else { print("Thumbnail of \(theName) was nil")}
-                            }else{ print("Description of \(theName) was nil")}
-                        }
-                    }
-                    
-                }
-                //print(heroes)
-            }
+            break
+//            let json = JSON(_dict!)
+//            if let results = json["data"]["results"].array {
+//                //print("Received \(results.count) elements\n")
+//                for (_,subJson):(String, JSON) in JSON(results) {
+//                    ///print(subJson["name"].string)
+//                    if let theId = subJson["id"].int {
+//                        if let theName = subJson["name"].string {
+//                            if let theDescription = subJson["description"].string{ //This is never nil, returns "" if no description
+//                                if let theThumbnail = subJson["thumbnail"].dictionary{
+//                                    let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
+//                                    
+//                                    heroes.append(Hero(
+//                                        name: theName,
+//                                        heroId: theId,
+//                                        desc: theDescription,
+//                                        modified:NSDate(),
+//                                        thumbnailUrl: thumbnailCompletePath))
+//                                } else { print("Thumbnail of \(theName) was nil")}
+//                            }else{ print("Description of \(theName) was nil")}
+//                        }
+//                    }
+//                    
+//                }
+//                //print(heroes)
+//            }
             
         case .functional:
             
@@ -113,25 +113,56 @@ class Parser: NSObject {
     
     func parseComics() -> [Comic]{
         var comics : [Comic] = []
-        let json = JSON(_dict!)
-        if let results = json["data"]["results"].array {
-            print("Received \(results.count) comics\n")
-            for (_,subJson):(String, JSON) in JSON(results) {
-                //print(subJson["title"].string)
-                if let theId = subJson["id"].int {
-                    if let theTitle = subJson["title"].string {
-                            if let theThumbnail = subJson["thumbnail"].dictionary{
-                                let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
-                                
-                                comics.append(Comic(
-                                    title: theTitle,
-                                    comicId: theId,
-                                    thumbnailUrl: thumbnailCompletePath))
-                                //print(comics.count)
-                        }
-                    }
-                }
-            }
+        
+        switch _parseType {
+        case .swifty:
+            break
+        
+//        let json = JSON(_dict!)
+//        if let results = json["data"]["results"].array {
+//            print("Received \(results.count) comics\n")
+//            for (_,subJson):(String, JSON) in JSON(results) {
+//                //print(subJson["title"].string)
+//                if let theId = subJson["id"].int {
+//                    if let theTitle = subJson["title"].string {
+//                            if let theThumbnail = subJson["thumbnail"].dictionary{
+//                                let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
+//                                
+//                                comics.append(Comic(
+//                                    title: theTitle,
+//                                    comicId: theId,
+//                                    thumbnailUrl: thumbnailCompletePath))
+//                                //print(comics.count)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        case .functional:
+            
+            guard let json = try? NSJSONSerialization.JSONObjectWithData(_data!, options: .AllowFragments)
+                else { print("error creating JSON"); break } ///-->Exit now if this is not true
+            
+            guard let rootDict = json as? NSDictionary,
+                let dataDict = rootDict["data"] as? Payload,
+                let resultsArray = dataDict["results"] as? [NSDictionary]
+                else { print("error creating the main Dictionary"); break } ///-->Exit now if this is not true
+            
+            comics = resultsArray.flatMap({
+                //(resultsDict: NSDictionary) -> Hero in
+                guard let name = $0["title"] as? String,
+                    let heroId = $0["id"] as? Int
+                    else { return nil }
+                
+                guard let thumbnail = $0["thumbnail"] as? [String:String],
+                    let fileName = thumbnail["path"],
+                    let fileExtension = thumbnail["extension"],
+                    let thumbnailCompletePath : String = fileName + "." + fileExtension
+                    else { fatalError("no thumbnail path")  }
+                
+                return  Comic(title: name,comicId: heroId, thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
+                
+            })
         }
         //print(comics)
         return comics
