@@ -144,16 +144,9 @@ class Parser: NSObject {
 //            }
 //        }
         case .functional:
-//            guard let resultsArray : [NSDictionary] = serialize()
-//                else { print("Couldn't serialize and we didn´t even start to create objects"); break }
-            guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
-                else { print("error creating JSON"); break } ///-->Exit now if this is not true
+            guard let resultsArray : [NSDictionary] = serialize()
+                else { print("Couldn't serialize and we didn´t even start to create objects"); break }
             
-            guard let rootDict = json as? NSDictionary,
-                let dataDict = rootDict["data"] as? Payload,
-                let resultsArray = dataDict["results"] as? [NSDictionary]
-                else { print("error creating the main Dictionary"); break } ///-->Exit now if this is not true
-
             comics = resultsArray.flatMap({
                 guard let name = $0["title"] as? String,
                     let theId = $0["id"] as? Int
