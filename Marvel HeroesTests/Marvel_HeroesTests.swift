@@ -66,13 +66,13 @@ class Marvel_HeroesTests: XCTestCase {
     
     
     func testCharactersJSONFileIsDownloadedAndParsed() {
-        let expectation = self.expectation(description: "Download, Parse and create objects")
+        weak var expectation = self.expectation(description: "Download, Parse and create objects")
         var heroes = [Hero]()
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
-            expectation.fulfill()
+            expectation?.fulfill()
         }
         
         apiClient.sharedInstance.fetchHeroes()
@@ -90,12 +90,12 @@ class Marvel_HeroesTests: XCTestCase {
         
         apiClient.sharedInstance.searchHeroes(partOfHeroName)
         
-        let expectation = self.expectation(description: "Find Spider-Man")
+        weak var expectation = self.expectation(description: "Find Spider-Man")
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: nil, queue: nil) {  (_) in
             
             heroes = apiClient.sharedInstance.getHeroes()
-            expectation.fulfill()
+            expectation?.fulfill()
         }
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 1)
@@ -109,12 +109,12 @@ class Marvel_HeroesTests: XCTestCase {
         let heroId = 1011334
         var comics = [Comic]()
         
-        let expectation = self.expectation(description: "Receive comics")
+        weak var expectation = self.expectation(description: "Receive comics")
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {  (_) in
             
             comics = apiClient.sharedInstance.getComics()
-            expectation.fulfill()
+            expectation?.fulfill()
         }
         
         apiClient.sharedInstance.fetchComics(heroId)
