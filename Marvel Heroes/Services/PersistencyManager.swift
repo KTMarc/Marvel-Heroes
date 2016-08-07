@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import UIKit
 //import Haneke
 
+
+typealias ImageCacheCompletion = (UIImage) -> Void
 
 /**
  Responsible of managing network and local cache of images and JSON files
  Works together with the parser class to serialize objects from JSON.
  */
+
 
 class PersistencyManager: NSObject {
     private var heroes : [Hero] = []
@@ -22,8 +26,9 @@ class PersistencyManager: NSObject {
     //private let cache = Shared.JSONCache
     private let _parser : Parser
     private let _storageArchitecture : StorageArchitecture
+    private let _cache = NSCache<NSString,UIImage>()
     
-//    override init() {
+    //    override init() {
 //        super.init()
 //        fetchHeroes()
 //    }
@@ -107,6 +112,53 @@ class PersistencyManager: NSObject {
     
     func getHeroes() -> [Hero] {
         return heroes
+    }
+    
+    func getHero(id: Int) -> Hero?{
+        guard let hero : [Hero] = heroes.filter({
+            $0.heroId == id
+        })
+            
+        else { return nil }
+        
+        return hero[0]
+    }
+    
+//    func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
+//        
+//        if let image = _cache.object(forKey: link){
+//            
+//            return image
+//        } else {
+//            //Download it
+//            guard let url = URL(string: link)
+//                else { return nil}
+//            
+//            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            guard let httpURLResponse = response as? HTTPURLResponse ,
+//                    httpURLResponse.statusCode == 200,
+//                    let mimeType = response?.mimeType ,
+//                    mimeType.hasPrefix("image"),
+//                    let data = data ,
+//                    error == nil
+//                else { return }
+//            
+//            guard let downloadedImage = UIImage(data: data)
+//                else { return }
+//            self._cache.setObject(downloadedImage, forKey: link)
+//                
+//            DispatchQueue.main.async(execute: { () -> Void in
+//                completion(downloadedImage)
+//            })
+//            
+//            }
+//            task.resume()
+//        }
+//        return nil
+//    }
+//    
+    func getCache() -> NSCache<NSString,UIImage>{
+        return _cache
     }
     
     func getMoreHeroes(_ offset: Int) {

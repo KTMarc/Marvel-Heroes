@@ -16,6 +16,7 @@
 		491466D01CBECB2900DAD512 /* SuggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491466CF1CBECB2900DAD512 /* SuggestionCell.xib */; };
 		491466D21CBECBB000DAD512 /* SuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491466D11CBECBB000DAD512 /* SuggestionCell.swift */; };
 		491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */; };
+		491E936E1D565709003AA7ED /* imgres.png in Resources */ = {isa = PBXBuildFile; fileRef = 491E936D1D565709003AA7ED /* imgres.png */; };
 		492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D31CBA7E930086D348 /* AppDelegate.swift */; };
 		492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D51CBA7E930086D348 /* MasterViewController.swift */; };
 		492D08DB1CBA7E930086D348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 492D08D91CBA7E930086D348 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		4974530D1D49739A00221C7B /* listCharacters_full.json in Resources */ = {isa = PBXBuildFile; fileRef = 4974530C1D49739A00221C7B /* listCharacters_full.json */; };
 		4985E2BF1D4518A1004C4AE6 /* MasterViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */; };
 		498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */; };
+		49A2F5431D57ED4D00998AE9 /* URL+fetchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2F5421D57ED4D00998AE9 /* URL+fetchImage.swift */; };
 		49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA5A051CC05784005A9710 /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		491466CF1CBECB2900DAD512 /* SuggestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuggestionCell.xib; path = Views/SuggestionCell.xib; sourceTree = "<group>"; };
 		491466D11CBECBB000DAD512 /* SuggestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionCell.swift; path = Views/SuggestionCell.swift; sourceTree = "<group>"; };
 		491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailVC.swift; path = Views/HeroDetailVC.swift; sourceTree = "<group>"; };
+		491E936C1D565533003AA7ED /* TestsPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestsPlayground.playground; sourceTree = "<group>"; };
+		491E936D1D565709003AA7ED /* imgres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgres.png; sourceTree = "<group>"; };
 		492D08D01CBA7E930086D348 /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D08D31CBA7E930086D348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		492D08D51CBA7E930086D348 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = Controllers/MasterViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 		4974530C1D49739A00221C7B /* listCharacters_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listCharacters_full.json; sourceTree = "<group>"; };
 		4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewControllerModel.swift; path = Controllers/MasterViewControllerModel.swift; sourceTree = "<group>"; };
 		498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsViewController.swift; path = Controllers/SuggestionsViewController.swift; sourceTree = "<group>"; };
+		49A2F5421D57ED4D00998AE9 /* URL+fetchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL+fetchImage.swift"; path = "Extensions/URL+fetchImage.swift"; sourceTree = "<group>"; };
 		49DA5A051CC05784005A9710 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +130,7 @@
 				490A100A1CBF7F5800A334A3 /* GothamXNarrow-Book.otf */,
 				490A10061CBF79F700A334A3 /* GOTHAM-BOLD.TTF */,
 				490A10081CBF7BF900A334A3 /* GothamLight.ttf */,
+				491E936D1D565709003AA7ED /* imgres.png */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				4910580B1D50A2BF00595AE1 /* UIImageView+AsyncDownload.swift */,
+				49A2F5421D57ED4D00998AE9 /* URL+fetchImage.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				492D08D31CBA7E930086D348 /* AppDelegate.swift */,
+				491E936C1D565533003AA7ED /* TestsPlayground.playground */,
 				4968BE8E1CBBD2610094B53F /* Helpers */,
 				4910580D1D50A2D600595AE1 /* Extensions */,
 				4968BE8D1CBBD2460094B53F /* Services */,
@@ -408,6 +416,7 @@
 				492D08E01CBA7E930086D348 /* LaunchScreen.storyboard in Resources */,
 				490A10091CBF7BF900A334A3 /* GothamLight.ttf in Resources */,
 				492D08DD1CBA7E930086D348 /* Assets.xcassets in Resources */,
+				491E936E1D565709003AA7ED /* imgres.png in Resources */,
 				490A10071CBF79F700A334A3 /* GOTHAM-BOLD.TTF in Resources */,
 				490A100B1CBF850000A334A3 /* GothamXNarrow-Book.otf in Resources */,
 				492D08DB1CBA7E930086D348 /* Main.storyboard in Resources */,
@@ -440,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				490EA9961CBD78C100F7071D /* Comic.swift in Sources */,
+				49A2F5431D57ED4D00998AE9 /* URL+fetchImage.swift in Sources */,
 				498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */,
 				491466CC1CBEA58E00DAD512 /* ComicCell.swift in Sources */,
 				4968BE921CBBF08B0094B53F /* Parser.swift in Sources */,

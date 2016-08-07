@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  Visible Interface for the View Controllers
@@ -56,6 +57,19 @@ class apiClient: NSObject {
         super.init()
     }
     
+    //MARK: IMAGES
+    
+//    func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
+//        return persistencyManager.getImage(link: link, completion: { (image) in
+//            print("imagen bajada")
+//        })
+//    }
+//    
+    func getCache() -> NSCache<NSString,UIImage>{
+        return persistencyManager.getCache()
+    }
+    
+    
     //MARK: HEROES
     
     /**
@@ -78,6 +92,14 @@ class apiClient: NSObject {
         return persistencyManager.getHeroes()
     }
     
+    /**
+     Returns a specific Hero
+     - returns: A Hero or Nil if we didn´t find it
+     */
+//    func getHero(id: Int) -> Hero{
+//        return persistencyManager.getHero(id: id)!
+//    }
+//    
     /**
     Fetches more elements with a given offset
      - parameter offset: An int representing the next batch start: 0, 20, 40
@@ -116,7 +138,6 @@ class apiClient: NSObject {
     func resetHeroSuggestions(){
         return persistencyManager.resetHeroSuggestions()
     }
-    
     
     
     

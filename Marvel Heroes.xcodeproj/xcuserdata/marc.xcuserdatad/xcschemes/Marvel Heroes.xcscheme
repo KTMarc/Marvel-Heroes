@@ -52,6 +52,11 @@
                BlueprintName = "Marvel HeroesUITests"
                ReferencedContainer = "container:Marvel Heroes.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "Marvel_HeroesUITests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
