@@ -121,9 +121,37 @@ class Marvel_HeroesTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(comics.count, 11)
-        
     }
     
+    func downloadOrNot( downloadCount: Int, cache: NSCache<AnyObject, AnyObject>, hero: Hero) -> Int{
+        
+        var imageView : UIImageView
+        if let image = cache.object(forKey: hero.thumbnailUrl) as? UIImage{
+            imageView = UIImageView(image: image)
+        } else {
+            //Download the fucking image
+            imageView = UIImageView(image: UIImage(contentsOfFile: "navBarLogo.png"))
+            
+            imageView.downloadAsyncFrom(hero.thumbnailUrl, contentMode: .scaleAspectFill){
+                cache.setObject(imageView.image!, forKey: hero.thumbnailUrl)
+     //           return ((Int)downloadCount + 1)
+            }
+        }
+        return downloadCount
+    }
+    
+//    func testThatWeCanCacheImages(){
+//        
+//        let imgCache = NSCache<AnyObject,AnyObject> ()
+//        let hero = apiClient.sharedInstance.getHero(id: 1011334)
+//
+//        var downloadCount = 0
+//        
+//        downloadCount = downloadOrNot(downloadCount: downloadCount, cache: imgCache, hero: hero)
+//        
+//        XCTAssertEqual(downloadCount,1)
+//        
+//    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
