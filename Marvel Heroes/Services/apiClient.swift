@@ -37,8 +37,8 @@ enum StorageArchitecture {
 class apiClient: NSObject {
     
     // MARK: Properties
-    private let persistencyManager: PersistencyManager
-    private let isOnline: Bool
+    private let _persistencyManager: PersistencyManager
+    private let _isOnline: Bool
     private let _parseType: ParseType
     private let _storageArchitecture : StorageArchitecture
 
@@ -52,8 +52,8 @@ class apiClient: NSObject {
     init(parseType: ParseType, storageArchitecture: StorageArchitecture) {
         _parseType = parseType
         _storageArchitecture = storageArchitecture
-        persistencyManager = PersistencyManager(parseType: _parseType, storageArchitecture: _storageArchitecture)
-        isOnline = false
+        _persistencyManager = PersistencyManager(parseType: _parseType, storageArchitecture: _storageArchitecture)
+        _isOnline = false
         super.init()
     }
     
@@ -66,7 +66,7 @@ class apiClient: NSObject {
 //    }
 //    
     func getCache() -> NSCache<NSString,UIImage>{
-        return persistencyManager.getCache()
+        return _persistencyManager.getCache()
     }
     
     
@@ -79,8 +79,8 @@ class apiClient: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    func fetchHeroes(){
-        return persistencyManager.fetchHeroes()
+    func fetchHeroes() {
+         _persistencyManager.fetchHeroes()
     }
     
     /**
@@ -89,7 +89,7 @@ class apiClient: NSObject {
      */
     
     func getHeroes() -> [Hero]{
-        return persistencyManager.getHeroes()
+        return _persistencyManager.getHeroes()
     }
     
     /**
@@ -107,7 +107,7 @@ class apiClient: NSObject {
      */
     
     func moreHeroes(_ offset: Int){
-        persistencyManager.getMoreHeroes(offset)
+        _persistencyManager.getMoreHeroes(offset)
     }
     
     
@@ -119,7 +119,7 @@ class apiClient: NSObject {
      */
     
     func searchHeroes(_ keystrokes: String){
-        return persistencyManager.searchHeroes(keystrokes)
+        return _persistencyManager.searchHeroes(keystrokes)
     }
     
     /**
@@ -128,7 +128,7 @@ class apiClient: NSObject {
      */
     
     func getHeroSuggestions() -> [Hero]{
-        return persistencyManager.getHeroSuggestions()
+        return _persistencyManager.getHeroSuggestions()
     }
     
     /**
@@ -136,7 +136,7 @@ class apiClient: NSObject {
      */
     
     func resetHeroSuggestions(){
-        return persistencyManager.resetHeroSuggestions()
+        return _persistencyManager.resetHeroSuggestions()
     }
     
     
@@ -150,7 +150,7 @@ class apiClient: NSObject {
      */
     
     func fetchComics(_ heroId: Int){
-         persistencyManager.fetchComics(heroId)
+         _persistencyManager.fetchComics(heroId)
     }
     
     /**
@@ -159,7 +159,7 @@ class apiClient: NSObject {
      */
     
     func getComics() -> [Comic]{
-        return persistencyManager.getComics()
+        return _persistencyManager.getComics()
     }
 
 }
