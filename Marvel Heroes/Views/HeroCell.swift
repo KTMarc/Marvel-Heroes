@@ -1,4 +1,4 @@
-//
+    //
 //  HeroCell.swift
 //  Marvel Heroes
 //
@@ -31,7 +31,7 @@ class HeroCell: UICollectionViewCell {
         //FIXME: This should happen in the ViewModel
         //thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
         //thumbImg.image = self.hero.getPhoto()
-        //_ = apiClient.sharedInstance.getImage(link: self.hero.thumbnailUrl, completion: { downloadedImage in
+        //_ = apiClient.singleton.getImage(link: self.hero.thumbnailUrl, completion: { downloadedImage in
             //self.thumbImg.image = downloadedImage })
     
         let heroUrl = URL(string: self.hero.thumbnailUrl)

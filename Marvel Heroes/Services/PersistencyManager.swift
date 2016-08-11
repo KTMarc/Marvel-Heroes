@@ -33,7 +33,7 @@ class PersistencyManager: NSObject {
 //        fetchHeroes()
 //    }
     
-//    class var sharedInstance: PersistencyManager {
+//    class var singleton: PersistencyManager {
 //        struct Singleton {
 //            static let instance = PersistencyManager(parseType: .functional, storageArchitecture: .other)
 //        }

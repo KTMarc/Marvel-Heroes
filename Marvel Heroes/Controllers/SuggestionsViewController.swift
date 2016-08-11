@@ -36,7 +36,7 @@ class SuggestionsViewController: UITableViewController{
     //MARK: API request 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: nil, queue: nil) {  (_) in
-            self.heroes = apiClient.sharedInstance.getHeroSuggestions()
+            self.heroes = apiClient.singleton.getHeroSuggestions()
             //print("Suggested results count: \(self.heroes.count)")
             DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()

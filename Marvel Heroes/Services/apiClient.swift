@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /**
- Visible Interface for the View Controllers
+ This it the FAÇADE DESIGN PATTERN, provides a single interface to a complex subsystem. Instead of exposing the user to a set of classes and their APIs, you only expose one simple unified API
  Behind it there are other entities that are not accessible for them
  */
 
@@ -42,13 +42,10 @@ class apiClient: NSObject {
     private let _parseType: ParseType
     private let _storageArchitecture : StorageArchitecture
 
-    class var sharedInstance: apiClient {
-        struct Singleton {
-            static let instance = apiClient(parseType: .functional, storageArchitecture: .other)
-        }
-        return Singleton.instance
-    }
-
+    //Singleton definition:
+    //supports lazy initialization because Swift lazily initializes class constants (and variables), and is thread safe by the definition of let
+    static let singleton = apiClient(parseType: .functional, storageArchitecture: .other)
+    
     init(parseType: ParseType, storageArchitecture: StorageArchitecture) {
         _parseType = parseType
         _storageArchitecture = storageArchitecture

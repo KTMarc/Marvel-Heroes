@@ -15,7 +15,7 @@ class Marvel_HeroesTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        _ = apiClient.sharedInstance
+        _ = apiClient.singleton
     }
     
     override func tearDown() {
@@ -71,11 +71,11 @@ class Marvel_HeroesTests: XCTestCase {
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  (_) in
             
-            heroes = apiClient.sharedInstance.getHeroes()
+            heroes = apiClient.singleton.getHeroes()
             expectation?.fulfill()
         }
         
-        apiClient.sharedInstance.fetchHeroes()
+        apiClient.singleton.fetchHeroes()
         
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 0)
@@ -88,13 +88,13 @@ class Marvel_HeroesTests: XCTestCase {
         let partOfHeroName = "Spider"
         var heroes = [Hero]()
         
-        apiClient.sharedInstance.searchHeroes(partOfHeroName)
+        apiClient.singleton.searchHeroes(partOfHeroName)
         
         weak var expectation = self.expectation(description: "Find Spider-Man")
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: nil, queue: nil) {  (_) in
             
-            heroes = apiClient.sharedInstance.getHeroes()
+            heroes = apiClient.singleton.getHeroes()
             expectation?.fulfill()
         }
         waitForExpectations(timeout: 5, handler: nil)
@@ -113,11 +113,11 @@ class Marvel_HeroesTests: XCTestCase {
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {  (_) in
             
-            comics = apiClient.sharedInstance.getComics()
+            comics = apiClient.singleton.getComics()
             expectation?.fulfill()
         }
         
-        apiClient.sharedInstance.fetchComics(heroId)
+        apiClient.singleton.fetchComics(heroId)
         
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(comics.count, 11)
@@ -143,7 +143,7 @@ class Marvel_HeroesTests: XCTestCase {
 //    func testThatWeCanCacheImages(){
 //        
 //        let imgCache = NSCache<AnyObject,AnyObject> ()
-//        let hero = apiClient.sharedInstance.getHero(id: 1011334)
+//        let hero = apiClient.singleton.getHero(id: 1011334)
 //
 //        var downloadCount = 0
 //        

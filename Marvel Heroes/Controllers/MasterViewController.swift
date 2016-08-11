@@ -44,13 +44,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 
         /// On init of apiClient we also init the persistencyManager and start fetching heroes
         
-        //apiClient.sharedInstance
+        //apiClient.singleton
         //apiClient.fetchHeroes()
         
         listenToNotifications()
         
-        let kk = apiClient.sharedInstance
-        kk.fetchHeroes()
+        let _ = apiClient.singleton.fetchHeroes()
         
         configureSearchController()
         
@@ -72,7 +71,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             //FIXME: ARC should do the job here and deallocate all objects from the old struct. This could be better.
             self.model = Model()
-            _ = apiClient.sharedInstance.getHeroes().map{
+            _ = apiClient.singleton.getHeroes().map{
                 self.model.append($0)
             }
             
@@ -142,17 +141,17 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     // MARK: API request to get suggestions 📡
     func updateSearchResults(for searchController: UISearchController) {
         if let keystrokes = searchController.searchBar.text , keystrokes != "" {
-            apiClient.sharedInstance.searchHeroes(keystrokes)
+            apiClient.singleton.searchHeroes(keystrokes)
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        apiClient.sharedInstance.resetHeroSuggestions()
+        apiClient.singleton.resetHeroSuggestions()
         collection.reloadData()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        apiClient.sharedInstance.resetHeroSuggestions()
+        apiClient.singleton.resetHeroSuggestions()
         collection.reloadData()
     }
     
@@ -168,7 +167,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             if ((indexPath as NSIndexPath).item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
                 print("fetching more stuff")
                 currentOffset += 20
-                apiClient.sharedInstance.moreHeroes(currentOffset)
+                apiClient.singleton.moreHeroes(currentOffset)
             }
             cell.fadeIn()
             return cell

@@ -56,7 +56,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         listenToNotifications()
         //Ask for comics
-        apiClient.sharedInstance.fetchComics(hero.heroId)
+        apiClient.singleton.fetchComics(hero.heroId)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,7 +77,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {  (_) in
             
-            self.comics = apiClient.sharedInstance.getComics()
+            self.comics = apiClient.singleton.getComics()
             print("Received Comics: \(self.comics.count)")
             
             if self.comics.count == 0{
@@ -167,7 +167,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 //TODO: Fetch More comics with infinite scroll like we do it with heroes in the Master VC
                 //print("fetching more comics")
                 //comicOffset += 20
-                //apiClient.sharedInstance.moreComics(comicOffset)
+                //apiClient.singleton.moreComics(comicOffset)
             }
             
             return cell
