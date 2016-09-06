@@ -126,14 +126,14 @@ class Marvel_HeroesTests: XCTestCase {
     func downloadOrNot( downloadCount: Int, cache: NSCache<AnyObject, AnyObject>, hero: Hero) -> Int{
         
         var imageView : UIImageView
-        if let image = cache.object(forKey: hero.thumbnailUrl) as? UIImage{
+        if let image = cache.object(forKey: hero.thumbnailUrl as AnyObject) as? UIImage{
             imageView = UIImageView(image: image)
         } else {
             //Download the fucking image
             imageView = UIImageView(image: UIImage(contentsOfFile: "navBarLogo.png"))
             
             imageView.downloadAsyncFrom(hero.thumbnailUrl, contentMode: .scaleAspectFill){
-                cache.setObject(imageView.image!, forKey: hero.thumbnailUrl)
+                cache.setObject(imageView.image!, forKey: hero.thumbnailUrl as AnyObject)
      //           return ((Int)downloadCount + 1)
             }
         }
