@@ -49,7 +49,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         listenToNotifications()
         
-        let _ = apiClient.singleton.fetchHeroes()
+        apiClient.singleton.fetchHeroes()
         
         configureSearchController()
         
@@ -79,7 +79,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.collection.reloadData()
             })
             
-            //print("Heros from notification: \(self.model.heroes.count)")
+            //print("Heroes from notification: \(self.model.heroes.count)")
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -197,7 +197,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
 
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Consts.Segues.TO_HERO_DETAIL_VC {
             if let detailsVC = segue.destination as? HeroDetailVC {
                 if let selectedHeroIndex = collection.indexPathsForSelectedItems , selectedHeroIndex.count == 1{

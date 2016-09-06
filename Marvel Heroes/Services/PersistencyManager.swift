@@ -123,11 +123,9 @@ class PersistencyManager: NSObject {
     }
     
     func getHero(id: Int) -> Hero?{
-        guard let hero : [Hero] = _heroes.filter({
+        let hero : [Hero] = _heroes.filter({
             $0.heroId == id
         })
-            
-        else { return nil }
         
         return hero[0]
     }

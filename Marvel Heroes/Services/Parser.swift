@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import SwiftyJSON
 
 /**
  Parses JSON files
@@ -105,10 +104,11 @@ class Parser: NSObject {
                 
                 guard let thumbnail = $0["thumbnail"] as? [String:String],
                     let fileName = thumbnail["path"],
-                    let fileExtension = thumbnail["extension"],
-                    let thumbnailCompletePath : String = fileName + "." + fileExtension
+                    let fileExtension = thumbnail["extension"]
                     else { fatalError("no thumbnail path")  }
-                
+
+                let thumbnailCompletePath : String? = fileName + "." + fileExtension
+
                 return Hero(name: name,heroId: theId,desc: desc,modified: Date(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
             })
             
@@ -154,10 +154,10 @@ class Parser: NSObject {
                 
                 guard let thumbnail = $0["thumbnail"] as? [String:String],
                     let fileName = thumbnail["path"],
-                    let fileExtension = thumbnail["extension"],
-                    let thumbnailCompletePath : String = fileName + "." + fileExtension
+                    let fileExtension = thumbnail["extension"]
                     else { fatalError("no thumbnail path")}
                 
+                let thumbnailCompletePath : String? = fileName + "." + fileExtension
                 return  Comic(title: name,comicId: theId, thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
             })
         }//Switch end

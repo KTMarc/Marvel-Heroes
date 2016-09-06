@@ -14,7 +14,7 @@ extension URL {
     /// Retrieves a pre-cached image, or nil if it isn't cached.
     /// This is meant to be called before calling fetchImage.
     var cachedImage: UIImage? {
-        return apiClient.singleton.getCache().object(forKey: absoluteString)
+        return apiClient.singleton.getCache().object(forKey: absoluteString as NSString)
     }
     
     /// Fetches the image from the network.
@@ -29,7 +29,7 @@ extension URL {
                     let image = UIImage(data: data) {
                     apiClient.singleton.getCache().setObject(
                         image,
-                        forKey: self.absoluteString)
+                        forKey: self.absoluteString as NSString)
                     DispatchQueue.main.async() {
                         completion(image)
                     }
