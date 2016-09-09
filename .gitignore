@@ -32,4 +32,5 @@ xcuserdata
 #Dropbox
 .dropbox
 
-
+#AppCode
+.idea
