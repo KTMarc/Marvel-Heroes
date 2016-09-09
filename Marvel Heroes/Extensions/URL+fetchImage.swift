@@ -21,7 +21,7 @@ extension URL {
     /// Stores it in the cache if successful.
     /// Only calls completion on successful image download.
     /// Completion is called on the main thread.
-    func fetchImage(completion: ImageCacheCompletion) {
+    func fetchImage(completion: @escaping ImageCacheCompletion) {
         let task = URLSession.shared.dataTask(with:self) {
             data, response, error in
             if error == nil {
