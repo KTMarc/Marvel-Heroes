@@ -5,22 +5,21 @@
 //  Created by Marc Humet on 24/7/16.
 //  Copyright © 2016 SPM. All rights reserved.
 //
+import UIKit
 
-struct MasterViewControllerModel{
+struct MasterViewControllerModel : CellTextViewPresentable {
     
     // MARK: Properties
-    
     private var _heroes: [Hero]
     var heroes: [Hero] { return _heroes }
+    var indexPath: Int = 0
     
     // MARK: Initialization
-    
     init() {
         _heroes = [Hero]()
     }
     
     // MARK: Entry Points to Modify / Query Underlying Model
-    
     mutating func append(_ hero: Hero) {
         _heroes.append(hero)
     }
@@ -30,8 +29,13 @@ struct MasterViewControllerModel{
     }
     
     subscript(heroAt index: Int) -> Hero {
-        get {
+        mutating get {
+          
+            //let kk = apiClient.singleton
             //Check if the image is in the cache and download it here if not.
+//            if let image = kk.getImage(link: _heroes[index].thumbnailUrl, completion:{_ in print("puta")}){
+//            _heroes[index].setPhoto(image: image)
+//            }
             return _heroes[index]
         }
         
@@ -39,4 +43,15 @@ struct MasterViewControllerModel{
             _heroes[index] = newValue
         }
     }
+}
+
+// MARK: Protocol conformance
+extension MasterViewControllerModel {    
+    var text: String { return heroes[indexPath].name }
+    var textColor: UIColor { return .white }
+    var font: UIFont { return .systemFont(ofSize: 8.0) }
+}
+
+extension MasterViewControllerModel {
+        var imageName: String { return heroes[indexPath].thumbnailUrl }
 }
