@@ -15,8 +15,11 @@
 		491466CC1CBEA58E00DAD512 /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491466CB1CBEA58E00DAD512 /* ComicCell.swift */; };
 		491466D01CBECB2900DAD512 /* SuggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491466CF1CBECB2900DAD512 /* SuggestionCell.xib */; };
 		491466D21CBECBB000DAD512 /* SuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491466D11CBECBB000DAD512 /* SuggestionCell.swift */; };
+		491A12171D9E6969001F54AB /* TextPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A12161D9E6969001F54AB /* TextPresentable.swift */; };
+		491A12191D9E698A001F54AB /* ImagePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A12181D9E698A001F54AB /* ImagePresentable.swift */; };
 		491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */; };
 		491E936E1D565709003AA7ED /* imgres.png in Resources */ = {isa = PBXBuildFile; fileRef = 491E936D1D565709003AA7ED /* imgres.png */; };
+		492911811D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */; };
 		492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D31CBA7E930086D348 /* AppDelegate.swift */; };
 		492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D51CBA7E930086D348 /* MasterViewController.swift */; };
 		492D08DB1CBA7E930086D348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 492D08D91CBA7E930086D348 /* Main.storyboard */; };
@@ -67,9 +70,12 @@
 		491466CB1CBEA58E00DAD512 /* ComicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicCell.swift; path = Views/ComicCell.swift; sourceTree = "<group>"; };
 		491466CF1CBECB2900DAD512 /* SuggestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuggestionCell.xib; path = Views/SuggestionCell.xib; sourceTree = "<group>"; };
 		491466D11CBECBB000DAD512 /* SuggestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionCell.swift; path = Views/SuggestionCell.swift; sourceTree = "<group>"; };
+		491A12161D9E6969001F54AB /* TextPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextPresentable.swift; path = Protocols/TextPresentable.swift; sourceTree = "<group>"; };
+		491A12181D9E698A001F54AB /* ImagePresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePresentable.swift; path = Protocols/ImagePresentable.swift; sourceTree = "<group>"; };
 		491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailVC.swift; path = Views/HeroDetailVC.swift; sourceTree = "<group>"; };
 		491E936C1D565533003AA7ED /* TestsPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestsPlayground.playground; sourceTree = "<group>"; };
 		491E936D1D565709003AA7ED /* imgres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgres.png; sourceTree = "<group>"; };
+		492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchHeaderViewCollectionReusableView.swift; path = Views/SearchHeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		492D08D01CBA7E930086D348 /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D08D31CBA7E930086D348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		492D08D51CBA7E930086D348 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = Controllers/MasterViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +158,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		491A12151D9E691E001F54AB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				491A12161D9E6969001F54AB /* TextPresentable.swift */,
+				491A12181D9E698A001F54AB /* ImagePresentable.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		492D08C71CBA7E930086D348 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +191,7 @@
 		492D08D21CBA7E930086D348 /* Marvel Heroes */ = {
 			isa = PBXGroup;
 			children = (
+				491A12151D9E691E001F54AB /* Protocols */,
 				492D08D31CBA7E930086D348 /* AppDelegate.swift */,
 				491E936C1D565533003AA7ED /* TestsPlayground.playground */,
 				4968BE8E1CBBD2610094B53F /* Helpers */,
@@ -232,6 +248,7 @@
 				492D08DE1CBA7E930086D348 /* LaunchScreen.storyboard */,
 				492D090C1CBA87AF0086D348 /* HeroCell.swift */,
 				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
+				492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */,
 				49DA5A051CC05784005A9710 /* UIViewExtensions.swift */,
 			);
 			name = Views;
@@ -448,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491A12171D9E6969001F54AB /* TextPresentable.swift in Sources */,
 				490EA9961CBD78C100F7071D /* Comic.swift in Sources */,
 				49A2F5431D57ED4D00998AE9 /* URL+fetchImage.swift in Sources */,
 				498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */,
@@ -456,6 +474,7 @@
 				492D090D1CBA87AF0086D348 /* HeroCell.swift in Sources */,
 				4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */,
 				491466D21CBECBB000DAD512 /* SuggestionCell.swift in Sources */,
+				491A12191D9E698A001F54AB /* ImagePresentable.swift in Sources */,
 				4910580C1D50A2BF00595AE1 /* UIImageView+AsyncDownload.swift in Sources */,
 				491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */,
 				49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */,
@@ -465,6 +484,7 @@
 				4985E2BF1D4518A1004C4AE6 /* MasterViewControllerModel.swift in Sources */,
 				492D09111CBAA2C10086D348 /* Constants.swift in Sources */,
 				4968BE901CBBD3580094B53F /* PersistencyManager.swift in Sources */,
+				492911811D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
