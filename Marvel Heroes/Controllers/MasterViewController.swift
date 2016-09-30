@@ -161,7 +161,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as? HeroCell {
         
             model.indexPath = indexPath.row
-            cell.configureCell(model)
+            cell.configureCell(model.presentHero(indexPath: indexPath.row))
             
             if ((indexPath as NSIndexPath).item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
                 print("fetching more stuff")

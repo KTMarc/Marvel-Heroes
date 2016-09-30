@@ -7,7 +7,7 @@
 //
 import UIKit
 
-struct MasterViewControllerModel : CellTextViewPresentable {
+struct MasterViewControllerModel {
     
     // MARK: Properties
     private var _heroes: [Hero]
@@ -43,15 +43,24 @@ struct MasterViewControllerModel : CellTextViewPresentable {
             _heroes[index] = newValue
         }
     }
+    
+    func presentHero (indexPath: Int) -> MasterViewControllerModel {
+        
+        var modelWithOneObject : MasterViewControllerModel = MasterViewControllerModel()
+        
+        modelWithOneObject.append(_heroes[indexPath])
+    
+        return modelWithOneObject
+    }
 }
 
 // MARK: Protocol conformance
-extension MasterViewControllerModel {    
+extension MasterViewControllerModel : TextPresentable {
     var text: String { return heroes[indexPath].name }
     var textColor: UIColor { return .white }
     var font: UIFont { return .systemFont(ofSize: 8.0) }
 }
 
-extension MasterViewControllerModel {
-        var imageName: String { return heroes[indexPath].thumbnailUrl }
+extension MasterViewControllerModel : ImagePresentable {
+    var imageName: String { return heroes[indexPath].thumbnailUrl }
 }

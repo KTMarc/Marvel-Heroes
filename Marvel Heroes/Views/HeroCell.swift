@@ -12,20 +12,20 @@ import UIKit
  Custom Cell for Master table view
  */
 
-    protocol TextPresentable {
-        var text: String { get }
-        var textColor: UIColor { get }
-        var font: UIFont { get }
-    }
+protocol TextPresentable {
+   var text: String { get }
+   var textColor: UIColor { get }
+   var font: UIFont { get }
+}
     
-    protocol ImagePresentable {
-        var imageName: String { get }
-    }
+protocol ImagePresentable {
+   var imageName: String { get }
+}
     
-    typealias CellTextViewPresentable = TextPresentable & ImagePresentable
+typealias CellTextViewPresentable = TextPresentable & ImagePresentable
 
     
-class HeroCell: UICollectionViewCell {
+    class HeroCell  : UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
