@@ -12,17 +12,7 @@ import UIKit
  Custom Cell for Master table view
  */
 
-protocol TextPresentable {
-   var text: String { get }
-   var textColor: UIColor { get }
-   var font: UIFont { get }
-}
-    
-protocol ImagePresentable {
-   var imageName: String { get }
-}
-    
-typealias CellTextViewPresentable = TextPresentable & ImagePresentable
+typealias heroCellPresentable = TextPresentable & ImagePresentable
 
     
     class HeroCell  : UICollectionViewCell {
@@ -36,9 +26,9 @@ typealias CellTextViewPresentable = TextPresentable & ImagePresentable
         super.init(coder: aDecoder)
     }
     
-    func configureCell(_ presenter: CellTextViewPresentable) {
+    func configureCell(_ presenter: heroCellPresentable) {
         
-        nameLbl.text = presenter.text.capitalized
+        nameLbl.text = presenter.text
         let heroUrl = URL(string: presenter.imageName)
         imageUrl = heroUrl  // For recycled cells' late image loads.
         if let image = heroUrl?.cachedImage {

@@ -159,9 +159,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as? HeroCell {
-        
             model.indexPath = indexPath.row
-            cell.configureCell(model.presentHero(indexPath: indexPath.row))
+            let viewModelForThisCell = Model(hero: model.heroes[indexPath.row])
+            //Creating a new ViewModel with just one element that we can present.
+            cell.configureCell(viewModelForThisCell)
             
             if ((indexPath as NSIndexPath).item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
                 print("fetching more stuff")

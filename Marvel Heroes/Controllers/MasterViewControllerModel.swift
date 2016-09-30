@@ -19,6 +19,11 @@ struct MasterViewControllerModel {
         _heroes = [Hero]()
     }
     
+    init(hero: Hero){ //When we want to pass only one element to the cell
+        self.init()
+        _heroes.append(hero)
+    }
+    
     // MARK: Entry Points to Modify / Query Underlying Model
     mutating func append(_ hero: Hero) {
         _heroes.append(hero)
@@ -43,20 +48,11 @@ struct MasterViewControllerModel {
             _heroes[index] = newValue
         }
     }
-    
-    func presentHero (indexPath: Int) -> MasterViewControllerModel {
-        
-        var modelWithOneObject : MasterViewControllerModel = MasterViewControllerModel()
-        
-        modelWithOneObject.append(_heroes[indexPath])
-    
-        return modelWithOneObject
-    }
 }
 
 // MARK: Protocol conformance
 extension MasterViewControllerModel : TextPresentable {
-    var text: String { return heroes[indexPath].name }
+    var text: String { return heroes[indexPath].name.capitalized }
     var textColor: UIColor { return .white }
     var font: UIFont { return .systemFont(ofSize: 8.0) }
 }
