@@ -25,8 +25,8 @@ extension URL {
         let task = URLSession.shared.dataTask(with:self) {
             data, response, error in
             if error == nil {
-                if let  data = data,
-                    let image = UIImage(data: data) {
+                if let  dataa = data,
+                    let image = UIImage(data: dataa) {
                     apiClient.singleton.getCache().setObject(
                         image,
                         forKey: self.absoluteString as NSString)

@@ -6,9 +6,10 @@
 //  Copyright © 2016 SPM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ImagePresentable {
     var imageName: String { get }
+    //var image: UIImage { get }
 }
 

@@ -14,7 +14,7 @@ import UIKit
 
 typealias heroCellPresentable = TextPresentable & ImagePresentable
 
-    
+
     class HeroCell  : UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
@@ -29,16 +29,20 @@ typealias heroCellPresentable = TextPresentable & ImagePresentable
     func configureCell(_ presenter: heroCellPresentable) {
         
         nameLbl.text = presenter.text
+        nameLbl.textColor = presenter.textColor
+        //thumbImg.image = presenter.image
+        
+        ///This could be moved to the viewModel, but then we must update all the cells when we have new images coming.
         let heroUrl = URL(string: presenter.imageName)
         imageUrl = heroUrl  // For recycled cells' late image loads.
         if let image = heroUrl?.cachedImage {
             // Cached: set immediately.
             self.thumbImg.image = image
         } else { // Not cached, so load then fade it in.
-            heroUrl?.fetchImage { image in
+            heroUrl?.fetchImage { [weak self] image in
             // Check the cell hasn't recycled while loading.
-                if self.imageUrl == heroUrl {
-                    self.thumbImg.image = image
+                if self?.imageUrl == heroUrl {
+                    self?.thumbImg.image = image
                 }
             }
         }

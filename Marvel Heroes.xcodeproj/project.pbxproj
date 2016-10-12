@@ -19,6 +19,7 @@
 		491A12191D9E698A001F54AB /* ImagePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A12181D9E698A001F54AB /* ImagePresentable.swift */; };
 		491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */; };
 		491E936E1D565709003AA7ED /* imgres.png in Resources */ = {isa = PBXBuildFile; fileRef = 491E936D1D565709003AA7ED /* imgres.png */; };
+		49287B691DA81B8100203222 /* HeroDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49287B681DA81B8100203222 /* HeroDetailModel.swift */; };
 		492911811D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */; };
 		492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D31CBA7E930086D348 /* AppDelegate.swift */; };
 		492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D51CBA7E930086D348 /* MasterViewController.swift */; };
@@ -75,6 +76,7 @@
 		491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailVC.swift; path = Views/HeroDetailVC.swift; sourceTree = "<group>"; };
 		491E936C1D565533003AA7ED /* TestsPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestsPlayground.playground; sourceTree = "<group>"; };
 		491E936D1D565709003AA7ED /* imgres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgres.png; sourceTree = "<group>"; };
+		49287B681DA81B8100203222 /* HeroDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailModel.swift; path = Controllers/HeroDetailModel.swift; sourceTree = "<group>"; };
 		492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchHeaderViewCollectionReusableView.swift; path = Views/SearchHeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		492D08D01CBA7E930086D348 /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D08D31CBA7E930086D348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */,
+				49287B681DA81B8100203222 /* HeroDetailModel.swift */,
 			);
 			name = DetailVC;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */,
 				492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */,
 				4985E2BF1D4518A1004C4AE6 /* MasterViewControllerModel.swift in Sources */,
+				49287B691DA81B8100203222 /* HeroDetailModel.swift in Sources */,
 				492D09111CBAA2C10086D348 /* Constants.swift in Sources */,
 				4968BE901CBBD3580094B53F /* PersistencyManager.swift in Sources */,
 				492911811D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift in Sources */,

@@ -25,6 +25,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     //private var state = State.viewing
     private var model = Model()
+    private var searchTimer: Timer?
+    private var _keystrokes = ""
     
     //MARK: View LifeCycle
     override func viewDidLoad() {
@@ -108,7 +110,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.delegate = self
         searchController.searchBar.sizeToFit()
         collection.superview!.addSubview(searchController.searchBar)
-        print(searchController.delegate)
+        //print(searchController.delegate)
         self.definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
@@ -138,10 +140,18 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //view.endEditing(true)
     }
     
+    func launchNetworkQuery(){
+            apiClient.singleton.searchHeroes(_keystrokes)
+    }
+    
     // MARK: API request to get suggestions 📡
     func updateSearchResults(for searchController: UISearchController) {
         if let keystrokes = searchController.searchBar.text , keystrokes != "" {
-            apiClient.singleton.searchHeroes(keystrokes)
+            if let searchTimer = searchTimer {
+                searchTimer.invalidate()
+            }
+            _keystrokes = keystrokes
+            searchTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(MasterViewController.launchNetworkQuery),userInfo: nil, repeats: false)
         }
     }
     
@@ -159,12 +169,15 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as? HeroCell {
+            
+            //Need this to return the correct element in the protocol extension
             model.indexPath = indexPath.row
-            let viewModelForThisCell = Model(hero: model.heroes[indexPath.row])
+            
             //Creating a new ViewModel with just one element that we can present.
+            let viewModelForThisCell = Model(hero: model.heroes[indexPath.row])
             cell.configureCell(viewModelForThisCell)
             
-            if ((indexPath as NSIndexPath).item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
+            if (indexPath.item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
                 print("fetching more stuff")
                 currentOffset += 20
                 apiClient.singleton.moreHeroes(currentOffset)
@@ -203,7 +216,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if let selectedHeroIndex = collection.indexPathsForSelectedItems , selectedHeroIndex.count == 1{
                     let selectedHeroIndex = (selectedHeroIndex[0] as NSIndexPath).row
                     let hero = model[heroAt: selectedHeroIndex]
-                    detailsVC.setHero(hero)
+                    detailsVC.setModelWith(hero)
                 }
 
             }

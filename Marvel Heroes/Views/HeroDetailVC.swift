@@ -15,8 +15,11 @@ import UIKit
  Detail View for Hero 
  Includes a Collection View with Comics
  */
+protocol HeroDetailDelegate : class {
+    func updateModel()
+}
 
-class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
+class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, HeroDetailDelegate {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -34,29 +37,30 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     @IBOutlet weak var comicsActivityIndicator: UIActivityIndicatorView!
     
-    private var hero : Hero!
-    var comics = [Comic]()
-    var comicOffset = 0
+    //Types
+    typealias Model = HeroDetailModel
+    private var model = Model()
+
     var blurView = UIVisualEffectView()
     var presentedModally = false
 
-    /*
-     Another view controller can set up this view controller's model by calling
-     `setHero(_:)` on it.
-     */
+    //TOOD: Remove when transition to MVVM is complete.
+     /*Another view controller can set up this view controller's model by calling
+     `setHero(_:)` on it.*/
+    private var hero : Hero!
     func setHero(_ hero: Hero) {
         self.hero = hero
+    }
+    
+    func setModelWith(_ hero: Hero) {
+        model = Model(hero: hero, theDelegate : self )
     }
     
     //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
-        
-        listenToNotifications()
-        //Ask for comics
-        apiClient.singleton.fetchComics(hero.heroId)
+        model.tearUp()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,42 +71,16 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    //MARK: API request 📡
-    func listenToNotifications(){
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {  (_) in
-            
-            self.comics = apiClient.singleton.getComics()
-            print("Received Comics: \(self.comics.count)")
-            
-            if self.comics.count == 0{
-                self.comicsEmptyStateLabel.isHidden = false
-            }
-            
-            DispatchQueue.main.async(execute: {
-            self.comicsActivityIndicator.stopAnimating()
-                self.collection.reloadData()
-            })
-            
-        }
-    }
-    
-    
     //MARK: UI
     func setupUI(){
-        if let /*url*/ _ = URL.init(string: self.hero.thumbnailUrl) {
+        if let /*url*/ _ = URL.init(string: self.model.hero.thumbnailUrl) {
             //Big Hero image
             //self.image.hnk_setImageFromURL(url)
-            self.image.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
+            self.image.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             
             //Smaller Hero image
             //self.avatarImage.hnk_setImageFromURL(url)
-            self.avatarImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
+            self.avatarImage.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             
             
             self.avatarImage.layer.borderWidth = 3
@@ -117,7 +95,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             let effectView = UIVisualEffectView(effect: blurEffect)
             effectView.frame = self.view.frame
             //self.blurImage.hnk_setImageFromURL(url)
-            self.blurImage.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
+            self.blurImage.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             
             self.blurImage.addSubview(effectView)
             blurView = UIVisualEffectView(effect: blurEffect)
@@ -127,7 +105,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
         
         //Navigation Bar Setup
-        self.navigationItem.title = hero.name
+        self.navigationItem.title = model.hero.name
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
         imageView.contentMode = .scaleAspectFit
         let backImage = UIImage(named: "backButton.png")
@@ -136,9 +114,9 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.red
         
         closeButton.tintColor = UIColor.red
-        nameLabel.text = hero.name
-        detailDescriptionLabel.text = hero.desc
-        idLabel.text = String(hero.heroId)
+        nameLabel.text = model.hero.name
+        detailDescriptionLabel.text = model.hero.desc
+        idLabel.text = String(model.hero.heroId)
         comicsActivityIndicator.startAnimating()
         
         closeButton.isHidden = presentedModally ? false : true
@@ -159,11 +137,10 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.COMIC_CELL, for: indexPath) as? ComicCell {
             
-            let comic: Comic!
-            comic = comics[(indexPath as NSIndexPath).row]
+            let comic = model.comics[(indexPath as NSIndexPath).row]
             cell.configureCell(comic)
             
-            if ((indexPath as NSIndexPath).item == comics.count - 1) && (comics.count > comicOffset){
+            if ((indexPath as NSIndexPath).item == model.comics.count - 1) && (model.comics.count > model.comicOffset){
                 //TODO: Fetch More comics with infinite scroll like we do it with heroes in the Master VC
                 //print("fetching more comics")
                 //comicOffset += 20
@@ -178,11 +155,23 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return comics.count
+        return model.comics.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    //MARK: Delegate methods
+    func updateModel(){
+        if model.comics.count == 0{
+            self.comicsEmptyStateLabel.isHidden = false
+        }
+        
+        DispatchQueue.main.async(execute: {
+            self.comicsActivityIndicator.stopAnimating()
+            self.collection.reloadData()
+        })
     }
     
     //MARK: Navigation
@@ -190,5 +179,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         _ = navigationController?.popViewController(animated: true)
     }
     
-    
+    deinit{
+        model.tearDown()
+    }
 }
