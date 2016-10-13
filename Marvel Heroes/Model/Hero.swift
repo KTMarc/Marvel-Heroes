@@ -35,6 +35,15 @@ struct Hero: Equatable{
         
     }
     
+    //Convenience init for tests
+    init(heroId: Int){
+        self._name = ""
+        self._heroId = heroId
+        self._desc = ""
+        self._modified = Date()
+        self._thumbnailUrl = ""
+    }
+    
     var name: String {
         return _name
     }
