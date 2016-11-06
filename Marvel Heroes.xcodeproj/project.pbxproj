@@ -136,7 +136,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		490A10051CBF79E400A334A3 /* UI */ = {
+		490A10051CBF79E400A334A3 /* 📲 UI */ = {
 			isa = PBXGroup;
 			children = (
 				490A100A1CBF7F5800A334A3 /* GothamXNarrow-Book.otf */,
@@ -144,7 +144,7 @@
 				490A10081CBF7BF900A334A3 /* GothamLight.ttf */,
 				491E936D1D565709003AA7ED /* imgres.png */,
 			);
-			name = UI;
+			name = "📲 UI";
 			sourceTree = "<group>";
 		};
 		490EA98E1CBD1C4500F7071D /* Layouts */ = {
@@ -155,22 +155,23 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		4910580D1D50A2D600595AE1 /* Extensions */ = {
+		4910580D1D50A2D600595AE1 /* ➕ Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				4910580B1D50A2BF00595AE1 /* UIImageView+AsyncDownload.swift */,
 				49A2F5421D57ED4D00998AE9 /* URL+fetchImage.swift */,
+				49DA5A051CC05784005A9710 /* UIViewExtensions.swift */,
 			);
-			name = Extensions;
+			name = "➕ Extensions";
 			sourceTree = "<group>";
 		};
-		491A12151D9E691E001F54AB /* Protocols */ = {
+		491A12151D9E691E001F54AB /* 🤖 Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				491A12161D9E6969001F54AB /* TextPresentable.swift */,
 				491A12181D9E698A001F54AB /* ImagePresentable.swift */,
 			);
-			name = Protocols;
+			name = "🤖 Protocols";
 			sourceTree = "<group>";
 		};
 		492D08C71CBA7E930086D348 = {
@@ -197,16 +198,16 @@
 		492D08D21CBA7E930086D348 /* Marvel Heroes */ = {
 			isa = PBXGroup;
 			children = (
-				491A12151D9E691E001F54AB /* Protocols */,
+				491A12151D9E691E001F54AB /* 🤖 Protocols */,
 				492D08D31CBA7E930086D348 /* AppDelegate.swift */,
 				491E936C1D565533003AA7ED /* TestsPlayground.playground */,
-				4968BE8E1CBBD2610094B53F /* Helpers */,
-				4910580D1D50A2D600595AE1 /* Extensions */,
-				4968BE8D1CBBD2460094B53F /* Services */,
-				492D090B1CBA827B0086D348 /* Model */,
-				492D090F1CBAA09B0086D348 /* Controllers */,
-				490A10051CBF79E400A334A3 /* UI */,
-				492D090E1CBA87BA0086D348 /* Views */,
+				4968BE8E1CBBD2610094B53F /* 🆘 Helpers */,
+				4910580D1D50A2D600595AE1 /* ➕ Extensions */,
+				4968BE8D1CBBD2460094B53F /* 🎩 Services */,
+				492D090B1CBA827B0086D348 /* 👯 Model */,
+				492D090E1CBA87BA0086D348 /* 🖼 Views */,
+				492D090F1CBAA09B0086D348 /* 👮 Controllers */,
+				490A10051CBF79E400A334A3 /* 📲 UI */,
 				490EA98E1CBD1C4500F7071D /* Layouts */,
 				492D08DC1CBA7E930086D348 /* Assets.xcassets */,
 				492D08E11CBA7E930086D348 /* Info.plist */,
@@ -238,63 +239,58 @@
 			path = "Marvel HeroesUITests";
 			sourceTree = "<group>";
 		};
-		492D090B1CBA827B0086D348 /* Model */ = {
+		492D090B1CBA827B0086D348 /* 👯 Model */ = {
 			isa = PBXGroup;
 			children = (
 				492D09091CBA82730086D348 /* Hero.swift */,
 				490EA9951CBD78C100F7071D /* Comic.swift */,
 			);
-			name = Model;
+			name = "👯 Model";
 			sourceTree = "<group>";
 		};
-		492D090E1CBA87BA0086D348 /* Views */ = {
+		492D090E1CBA87BA0086D348 /* 🖼 Views */ = {
 			isa = PBXGroup;
 			children = (
-				491466CF1CBECB2900DAD512 /* SuggestionCell.xib */,
-				491466D11CBECBB000DAD512 /* SuggestionCell.swift */,
 				492D08D91CBA7E930086D348 /* Main.storyboard */,
 				492D08DE1CBA7E930086D348 /* LaunchScreen.storyboard */,
-				492D090C1CBA87AF0086D348 /* HeroCell.swift */,
-				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
 				492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */,
-				49DA5A051CC05784005A9710 /* UIViewExtensions.swift */,
 			);
-			name = Views;
+			name = "🖼 Views";
 			sourceTree = "<group>";
 		};
-		492D090F1CBAA09B0086D348 /* Controllers */ = {
+		492D090F1CBAA09B0086D348 /* 👮 Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4985E2BD1D45133C004C4AE6 /* MasterVC */,
 				49731CB81D48093300C19886 /* DetailVC */,
 			);
-			name = Controllers;
+			name = "👮 Controllers";
 			sourceTree = "<group>";
 		};
-		495BF0921CBFF9B600BCECD8 /* APIs */ = {
+		495BF0921CBFF9B600BCECD8 /* ⚙ APIs */ = {
 			isa = PBXGroup;
 			children = (
 				4968BE8F1CBBD3580094B53F /* PersistencyManager.swift */,
 				4968BE911CBBF08B0094B53F /* Parser.swift */,
 			);
-			name = APIs;
+			name = "⚙ APIs";
 			sourceTree = "<group>";
 		};
-		4968BE8D1CBBD2460094B53F /* Services */ = {
+		4968BE8D1CBBD2460094B53F /* 🎩 Services */ = {
 			isa = PBXGroup;
 			children = (
 				4968BE8B1CBBD2400094B53F /* apiClient.swift */,
-				495BF0921CBFF9B600BCECD8 /* APIs */,
+				495BF0921CBFF9B600BCECD8 /* ⚙ APIs */,
 			);
-			name = Services;
+			name = "🎩 Services";
 			sourceTree = "<group>";
 		};
-		4968BE8E1CBBD2610094B53F /* Helpers */ = {
+		4968BE8E1CBBD2610094B53F /* 🆘 Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				492D09101CBAA2C10086D348 /* Constants.swift */,
 			);
-			name = Helpers;
+			name = "🆘 Helpers";
 			sourceTree = "<group>";
 		};
 		49731CB81D48093300C19886 /* DetailVC */ = {
@@ -302,6 +298,7 @@
 			children = (
 				491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */,
 				49287B681DA81B8100203222 /* HeroDetailModel.swift */,
+				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
 			);
 			name = DetailVC;
 			sourceTree = "<group>";
@@ -312,6 +309,9 @@
 				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
 				4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */,
 				498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */,
+				492D090C1CBA87AF0086D348 /* HeroCell.swift */,
+				491466CF1CBECB2900DAD512 /* SuggestionCell.xib */,
+				491466D11CBECBB000DAD512 /* SuggestionCell.swift */,
 			);
 			name = MasterVC;
 			sourceTree = "<group>";
@@ -650,7 +650,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-Heroes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -665,7 +665,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-Heroes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -678,7 +678,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel Heroes.app/Marvel Heroes";
 			};
 			name = Debug;
@@ -693,7 +693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel Heroes.app/Marvel Heroes";
 			};
 			name = Release;
@@ -706,7 +706,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TEST_TARGET_NAME = "Marvel Heroes";
 			};
 			name = Debug;
@@ -720,7 +720,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 				TEST_TARGET_NAME = "Marvel Heroes";
 			};
 			name = Release;
