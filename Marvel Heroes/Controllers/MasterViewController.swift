@@ -108,7 +108,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.delegate = self
         searchController.searchBar.sizeToFit()
         collection.superview!.addSubview(searchController.searchBar)
-        print(searchController.delegate)
+        //print(searchController.delegate)
         self.definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
