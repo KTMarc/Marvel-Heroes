@@ -39,7 +39,6 @@ struct Comic: Equatable {
     }
     
 //MARK: Protocols and extensions
-
 func ==(lhs: Comic, rhs: Comic) -> Bool {
     return  lhs.title == rhs.title &&
         lhs.comicId == rhs.comicId &&

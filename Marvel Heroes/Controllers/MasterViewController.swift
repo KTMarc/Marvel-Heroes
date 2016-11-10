@@ -69,7 +69,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  (_) in
             
-            //FIXME: ARC should do the job here and deallocate all objects from the old struct. This could be better.
+        
             self.model = Model()
             _ = apiClient.singleton.getHeroes().map{
                 self.model.append($0)
@@ -79,7 +79,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.collection.reloadData()
             })
             
-            //print("Heroes from notification: \(self.model.heroes.count)")
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -108,7 +107,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.delegate = self
         searchController.searchBar.sizeToFit()
         collection.superview!.addSubview(searchController.searchBar)
-        //print(searchController.delegate)
         self.definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
