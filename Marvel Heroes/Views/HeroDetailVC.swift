@@ -20,7 +20,7 @@ protocol HeroDetailDelegate : class {
 }
 
 class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, HeroDetailDelegate {
-    //Outlets
+    //MARK: Outlets
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -36,11 +36,11 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     @IBOutlet weak var comicsActivityIndicator: UIActivityIndicatorView!
     
-    //Types
+    //MARK: Types
     typealias Model = HeroDetailModel
     private var model = Model()
 
-    //Properties
+    //MARK: Properties
     var blurView = UIVisualEffectView()
     var presentedModally = false
 
@@ -109,7 +109,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             blurView.alpha = 0.0
         }
         
-        //Navigation Bar Setup
+        //MARK: Navigation Bar Setup
         self.navigationItem.title = model.hero.name
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
         imageView.contentMode = .scaleAspectFit
