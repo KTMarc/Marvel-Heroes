@@ -176,48 +176,58 @@
 			name = "🤖 Protocols";
 			sourceTree = "<group>";
 		};
+		492C5DE61DD8D79700B4D8C6 /* 🔍 Search Heroes */ = {
+			isa = PBXGroup;
+			children = (
+				498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */,
+				491466CF1CBECB2900DAD512 /* SuggestionCell.xib */,
+				491466D11CBECBB000DAD512 /* SuggestionCell.swift */,
+			);
+			name = "🔍 Search Heroes";
+			sourceTree = "<group>";
+		};
 		492D08C71CBA7E930086D348 = {
 			isa = PBXGroup;
 			children = (
 				492D08D21CBA7E930086D348 /* Marvel Heroes */,
-				492D08E91CBA7E930086D348 /* Marvel HeroesTests */,
-				492D08F41CBA7E930086D348 /* Marvel HeroesUITests */,
-				492D08D11CBA7E930086D348 /* Products */,
+				492D08E91CBA7E930086D348 /* ✅ Marvel HeroesTests */,
+				492D08F41CBA7E930086D348 /* ✅ Marvel HeroesUITests */,
+				492D08D11CBA7E930086D348 /* 🎁 Products */,
 				B429D0EA3E5B5F72A63B1093 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		492D08D11CBA7E930086D348 /* Products */ = {
+		492D08D11CBA7E930086D348 /* 🎁 Products */ = {
 			isa = PBXGroup;
 			children = (
 				492D08D01CBA7E930086D348 /* Marvel Heroes.app */,
 				492D08E61CBA7E930086D348 /* Marvel HeroesTests.xctest */,
 				492D08F11CBA7E930086D348 /* Marvel HeroesUITests.xctest */,
 			);
-			name = Products;
+			name = "🎁 Products";
 			sourceTree = "<group>";
 		};
 		492D08D21CBA7E930086D348 /* Marvel Heroes */ = {
 			isa = PBXGroup;
 			children = (
-				491A12151D9E691E001F54AB /* 🤖 Protocols */,
 				492D08D31CBA7E930086D348 /* AppDelegate.swift */,
-				491E936C1D565533003AA7ED /* TestsPlayground.playground */,
+				491A12151D9E691E001F54AB /* 🤖 Protocols */,
 				4968BE8E1CBBD2610094B53F /* 🆘 Helpers */,
 				4910580D1D50A2D600595AE1 /* ➕ Extensions */,
 				4968BE8D1CBBD2460094B53F /* 🎩 Services */,
 				492D090B1CBA827B0086D348 /* 👯 Model */,
 				492D090E1CBA87BA0086D348 /* 🖼 Views */,
-				492D090F1CBAA09B0086D348 /* 👮 Controllers */,
+				492D090F1CBAA09B0086D348 /* 🎥 Scenes */,
 				490A10051CBF79E400A334A3 /* 📲 UI */,
 				490EA98E1CBD1C4500F7071D /* Layouts */,
 				492D08DC1CBA7E930086D348 /* Assets.xcassets */,
 				492D08E11CBA7E930086D348 /* Info.plist */,
+				491E936C1D565533003AA7ED /* TestsPlayground.playground */,
 			);
 			path = "Marvel Heroes";
 			sourceTree = "<group>";
 		};
-		492D08E91CBA7E930086D348 /* Marvel HeroesTests */ = {
+		492D08E91CBA7E930086D348 /* ✅ Marvel HeroesTests */ = {
 			isa = PBXGroup;
 			children = (
 				492D08EA1CBA7E930086D348 /* Marvel_HeroesTests.swift */,
@@ -229,15 +239,17 @@
 				4974530A1D49731400221C7B /* listCharacters_response.txt */,
 				492D08EC1CBA7E930086D348 /* Info.plist */,
 			);
+			name = "✅ Marvel HeroesTests";
 			path = "Marvel HeroesTests";
 			sourceTree = "<group>";
 		};
-		492D08F41CBA7E930086D348 /* Marvel HeroesUITests */ = {
+		492D08F41CBA7E930086D348 /* ✅ Marvel HeroesUITests */ = {
 			isa = PBXGroup;
 			children = (
 				492D08F51CBA7E930086D348 /* Marvel_HeroesUITests.swift */,
 				492D08F71CBA7E930086D348 /* Info.plist */,
 			);
+			name = "✅ Marvel HeroesUITests";
 			path = "Marvel HeroesUITests";
 			sourceTree = "<group>";
 		};
@@ -260,13 +272,14 @@
 			name = "🖼 Views";
 			sourceTree = "<group>";
 		};
-		492D090F1CBAA09B0086D348 /* 👮 Controllers */ = {
+		492D090F1CBAA09B0086D348 /* 🎥 Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				4985E2BD1D45133C004C4AE6 /* MasterVC */,
-				49731CB81D48093300C19886 /* DetailVC */,
+				4985E2BD1D45133C004C4AE6 /* 👓 Browse Heroes */,
+				492C5DE61DD8D79700B4D8C6 /* 🔍 Search Heroes */,
+				49731CB81D48093300C19886 /* 👤 View Hero Details */,
 			);
-			name = "👮 Controllers";
+			name = "🎥 Scenes";
 			sourceTree = "<group>";
 		};
 		495BF0921CBFF9B600BCECD8 /* ⚙ APIs */ = {
@@ -295,7 +308,7 @@
 			name = "🆘 Helpers";
 			sourceTree = "<group>";
 		};
-		49731CB81D48093300C19886 /* DetailVC */ = {
+		49731CB81D48093300C19886 /* 👤 View Hero Details */ = {
 			isa = PBXGroup;
 			children = (
 				491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */,
@@ -303,20 +316,17 @@
 				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
 				49249E4D1DD6015A00E28D6B /* ComicCellModel.swift */,
 			);
-			name = DetailVC;
+			name = "👤 View Hero Details";
 			sourceTree = "<group>";
 		};
-		4985E2BD1D45133C004C4AE6 /* MasterVC */ = {
+		4985E2BD1D45133C004C4AE6 /* 👓 Browse Heroes */ = {
 			isa = PBXGroup;
 			children = (
 				492D08D51CBA7E930086D348 /* MasterViewController.swift */,
 				4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */,
-				498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */,
 				492D090C1CBA87AF0086D348 /* HeroCell.swift */,
-				491466CF1CBECB2900DAD512 /* SuggestionCell.xib */,
-				491466D11CBECBB000DAD512 /* SuggestionCell.swift */,
 			);
-			name = MasterVC;
+			name = "👓 Browse Heroes";
 			sourceTree = "<group>";
 		};
 		B429D0EA3E5B5F72A63B1093 /* Frameworks */ = {
@@ -425,7 +435,7 @@
 				Base,
 			);
 			mainGroup = 492D08C71CBA7E930086D348;
-			productRefGroup = 492D08D11CBA7E930086D348 /* Products */;
+			productRefGroup = 492D08D11CBA7E930086D348 /* 🎁 Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
