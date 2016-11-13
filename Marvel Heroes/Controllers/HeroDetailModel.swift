@@ -18,10 +18,11 @@ class HeroDetailModel {
     var comics: [Comic] { return _comics }
     
     var comicOffset = 0
-    var indexPath: Int = 0
+    var indexPathRow = 0
     weak var delegate : HeroDetailDelegate?
-    
-    // MARK: Initialization
+    var didUpdate: ((heroCellPresentable) -> Void)?
+
+    // MARK: Initialization 🐣
     init() {
         _hero = Hero(name: "", heroId: 1, desc: "", modified: Date(), thumbnailUrl: "")
         _comics = [Comic]()
@@ -34,15 +35,15 @@ class HeroDetailModel {
         delegate = theDelegate
     }
     
+    /**
+     Prepares the the ViewModel.
+     Called just one time right after initialization.
+     Configures notifications and requests comics to the API
+     */
     
     func tearUp(){
         listenToNotifications()
-        //Ask for comics
         apiClient.singleton.fetchComics(hero.heroId)
-    }
-    
-    func tearDown(){
-        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: Entry Points to Modify / Query Underlying Model
@@ -50,22 +51,15 @@ class HeroDetailModel {
         _comics.append(comic)
     }
 
-    /*
     subscript(comicAt index: Int) -> Comic {
-        mutating get {
-            let comic = _comics[index]
-            //let kk = apiClient.singleton
-            //Check if the image is in the cache and download it here if not.
-            //            if let image = kk.getImage(link: _heroes[index].thumbnailUrl, completion:{_ in print("puta")}){
-            //            _heroes[index].setPhoto(image: image)
-            //            }
-            return comic
-        }
-        
-        set {
-            _comics[index] = newValue
-        }
-    }*/
+        let comic = _comics[index]
+        return comic
+    }
+    
+    func count() -> Int{
+        return _comics.count
+    }
+    
     //MARK: API request 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {
@@ -85,30 +79,32 @@ class HeroDetailModel {
 
 // MARK: Protocol conformance used to configure the cell for each comic
 extension HeroDetailModel : TextPresentable {
-    var text: String { return comics[indexPath].title.capitalized }
+    var text: String { return comics[indexPathRow].title.capitalized }
     var textColor: UIColor { return .white }
-    var font: UIFont { return .systemFont(ofSize: 10.0) }
+    var font: UIFont { return .systemFont(ofSize: 12.0) }
 }
 
 extension HeroDetailModel : ImagePresentable {
-    var imageName: String { return comics[indexPath].thumbnailUrl }
-    /* This was incomplete, we should update the images in each cell once they are downloaded
-     var image: UIImage {
-     let hero = heroes[indexPath]
-     let heroUrl = URL(string: hero.thumbnailUrl)
-     let imageUrl = heroUrl  // For recycled cells' late image loads.
-     var heroImage = UIImage()
-     if let cachedImage = heroUrl?.cachedImage {
-     heroImage = cachedImage
-     // Cached: set immediately.
-     } else { // Not cached, so load then fade it in.
-     heroUrl?.fetchImage { image2 in
-     // Check the cell hasn't recycled while loading.
-     if imageUrl == heroUrl {
-     heroImage = image2
-     }
-     }
-     }
-     return heroImage
-     }*/
+    var imageName: String { return comics[indexPathRow].thumbnailUrl }
+    //TODO: Make this download images async and not make it in the cell.
+    
+    /* This was incomplete, we should update the images in each cell once they are downloaded */
+    var image: UIImage {
+        let comic = comics[indexPathRow]
+        let comicUrl = URL(string: comic.thumbnailUrl)
+        let imageUrl = comicUrl  // For recycled cells' late image loads.
+        var comicImage = UIImage()
+        if let cachedImage = comicUrl?.cachedImage {
+            comicImage = cachedImage
+            // Cached: set immediately.
+        } else { // Not cached, so load then fade it in.
+            comicUrl?.fetchImage { image2 in
+                // Check the cell hasn't recycled while loading.
+                if imageUrl == comicUrl {
+                    comicImage = image2
+                }
+            }
+        }
+        return comicImage
+    }
 }

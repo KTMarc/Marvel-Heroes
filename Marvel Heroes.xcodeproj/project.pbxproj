@@ -19,6 +19,7 @@
 		491A12191D9E698A001F54AB /* ImagePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A12181D9E698A001F54AB /* ImagePresentable.swift */; };
 		491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */; };
 		491E936E1D565709003AA7ED /* imgres.png in Resources */ = {isa = PBXBuildFile; fileRef = 491E936D1D565709003AA7ED /* imgres.png */; };
+		49249E4E1DD6015A00E28D6B /* ComicCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49249E4D1DD6015A00E28D6B /* ComicCellModel.swift */; };
 		49287B691DA81B8100203222 /* HeroDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49287B681DA81B8100203222 /* HeroDetailModel.swift */; };
 		492911811D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */; };
 		492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D31CBA7E930086D348 /* AppDelegate.swift */; };
@@ -78,6 +79,7 @@
 		491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailVC.swift; path = Views/HeroDetailVC.swift; sourceTree = "<group>"; };
 		491E936C1D565533003AA7ED /* TestsPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestsPlayground.playground; sourceTree = "<group>"; };
 		491E936D1D565709003AA7ED /* imgres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgres.png; sourceTree = "<group>"; };
+		49249E4D1DD6015A00E28D6B /* ComicCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicCellModel.swift; path = Controllers/ComicCellModel.swift; sourceTree = "<group>"; };
 		49287B681DA81B8100203222 /* HeroDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailModel.swift; path = Controllers/HeroDetailModel.swift; sourceTree = "<group>"; };
 		492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchHeaderViewCollectionReusableView.swift; path = Views/SearchHeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		492D08D01CBA7E930086D348 /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +301,7 @@
 				491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */,
 				49287B681DA81B8100203222 /* HeroDetailModel.swift */,
 				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
+				49249E4D1DD6015A00E28D6B /* ComicCellModel.swift */,
 			);
 			name = DetailVC;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				491A12171D9E6969001F54AB /* TextPresentable.swift in Sources */,
+				49249E4E1DD6015A00E28D6B /* ComicCellModel.swift in Sources */,
 				490EA9961CBD78C100F7071D /* Comic.swift in Sources */,
 				49A2F5431D57ED4D00998AE9 /* URL+fetchImage.swift in Sources */,
 				498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */,

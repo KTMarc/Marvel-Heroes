@@ -10,6 +10,7 @@ import UIKit
 
 protocol ImagePresentable {
     var imageName: String { get }
-    //var image: UIImage { get }
+    var image: UIImage { get }
+    var didUpdate: ((heroCellPresentable) -> Void)? { get set }
 }
 

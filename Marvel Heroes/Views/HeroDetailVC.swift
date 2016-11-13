@@ -20,6 +20,7 @@ protocol HeroDetailDelegate : class {
 }
 
 class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, HeroDetailDelegate {
+    //Outlets
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,10 +28,8 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
-    
     @IBOutlet weak var comicsEmptyStateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var blurImage: UIImageView!
     @IBAction func dismissButton(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: {_ in })
@@ -41,26 +40,32 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     typealias Model = HeroDetailModel
     private var model = Model()
 
+    //Properties
     var blurView = UIVisualEffectView()
     var presentedModally = false
 
-    //TOOD: Remove when transition to MVVM is complete.
+    //TOOD: Remove when transition to MVVM is complete. (Still needed in suggestionsVC)
      /*Another view controller can set up this view controller's model by calling
      `setHero(_:)` on it.*/
     private var hero : Hero!
     func setHero(_ hero: Hero) {
         self.hero = hero
     }
+    /* end of part to delete */
     
+    /**
+     Meant to be called from the parent VC
+     We set the model via Depency injection.
+     */
     func setModelWith(_ hero: Hero) {
         model = Model(hero: hero, theDelegate : self )
+        model.tearUp()
     }
     
     //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        model.tearUp()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,7 +78,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: UI
     func setupUI(){
-        if let /*url*/ _ = URL.init(string: self.model.hero.thumbnailUrl) {
+        if let  _ = URL.init(string: self.model.hero.thumbnailUrl) {
             //Big Hero image
             //self.image.hnk_setImageFromURL(url)
             self.image.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
@@ -112,15 +117,12 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         let backButton = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(HeroDetailVC.dismissVC))
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.red
-        
         closeButton.tintColor = UIColor.red
         nameLabel.text = model.hero.name
         detailDescriptionLabel.text = model.hero.desc
         idLabel.text = String(model.hero.heroId)
         comicsActivityIndicator.startAnimating()
-        
         closeButton.isHidden = presentedModally ? false : true
-
     }
     
     //MARK: Scroll View Delegate
@@ -137,25 +139,25 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.COMIC_CELL, for: indexPath) as? ComicCell {
             
-            let comic = model.comics[(indexPath as NSIndexPath).row]
-            cell.configureCell(comic)
+            let comic = model[comicAt: indexPath.row]
+            //MVVM: VC owns the cell an creates it with a new ViewModel owned by the cell. (Dependency injection)
+            let cellViewModel = ComicCellModel(comic: comic)
+            cell.presentCell(cellViewModel)
             
-            if ((indexPath as NSIndexPath).item == model.comics.count - 1) && (model.comics.count > model.comicOffset){
+            if (indexPath.item == model.comics.count - 1) && (model.comics.count > model.comicOffset){
                 //TODO: Fetch More comics with infinite scroll like we do it with heroes in the Master VC
                 //print("fetching more comics")
                 //comicOffset += 20
                 //apiClient.singleton.moreComics(comicOffset)
             }
-            
             return cell
-            
         } else {
             return UICollectionViewCell()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.comics.count
+        return model.count()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -164,7 +166,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: Delegate methods
     func updateModel(){
-        if model.comics.count == 0{
+        if model.count() == 0{
             self.comicsEmptyStateLabel.isHidden = false
         }
         
@@ -179,7 +181,4 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         _ = navigationController?.popViewController(animated: true)
     }
     
-    deinit{
-        model.tearDown()
-    }
 }
