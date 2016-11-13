@@ -14,12 +14,14 @@ Collection View with Hero objects
 
 class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
 
-    //Types
+    //MARK: Types
     typealias Model = MasterViewControllerModel
     
-    //Properties
+    //MARK: Outlets
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    //MARK: Properties
     var searchController: UISearchController!
     var currentOffset = 0
 
@@ -33,8 +35,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
-        //searchBar.delegate = self
-        //searchBar.returnKeyType = UIReturnKeyType.Done
         searchBar.isHidden = true
         
         //UI
@@ -45,9 +45,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         navigationItem.titleView = imageView
 
         /// On init of apiClient we also init the persistencyManager and start fetching heroes
-        
-        //apiClient.singleton
-        //apiClient.fetchHeroes()
         
         listenToNotifications()
         
@@ -65,7 +62,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewWillAppear(animated)
         collection.reloadData()
     }
-    
     
     //MARK: API request 📡
     func listenToNotifications(){
@@ -174,7 +170,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             model.indexPath = indexPath.row
             
             //Creating a new ViewModel with just one element that we can present.
-            let viewModelForThisCell = Model(hero: model.heroes[indexPath.row])
+            let viewModelForThisCell = Model(hero: model.heroes[indexPath.row], theDelegate: cell)
             cell.configureCell(viewModelForThisCell)
             
             if (indexPath.item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
