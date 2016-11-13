@@ -31,7 +31,6 @@ class HeroDetailModel {
     convenience init(hero: Hero, theDelegate: HeroDetailDelegate){
         self.init()
         _hero = hero
-        _comics = [Comic]()
         delegate = theDelegate
     }
     
@@ -69,8 +68,6 @@ class HeroDetailModel {
             in
             
             self?._comics = apiClient.singleton.getComics()
-            //print("Received Comics: \(self._comics.count)")
-            //safeDelegate?.updateModel()
             self?.delegate?.updateModel()
         }
     }

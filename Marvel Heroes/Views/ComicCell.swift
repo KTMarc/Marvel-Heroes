@@ -13,11 +13,14 @@ import UIKit
  */
 
 class ComicCell: UICollectionViewCell {
+    //MARK: Outlets
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
+    //MARK: Properties
     private var delegate: heroCellPresentable?
     
+    //MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
