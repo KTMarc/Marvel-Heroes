@@ -8,6 +8,11 @@
 
 import UIKit
 
+//TODI: Simplify creating a single protocol called ModelUpdatable
+protocol HeroDetailDelegate : class {
+    func updateModel()
+}
+
 class HeroDetailModel {
     
     // MARK: Properties
@@ -16,7 +21,7 @@ class HeroDetailModel {
     
     private var _comics: [Comic]
     var comics: [Comic] { return _comics }
-    
+    var count: Int { return _comics.count }
     var comicOffset = 0
     var indexPathRow = 0
     weak var delegate : HeroDetailDelegate?
@@ -55,9 +60,9 @@ class HeroDetailModel {
         return comic
     }
     
-    func count() -> Int{
-        return _comics.count
-    }
+//    func count() -> Int{
+//        return _comics.count
+//    }
     
     //MARK: API request 📡
     func listenToNotifications(){
@@ -83,9 +88,7 @@ extension HeroDetailModel : TextPresentable {
 
 extension HeroDetailModel : ImagePresentable {
     var imageName: String { return comics[indexPathRow].thumbnailUrl }
-    //TODO: Make this download images async and not make it in the cell.
-    
-    /* This was incomplete, we should update the images in each cell once they are downloaded */
+   
     var image: UIImage {
         let comic = comics[indexPathRow]
         let comicUrl = URL(string: comic.thumbnailUrl)

@@ -15,9 +15,7 @@ import UIKit
  Detail View for Hero 
  Includes a Collection View with Comics
  */
-protocol HeroDetailDelegate : class {
-    func updateModel()
-}
+
 
 class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, HeroDetailDelegate {
     //MARK: Outlets
@@ -157,7 +155,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.count()
+        return model.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -166,7 +164,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: Delegate methods
     func updateModel(){
-        if model.count() == 0{
+        if model.count == 0{
             self.comicsEmptyStateLabel.isHidden = false
         }
         

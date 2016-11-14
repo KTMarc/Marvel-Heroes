@@ -33,8 +33,8 @@ class ComicCell: UICollectionViewCell {
             self.thumbImg.image = presenter.image
             self.thumbImg.layer.borderWidth = 1
             self.thumbImg.layer.masksToBounds = false
-            self.thumbImg.layer.borderColor = UIColor.white.cgColor
-            self.thumbImg.layer.cornerRadius = 10
+            self.thumbImg.layer.borderColor = UIColor.gray.cgColor
+            self.thumbImg.layer.cornerRadius = 5
             self.thumbImg.clipsToBounds = true
         })
         delegate?.didUpdate = self.presentCell
