@@ -11,13 +11,19 @@ import UIKit
 protocol cellDelegate : class {
     func updateModel(_ presenter: heroCellPresentable)
 }
+
+protocol HeroBrowserDelegate : class {
+    func updateModel()
+}
+
 class MasterViewControllerModel{
     
     // MARK: Properties
     private var _heroes: [Hero]
     var heroes: [Hero] { return _heroes }
-    var indexPath: Int = 0
-    weak var delegate : cellDelegate?
+    var count: Int { return _heroes.count }
+    var indexPathRow: Int = 0
+    weak var delegate : HeroBrowserDelegate?
     var didUpdate: ((heroCellPresentable) -> Void)?
 
     // MARK: Initialization
@@ -25,54 +31,73 @@ class MasterViewControllerModel{
         _heroes = [Hero]()
     }
     
-    convenience init(hero: Hero, theDelegate: cellDelegate ){ //When we want to pass only one element to the cell
+    convenience init(theDelegate: HeroBrowserDelegate){
         self.init()
-        _heroes.append(hero)
         delegate = theDelegate
     }
     
     // MARK: Entry Points to Modify / Query Underlying Model
+    //TODO: Check if this could be deleted
     func append(_ hero: Hero) {
         _heroes.append(hero)
     }
     
+//    func count() -> Int {
+//        return _heroes.count
+//    }
+    
+    //TODO: Check if this could be deleted
     func removeLast() -> Hero {
         return _heroes.removeLast()
     }
     
-    subscript(heroAt index: Int) -> Hero {
-        get {
-            let hero = _heroes[index]
-            //let kk = apiClient.singleton
-            //Check if the image is in the cache and download it here if not.
-//            if let image = kk.getImage(link: _heroes[index].thumbnailUrl, completion:{_ in print("puta")}){
-//            _heroes[index].setPhoto(image: image)
-//            }
-            return hero
-        }
-        
-        set {
-            _heroes[index] = newValue
+    // MARK: API interaction
+    func search(keystrokes: String){
+        apiClient.singleton.searchHeroes(keystrokes)
+    }
+    
+    func resetHeroSuggestions(){
+        apiClient.singleton.resetHeroSuggestions()
+    }
+    
+    /**
+     Prepares the the ViewModel.
+     Called just one time right after initialization.
+     Configures notifications and requests comics to the API
+     */
+    
+    func tearUp(){
+        listenToNotifications()
+        apiClient.singleton.fetchHeroes()
+    }
+    
+    //MARK: API request 📡
+    func listenToNotifications(){
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  [weak self] Notification in
+            
+            self?._heroes = apiClient.singleton.getHeroes()
+            self?.delegate?.updateModel()
         }
     }
     
-    
+    subscript(heroAt index: Int) -> Hero {
+            return _heroes[index]
+    }
 }
 
 // MARK: Protocol conformance used to configure the cell for each hero
 extension MasterViewControllerModel : TextPresentable {
-    var text: String { return heroes[indexPath].name.capitalized }
+    var text: String { return heroes[indexPathRow].name.capitalized }
     var textColor: UIColor { return .white }
     var font: UIFont { return .systemFont(ofSize: 10.0) }
 }
 
 extension MasterViewControllerModel : ImagePresentable {
-    var imageName: String { return heroes[indexPath].thumbnailUrl }
-    /* This was incomplete, we should update the images in each cell once they are downloaded */
-    
+    var imageName: String { return heroes[indexPathRow].thumbnailUrl }
+   
     //TODO: Make this generic
     var image: UIImage {
-        let heroUrl = URL(string: heroes[indexPath].thumbnailUrl)
+        let heroUrl = URL(string: heroes[indexPathRow].thumbnailUrl)
         let imageUrl = heroUrl  // For recycled cells' late image loads.
         var heroImage = UIImage()
         if let cachedImage = heroUrl?.cachedImage {
@@ -83,7 +108,6 @@ extension MasterViewControllerModel : ImagePresentable {
                 // Check the cell hasn't recycled while loading.
                 if imageUrl?.absoluteString == self?.imageName {
                     heroImage = downloadedImage
-                    self?.delegate?.updateModel(self!)
                 }
             }
         }

@@ -12,7 +12,8 @@ import UIKit
 Collection View with Hero objects
  */
 
-class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
+
+class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate, HeroBrowserDelegate {
 
     //MARK: Types
     typealias Model = MasterViewControllerModel
@@ -21,39 +22,38 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    //TODO: find a nicer way to create an horizontal line
+    //MARK:
     //MARK: Properties
     var searchController: UISearchController!
-    var currentOffset = 0
+    var _currentOffset = 0
 
-    //private var state = State.viewing
-    private var model = Model()
-    private var searchTimer: Timer?
+    private var _model = Model()
+    private var _searchTimer: Timer?
     private var _keystrokes = ""
     
     //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Initialization
+        _model = Model(theDelegate: self)
+        _model.tearUp()
+        configureSearchController()
+        listenToNotifications()
         collection.delegate = self
         collection.dataSource = self
+        //TODO: Could be deleted, check it
         searchBar.isHidden = true
         
         //UI
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
         imageView.contentMode = .scaleAspectFit
-        let image = UIImage(named: "navBarLogo.png")
-        imageView.image = image
+        imageView.image = UIImage(named: "navBarLogo.png")
         navigationItem.titleView = imageView
-
-        /// On init of apiClient we also init the persistencyManager and start fetching heroes
-        
-        listenToNotifications()
-        
-        apiClient.singleton.fetchHeroes()
-        
-        configureSearchController()
-        
     }
     
+    //TODO: This woulnd't be needed for iOS 10..delete
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -63,23 +63,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.reloadData()
     }
     
-    //MARK: API request 📡
+    //MARK: Notifications 📡
     func listenToNotifications(){
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  (_) in
-            
-            //FIXME: ARC should do the job here and deallocate all objects from the old struct. This could be better.
-            self.model = Model()
-            _ = apiClient.singleton.getHeroes().map{
-                self.model.append($0)
-            }
-            
-            DispatchQueue.main.async(execute: {
-                self.collection.reloadData()
-            })
-            
-            //print("Heroes from notification: \(self.model.heroes.count)")
-        }
-        
         NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         NotificationCenter.default.addObserver(
@@ -87,7 +72,13 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.searchController.searchBar.becomeFirstResponder()
         }
     }
-    
+    //MARK: Delegate methods
+    func updateModel(){
+        DispatchQueue.main.async(execute: {
+            self.collection.reloadData()
+        })
+    }
+
     /**
      Adjust Search Bar size when rotating devices
      */
@@ -137,27 +128,27 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func launchNetworkQuery(){
-            apiClient.singleton.searchHeroes(_keystrokes)
+            _model.search(keystrokes: _keystrokes)
     }
     
     // MARK: API request to get suggestions 📡
     func updateSearchResults(for searchController: UISearchController) {
         if let keystrokes = searchController.searchBar.text , keystrokes != "" {
-            if let searchTimer = searchTimer {
+            if let searchTimer = _searchTimer {
                 searchTimer.invalidate()
             }
             _keystrokes = keystrokes
-            searchTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(MasterViewController.launchNetworkQuery),userInfo: nil, repeats: false)
+            _searchTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(MasterViewController.launchNetworkQuery),userInfo: nil, repeats: false)
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        apiClient.singleton.resetHeroSuggestions()
+        _model.resetHeroSuggestions()
         collection.reloadData()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        apiClient.singleton.resetHeroSuggestions()
+        _model.resetHeroSuggestions()
         collection.reloadData()
     }
     
@@ -166,17 +157,15 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as? HeroCell {
             
-            //Need this to return the correct element in the protocol extension
-            model.indexPath = indexPath.row
+            _model.indexPathRow = indexPath.row
             
-            //Creating a new ViewModel with just one element that we can present.
-            let viewModelForThisCell = Model(hero: model.heroes[indexPath.row], theDelegate: cell)
-            cell.configureCell(viewModelForThisCell)
+            let cellViewModel = HeroCellModel(hero: _model.heroes[indexPath.row])
+            cell.presentCell(cellViewModel)
             
-            if (indexPath.item == model.heroes.count - 1) && (model.heroes.count > currentOffset){
+            if (indexPath.item == (_model.count - 1)) && (_model.count > _currentOffset){
                 print("fetching more stuff")
-                currentOffset += 20
-                apiClient.singleton.moreHeroes(currentOffset)
+                _currentOffset += 20
+                apiClient.singleton.moreHeroes(_currentOffset)
             }
             cell.fadeIn()
             return cell
@@ -187,7 +176,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.heroes.count
+        return _model.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -211,7 +200,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             if let detailsVC = segue.destination as? HeroDetailVC {
                 if let selectedHeroIndex = collection.indexPathsForSelectedItems , selectedHeroIndex.count == 1{
                     let selectedHeroIndex = (selectedHeroIndex[0] as NSIndexPath).row
-                    let hero = model[heroAt: selectedHeroIndex]
+                    let hero = _model[heroAt: selectedHeroIndex]
                     detailsVC.setModelWith(hero)
                 }
 
