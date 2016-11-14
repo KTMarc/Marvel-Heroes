@@ -17,7 +17,7 @@ import UIKit
  */
 
 
-class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, HeroDetailDelegate {
+class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, ModelUpdaterDelegate {
     //MARK: Outlets
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var avatarImage: UIImageView!

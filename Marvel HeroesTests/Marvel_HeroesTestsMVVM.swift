@@ -49,6 +49,5 @@ class Marvel_HeroesTestsMVVM: XCTestCase {
             XCTAssertEqual(model.comics.count, 11)
             XCTAssertTrue(result)
         }
-        model.tearDown()
     }
 }

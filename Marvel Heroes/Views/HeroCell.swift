@@ -14,7 +14,7 @@ import UIKit
 
 typealias heroCellPresentable = TextPresentable & ImagePresentable
 
-class HeroCell  : UICollectionViewCell/*, cellDelegate*/ {
+class HeroCell  : UICollectionViewCell {
     //MARK: Outlets
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!

@@ -10,7 +10,7 @@ import XCTest
 
 @testable import Marvel_Heroes
 
-class SpyDelegate: HeroDetailDelegate {
+class SpyDelegate: ModelUpdaterDelegate {
     
     // Setting .None is unnecessary, but helps with clarity imho
     var somethingWithDelegateAsyncResult: Bool? = .none

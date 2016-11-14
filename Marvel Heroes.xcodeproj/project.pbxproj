@@ -46,6 +46,7 @@
 		49D10A341DAFFCA70004C197 /* Marvel_HeroesTestsMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D10A331DAFFCA70004C197 /* Marvel_HeroesTestsMVVM.swift */; };
 		49D10A391DB005DB0004C197 /* SpyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D10A381DB005DB0004C197 /* SpyDelegate.swift */; };
 		49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA5A051CC05784005A9710 /* UIViewExtensions.swift */; };
+		49FCDBCD1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCDBCC1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		49D10A331DAFFCA70004C197 /* Marvel_HeroesTestsMVVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marvel_HeroesTestsMVVM.swift; sourceTree = "<group>"; };
 		49D10A381DB005DB0004C197 /* SpyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyDelegate.swift; sourceTree = "<group>"; };
 		49DA5A051CC05784005A9710 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		49FCDBCC1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUpdaterDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 		491A12151D9E691E001F54AB /* 🤖 Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				49FCDBCC1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift */,
 				491A12161D9E6969001F54AB /* TextPresentable.swift */,
 				491A12181D9E698A001F54AB /* ImagePresentable.swift */,
 			);
@@ -496,6 +499,7 @@
 				490EA9961CBD78C100F7071D /* Comic.swift in Sources */,
 				49A2F5431D57ED4D00998AE9 /* URL+fetchImage.swift in Sources */,
 				498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */,
+				49FCDBCD1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift in Sources */,
 				491466CC1CBEA58E00DAD512 /* ComicCell.swift in Sources */,
 				4968BE921CBBF08B0094B53F /* Parser.swift in Sources */,
 				492D090D1CBA87AF0086D348 /* HeroCell.swift in Sources */,

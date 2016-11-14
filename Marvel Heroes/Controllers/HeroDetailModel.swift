@@ -8,11 +8,6 @@
 
 import UIKit
 
-//TODI: Simplify creating a single protocol called ModelUpdatable
-protocol HeroDetailDelegate : class {
-    func updateModel()
-}
-
 class HeroDetailModel {
     
     // MARK: Properties
@@ -24,7 +19,7 @@ class HeroDetailModel {
     var count: Int { return _comics.count }
     var comicOffset = 0
     var indexPathRow = 0
-    weak var delegate : HeroDetailDelegate?
+    weak var delegate : ModelUpdaterDelegate?
     var didUpdate: ((heroCellPresentable) -> Void)?
 
     // MARK: Initialization 🐣
@@ -33,7 +28,7 @@ class HeroDetailModel {
         _comics = [Comic]()
     }
     
-    convenience init(hero: Hero, theDelegate: HeroDetailDelegate){
+    convenience init(hero: Hero, theDelegate: ModelUpdaterDelegate){
         self.init()
         _hero = hero
         delegate = theDelegate
@@ -59,10 +54,6 @@ class HeroDetailModel {
         let comic = _comics[index]
         return comic
     }
-    
-//    func count() -> Int{
-//        return _comics.count
-//    }
     
     //MARK: API request 📡
     func listenToNotifications(){

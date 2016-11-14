@@ -7,15 +7,6 @@
 //
 import UIKit
 
-
-protocol cellDelegate : class {
-    func updateModel(_ presenter: heroCellPresentable)
-}
-
-protocol HeroBrowserDelegate : class {
-    func updateModel()
-}
-
 class MasterViewControllerModel{
     
     // MARK: Properties
@@ -23,7 +14,7 @@ class MasterViewControllerModel{
     var heroes: [Hero] { return _heroes }
     var count: Int { return _heroes.count }
     var indexPathRow: Int = 0
-    weak var delegate : HeroBrowserDelegate?
+    weak var delegate : ModelUpdaterDelegate?
     var didUpdate: ((heroCellPresentable) -> Void)?
 
     // MARK: Initialization
@@ -31,7 +22,7 @@ class MasterViewControllerModel{
         _heroes = [Hero]()
     }
     
-    convenience init(theDelegate: HeroBrowserDelegate){
+    convenience init(theDelegate: ModelUpdaterDelegate){
         self.init()
         delegate = theDelegate
     }
@@ -41,10 +32,6 @@ class MasterViewControllerModel{
     func append(_ hero: Hero) {
         _heroes.append(hero)
     }
-    
-//    func count() -> Int {
-//        return _heroes.count
-//    }
     
     //TODO: Check if this could be deleted
     func removeLast() -> Hero {
