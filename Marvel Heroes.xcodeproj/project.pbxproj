@@ -324,8 +324,8 @@
 			children = (
 				491B44AB1CBCE394001FE7A5 /* HeroDetailVC.swift */,
 				49287B681DA81B8100203222 /* HeroDetailModel.swift */,
-				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
 				49249E4D1DD6015A00E28D6B /* ComicCellModel.swift */,
+				491466CB1CBEA58E00DAD512 /* ComicCell.swift */,
 			);
 			name = "👤 View Hero Details";
 			sourceTree = "<group>";

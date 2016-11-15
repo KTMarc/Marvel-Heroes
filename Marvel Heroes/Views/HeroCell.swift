@@ -31,13 +31,13 @@ class HeroCell  : UICollectionViewCell {
         delegate = presenter
         nameLbl.text = presenter.text
         nameLbl.textColor = presenter.textColor
-        DispatchQueue.main.async(execute: { () -> Void in
-            self.thumbImg.image = presenter.image
-            self.thumbImg.layer.borderWidth = 1
-            self.thumbImg.layer.masksToBounds = false
-            self.thumbImg.layer.borderColor = UIColor.white.cgColor
-            self.thumbImg.layer.cornerRadius = 10
-            self.thumbImg.clipsToBounds = true
+        DispatchQueue.main.async(execute: { [weak self] () -> Void in
+            self?.thumbImg.image = presenter.image
+            self?.thumbImg.layer.borderWidth = 1
+            self?.thumbImg.layer.masksToBounds = false
+            self?.thumbImg.layer.borderColor = UIColor.white.cgColor
+            self?.thumbImg.layer.cornerRadius = 10
+            self?.thumbImg.clipsToBounds = true
         })
         delegate?.didUpdate = self.presentCell
     }

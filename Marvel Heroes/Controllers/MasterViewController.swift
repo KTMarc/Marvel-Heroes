@@ -150,25 +150,22 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     //MARK: Collection View Data Soure
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as? HeroCell {
-            
-            _model.indexPathRow = indexPath.row
-            
-            let cellViewModel = HeroCellModel(hero: _model.heroes[indexPath.row])
-            cell.presentCell(cellViewModel)
-            
-            if (indexPath.item == (_model.count - 1)) && (_model.count > _currentOffset){
-                print("fetching more stuff")
-                _currentOffset += 20
-                apiClient.manager.moreHeroes(_currentOffset)
-            }
-            cell.fadeIn()
-            return cell
-            
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as! HeroCell
+        
+        _model.indexPathRow = indexPath.row
+        cell.alpha = 0
+        let cellViewModel = HeroCellModel(hero: _model.heroes[indexPath.row])
+        cell.presentCell(cellViewModel)
+        
+        if (indexPath.item == (_model.count - 1)) && (_model.count > _currentOffset){
+            _currentOffset += 20
+            apiClient.manager.moreHeroes(_currentOffset)
         } else {
-            return UICollectionViewCell()
+         //   cell.fadeIn()
         }
+        return cell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _model.count

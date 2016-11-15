@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,7 +49,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeroCell" id="xXx-wu-edb" customClass="HeroCell" customModule="Marvel_Heroes" customModuleProvider="target">
-                                                <rect key="frame" x="38" y="5" width="300" height="300"/>
+                                                <rect key="frame" x="37.5" y="5" width="300" height="300"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -137,6 +137,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v8j-JH-R8j" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KtB-vv-68Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -148,7 +150,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXK-i6-lVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="75"/>
+            <point key="canvasLocation" x="577" y="0.0"/>
         </scene>
         <!--Hero DetailVC-->
         <scene sceneID="15v-mL-EsB">
@@ -206,16 +208,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gQt-B3-tCf" userLabel="Description">
-                                        <rect key="frame" x="35" y="391" width="510" height="30"/>
+                                        <rect key="frame" x="10" y="391" width="560" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="wgR-gS-exD"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHB-CD-TpE" userLabel="Collection Container">
-                                        <rect key="frame" x="0.0" y="471" width="600" height="270"/>
+                                        <rect key="frame" x="0.0" y="461" width="600" height="270"/>
                                         <subviews>
                                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="38x-x3-ccL">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="270"/>
@@ -333,7 +335,7 @@
                                     <constraint firstItem="pnD-pj-onT" firstAttribute="leading" secondItem="ieP-a9-3PX" secondAttribute="leading" constant="35" id="bV2-kh-02M"/>
                                     <constraint firstAttribute="bottom" secondItem="VHB-CD-TpE" secondAttribute="bottom" constant="100" id="hy6-sB-CBS"/>
                                     <constraint firstItem="jRb-NQ-ZVG" firstAttribute="width" secondItem="fra-eB-8J4" secondAttribute="width" id="rds-BD-Yjk"/>
-                                    <constraint firstItem="VHB-CD-TpE" firstAttribute="top" secondItem="gQt-B3-tCf" secondAttribute="bottom" constant="50" id="spP-H6-Zlg"/>
+                                    <constraint firstItem="VHB-CD-TpE" firstAttribute="top" secondItem="gQt-B3-tCf" secondAttribute="bottom" constant="40" id="spP-H6-Zlg"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -351,9 +353,9 @@
                             <constraint firstItem="VHB-CD-TpE" firstAttribute="width" secondItem="2ym-np-0p7" secondAttribute="width" id="aRD-eU-q1A"/>
                             <constraint firstItem="cFG-Oo-jRL" firstAttribute="leading" secondItem="2ym-np-0p7" secondAttribute="leading" constant="35" id="cQy-fz-gya"/>
                             <constraint firstAttribute="trailing" secondItem="ieP-a9-3PX" secondAttribute="trailing" id="hlD-sw-67W"/>
-                            <constraint firstItem="gQt-B3-tCf" firstAttribute="leading" secondItem="2ym-np-0p7" secondAttribute="leading" constant="35" id="kbX-eO-pkv"/>
+                            <constraint firstItem="gQt-B3-tCf" firstAttribute="leading" secondItem="2ym-np-0p7" secondAttribute="leading" constant="10" id="kbX-eO-pkv"/>
                             <constraint firstItem="fra-eB-8J4" firstAttribute="centerX" secondItem="2ym-np-0p7" secondAttribute="centerX" id="lnG-iG-ucz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gQt-B3-tCf" secondAttribute="trailing" constant="35" id="sQx-tH-iUn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gQt-B3-tCf" secondAttribute="trailing" constant="10" id="sQx-tH-iUn"/>
                             <constraint firstItem="fra-eB-8J4" firstAttribute="width" secondItem="2ym-np-0p7" secondAttribute="width" id="v4E-AN-JJA"/>
                         </constraints>
                         <variation key="default">

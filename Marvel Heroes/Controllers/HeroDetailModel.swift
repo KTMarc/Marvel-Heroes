@@ -74,7 +74,7 @@ class HeroDetailModel {
 extension HeroDetailModel : TextPresentable {
     var text: String { return comics[indexPathRow].title.capitalized }
     var textColor: UIColor { return .white }
-    var font: UIFont { return .systemFont(ofSize: 12.0) }
+    var font: UIFont { return .systemFont(ofSize: 14.0) }
 }
 
 extension HeroDetailModel : ImagePresentable {

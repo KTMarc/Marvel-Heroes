@@ -8,13 +8,11 @@
 
 import Foundation
 import UIKit
-//import Haneke
-
 
 typealias ImageCacheCompletion = (UIImage) -> Void
 
 /**
- Responsible of managing network and local cache of images and JSON files
+ Responsible of managing network and local cache of images
  Works together with the parser class to serialize objects from JSON.
  */
 
@@ -27,18 +25,6 @@ class PersistencyManager: NSObject {
     private let _parser : Parser
     private let _storageArchitecture : StorageArchitecture
     private let _cache = NSCache<NSString,UIImage>()
-    
-    //    override init() {
-//        super.init()
-//        fetchHeroes()
-//    }
-    
-//    class var manager: PersistencyManager {
-//        struct manager {
-//            static let instance = PersistencyManager(parseType: .functional, storageArchitecture: .other)
-//        }
-//        return manager.instance
-//    }
     
     init(parseType: ParseType, storageArchitecture: StorageArchitecture){
         _parser = Parser(parseType: parseType)
@@ -63,53 +49,29 @@ class PersistencyManager: NSObject {
         
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         let myRequest = URLRequest(url: URL)
-        //myRequest.httpMethod = "GET"
-        
-        
-        //let myConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         let task = mySession.dataTask(with: myRequest){ (data, response, error) in
-
-        
-        ///Data: NSData
-            ///Response: 200,400,etc..
-            ///Error
-//        cache.fetch(URL: URL)
-//            .onSuccess { JSON in
-//                self._parser.setDict(JSON.dictionary)
-//                
-                self._parser.setData(data!)
-                switch notification {
-
-                case .heroes:
-                    self._heroes.append(contentsOf: self._parser.parseHeroes("nothing"))
-                    
-                case .comics:
-                    self._comics = self._parser.parseComics()
-                    
-                case .suggestions:
-                    self._suggestions = self._parser.parseHeroes("nothing")
-                    
-                case .modal_heroDetail_dismissed:
-                    break
-                    
-                } //End of switch
-                //We completed our job and can the notification can be sent
-                NotificationCenter.default.post(
-                    name: Notification.Name(notification.rawValue), object: self)
-            
-           // } //End of OnSuccess
-            
-            
-//            .onFailure { (error) in
-//                print("Could not fetch from network")
-//        
-//        } //End of onFailure
-        
+            self._parser.setData(data!)
+            switch notification {
+                
+            case .heroes:
+                self._heroes.append(contentsOf: self._parser.parseHeroes("nothing"))
+                
+            case .comics:
+                self._comics = self._parser.parseComics()
+                
+            case .suggestions:
+                self._suggestions = self._parser.parseHeroes("nothing")
+                
+            case .modal_heroDetail_dismissed:
+                break
+                
+            } //End of switch
+            //We completed our job and can the notification can be sent
+            NotificationCenter.default.post(
+                name: Notification.Name(notification.rawValue), object: self)
         }
-    
         task.resume()
-    
-        } //End of fecthData
+    } //End of fecthData
     
     
     
@@ -131,7 +93,7 @@ class PersistencyManager: NSObject {
     }
     
 //    func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
-//        
+//
 //        if let image = _cache.object(forKey: link){
 //            
 //            return image
