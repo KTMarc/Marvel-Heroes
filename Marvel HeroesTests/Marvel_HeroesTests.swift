@@ -15,7 +15,7 @@ class Marvel_HeroesTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        _ = apiClient.singleton
+        _ = apiClient.manager
     }
     
     override func tearDown() {
@@ -71,11 +71,11 @@ class Marvel_HeroesTests: XCTestCase {
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  (_) in
             
-            heroes = apiClient.singleton.getHeroes()
+            heroes = apiClient.manager.getHeroes()
             expectation?.fulfill()
         }
         
-        apiClient.singleton.fetchHeroes()
+        apiClient.manager.fetchHeroes()
         
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 0)
@@ -88,13 +88,13 @@ class Marvel_HeroesTests: XCTestCase {
         let partOfHeroName = "Spider"
         var heroes = [Hero]()
         
-        apiClient.singleton.searchHeroes(partOfHeroName)
+        apiClient.manager.searchHeroes(partOfHeroName)
         
         weak var expectation = self.expectation(description: "Find Spider-Man")
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: nil, queue: nil) {  (_) in
             
-            heroes = apiClient.singleton.getHeroes()
+            heroes = apiClient.manager.getHeroes()
             expectation?.fulfill()
         }
         waitForExpectations(timeout: 5, handler: nil)
@@ -113,11 +113,11 @@ class Marvel_HeroesTests: XCTestCase {
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {  (_) in
             
-            comics = apiClient.singleton.getComics()
+            comics = apiClient.manager.getComics()
             expectation?.fulfill()
         }
         
-        apiClient.singleton.fetchComics(heroId)
+        apiClient.manager.fetchComics(heroId)
         
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(comics.count, 11)

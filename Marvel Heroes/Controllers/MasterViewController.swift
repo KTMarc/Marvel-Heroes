@@ -53,11 +53,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         navigationItem.titleView = imageView
     }
     
-    //TODO: This woulnd't be needed for iOS 10..delete
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collection.reloadData()
@@ -88,7 +83,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     // MARK: Search Results Controller 🔍
     func configureSearchController() {
-        searchController = UISearchController(searchResultsController: SuggestionsViewController())
+        searchController = UISearchController(searchResultsController: SuggestionsVC())
         
         searchController.definesPresentationContext = false
         searchController.searchResultsUpdater = self
@@ -165,7 +160,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             if (indexPath.item == (_model.count - 1)) && (_model.count > _currentOffset){
                 print("fetching more stuff")
                 _currentOffset += 20
-                apiClient.singleton.moreHeroes(_currentOffset)
+                apiClient.manager.moreHeroes(_currentOffset)
             }
             cell.fadeIn()
             return cell

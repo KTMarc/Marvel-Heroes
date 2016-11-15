@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Haneke
 
 /**
  Custom Cell for Suggestions table view
@@ -18,8 +17,8 @@ class SuggestionCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var thumbImg: UIImageView!
     
-    
-    var hero: Hero!
+    //MARK: Properties
+    private var delegate: heroCellPresentable?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,13 +30,14 @@ class SuggestionCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(_ hero: Hero) {
-        self.hero = hero
-        nameLabel.text = self.hero.name.capitalized
-        thumbImg.downloadAsyncFrom(self.hero.thumbnailUrl, contentMode: .scaleAspectFill)
-//        if let url = NSURL.init(string: self.hero.thumbnailUrl) {
-//            thumbImg.hnk_setImageFromURL(url)
-//        }
+    func presentCell(_ presenter: heroCellPresentable) {
+        delegate = presenter
+        nameLabel.text = presenter.text.capitalized
+        DispatchQueue.main.async(execute: { [weak self] () -> Void in
+            self?.thumbImg.image = presenter.image
+            self?.thumbImg.contentMode = .scaleAspectFill
+        })
+        delegate?.didUpdate = self.presentCell
     }
 }
 

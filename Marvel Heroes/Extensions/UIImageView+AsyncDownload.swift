@@ -9,9 +9,10 @@
 import UIKit
 
 
-/* SWIFT 3 version here
- http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+/**
+ Downloads a remote image in the background.
  */
+
 extension UIImageView {
     func downloadAsyncFrom(_ link: String, contentMode mode: UIViewContentMode, completion: (() -> ())? = nil) {
         guard let url = URL(string: link) else { return }
@@ -32,8 +33,3 @@ extension UIImageView {
         task.resume()
     }
 }
-
-/*
- Make it better adding cache and detection of visible cells on the screen
- http://sweettutos.com/2015/12/31/swift-how-to-asynchronously-download-and-cache-images-without-relying-on-third-party-libraries/
- */

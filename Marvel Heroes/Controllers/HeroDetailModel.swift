@@ -42,7 +42,7 @@ class HeroDetailModel {
     
     func tearUp(){
         listenToNotifications()
-        apiClient.singleton.fetchComics(hero.heroId)
+        apiClient.manager.fetchComics(hero.heroId)
     }
     
     // MARK: Entry Points to Modify / Query Underlying Model
@@ -63,7 +63,7 @@ class HeroDetailModel {
             //, weak safeDelegate = self.delegate!]*/
             in
             
-            self?._comics = apiClient.singleton.getComics()
+            self?._comics = apiClient.manager.getComics()
             self?.delegate?.updateModel()
         }
     }

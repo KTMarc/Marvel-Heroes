@@ -33,6 +33,8 @@
 		492D090A1CBA82730086D348 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D09091CBA82730086D348 /* Hero.swift */; };
 		492D090D1CBA87AF0086D348 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D090C1CBA87AF0086D348 /* HeroCell.swift */; };
 		492D09111CBAA2C10086D348 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D09101CBAA2C10086D348 /* Constants.swift */; };
+		493E13181DDAFD4E005EF786 /* SuggestionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E13171DDAFD4E005EF786 /* SuggestionsModel.swift */; };
+		493E131A1DDB0994005EF786 /* SuggestionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E13191DDB0994005EF786 /* SuggestionCellModel.swift */; };
 		496535811CBFE65D00EE587D /* comicsByCharacter.json in Resources */ = {isa = PBXBuildFile; fileRef = 4965357F1CBFE65D00EE587D /* comicsByCharacter.json */; };
 		496535821CBFE65D00EE587D /* listCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 496535801CBFE65D00EE587D /* listCharacters.json */; };
 		4968BE8C1CBBD2400094B53F /* apiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968BE8B1CBBD2400094B53F /* apiClient.swift */; };
@@ -41,7 +43,7 @@
 		4974530B1D49731400221C7B /* listCharacters_response.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4974530A1D49731400221C7B /* listCharacters_response.txt */; };
 		4974530D1D49739A00221C7B /* listCharacters_full.json in Resources */ = {isa = PBXBuildFile; fileRef = 4974530C1D49739A00221C7B /* listCharacters_full.json */; };
 		4985E2BF1D4518A1004C4AE6 /* MasterViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */; };
-		498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */; };
+		498FA3E21CBE48E000502331 /* SuggestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FA3E11CBE48E000502331 /* SuggestionsVC.swift */; };
 		49A2F5431D57ED4D00998AE9 /* URL+fetchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2F5421D57ED4D00998AE9 /* URL+fetchImage.swift */; };
 		49D10A341DAFFCA70004C197 /* Marvel_HeroesTestsMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D10A331DAFFCA70004C197 /* Marvel_HeroesTestsMVVM.swift */; };
 		49D10A391DB005DB0004C197 /* SpyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D10A381DB005DB0004C197 /* SpyDelegate.swift */; };
@@ -101,6 +103,8 @@
 		492D09091CBA82730086D348 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hero.swift; path = Model/Hero.swift; sourceTree = "<group>"; };
 		492D090C1CBA87AF0086D348 /* HeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroCell.swift; path = Views/HeroCell.swift; sourceTree = "<group>"; };
 		492D09101CBAA2C10086D348 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Helpers/Constants.swift; sourceTree = "<group>"; };
+		493E13171DDAFD4E005EF786 /* SuggestionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsModel.swift; path = Controllers/SuggestionsModel.swift; sourceTree = "<group>"; };
+		493E13191DDB0994005EF786 /* SuggestionCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionCellModel.swift; path = Controllers/SuggestionCellModel.swift; sourceTree = "<group>"; };
 		4965357F1CBFE65D00EE587D /* comicsByCharacter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comicsByCharacter.json; sourceTree = "<group>"; };
 		496535801CBFE65D00EE587D /* listCharacters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listCharacters.json; sourceTree = "<group>"; };
 		4968BE8B1CBBD2400094B53F /* apiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = apiClient.swift; path = Services/apiClient.swift; sourceTree = "<group>"; };
@@ -109,7 +113,7 @@
 		4974530A1D49731400221C7B /* listCharacters_response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = listCharacters_response.txt; sourceTree = "<group>"; };
 		4974530C1D49739A00221C7B /* listCharacters_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listCharacters_full.json; sourceTree = "<group>"; };
 		4985E2BE1D4518A1004C4AE6 /* MasterViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewControllerModel.swift; path = Controllers/MasterViewControllerModel.swift; sourceTree = "<group>"; };
-		498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsViewController.swift; path = Controllers/SuggestionsViewController.swift; sourceTree = "<group>"; };
+		498FA3E11CBE48E000502331 /* SuggestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsVC.swift; path = Controllers/SuggestionsVC.swift; sourceTree = "<group>"; };
 		49A2F5421D57ED4D00998AE9 /* URL+fetchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL+fetchImage.swift"; path = "Extensions/URL+fetchImage.swift"; sourceTree = "<group>"; };
 		49D10A331DAFFCA70004C197 /* Marvel_HeroesTestsMVVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marvel_HeroesTestsMVVM.swift; sourceTree = "<group>"; };
 		49D10A381DB005DB0004C197 /* SpyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyDelegate.swift; sourceTree = "<group>"; };
@@ -184,7 +188,9 @@
 		492C5DE61DD8D79700B4D8C6 /* 🔍 Search Heroes */ = {
 			isa = PBXGroup;
 			children = (
-				498FA3E11CBE48E000502331 /* SuggestionsViewController.swift */,
+				498FA3E11CBE48E000502331 /* SuggestionsVC.swift */,
+				493E13171DDAFD4E005EF786 /* SuggestionsModel.swift */,
+				493E13191DDB0994005EF786 /* SuggestionCellModel.swift */,
 				491466CF1CBECB2900DAD512 /* SuggestionCell.xib */,
 				491466D11CBECBB000DAD512 /* SuggestionCell.swift */,
 			);
@@ -417,6 +423,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = GM2F4EG66J;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					492D08E51CBA7E930086D348 = {
 						CreatedOnToolsVersion = 7.3;
@@ -494,11 +501,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				492C5DE81DD8F7C800B4D8C6 /* HeroCellModel.swift in Sources */,
+				493E131A1DDB0994005EF786 /* SuggestionCellModel.swift in Sources */,
 				491A12171D9E6969001F54AB /* TextPresentable.swift in Sources */,
 				49249E4E1DD6015A00E28D6B /* ComicCellModel.swift in Sources */,
 				490EA9961CBD78C100F7071D /* Comic.swift in Sources */,
 				49A2F5431D57ED4D00998AE9 /* URL+fetchImage.swift in Sources */,
-				498FA3E21CBE48E000502331 /* SuggestionsViewController.swift in Sources */,
+				498FA3E21CBE48E000502331 /* SuggestionsVC.swift in Sources */,
 				49FCDBCD1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift in Sources */,
 				491466CC1CBEA58E00DAD512 /* ComicCell.swift in Sources */,
 				4968BE921CBBF08B0094B53F /* Parser.swift in Sources */,
@@ -508,6 +516,7 @@
 				491A12191D9E698A001F54AB /* ImagePresentable.swift in Sources */,
 				4910580C1D50A2BF00595AE1 /* UIImageView+AsyncDownload.swift in Sources */,
 				491B44AC1CBCE394001FE7A5 /* HeroDetailVC.swift in Sources */,
+				493E13181DDAFD4E005EF786 /* SuggestionsModel.swift in Sources */,
 				49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */,
 				492D090A1CBA82730086D348 /* Hero.swift in Sources */,
 				492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */,
@@ -666,6 +675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = GM2F4EG66J;
 				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -680,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = GM2F4EG66J;
 				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

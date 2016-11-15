@@ -9,7 +9,6 @@
 //
 
 import UIKit
-//import Haneke
 
 /**
  Detail View for Hero 
@@ -42,15 +41,6 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     var blurView = UIVisualEffectView()
     var presentedModally = false
 
-    //TOOD: Remove when transition to MVVM is complete. (Still needed in suggestionsVC)
-     /*Another view controller can set up this view controller's model by calling
-     `setHero(_:)` on it.*/
-    private var hero : Hero!
-    func setHero(_ hero: Hero) {
-        self.hero = hero
-    }
-    /* end of part to delete */
-    
     /**
      Meant to be called from the parent VC
      We set the model via Depency injection.
@@ -146,7 +136,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 //TODO: Fetch More comics with infinite scroll like we do it with heroes in the Master VC
                 //print("fetching more comics")
                 //comicOffset += 20
-                //apiClient.singleton.moreComics(comicOffset)
+                //apiClient.manager.moreComics(comicOffset)
             }
             return cell
         } else {

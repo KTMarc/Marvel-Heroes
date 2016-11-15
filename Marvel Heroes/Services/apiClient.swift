@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 /**
- This it the FAÇADE DESIGN PATTERN, provides a single interface to a complex subsystem. Instead of exposing the user to a set of classes and their APIs, you only expose one simple unified API
- Behind it there are other entities that are not accessible for them
+  Using the FAÇADE DESIGN PATTERN, which provides a single interface to a complex subsystem. Instead of exposing the user to a set of classes and their APIs, you only expose one simple unified API
  */
 
 // MARK: Types
@@ -44,7 +43,7 @@ class apiClient: NSObject {
 
     //Singleton definition:
     //supports lazy initialization because Swift lazily initializes class constants (and variables), and is thread safe by the definition of let
-    static let singleton = apiClient(parseType: .functional, storageArchitecture: .other)
+    static let manager = apiClient(parseType: .functional, storageArchitecture: .other)
     
     init(parseType: ParseType, storageArchitecture: StorageArchitecture) {
         _parseType = parseType
@@ -61,14 +60,13 @@ class apiClient: NSObject {
 //            print("imagen bajada")
 //        })
 //    }
-//    
+    
     func getCache() -> NSCache<NSString,UIImage>{
         return _persistencyManager.getCache()
     }
     
     
     //MARK: HEROES
-    
     /**
      Example API Call:
      http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
