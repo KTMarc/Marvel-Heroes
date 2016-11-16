@@ -22,8 +22,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    //TODO: find a nicer way to create an horizontal line
-    //MARK:
     //MARK: Properties
     var searchController: UISearchController!
     var _currentOffset = 0

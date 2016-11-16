@@ -68,31 +68,15 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func setupUI(){
         if let  _ = URL.init(string: self.model.hero.thumbnailUrl) {
             //Big Hero image
-            //self.image.hnk_setImageFromURL(url)
             self.image.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             
             //Smaller Hero image
-            //self.avatarImage.hnk_setImageFromURL(url)
-            self.avatarImage.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFit)
-            
+            self.avatarImage.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
             self.avatarImage.layer.borderWidth = 3
             self.avatarImage.layer.masksToBounds = false
             self.avatarImage.layer.borderColor = UIColor.black.cgColor
-            //thumbImg.layer.cornerRadius = thumbImg.frame.height / 2
             self.avatarImage.layer.cornerRadius = 10
             self.avatarImage.clipsToBounds = true
-            
-            //Blurred image background
-//            let blurEffect: UIBlurEffect = UIBlurEffect(style: .dark)
-//            let effectView = UIVisualEffectView(effect: blurEffect)
-//            effectView.frame = self.view.frame
-//            //self.blurImage.hnk_setImageFromURL(url)
-//            self.blurImage.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFit)
-//            self.blurImage.addSubview(effectView)
-//            blurView = UIVisualEffectView(effect: blurEffect)
-//            blurView.translatesAutoresizingMaskIntoConstraints = false
-//            self.view.addSubview(blurView)
-//            blurView.alpha = 1.0
         }
         
         //MARK: Navigation Bar Setup
@@ -111,32 +95,6 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         closeButton.isHidden = presentedModally ? false : true
     }
     
-//    func addGradientOverlay(){
-//        
-//        image.view.insertSubview(gradientView, aboveSubview: coverImageView)
-//        
-//        gradientLayer.frame = gradientView.bounds
-//        
-//        let opaqueBlackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).CGColor
-//        let transparentBlackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0).CGColor
-//        gradientLayer.colors = [transparentBlackColor, opaqueBlackColor]
-//        
-//        gradientView.layer.insertSublayer(gradientLayer, atIndex: 0)
-//        
-//        gradientView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        self.view.insertSubview(gradientView, aboveSubview: coverImageView)
-//        
-//        let topConstraint = NSLayoutConstraint(item: gradientView, attribute: .Top, relatedBy: .Equal, toItem: self.titleLabel, attribute: .Top, multiplier: 1, constant: -60)
-//        
-//        let leftConstraint = NSLayoutConstraint(item: gradientView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0)
-//        
-//        let rightConstraint = NSLayoutConstraint(item: gradientView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0)
-//        
-//        let bottomConstraint = NSLayoutConstraint(item: gradientView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0)
-//        
-//        view.addConstraints([topConstraint, leftConstraint, rightConstraint, bottomConstraint])
-//    }
     
     //MARK: Scroll View Delegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
