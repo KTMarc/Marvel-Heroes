@@ -42,6 +42,10 @@ class MasterViewControllerModel{
         apiClient.manager.resetHeroSuggestions()
     }
     
+    func moreHeroes(currentOffset: Int){
+        apiClient.manager.moreHeroes(currentOffset)
+    }
+    
     /**
      Prepares the the ViewModel.
      Called just one time right after initialization.

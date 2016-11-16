@@ -159,10 +159,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         if (indexPath.item == (_model.count - 1)) && (_model.count > _currentOffset){
             _currentOffset += 20
-            apiClient.manager.moreHeroes(_currentOffset)
-        } else {
-         //   cell.fadeIn()
+            _model.moreHeroes(currentOffset: _currentOffset)
         }
+         //   cell.fadeIn()
+        
         return cell
     }
     
