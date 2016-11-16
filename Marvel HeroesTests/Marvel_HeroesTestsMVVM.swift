@@ -50,4 +50,30 @@ class Marvel_HeroesTestsMVVM: XCTestCase {
             XCTAssertTrue(result)
         }
     }
+    
+    func testThatWeCanFindGideonMVVM() {
+        
+        //Giden
+        //let heroId = 1011055
+        let spyDelegate = SpyDelegate()
+        let model = SuggestionsModel(theDelegate: spyDelegate)
+        model.search(keystrokes: "Gideon")
+        weak var expectation = self.expectation(description: "SomethingWithDelegate calls the delegate as the result of an async method completion")
+        spyDelegate.asyncExpectation = expectation
+        model.tearUp()
+        //spyDelegate.updateModel()
+        
+        waitForExpectations(timeout: 5) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+            
+            guard let result = spyDelegate.somethingWithDelegateAsyncResult else {
+                XCTFail("Expected delegate to be called")
+                return
+            }
+            XCTAssertEqual(model.count, 1)
+            XCTAssertTrue(result)
+        }
+    }
 }

@@ -21,36 +21,12 @@ class Marvel_HeroesTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        NotificationCenter.default.removeObserver(self)
     }
     
-    /**
-     Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache.
-     
-     If not available, Haneke will fetch the JSON from the source, return it and then cache it. In this case, the URL itself is used as the key
- 
-     local path would be loaded like path = NSBundle(forClass: self.dynamicType).pathForResource("listCharacters", ofType: "json")
-     */
     
     func testThatWeCanParseLocalJSONfile(){
         
         var heroes = [Hero]()
-
-        
-        ///Data: NSData
-        ///Response: 200,400,etc..
-        ///Error
-    
-        //let path = NSBundle.mainBundle().pathForResource("listCharacters",ofType:"json") --> Doesn´t work in Tests
-        //let responsePath = NSBundle(forClass: Marvel_HeroesTests.self).pathForResource("listCharacters_response", ofType: "txt")
-
-        //let response = NSURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
-        
-        //let puta = NSHTTPURLResponse(URL: NSURL(fileURLWithPath: responsePath!), MIMEType: nil, expectedContentLength: -1, textEncodingName: nil)
-        //        //if let httpResponse = response as? NSHTTPURLResponse {
-        //            print(puta.statusCode)
-        //        //}
-    
         let path = Bundle(for: Marvel_HeroesTests.self).path(forResource: "listCharacters", ofType: "json")
         
         if let data = try? Data(contentsOf: URL(fileURLWithPath: path!)){
@@ -80,6 +56,7 @@ class Marvel_HeroesTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 0)
     }
+    
     
     
     func testThatWeCanFindSpiderMan() {
@@ -123,35 +100,7 @@ class Marvel_HeroesTests: XCTestCase {
         XCTAssertEqual(comics.count, 11)
     }
     
-    func downloadOrNot( downloadCount: Int, cache: NSCache<AnyObject, AnyObject>, hero: Hero) -> Int{
-        
-        var imageView : UIImageView
-        if let image = cache.object(forKey: hero.thumbnailUrl as AnyObject) as? UIImage{
-            imageView = UIImageView(image: image)
-        } else {
-            //Download the fucking image
-            imageView = UIImageView(image: UIImage(contentsOfFile: "navBarLogo.png"))
-            
-            imageView.downloadAsyncFrom(hero.thumbnailUrl, contentMode: .scaleAspectFill){
-                cache.setObject(imageView.image!, forKey: hero.thumbnailUrl as AnyObject)
-     //           return ((Int)downloadCount + 1)
-            }
-        }
-        return downloadCount
-    }
     
-//    func testThatWeCanCacheImages(){
-//        
-//        let imgCache = NSCache<AnyObject,AnyObject> ()
-//        let hero = apiClient.singleton.getHero(id: 1011334)
-//
-//        var downloadCount = 0
-//        
-//        downloadCount = downloadOrNot(downloadCount: downloadCount, cache: imgCache, hero: hero)
-//        
-//        XCTAssertEqual(downloadCount,1)
-//        
-//    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
