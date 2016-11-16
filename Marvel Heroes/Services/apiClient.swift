@@ -79,6 +79,15 @@ class apiClient: NSObject {
     }
     
     /**
+      Given a given ID we seach a Hero
+     - returns: A Hero or Nil
+     */
+    
+    func getHero(id: Int) -> Hero?{
+        return _persistencyManager.getHero(id: id)
+    }
+    
+    /**
      Returns the list of previously fetched elements
      - returns: An array of heroes
      */

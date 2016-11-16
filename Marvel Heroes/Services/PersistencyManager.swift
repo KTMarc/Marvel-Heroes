@@ -92,39 +92,7 @@ class PersistencyManager: NSObject {
         return hero[0]
     }
     
-//    func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
-//
-//        if let image = _cache.object(forKey: link){
-//            
-//            return image
-//        } else {
-//            //Download it
-//            guard let url = URL(string: link)
-//                else { return nil}
-//            
-//            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            guard let httpURLResponse = response as? HTTPURLResponse ,
-//                    httpURLResponse.statusCode == 200,
-//                    let mimeType = response?.mimeType ,
-//                    mimeType.hasPrefix("image"),
-//                    let data = data ,
-//                    error == nil
-//                else { return }
-//            
-//            guard let downloadedImage = UIImage(data: data)
-//                else { return }
-//            self._cache.setObject(downloadedImage, forKey: link)
-//                
-//            DispatchQueue.main.async(execute: { () -> Void in
-//                completion(downloadedImage)
-//            })
-//            
-//            }
-//            task.resume()
-//        }
-//        return nil
-//    }
-//    
+
     func getCache() -> NSCache<NSString,UIImage>{
         return _cache
     }
