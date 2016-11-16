@@ -30,11 +30,16 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         _model.tearUp()
     }
     
+    func search(keystrokes: String){
+        _model.search(keystrokes: keystrokes)
+    }
+
     func updateModel() {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
     }
+    
     
     //MARK: UI
     func setupUI(){

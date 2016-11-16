@@ -123,7 +123,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func launchNetworkQuery(){
-            _model.search(keystrokes: _keystrokes)
+        (searchController.searchResultsController as! SuggestionsVC).search(keystrokes: _keystrokes)
     }
     
     // MARK: API request to get suggestions 📡
@@ -133,7 +133,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 searchTimer.invalidate()
             }
             _keystrokes = keystrokes
-            _searchTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(MasterViewController.launchNetworkQuery),userInfo: nil, repeats: false)
+            _searchTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MasterViewController.launchNetworkQuery),userInfo: nil, repeats: false)
         }
     }
     
@@ -153,7 +153,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as! HeroCell
         
         _model.indexPathRow = indexPath.row
-        cell.alpha = 0
+
         let cellViewModel = HeroCellModel(hero: _model.heroes[indexPath.row])
         cell.presentCell(cellViewModel)
         
@@ -161,8 +161,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             _currentOffset += 20
             _model.moreHeroes(currentOffset: _currentOffset)
         }
-         //   cell.fadeIn()
-        
         return cell
     }
     

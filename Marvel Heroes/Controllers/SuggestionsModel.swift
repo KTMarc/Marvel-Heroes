@@ -33,6 +33,10 @@ class SuggestionsModel{
         listenToNotifications()
     }
     
+    func search(keystrokes: String){
+        apiClient.manager.searchHeroes(keystrokes)
+    }
+        
     subscript(heroAt index: Int) -> Hero {
         return _heroes[index]
     }

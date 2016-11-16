@@ -27,17 +27,8 @@ class MasterViewControllerModel{
         delegate = theDelegate
     }
     
-    // MARK: Entry Points to Modify / Query Underlying Model
-    //TODO: Check if this could be deleted
-    func append(_ hero: Hero) {
-        _heroes.append(hero)
-    }
     
     // MARK: API interaction
-    func search(keystrokes: String){
-        apiClient.manager.searchHeroes(keystrokes)
-    }
-    
     func resetHeroSuggestions(){
         apiClient.manager.resetHeroSuggestions()
     }
