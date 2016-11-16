@@ -200,7 +200,7 @@
 		492D08C71CBA7E930086D348 = {
 			isa = PBXGroup;
 			children = (
-				492D08D21CBA7E930086D348 /* Marvel Heroes */,
+				492D08D21CBA7E930086D348 /* 📱Marvel Heroes */,
 				492D08E91CBA7E930086D348 /* ✅ Marvel HeroesTests */,
 				492D08F41CBA7E930086D348 /* ✅ Marvel HeroesUITests */,
 				492D08D11CBA7E930086D348 /* 🎁 Products */,
@@ -218,7 +218,7 @@
 			name = "🎁 Products";
 			sourceTree = "<group>";
 		};
-		492D08D21CBA7E930086D348 /* Marvel Heroes */ = {
+		492D08D21CBA7E930086D348 /* 📱Marvel Heroes */ = {
 			isa = PBXGroup;
 			children = (
 				492D08D31CBA7E930086D348 /* AppDelegate.swift */,
@@ -235,6 +235,7 @@
 				492D08E11CBA7E930086D348 /* Info.plist */,
 				491E936C1D565533003AA7ED /* TestsPlayground.playground */,
 			);
+			name = "📱Marvel Heroes";
 			path = "Marvel Heroes";
 			sourceTree = "<group>";
 		};
