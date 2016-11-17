@@ -72,30 +72,30 @@ class HeroDetailModel {
 
 // MARK: Protocol conformance used to configure the cell for each comic
 extension HeroDetailModel : TextPresentable {
-    var text: String { return comics[indexPathRow].title.capitalized }
+    var text: String { return hero.name.capitalized }
     var textColor: UIColor { return .white }
     var font: UIFont { return .systemFont(ofSize: 14.0) }
 }
 
 extension HeroDetailModel : ImagePresentable {
-    var imageName: String { return comics[indexPathRow].thumbnailUrl }
-   
+    var imageName: String { return hero.thumbnailUrl }
     var image: UIImage {
-        let comic = comics[indexPathRow]
-        let comicUrl = URL(string: comic.thumbnailUrl)
-        let imageUrl = comicUrl  // For recycled cells' late image loads.
-        var comicImage = UIImage()
-        if let cachedImage = comicUrl?.cachedImage {
-            comicImage = cachedImage
+        let heroUrl = URL(string: hero.thumbnailUrl)
+        let imageUrl = heroUrl  // For recycled cells' late image loads.
+        var heroImage = UIImage()
+        if let cachedImage = heroUrl?.cachedImage {
+            heroImage = cachedImage
             // Cached: set immediately.
         } else { // Not cached, so load then fade it in.
-            comicUrl?.fetchImage { image2 in
+            
+            heroUrl?.fetchImage { [weak self] downloadedImage in
                 // Check the cell hasn't recycled while loading.
-                if imageUrl == comicUrl {
-                    comicImage = image2
+                if imageUrl?.absoluteString == self?.imageName {
+                    heroImage = downloadedImage
+                    self?.didUpdate!(self!)
                 }
             }
         }
-        return comicImage
+        return heroImage
     }
 }

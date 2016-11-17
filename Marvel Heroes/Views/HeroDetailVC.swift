@@ -68,10 +68,10 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func setupUI(){
         if let  _ = URL.init(string: self.model.hero.thumbnailUrl) {
             //Big Hero image
-            self.image.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
+            self.image.image = model.image
             
             //Smaller Hero image
-            self.avatarImage.downloadAsyncFrom(self.model.hero.thumbnailUrl, contentMode: .scaleAspectFill)
+            self.avatarImage.image = model.image
             self.avatarImage.layer.borderWidth = 3
             self.avatarImage.layer.masksToBounds = false
             self.avatarImage.layer.borderColor = UIColor.black.cgColor
@@ -88,7 +88,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.red
         closeButton.tintColor = UIColor.red
-        nameLabel.text = model.hero.name
+        nameLabel.text = model.text
         detailDescriptionLabel.text = model.hero.desc
         idLabel.text = String(model.hero.heroId)
         comicsActivityIndicator.startAnimating()
@@ -97,13 +97,13 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     
     //MARK: Scroll View Delegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let yOffset = self.scrollView.contentOffset.y * 0.2
-        let availableOffset = min(yOffset, 60)
-        let contentRectYOffset = availableOffset / avatarImage.frame.size.height
-        avatarImage.layer.contentsRect = CGRect(x: 0.0, y: contentRectYOffset, width: 1, height: 1);
-    }
-    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let yOffset = self.scrollView.contentOffset.y * 0.2
+//        let availableOffset = min(yOffset, 60)
+//        let contentRectYOffset = availableOffset / avatarImage.frame.size.height
+//        avatarImage.layer.contentsRect = CGRect(x: 0.0, y: contentRectYOffset, width: 1, height: 1);
+//    }
+//    
     
     //MARK: Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

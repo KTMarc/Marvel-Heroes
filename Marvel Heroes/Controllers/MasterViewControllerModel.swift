@@ -38,7 +38,7 @@ class MasterViewControllerModel{
     }
     
     /**
-     Prepares the the ViewModel.
+     Prepares the ViewModel.
      Called just one time right after initialization.
      Configures notifications and requests comics to the API
      */
@@ -62,32 +62,3 @@ class MasterViewControllerModel{
     }
 }
 
-// MARK: Protocol conformance used to configure the cell for each hero
-extension MasterViewControllerModel : TextPresentable {
-    var text: String { return heroes[indexPathRow].name.capitalized }
-    var textColor: UIColor { return .white }
-    var font: UIFont { return .systemFont(ofSize: 10.0) }
-}
-
-extension MasterViewControllerModel : ImagePresentable {
-    var imageName: String { return heroes[indexPathRow].thumbnailUrl }
-   
-    //TODO: Make this generic
-    var image: UIImage {
-        let heroUrl = URL(string: heroes[indexPathRow].thumbnailUrl)
-        let imageUrl = heroUrl  // For recycled cells' late image loads.
-        var heroImage = UIImage()
-        if let cachedImage = heroUrl?.cachedImage {
-            heroImage = cachedImage
-            // Cached: set immediately.
-        } else { // Not cached, so load then fade it in.
-            heroUrl?.fetchImage { [weak self] downloadedImage in
-                // Check the cell hasn't recycled while loading.
-                if imageUrl?.absoluteString == self?.imageName {
-                    heroImage = downloadedImage
-                }
-            }
-        }
-        return heroImage
-    }
-}
