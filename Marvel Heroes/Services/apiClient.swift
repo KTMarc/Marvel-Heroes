@@ -54,12 +54,11 @@ class apiClient: NSObject {
     }
     
     //MARK: IMAGES
-    
-//    func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
-//        return persistencyManager.getImage(link: link, completion: { (image) in
-//            print("imagen bajada")
-//        })
-//    }
+    func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
+        return _persistencyManager.getImage(link: link, completion: { (image) in
+            print("imagen bajada")
+        })
+    }
     
     func getCache() -> NSCache<NSString,UIImage>{
         return _persistencyManager.getCache()

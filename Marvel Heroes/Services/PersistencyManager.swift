@@ -150,6 +150,28 @@ class PersistencyManager: NSObject {
         return strokes.replacingOccurrences(of: " ", with: "%20")
     }
     
+    
+    func getImage(link: String, completion: @escaping ImageCacheCompletion) -> UIImage?{
+        
+//        let entityUrl = URL(string: link)
+//        let imageUrl = entityUrl  // For recycled cells' late image loads.
+//        var entityImage = UIImage()
+//        if let cachedImage = entityUrl?.cachedImage {
+//            entityImage = cachedImage
+//            // Cached: set immediately.
+//        } else { // Not cached, so load then fade it in.
+//            
+//            entityUrl?.fetchImage { [weak self] downloadedImage in
+//                // Check the cell hasn't recycled while loading.
+//                completion(downloadedImage)
+//                }
+//            }
+//        }
+   //     return entityImage
+return nil
+    }
+
+    
     /**
      Dummy Heroes creation
      */

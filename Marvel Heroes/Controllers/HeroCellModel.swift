@@ -9,12 +9,12 @@
 import UIKit
 
 
-class HeroCellModel {
+class HeroCellModel : ThumbnailDownloadable {
     
     private var _hero: Hero
     var hero: Hero { return _hero }
     var didUpdate: ((heroCellPresentable) -> Void)?
-    
+    var thumbnailUrl: String { return _hero.thumbnailUrl }
     init() {
         _hero = Hero(name: "", heroId: 0, desc: "", modified: Date() , thumbnailUrl: "")
     }
@@ -33,24 +33,24 @@ extension HeroCellModel : TextPresentable {
 }
 
 extension HeroCellModel : ImagePresentable {
-    var imageName: String { return hero.thumbnailUrl }
+    var imageName: String { return self.thumbnailUrl }
     var image: UIImage {
-        let heroUrl = URL(string: hero.thumbnailUrl)
-        let imageUrl = heroUrl  // For recycled cells' late image loads.
-        var heroImage = UIImage()
-        if let cachedImage = heroUrl?.cachedImage {
-            heroImage = cachedImage
+        let entityUrl = URL(string: self.thumbnailUrl)
+        let imageUrl = entityUrl  // For recycled cells' late image loads.
+        var entityImage = UIImage()
+        if let cachedImage = entityUrl?.cachedImage {
+            entityImage = cachedImage
             // Cached: set immediately.
         } else { // Not cached, so load then fade it in.
             
-            heroUrl?.fetchImage { [weak self] downloadedImage in
+            entityUrl?.fetchImage { [weak self] downloadedImage in
                 // Check the cell hasn't recycled while loading.
                 if imageUrl?.absoluteString == self?.imageName {
-                    heroImage = downloadedImage
+                    entityImage = downloadedImage
                     self?.didUpdate!(self!)
                 }
             }
         }
-        return heroImage
+        return entityImage
     }
 }

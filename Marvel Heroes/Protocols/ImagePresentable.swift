@@ -14,3 +14,8 @@ protocol ImagePresentable {
     var didUpdate: ((heroCellPresentable) -> Void)? { get set }
 }
 
+protocol ThumbnailDownloadable {
+    var thumbnailUrl : String { get }
+}
+
+
