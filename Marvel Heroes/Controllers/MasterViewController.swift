@@ -54,7 +54,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "navBarLogo.png")
         navigationItem.titleView = imageView
-        blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
     }
     
@@ -180,7 +180,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as! HeroCell
         
         _model.indexPathRow = indexPath.row
-
         let cellViewModel = HeroCellModel(hero: _model.heroes[indexPath.row])
         cell.presentCell(cellViewModel)
         

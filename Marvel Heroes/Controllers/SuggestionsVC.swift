@@ -30,11 +30,6 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         _model.tearUp()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //updateTableViewSize()
-    }
-    
     func search(keystrokes: String){
         _model.search(keystrokes: keystrokes)
     }
@@ -50,7 +45,8 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
     //MARK: - UI
     func setupUI(){
         self.tableView.register(UINib(nibName:Consts.StoryboardIds.SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: Consts.StoryboardIds.SUGGESTION_CELL)
-        tableView.backgroundColor = UIColor.black
+        tableView.backgroundColor = UIColor.gray
+        tableView.separatorStyle = .none
         tableView.separatorColor = UIColor.lightGray
         tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
 
@@ -67,12 +63,11 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Consts.StoryboardIds.SUGGESTION_CELL, for: indexPath) as! SuggestionCell
-        _model.indexPathRow = indexPath.row
         
-        let suggestionCellViewModel = SuggestionCellModel(hero: _model.heroes[indexPath.row])
+        _model.indexPathRow = indexPath.row
+        let suggestionCellViewModel = SuggestionCellModel(hero: _model[heroAt: indexPath.row])
         cell.presentCell(suggestionCellViewModel)
         
-        cell.fadeIn()
         return cell
     }
     
@@ -85,14 +80,14 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         present(vc, animated: true) {_ in }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
         updateTableViewSize()
     }
     
     func updateTableViewSize(){
         var frame : CGRect = tableView.frame
         frame.size = tableView.contentSize
-        frame.size.height += 60.0
+        frame.size.height += 70.0
         tableView.frame = frame
     }
 }
