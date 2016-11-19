@@ -30,10 +30,16 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         _model.tearUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //updateTableViewSize()
+    }
+    
     func search(keystrokes: String){
         _model.search(keystrokes: keystrokes)
     }
 
+    //MARK: ModelUpdaterDelegate method
     func updateModel() {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
@@ -46,6 +52,8 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         self.tableView.register(UINib(nibName:Consts.StoryboardIds.SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: Consts.StoryboardIds.SUGGESTION_CELL)
         tableView.backgroundColor = UIColor.black
         tableView.separatorColor = UIColor.lightGray
+        tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
+
     }
     
     // MARK: Table View Data Source
@@ -75,6 +83,17 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         vc.setModelWith(_model[heroAt: indexPath.row])
         vc.presentedModally = true
         present(vc, animated: true) {_ in }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        updateTableViewSize()
+    }
+    
+    func updateTableViewSize(){
+        var frame : CGRect = tableView.frame
+        frame.size = tableView.contentSize
+        frame.size.height += 60.0
+        tableView.frame = frame
     }
 }
 
