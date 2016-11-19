@@ -11,7 +11,7 @@ import UIKit
 
 class SuggestionsModel : ImagePresentable{
     
-    // MARK: Properties
+    // MARK: - Properties
     private var _heroes: [Hero]
     var heroes: [Hero] { return _heroes }
     var count: Int { return _heroes.count }
@@ -20,7 +20,7 @@ class SuggestionsModel : ImagePresentable{
     var didUpdate: ((heroCellPresentable) -> Void)?
     var imageAddress: String { return heroes[indexPathRow].thumbnailUrl }
     
-    // MARK: Initialization
+    // MARK: - Initialization
     init() {
         _heroes = [Hero]()
     }
@@ -42,7 +42,7 @@ class SuggestionsModel : ImagePresentable{
         return _heroes[index]
     }
     
-    //MARK: API request 📡
+    //MARK: - API request 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: nil, queue: nil) { [weak self] Notification in
             
@@ -53,7 +53,7 @@ class SuggestionsModel : ImagePresentable{
     
 }
 
-// MARK: Protocol conformance used to configure the cell for each hero
+// MARK: - Protocol conformance used to configure the cell for each hero
 extension SuggestionsModel : TextPresentable {
     var text: String { return heroes[indexPathRow].name.capitalized }
     var textColor: UIColor { return .white }

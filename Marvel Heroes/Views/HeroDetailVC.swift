@@ -17,7 +17,7 @@ import UIKit
 
 
 class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, ModelUpdaterDelegate {
-    //MARK: Outlets
+    //MARK: - Outlets
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -33,11 +33,11 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     @IBOutlet weak var comicsActivityIndicator: UIActivityIndicatorView!
     
-    //MARK: Types
+    //MARK: - Types
     typealias Model = HeroDetailModel
     private var model = Model()
 
-    //MARK: Properties
+    //MARK: - Properties
     var blurView = UIVisualEffectView()
     var presentedModally = false
 
@@ -50,7 +50,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         model.tearUp()
     }
     
-    //MARK: View LifeCycle
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -64,7 +64,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     
-    //MARK: UI
+    //MARK: - UI
     func setupUI(){
         if let  _ = URL.init(string: self.model.hero.thumbnailUrl) {
             //Big Hero image
@@ -79,7 +79,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             self.avatarImage.clipsToBounds = true
         }
         
-        //MARK: Navigation Bar Setup
+        //MARK: - Navigation Bar Setup
         self.navigationItem.title = model.hero.name
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
         imageView.contentMode = .scaleAspectFit
@@ -96,7 +96,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     
-    //MARK: Scroll View Delegate
+    //MARK: - Scroll View Delegate
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        let yOffset = self.scrollView.contentOffset.y * 0.2
 //        let availableOffset = min(yOffset, 60)
@@ -105,7 +105,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
 //    }
 //    
     
-    //MARK: Collection View Data Source
+    //MARK: - Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.COMIC_CELL, for: indexPath) as? ComicCell {
@@ -135,7 +135,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         return 1
     }
     
-    //MARK: Delegate methods
+    //MARK: - Delegate methods
     func updateModel(){
         if model.count == 0{
             self.comicsEmptyStateLabel.isHidden = false
@@ -147,7 +147,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         })
     }
     
-    //MARK: Navigation
+    //MARK: - Navigation
     func dismissVC(){
         _ = navigationController?.popViewController(animated: true)
     }

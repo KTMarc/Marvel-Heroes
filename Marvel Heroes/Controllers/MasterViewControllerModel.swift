@@ -9,7 +9,7 @@ import UIKit
 
 class MasterViewControllerModel{
     
-    // MARK: Properties
+    // MARK: - Properties
     private var _heroes: [Hero]
     var heroes: [Hero] { return _heroes }
     var count: Int { return _heroes.count }
@@ -17,7 +17,7 @@ class MasterViewControllerModel{
     weak var delegate : ModelUpdaterDelegate?
     var didUpdate: ((heroCellPresentable) -> Void)?
 
-    // MARK: Initialization
+    // MARK: - Initialization
     init() {
         _heroes = [Hero]()
     }
@@ -28,7 +28,7 @@ class MasterViewControllerModel{
     }
     
     
-    // MARK: API interaction
+    // MARK: - API interaction
     func resetHeroSuggestions(){
         apiClient.manager.resetHeroSuggestions()
     }
@@ -48,7 +48,7 @@ class MasterViewControllerModel{
         apiClient.manager.fetchHeroes()
     }
     
-    //MARK: API request 📡
+    //MARK: - API request 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  [weak self] Notification in
             

@@ -18,12 +18,12 @@ class Parser: NSObject {
     
     typealias Payload = [String: AnyObject]
     
-    // MARK: Properties
+    // MARK: - Properties
     private var _data : Data?
     private var _dict : NSDictionary?
     private let _parseType : ParseType
     
-    // MARK: Initializers
+    // MARK: - Initializers
     init(dict: NSDictionary?, data: Data?, parseType: ParseType) {
         self._dict = dict
         self._data = data
@@ -42,7 +42,7 @@ class Parser: NSObject {
         _dict = dict
     }
     
-    //MARK: Methods
+    //MARK: - Methods
     func parseHeroes(_ type: String) -> [Hero]{
         
         return parseHero()
@@ -65,7 +65,7 @@ class Parser: NSObject {
         switch _parseType {
         case .swifty:
             break
-            //MARK: Uncomment when SwiftyJSON supports Swift3
+            //MARK: - Uncomment when SwiftyJSON supports Swift3
 //            let json = JSON(_dict!)
 //            if let results = json["data"]["results"].array {
 //                //print("Received \(results.count) elements\n")
@@ -122,7 +122,7 @@ class Parser: NSObject {
         switch _parseType {
         case .swifty:
             break
-//MARK: Uncomment when SwiftyJSON supports Swift3
+//MARK: - Uncomment when SwiftyJSON supports Swift3
 //        let json = JSON(_dict!)
 //        if let results = json["data"]["results"].array {
 //            print("Received \(results.count) comics\n")

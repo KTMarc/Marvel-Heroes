@@ -26,7 +26,7 @@ class SuggestionCellModel : ImagePresentable {
     }
 }
 
-// MARK: ➕ Protocol Extensions conformance used to configure the cell for each hero
+// MARK: - ➕ Protocol Extensions conformance used to configure the cell for each hero
 extension SuggestionCellModel : TextPresentable {
     var text: String { return hero.name.capitalized }
     var textColor: UIColor { return .white }

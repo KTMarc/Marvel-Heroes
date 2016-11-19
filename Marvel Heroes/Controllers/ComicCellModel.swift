@@ -26,7 +26,7 @@ class ComicCellModel : ImagePresentable{
     }
 }
 
-// MARK: ➕ Protocol Extensions conformance used to configure the cell for each comic
+// MARK: - ➕ Protocol Extensions conformance used to configure the cell for each comic
 extension ComicCellModel : TextPresentable {
     var text: String { return comic.title.capitalized }
     var textColor: UIColor { return .white }

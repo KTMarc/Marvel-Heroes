@@ -15,12 +15,12 @@ import UIKit
 
 class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
 
-    //MARK: Types
+    //MARK: - Types
     typealias Model = SuggestionsModel
 
     private var _model = Model()
     
-    //MARK: View LifeCycle
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +39,7 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         _model.search(keystrokes: keystrokes)
     }
 
-    //MARK: ModelUpdaterDelegate method
+    //MARK: - ModelUpdaterDelegate method
     func updateModel() {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
@@ -47,7 +47,7 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
     }
     
     
-    //MARK: UI
+    //MARK: - UI
     func setupUI(){
         self.tableView.register(UINib(nibName:Consts.StoryboardIds.SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: Consts.StoryboardIds.SUGGESTION_CELL)
         tableView.backgroundColor = UIColor.black
@@ -56,7 +56,7 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
 
     }
     
-    // MARK: Table View Data Source
+    // MARK: - Table View Data Source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -76,7 +76,7 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         return cell
     }
     
-    //MARK: Table View Delegate
+    //MARK: - Table View Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: Consts.StoryboardIds.HERO_DETAIL_VC) as! HeroDetailVC

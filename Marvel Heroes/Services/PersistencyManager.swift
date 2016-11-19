@@ -75,7 +75,7 @@ class PersistencyManager: NSObject {
     
     
     
-    //MARK: HEROES
+    //MARK: - HEROES
     func fetchHeroes(){
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: 0, notification: Consts.Notifications.heroes)
     }
@@ -101,7 +101,7 @@ class PersistencyManager: NSObject {
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.heroes)
     }
     
-    //MARK: SUGGESTIONS
+    //MARK: - SUGGESTIONS
     
     /**
      API Call example:
@@ -124,7 +124,7 @@ class PersistencyManager: NSObject {
             name: Notification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: self)
     }
     
-    //MARK: COMICS
+    //MARK: - COMICS
     /**
      Example API Call:
      http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698

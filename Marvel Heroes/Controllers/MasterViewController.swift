@@ -19,14 +19,14 @@ enum toggle {
 
 class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate, ModelUpdaterDelegate {
 
-    //MARK: Types
+    //MARK: - Types
     typealias Model = MasterViewControllerModel
     
-    //MARK: Outlets
+    //MARK: - Outlets
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    //MARK: Properties
+    //MARK: - Properties
     var searchController: UISearchController!
     var _currentOffset = 0
 
@@ -37,7 +37,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     var blurEffectView = UIVisualEffectView()
     private var blurToggle : toggle = .disabled
     
-    //MARK: View LifeCycle
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,7 +65,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.reloadData()
     }
     
-    //MARK: Notifications 📡
+    //MARK: - Notifications 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -74,7 +74,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.searchController.searchBar.becomeFirstResponder()
         }
     }
-    //MARK: Delegate methods
+    //MARK: - Delegate methods
     func updateModel(){
         DispatchQueue.main.async(execute: {
             self.collection.reloadData()
@@ -88,7 +88,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.searchBar.sizeToFit()
     }
     
-    // MARK: Search Results Controller 🔍
+    // MARK: - Search Results Controller 🔍
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsVC())
         
@@ -106,7 +106,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
 
     
-    //MARK: UI Search Controller Delegate
+    //MARK: - UI Search Controller Delegate
     func didPresentSearchController(_ searchController: UISearchController) {
         searchController.searchBar.becomeFirstResponder()
     }
@@ -139,7 +139,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    //MARK: Search Bar Delegate
+    //MARK: - Search Bar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //view.endEditing(true)
     }
@@ -148,7 +148,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         (searchController.searchResultsController as! SuggestionsVC).search(keystrokes: _keystrokes)
     }
     
-    // MARK: API request to get suggestions 📡
+    // MARK: - API request to get suggestions 📡
     func updateSearchResults(for searchController: UISearchController) {
        toggleBackgroundBlur()
         if let keystrokes = searchController.searchBar.text , keystrokes != "" {
@@ -172,7 +172,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         toggleBackgroundBlur()
     }
     
-    //MARK: Collection View Data Soure
+    //MARK: - Collection View Data Soure
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as! HeroCell
@@ -204,7 +204,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
 
     
-    //MARK: Collection View Delegate
+    //MARK: - Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: Consts.Segues.TO_HERO_DETAIL_VC, sender: nil)
     }

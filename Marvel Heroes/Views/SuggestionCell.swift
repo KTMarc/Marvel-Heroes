@@ -17,7 +17,7 @@ class SuggestionCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var thumbImg: UIImageView!
     
-    //MARK: Properties
+    //MARK: - Properties
     private var delegate: heroCellPresentable?
     
     override func awakeFromNib() {

@@ -10,7 +10,7 @@ import UIKit
 
 class HeroDetailModel : ImagePresentable{
     
-    // MARK: Properties
+    // MARK: - Properties
     private var _hero : Hero!
     var hero: Hero { return _hero }
     
@@ -23,7 +23,7 @@ class HeroDetailModel : ImagePresentable{
     var didUpdate: ((heroCellPresentable) -> Void)?
     var imageAddress: String { return hero.thumbnailUrl }
 
-    // MARK: Initialization 🐣
+    // MARK: - Initialization 🐣
     init() {
         _hero = Hero()
         _comics = [Comic]()
@@ -46,7 +46,7 @@ class HeroDetailModel : ImagePresentable{
         apiClient.manager.fetchComics(hero.heroId)
     }
     
-    // MARK: Entry Points to Modify / Query Underlying Model
+    // MARK: - Entry Points to Modify / Query Underlying Model
     func append(_ comic: Comic) {
         _comics.append(comic)
     }
@@ -56,7 +56,7 @@ class HeroDetailModel : ImagePresentable{
         return comic
     }
     
-    //MARK: API request 📡
+    //MARK: - API request 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.comics.rawValue), object: nil, queue: nil) {
             
@@ -71,7 +71,7 @@ class HeroDetailModel : ImagePresentable{
 }
 
 
-// MARK: Protocol conformance used to configure the cell for each comic
+// MARK: - Protocol conformance used to configure the cell for each comic
 extension HeroDetailModel : TextPresentable {
     var text: String { return hero.name.capitalized }
     var textColor: UIColor { return .white }

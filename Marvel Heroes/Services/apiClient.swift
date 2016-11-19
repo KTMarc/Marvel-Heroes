@@ -13,7 +13,7 @@ import UIKit
   Using the FAÇADE DESIGN PATTERN, which provides a single interface to a complex subsystem. Instead of exposing the user to a set of classes and their APIs, you only expose one simple unified API
  */
 
-// MARK: Types
+// MARK: - Types
 
 /**
  Select different ways of doing tasks.
@@ -35,7 +35,7 @@ enum StorageArchitecture {
 
 class apiClient: NSObject {
     
-    // MARK: Properties
+    // MARK: - Properties
     private let _persistencyManager: PersistencyManager
     private let _isOnline: Bool
     private let _parseType: ParseType
@@ -53,7 +53,7 @@ class apiClient: NSObject {
         super.init()
     }
     
-    //MARK: IMAGES
+    //MARK: - IMAGES
     func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
         return _persistencyManager.getImage(link: link, completion: { (image) in
             print("imagen bajada")
@@ -65,7 +65,7 @@ class apiClient: NSObject {
     }
     
     
-    //MARK: HEROES
+    //MARK: - HEROES
     /**
      Example API Call:
      http://gateway.marvel.com/v1/public/characters/1010870/comics?offset=0&ts=1&apikey=c88613ef9c4edc6dee9b496c6f0d0a93&hash=27861456bf9a405a5e8320359485b698
@@ -114,7 +114,7 @@ class apiClient: NSObject {
     }
     
     
-    //MARK: SUGGESTIONS
+    //MARK: - SUGGESTIONS
     
     /**
      Finds characters matching name
@@ -144,7 +144,7 @@ class apiClient: NSObject {
     
     
     
-    //MARK: COMICS
+    //MARK: - COMICS
     
     /**
      Starts the loading process for a particular Character Comic list
