@@ -28,8 +28,10 @@ struct Hero: Equatable{
         
         if let x = desc , x == ""{
             self._desc = Consts.Copies.NO_DESCRIPTION_AVAILABLE_COPY
-        } else {
+        } else if desc != nil {
             self._desc = desc!
+        } else {
+            self._desc = Consts.Copies.NO_DESCRIPTION_AVAILABLE_COPY
         }
         
         self._modified = modified
