@@ -12,6 +12,10 @@ import UIKit
 Collection View with Hero objects
  */
 
+enum toggle {
+    case enabled
+    case disabled
+}
 
 class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate, ModelUpdaterDelegate {
 
@@ -29,6 +33,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     private var _model = Model()
     private var _searchTimer: Timer?
     private var _keystrokes = ""
+    var blurEffect = UIBlurEffect()
+    var blurEffectView = UIVisualEffectView()
+    private var blurToggle : toggle = .disabled
     
     //MARK: View LifeCycle
     override func viewDidLoad() {
@@ -49,6 +56,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "navBarLogo.png")
         navigationItem.titleView = imageView
+        blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,6 +123,21 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //cancel button press
     }
     
+    func toggleBackgroundBlur () {
+        //Blurred image background
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+        
+        switch blurToggle{
+        case .disabled:
+            blurEffectView.alpha = 1.0
+            blurToggle = .enabled
+        case .enabled:
+            blurEffectView.alpha = 0.0
+            blurToggle = .disabled
+        }
+    }
     
     //MARK: Search Bar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -126,6 +150,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     // MARK: API request to get suggestions 📡
     func updateSearchResults(for searchController: UISearchController) {
+       toggleBackgroundBlur()
         if let keystrokes = searchController.searchBar.text , keystrokes != "" {
             if let searchTimer = _searchTimer {
                 searchTimer.invalidate()
@@ -138,11 +163,13 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         _model.resetHeroSuggestions()
         collection.reloadData()
+        toggleBackgroundBlur()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         _model.resetHeroSuggestions()
         collection.reloadData()
+        toggleBackgroundBlur()
     }
     
     //MARK: Collection View Data Soure
