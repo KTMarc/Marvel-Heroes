@@ -9,11 +9,12 @@
 import UIKit
 
 
-class ComicCellModel {
+class ComicCellModel : ImagePresentable{
 
     private var _comic: Comic
     var comic: Comic { return _comic }
     var didUpdate: ((heroCellPresentable) -> Void)?
+    var imageAddress: String { return comic.thumbnailUrl }
     
     init() {
         _comic = Comic(title: "", comicId: 0, thumbnailUrl: "")
@@ -32,26 +33,4 @@ extension ComicCellModel : TextPresentable {
     var font: UIFont { return .systemFont(ofSize: 12.0) }
 }
 
-extension ComicCellModel : ImagePresentable {
-    var imageName: String { return comic.thumbnailUrl }
-    var image: UIImage {
-        let comicUrl = URL(string: comic.thumbnailUrl)
-        let imageUrl = comicUrl  // For recycled cells' late image loads.
-        var comicImage = UIImage()
-        if let cachedImage = comicUrl?.cachedImage {
-            comicImage = cachedImage
-            // Cached: set immediately.
-        } else { // Not cached, so load then fade it in.
-            
-            comicUrl?.fetchImage { [weak self] downloadedImage in
-                // Check the cell hasn't recycled while loading.
-                if imageUrl?.absoluteString == self?.imageName {
-                    comicImage = downloadedImage
-                    self?.didUpdate!(self!)
-                }
-            }
-        }
-        return comicImage
-    }
-}
 

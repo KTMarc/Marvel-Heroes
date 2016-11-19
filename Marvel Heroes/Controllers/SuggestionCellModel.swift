@@ -14,6 +14,7 @@ class SuggestionCellModel {
     private var _hero: Hero
     var hero: Hero { return _hero }
     var didUpdate: ((heroCellPresentable) -> Void)?
+    var imageAddress: String { return hero.thumbnailUrl }
     
     init() {
         _hero = Hero(name: "", heroId: 0, desc: "", modified: Date() , thumbnailUrl: "")
@@ -33,25 +34,24 @@ extension SuggestionCellModel : TextPresentable {
 }
 
 extension SuggestionCellModel : ImagePresentable {
-    var imageName: String { return hero.thumbnailUrl }
     var image: UIImage {
-        let heroUrl = URL(string: hero.thumbnailUrl)
-        let imageUrl = heroUrl  // For recycled cells' late image loads.
-        var heroImage = UIImage()
-        if let cachedImage = heroUrl?.cachedImage {
-            heroImage = cachedImage
+        let initiallySetImageUrl = self.imageAddress // For recycled cells late image loads.
+        let entityUrl = URL(string: self.imageAddress)
+        //let initiallySetImageUrl = entityUrl  // For recycled cells' late image loads.
+        var entityImage = UIImage()
+        if let cachedImage = entityUrl?.cachedImage {
+            entityImage = cachedImage
             // Cached: set immediately.
         } else { // Not cached, so load then fade it in.
-            
-            heroUrl?.fetchImage { [weak self] downloadedImage in
+            entityUrl?.fetchImage { [weak self] downloadedImage in
                 // Check the cell hasn't recycled while loading.
-                if imageUrl?.absoluteString == self?.imageName {
-                    heroImage = downloadedImage
+                if initiallySetImageUrl == self?.imageAddress {
+                    entityImage = downloadedImage
                     self?.didUpdate!(self!)
                 }
             }
         }
-        return heroImage
+        return entityImage
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SuggestionsModel{
+class SuggestionsModel : ImagePresentable{
     
     // MARK: Properties
     private var _heroes: [Hero]
@@ -18,6 +18,7 @@ class SuggestionsModel{
     var indexPathRow: Int = 0
     weak var delegate : ModelUpdaterDelegate?
     var didUpdate: ((heroCellPresentable) -> Void)?
+    var imageAddress: String { return heroes[indexPathRow].thumbnailUrl }
     
     // MARK: Initialization
     init() {
@@ -59,25 +60,3 @@ extension SuggestionsModel : TextPresentable {
     var font: UIFont { return .systemFont(ofSize: 10.0) }
 }
 
-extension SuggestionsModel : ImagePresentable {
-    var imageName: String { return heroes[indexPathRow].thumbnailUrl }
-    
-    //TODO: Make this generic
-    var image: UIImage {
-        let heroUrl = URL(string: heroes[indexPathRow].thumbnailUrl)
-        let imageUrl = heroUrl  // For recycled cells' late image loads.
-        var heroImage = UIImage()
-        if let cachedImage = heroUrl?.cachedImage {
-            heroImage = cachedImage
-            // Cached: set immediately.
-        } else { // Not cached, so load then fade it in.
-            heroUrl?.fetchImage { [weak self] downloadedImage in
-                // Check the cell hasn't recycled while loading.
-                if imageUrl?.absoluteString == self?.imageName {
-                    heroImage = downloadedImage
-                }
-            }
-        }
-        return heroImage
-    }
-}

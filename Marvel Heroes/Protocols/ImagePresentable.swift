@@ -8,14 +8,35 @@
 
 import UIKit
 
-protocol ImagePresentable {
-    var imageName: String { get }
+protocol ImagePresentable : class{
+    var imageAddress: String { get }
     var image: UIImage { get }
     var didUpdate: ((heroCellPresentable) -> Void)? { get set }
 }
 
-protocol ThumbnailDownloadable {
-    var thumbnailUrl : String { get }
+
+extension ImagePresentable {
+    var image: UIImage {
+        let initiallySetImageUrl = self.imageAddress // For recycled cells late image loads.
+        let entityUrl = URL(string: self.imageAddress)
+        //let initiallySetImageUrl = entityUrl  // For recycled cells' late image loads.
+        var entityImage = UIImage()
+        if let cachedImage = entityUrl?.cachedImage {
+            entityImage = cachedImage
+            // Cached: set immediately.
+        } else { // Not cached, so load then fade it in.
+            entityUrl?.fetchImage { [weak self] downloadedImage in
+                // Check the cell hasn't recycled while loading.
+                if initiallySetImageUrl == self?.imageAddress {
+                    entityImage = downloadedImage
+                    self?.didUpdate!(self! as! heroCellPresentable)
+                }
+            }
+        }
+        return entityImage
+    }
 }
+
+
 
 
