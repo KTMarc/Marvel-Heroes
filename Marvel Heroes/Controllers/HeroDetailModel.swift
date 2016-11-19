@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeroDetailModel {
+class HeroDetailModel : ImagePresentable{
     
     // MARK: Properties
     private var _hero : Hero!
@@ -25,7 +25,7 @@ class HeroDetailModel {
 
     // MARK: Initialization 🐣
     init() {
-        _hero = Hero(name: "", heroId: 1, desc: "", modified: Date(), thumbnailUrl: "")
+        _hero = Hero()
         _comics = [Comic]()
     }
     
@@ -78,24 +78,3 @@ extension HeroDetailModel : TextPresentable {
     var font: UIFont { return .systemFont(ofSize: 14.0) }
 }
 
-extension HeroDetailModel : ImagePresentable {
-    var image: UIImage {
-        let initiallySetImageUrl = self.imageAddress // For recycled cells late image loads.
-        let entityUrl = URL(string: self.imageAddress)
-        //let initiallySetImageUrl = entityUrl  // For recycled cells' late image loads.
-        var entityImage = UIImage()
-        if let cachedImage = entityUrl?.cachedImage {
-            entityImage = cachedImage
-            // Cached: set immediately.
-        } else { // Not cached, so load then fade it in.
-            entityUrl?.fetchImage { [weak self] downloadedImage in
-                // Check the cell hasn't recycled while loading.
-                if initiallySetImageUrl == self?.imageAddress {
-                    entityImage = downloadedImage
-                    self?.didUpdate!(self!)
-                }
-            }
-        }
-        return entityImage
-    }
-}
