@@ -14,11 +14,13 @@ import Foundation
 
 struct Hero: Equatable{
 
-    private var _name: String
-    private var _heroId: Int
-    private var _desc: String
-    private var _modified: Date
-    private var _thumbnailUrl: String
+    private var _name: String = ""
+    private var _heroId: Int = 0
+    private var _desc: String = ""
+    private var _modified: Date = Date()
+    private var _thumbnailUrl: String = ""
+    
+    init(){}
     
     init(name: String, heroId: Int, desc: String?, modified: Date , thumbnailUrl: String) {
         self._name = name
@@ -32,7 +34,6 @@ struct Hero: Equatable{
         
         self._modified = modified
         self._thumbnailUrl = thumbnailUrl
-        
     }
     
     //Convenience init for tests
