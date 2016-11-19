@@ -27,14 +27,13 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK: - Properties
-    var searchController: UISearchController!
-    var _currentOffset = 0
-
+    private var searchController: UISearchController!
+    private var _currentOffset = 0
     private var _model = Model()
     private var _searchTimer: Timer?
     private var _keystrokes = ""
-    var blurEffect = UIBlurEffect()
-    var blurEffectView = UIVisualEffectView()
+    private var blurEffect = UIBlurEffect()
+    private var blurEffectView = UIVisualEffectView()
     private var blurToggle : toggle = .disabled
     
     //MARK: - View LifeCycle
@@ -48,7 +47,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         listenToNotifications()
         collection.delegate = self
         collection.dataSource = self
-        //TODO: Could be deleted, check it
         searchBar.isHidden = true
         
         //UI
@@ -123,6 +121,21 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         //cancel button press
     }
     
+    //MARK: - Search Bar Delegate
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //view.endEditing(true)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        _model.resetHeroSuggestions()
+        collection.reloadData()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        _model.resetHeroSuggestions()
+        collection.reloadData()
+    }
+    
     ///Blurred image background
     func toggleBackgroundBlur () {
         blurEffectView.frame = view.bounds
@@ -145,21 +158,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    //MARK: - Search Bar Delegate
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //view.endEditing(true)
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        _model.resetHeroSuggestions()
-        collection.reloadData()
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        _model.resetHeroSuggestions()
-        collection.reloadData()
-    }
-    
     // MARK: - API request to get suggestions 📡
     func updateSearchResults(for searchController: UISearchController) {
         if let keystrokes = searchController.searchBar.text , keystrokes != "" {
@@ -167,7 +165,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
                 searchTimer.invalidate()
             }
             _keystrokes = keystrokes
-            _searchTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MasterViewController.launchNetworkQuery),userInfo: nil, repeats: false)
+            _searchTimer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(MasterViewController.launchNetworkQuery),userInfo: nil, repeats: false)
         }
     }
     
