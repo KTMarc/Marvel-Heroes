@@ -32,24 +32,3 @@ extension HeroCellModel : TextPresentable {
     var font: UIFont { return .systemFont(ofSize: 12.0) }
 }
 
-//extension HeroCellModel : ImagePresentable {
-//    var image: UIImage {
-//        let initiallySetImageUrl = self.imageAddress // For recycled cells late image loads.
-//        let entityUrl = URL(string: self.imageAddress)
-//        //let initiallySetImageUrl = entityUrl  // For recycled cells' late image loads.
-//        var entityImage = UIImage()
-//        if let cachedImage = entityUrl?.cachedImage {
-//            entityImage = cachedImage
-//            // Cached: set immediately.
-//        } else { // Not cached, so load then fade it in.
-//            entityUrl?.fetchImage { [weak self] downloadedImage in
-//                // Check the cell hasn't recycled while loading.
-//                if initiallySetImageUrl == self?.imageAddress {
-//                    entityImage = downloadedImage
-//                    self?.didUpdate!(self!)
-//                }
-//            }
-//        }
-//        return entityImage
-//    }
-//}
