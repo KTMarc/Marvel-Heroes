@@ -17,7 +17,7 @@ class SuggestionCellModel : ImagePresentable {
     var imageAddress: String { return hero.thumbnailUrl }
     
     init() {
-        _hero = Hero(name: "", heroId: 0, desc: "", modified: Date() , thumbnailUrl: "")
+        _hero = Hero()
     }
     
     convenience init(hero: Hero){

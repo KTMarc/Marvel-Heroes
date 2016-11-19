@@ -47,6 +47,9 @@ class SuggestionsModel : ImagePresentable{
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: nil, queue: nil) { [weak self] Notification in
             
             self?._heroes = apiClient.manager.getHeroSuggestions()
+            if (self?._heroes.count == 0) {
+                self?._heroes.append(Hero(name: "NO HEROES FOUND ¯\\_(ツ)_/¯ ", heroId: 0 , desc: nil, modified: Date() , thumbnailUrl: ""))
+            }
             self?.delegate?.updateModel()
         }
     }
