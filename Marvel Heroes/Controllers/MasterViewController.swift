@@ -91,7 +91,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     // MARK: - Search Results Controller 🔍
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsVC())
-        
         searchController.definesPresentationContext = false
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search more Heroes, i.e. X-Men"
@@ -99,7 +98,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.delegate = self
         searchController.searchBar.sizeToFit()
         collection.superview!.addSubview(searchController.searchBar)
-        //print(searchController.delegate)
         self.definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
@@ -112,6 +110,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func willPresentSearchController(_ searchController: UISearchController) {
+        toggleBackgroundBlur()
         //Tap on the search bar
     }
     
@@ -120,21 +119,28 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
+        toggleBackgroundBlur()
         //cancel button press
     }
     
+    ///Blurred image background
     func toggleBackgroundBlur () {
-        //Blurred image background
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         
         switch blurToggle{
         case .disabled:
-            blurEffectView.alpha = 1.0
+            UIView.animate(withDuration: 0.8) {
+                //self.blurEffectView.effect = UIBlurEffect(style: .light)
+                self.blurEffectView.alpha = 1.0
+            }
             blurToggle = .enabled
+            
         case .enabled:
-            blurEffectView.alpha = 0.0
+            UIView.animate(withDuration: 0.8) {
+                self.blurEffectView.alpha = 0.0
+            }
             blurToggle = .disabled
         }
     }
@@ -143,14 +149,19 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //view.endEditing(true)
     }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        _model.resetHeroSuggestions()
+        collection.reloadData()
+    }
     
-    func launchNetworkQuery(){
-        (searchController.searchResultsController as! SuggestionsVC).search(keystrokes: _keystrokes)
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        _model.resetHeroSuggestions()
+        collection.reloadData()
     }
     
     // MARK: - API request to get suggestions 📡
     func updateSearchResults(for searchController: UISearchController) {
-       toggleBackgroundBlur()
         if let keystrokes = searchController.searchBar.text , keystrokes != "" {
             if let searchTimer = _searchTimer {
                 searchTimer.invalidate()
@@ -160,17 +171,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        _model.resetHeroSuggestions()
-        collection.reloadData()
-        toggleBackgroundBlur()
+    func launchNetworkQuery(){
+        (searchController.searchResultsController as! SuggestionsVC).search(keystrokes: _keystrokes)
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        _model.resetHeroSuggestions()
-        collection.reloadData()
-        toggleBackgroundBlur()
-    }
     
     //MARK: - Collection View Data Soure
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

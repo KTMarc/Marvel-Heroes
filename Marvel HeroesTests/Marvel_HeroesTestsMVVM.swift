@@ -52,8 +52,6 @@ class Marvel_HeroesTestsMVVM: XCTestCase {
     }
     
     func testThatWeCanFindGideonMVVM() {
-        
-        //Giden
         //let heroId = 1011055
         let spyDelegate = SpyDelegate()
         let model = SuggestionsModel(theDelegate: spyDelegate)
