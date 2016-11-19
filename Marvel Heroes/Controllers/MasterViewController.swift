@@ -144,14 +144,14 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         switch blurToggle{
         case .disabled:
-            UIView.animate(withDuration: 0.8) {
+            UIView.animate(withDuration: 0.5) {
                 //self.blurEffectView.effect = UIBlurEffect(style: .light)
                 self.blurEffectView.alpha = 1.0
             }
             blurToggle = .enabled
             
         case .enabled:
-            UIView.animate(withDuration: 0.8) {
+            UIView.animate(withDuration: 0.5) {
                 self.blurEffectView.alpha = 0.0
             }
             blurToggle = .disabled
