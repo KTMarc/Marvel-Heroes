@@ -17,7 +17,7 @@ class ComicCellModel : ImagePresentable{
     var imageAddress: String { return comic.thumbnailUrl }
     
     init() {
-        _comic = Comic(title: "", comicId: 0, thumbnailUrl: "")
+        _comic = Comic()
     }
     
     convenience init(comic: Comic){

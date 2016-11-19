@@ -14,10 +14,12 @@ import Foundation
 
 struct Comic: Equatable {
         
-        private var _title: String
-        private var _comicId: Int
-        private var _thumbnailUrl: String
-        
+        private var _title: String = ""
+        private var _comicId: Int = 0
+        private var _thumbnailUrl: String = ""
+    
+        init(){}
+    
         init(title: String, comicId: Int, thumbnailUrl: String) {
             self._title = title
             self._comicId = comicId
