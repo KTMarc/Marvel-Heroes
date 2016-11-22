@@ -34,7 +34,7 @@ class PersistencyManager: NSObject {
     
 
     /**
-     Haneke will first attempt to fetch the required JSON from (in order) memory, disk or NSURLCache
+     First attempt to fetch the required JSON from (in order) memory, disk or NSURLCache
      
      - parameter endPoint: API endpoint
      - parameter extra parameters: like 'nameStartsWith='
@@ -50,25 +50,31 @@ class PersistencyManager: NSObject {
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         let myRequest = URLRequest(url: URL)
         let task = mySession.dataTask(with: myRequest){ (data, response, error) in
-            self._parser.setData(data!)
-            switch notification {
-                
-            case .heroes:
-                self._heroes.append(contentsOf: self._parser.parseHeroes("nothing"))
-                
-            case .comics:
-                self._comics = self._parser.parseComics()
-                
-            case .suggestions:
-                self._suggestions = self._parser.parseHeroes("nothing")
-                
-            case .modal_heroDetail_dismissed:
-                break
-                
-            } //End of switch
-            //We completed our job and can the notification can be sent
-            NotificationCenter.default.post(
-                name: Notification.Name(notification.rawValue), object: self)
+            if let dataa = data {
+                self._parser.setData(dataa)
+                switch notification {
+                    
+                case .heroes:
+                    self._heroes.append(contentsOf: self._parser.parseHeroes("nothing"))
+                    
+                case .comics:
+                    self._comics = self._parser.parseComics()
+                    
+                case .suggestions:
+                    self._suggestions = self._parser.parseHeroes("nothing")
+                    
+                case .modal_heroDetail_dismissed:
+                    break
+                    
+                } //End of switch
+                //We completed our job and can the notification can be sent
+                NotificationCenter.default.post(
+                    name: Notification.Name(notification.rawValue), object: self)
+            } else {
+                if let theError = error {
+                    print(theError)
+                }
+            }
         }
         task.resume()
     } //End of fecthData

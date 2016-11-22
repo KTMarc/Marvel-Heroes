@@ -51,7 +51,7 @@ class MasterViewControllerModel{
     //MARK: - API request 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  [weak self] Notification in
-            
+            //TODO: Show some empty state when nothing was returned for lack of internet connection
             self?._heroes = apiClient.manager.getHeroes()
             self?.delegate?.updateModel()
         }
