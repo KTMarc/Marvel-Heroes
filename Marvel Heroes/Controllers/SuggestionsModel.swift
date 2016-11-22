@@ -48,7 +48,7 @@ class SuggestionsModel : ImagePresentable{
             
             self?._heroes = apiClient.manager.getHeroSuggestions()
             if (self?._heroes.count == 0) {
-                self?._heroes.append(Hero(name: "NO HEROES FOUND ¯\\_(ツ)_/¯ ", heroId: 0 , desc: nil, modified: Date() , thumbnailUrl: ""))
+                self?._heroes.append(Hero(name: "NO HEROES FOUND   ¯\\_(ツ)_/¯ ", heroId: 0 , desc: nil, modified: Date() , thumbnailUrl: ""))
             }
             self?.delegate?.updateModel()
         }
