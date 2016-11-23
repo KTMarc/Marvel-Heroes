@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035240B8C99010EABD3D8A21 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC389AD479B39ED86DF85EB /* CoreTelephony.framework */; };
+		126C130BF0512D94FB8AD7AD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E21CF1186F88C029DEB0E0 /* CoreText.framework */; };
 		490A10071CBF79F700A334A3 /* GOTHAM-BOLD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 490A10061CBF79F700A334A3 /* GOTHAM-BOLD.TTF */; };
 		490A10091CBF7BF900A334A3 /* GothamLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 490A10081CBF7BF900A334A3 /* GothamLight.ttf */; };
 		490A100B1CBF850000A334A3 /* GothamXNarrow-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 490A100A1CBF7F5800A334A3 /* GothamXNarrow-Book.otf */; };
@@ -49,6 +51,13 @@
 		49D10A391DB005DB0004C197 /* SpyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D10A381DB005DB0004C197 /* SpyDelegate.swift */; };
 		49DA5A061CC05784005A9710 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA5A051CC05784005A9710 /* UIViewExtensions.swift */; };
 		49FCDBCD1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCDBCC1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift */; };
+		5460D93675DEBB7F3AABBF96 /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AB4983A96C054621FF0D8B /* BuddyBuildSDK.framework */; };
+		799E043D6E79071AB6AF9A94 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438F79245EAC98A9850AF3EB /* CoreMedia.framework */; };
+		AABA63229F33BE90C1488397 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358296F16CF3DDF9B2B7186C /* AVFoundation.framework */; };
+		AB4D4747EABF8D3C3313CF57 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AD3743C0FE1A94ED4DE335 /* SystemConfiguration.framework */; };
+		B34F0453B0E22BEB0C6449B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469670263AF92125E4CFACAB /* QuartzCore.framework */; };
+		D457DF523661180A57B65D6B /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D27ECEDB8FE81DECCFE90E /* CoreVideo.framework */; };
+		EB9A86323EB27BCBFD166D58 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B4D8AB9A32292F5E0EA352 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +78,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DC389AD479B39ED86DF85EB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		20AB4983A96C054621FF0D8B /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
+		34B9555A8FED6C06DAD12DA4 /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		358296F16CF3DDF9B2B7186C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		359BD187187A716F280703BE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		438F79245EAC98A9850AF3EB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		469670263AF92125E4CFACAB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		490A10061CBF79F700A334A3 /* GOTHAM-BOLD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GOTHAM-BOLD.TTF"; path = "UI/GOTHAM-BOLD.TTF"; sourceTree = "<group>"; };
 		490A10081CBF7BF900A334A3 /* GothamLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamLight.ttf; path = UI/GothamLight.ttf; sourceTree = "<group>"; };
 		490A100A1CBF7F5800A334A3 /* GothamXNarrow-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GothamXNarrow-Book.otf"; path = "UI/GothamXNarrow-Book.otf"; sourceTree = "<group>"; };
@@ -119,6 +134,10 @@
 		49D10A381DB005DB0004C197 /* SpyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyDelegate.swift; sourceTree = "<group>"; };
 		49DA5A051CC05784005A9710 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		49FCDBCC1DDA6CFD00B9ADCC /* ModelUpdaterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUpdaterDelegate.swift; sourceTree = "<group>"; };
+		56B4D8AB9A32292F5E0EA352 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		86E21CF1186F88C029DEB0E0 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		B0D27ECEDB8FE81DECCFE90E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		B2AD3743C0FE1A94ED4DE335 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +145,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5460D93675DEBB7F3AABBF96 /* BuddyBuildSDK.framework in Frameworks */,
+				EB9A86323EB27BCBFD166D58 /* AssetsLibrary.framework in Frameworks */,
+				126C130BF0512D94FB8AD7AD /* CoreText.framework in Frameworks */,
+				035240B8C99010EABD3D8A21 /* CoreTelephony.framework in Frameworks */,
+				AB4D4747EABF8D3C3313CF57 /* SystemConfiguration.framework in Frameworks */,
+				B34F0453B0E22BEB0C6449B3 /* QuartzCore.framework in Frameworks */,
+				AABA63229F33BE90C1488397 /* AVFoundation.framework in Frameworks */,
+				799E043D6E79071AB6AF9A94 /* CoreMedia.framework in Frameworks */,
+				D457DF523661180A57B65D6B /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +233,7 @@
 				492D08F41CBA7E930086D348 /* ✅ Marvel HeroesUITests */,
 				492D08D11CBA7E930086D348 /* 🎁 Products */,
 				B429D0EA3E5B5F72A63B1093 /* Frameworks */,
+				34B9555A8FED6C06DAD12DA4 /* Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -346,6 +375,15 @@
 			isa = PBXGroup;
 			children = (
 				359BD187187A716F280703BE /* Pods.framework */,
+				20AB4983A96C054621FF0D8B /* BuddyBuildSDK.framework */,
+				56B4D8AB9A32292F5E0EA352 /* AssetsLibrary.framework */,
+				86E21CF1186F88C029DEB0E0 /* CoreText.framework */,
+				0DC389AD479B39ED86DF85EB /* CoreTelephony.framework */,
+				B2AD3743C0FE1A94ED4DE335 /* SystemConfiguration.framework */,
+				469670263AF92125E4CFACAB /* QuartzCore.framework */,
+				358296F16CF3DDF9B2B7186C /* AVFoundation.framework */,
+				438F79245EAC98A9850AF3EB /* CoreMedia.framework */,
+				B0D27ECEDB8FE81DECCFE90E /* CoreVideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -680,11 +718,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = GM2F4EG66J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-Heroes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -695,11 +738,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = GM2F4EG66J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-Heroes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
