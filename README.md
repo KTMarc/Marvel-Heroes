@@ -77,3 +77,6 @@ Marvel character API doesn't offer a lot of information. Only name, description 
 There is a wiki page for each character. This page has more information, but it would require web scrapping, also it is out of the scope of this project. We could add a webView and load the html of the wiki.
 
 In the Hero Detail page we are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.
+
+####Master branch build status:
+![](https://travis-ci.org/KTMarc/MovingHelper.svg?branch=master)
