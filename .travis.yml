@@ -4,9 +4,8 @@ osx_image: xcode8.2
 #xcode_scheme: Marvel Heroes
 xcode_sdk: iphonesimulator10.2
 
+#language: objective-c
 script:
-  - xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,id=E40727B3-41FB-4D6E-B4CB-BFA87109EB12' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-
 #  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
 #  - xctool test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
 
@@ -30,3 +29,4 @@ script:
 #- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,id=E40727B3-41FB-4D6E-B4CB-BFA87109EB12,name=iPhone 7,OS=10.2' 
 #The device type “iOS Simulator” requires that either “name” or “id” be specified, but not both.
 #	Please supply either “name” or “id”, but not both.
+- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,id=E40727B3-41FB-4D6E-B4CB-BFA87109EB12' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
