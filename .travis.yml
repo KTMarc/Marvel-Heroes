@@ -5,5 +5,5 @@
 #xcode_sdk: iphonesimulator10.1
 language: objective-c
 script:
-  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=10.1'
-  - xctool test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=10.1'
+  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
+  - xctool test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
