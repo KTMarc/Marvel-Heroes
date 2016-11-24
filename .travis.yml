@@ -5,7 +5,7 @@ osx_image: xcode8.2
 #xcode_sdk: iphonesimulator10.2
 
 #language: objective-c
-#script:
+script:
 #  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
 #  - xctool test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
   - xctool test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -sdk iphonesimulator10.2
