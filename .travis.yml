@@ -8,6 +8,16 @@ xcode_sdk: iphonesimulator10.2
 script:
 #  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
 #  - xctool test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
+
 #  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -sdk iphonesimulator10.2 build test
+#ERROR: SDK 'iphonesimulator10.2' doesn't exist.  Possible SDKs include: appletvos9.2, iphonesimulator9.3, macosx, watchos, appletvos, appletvsimulator, iphoneos, /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk, watchos2.2, /Applications/Xcode.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/SDKs/WatchSimulator2.2.sdk, macosx10.11, watchsimulator2.2, /Applications/Xcode.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.2.sdk, iphoneos9.3, /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator9.3.sdk, iphonesimulator, appletvsimulator9.2, /Applications/Xcode.app/Contents/Developer/Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS9.2.sdk, /Applications/Xcode.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator9.2.sdk, watchsimulator, /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
+
 - xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=10.2'
+#xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+#		{ platform:iOS Simulator, OS:10.2, name:iPhone 6s }
+#	The requested device could not be found because multiple devices matched the request.
+#	Available destinations for the "Marvel Heroes" scheme:
+#		{ platform:iOS Simulator, id:C650BF69-EEC3-487C-BCCA-463CB74F9718, OS:10.0, name:iPad Air }
+
+- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform:iOS Simulator,id:E40727B3-41FB-4D6E-B4CB-BFA87109EB12,OS:10.2,name:iPhone 7' 
   
