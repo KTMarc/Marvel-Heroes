@@ -19,5 +19,6 @@ script:
 #	Available destinations for the "Marvel Heroes" scheme:
 #		{ platform:iOS Simulator, id:C650BF69-EEC3-487C-BCCA-463CB74F9718, OS:10.0, name:iPad Air }
 
-- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform:iOS Simulator,name:iPhone 6s,OS:10.2' 
-  
+#- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform:iOS Simulator,name:iPhone 6s,OS:10.2' 
+#xcodebuild: error: option 'Destination' requires at least one parameter of the form 'key=value'  
+- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=10.2' 
