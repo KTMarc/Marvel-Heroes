@@ -19,5 +19,5 @@ script:
 #	Available destinations for the "Marvel Heroes" scheme:
 #		{ platform:iOS Simulator, id:C650BF69-EEC3-487C-BCCA-463CB74F9718, OS:10.0, name:iPad Air }
 
-- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform:iOS Simulator,id:E40727B3-41FB-4D6E-B4CB-BFA87109EB12,OS:10.2,name:iPhone 7' 
+- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform:iOS Simulator,name:iPhone 6s,OS:10.2' 
   
