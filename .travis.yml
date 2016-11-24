@@ -8,5 +8,5 @@ osx_image: xcode8.2
 script:
 #  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
 #  - xctool test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.3'
-  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes test
+  - xctool -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes build test -sdk iphonesimulator10.2
   
