@@ -26,4 +26,4 @@ script:
 #xcodebuild: error: Unable to find a destination matching the provided destination specifier:
 #		{ platform:iOS Simulator, OS:10.2, name:iPhone 6s }
 
-- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,id=C650BF69-EEC3-487C-BCCA-463CB74F9718name=iPhone 6s,OS=10.2' 
+- xcodebuild test -project Marvel\ Heroes.xcodeproj -scheme Marvel\ Heroes -destination 'platform=iOS Simulator,id=E40727B3-41FB-4D6E-B4CB-BFA87109EB12,name=iPhone 7,OS=10.2' 
