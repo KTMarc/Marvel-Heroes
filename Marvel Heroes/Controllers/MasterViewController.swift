@@ -48,6 +48,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.delegate = self
         collection.dataSource = self
         searchBar.isHidden = true
+        collection.prefetchDataSource = self
         
         //UI
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
