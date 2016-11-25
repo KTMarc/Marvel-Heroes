@@ -65,32 +65,7 @@ class Parser: NSObject {
         switch _parseType {
         case .swifty:
             break
-            //MARK: - Uncomment when SwiftyJSON supports Swift3
-//            let json = JSON(_dict!)
-//            if let results = json["data"]["results"].array {
-//                //print("Received \(results.count) elements\n")
-//                for (_,subJson):(String, JSON) in JSON(results) {
-//                    ///print(subJson["name"].string)
-//                    if let theId = subJson["id"].int {
-//                        if let theName = subJson["name"].string {
-//                            if let theDescription = subJson["description"].string{ //This is never nil, returns "" if no description
-//                                if let theThumbnail = subJson["thumbnail"].dictionary{
-//                                    let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
-//                                    
-//                                    heroes.append(Hero(
-//                                        name: theName,
-//                                        heroId: theId,
-//                                        desc: theDescription,
-//                                        modified:NSDate(),
-//                                        thumbnailUrl: thumbnailCompletePath))
-//                                } else { print("Thumbnail of \(theName) was nil")}
-//                            }else{ print("Description of \(theName) was nil")}
-//                        }
-//                    }
-//                    
-//                }
-//                //print(heroes)
-//            }
+            //TODO: - Implement when SwiftyJSON supports Swift3
             
         case .functional:
             guard let resultsArray : [NSDictionary] = serialize()
@@ -122,27 +97,8 @@ class Parser: NSObject {
         switch _parseType {
         case .swifty:
             break
-//MARK: - Uncomment when SwiftyJSON supports Swift3
-//        let json = JSON(_dict!)
-//        if let results = json["data"]["results"].array {
-//            print("Received \(results.count) comics\n")
-//            for (_,subJson):(String, JSON) in JSON(results) {
-//                //print(subJson["title"].string)
-//                if let theId = subJson["id"].int {
-//                    if let theTitle = subJson["title"].string {
-//                            if let theThumbnail = subJson["thumbnail"].dictionary{
-//                                let thumbnailCompletePath : String = (theThumbnail["path"]?.string)! + "." + (theThumbnail["extension"]?.string)!
-//                                
-//                                comics.append(Comic(
-//                                    title: theTitle,
-//                                    comicId: theId,
-//                                    thumbnailUrl: thumbnailCompletePath))
-//                                //print(comics.count)
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        //TODO: - Implement when SwiftyJSON supports Swift3
+        
         case .functional:
             guard let resultsArray : [NSDictionary] = serialize()
                 else { print("Couldn't serialize and we didn´t even start to create objects"); break }
