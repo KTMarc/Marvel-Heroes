@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -48,7 +48,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeroCell" id="xXx-wu-edb" customClass="HeroCell" customModule="Marvel_Heroes" customModuleProvider="target">
-                                                <rect key="frame" x="38" y="5" width="300" height="300"/>
+                                                <rect key="frame" x="37.5" y="5" width="300" height="300"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -138,7 +138,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KtB-vv-68Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KtB-vv-68Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -313,7 +313,7 @@
                                         </variation>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yQ-xI-BTX" userLabel="CloseButton">
-                                        <rect key="frame" x="525" y="35" width="35" height="35"/>
+                                        <rect key="frame" x="525" y="20" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="5sS-ya-f0c"/>
                                             <constraint firstAttribute="height" constant="35" id="ItR-le-V3x"/>
@@ -354,7 +354,7 @@
                             <constraint firstItem="38x-x3-ccL" firstAttribute="height" secondItem="2ym-np-0p7" secondAttribute="height" multiplier="0.3" id="FDQ-qU-Jo3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4yQ-xI-BTX" secondAttribute="trailing" constant="20" id="Jyq-7u-dZz"/>
                             <constraint firstItem="GOV-zh-3vZ" firstAttribute="top" secondItem="VHB-CD-TpE" secondAttribute="bottom" priority="750" constant="50" id="Kmz-1h-6hD"/>
-                            <constraint firstItem="4yQ-xI-BTX" firstAttribute="top" secondItem="fne-Vo-btP" secondAttribute="bottom" constant="35" id="OqM-hd-oM5"/>
+                            <constraint firstItem="4yQ-xI-BTX" firstAttribute="top" secondItem="fne-Vo-btP" secondAttribute="bottom" constant="20" id="OqM-hd-oM5"/>
                             <constraint firstItem="VHB-CD-TpE" firstAttribute="centerX" secondItem="2ym-np-0p7" secondAttribute="centerX" id="Rra-Ib-Qwf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UfJ-rn-VuO" secondAttribute="trailing" constant="35" id="WBN-yU-xf6"/>
                             <constraint firstItem="VHB-CD-TpE" firstAttribute="width" secondItem="2ym-np-0p7" secondAttribute="width" id="aRD-eU-q1A"/>

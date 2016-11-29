@@ -11,12 +11,15 @@ class MasterViewControllerModel{
     
     // MARK: - Properties
     private var _heroes: [Hero]
-    var heroes: [Hero] { return _heroes }
-    var count: Int { return _heroes.count }
-    var indexPathRow: Int = 0
+    private var indexPathRow: Int = 0
+    private var sectionCount: Int = 0
+    private var _currentOffset = 0
     weak var delegate : ModelUpdaterDelegate?
     var didUpdate: ((heroCellPresentable) -> Void)?
-
+    
+    var heroes: [Hero] { return _heroes }
+    var count: Int { return _heroes.count }
+    
     // MARK: - Initialization
     init() {
         _heroes = [Hero]()
@@ -25,16 +28,6 @@ class MasterViewControllerModel{
     convenience init(theDelegate: ModelUpdaterDelegate){
         self.init()
         delegate = theDelegate
-    }
-    
-    
-    // MARK: - API interaction
-    func resetHeroSuggestions(){
-        apiClient.manager.resetHeroSuggestions()
-    }
-    
-    func moreHeroes(currentOffset: Int){
-        apiClient.manager.moreHeroes(currentOffset)
     }
     
     /**
@@ -47,6 +40,37 @@ class MasterViewControllerModel{
         listenToNotifications()
         apiClient.manager.fetchHeroes()
     }
+    
+    // MARK: - API interaction
+    func resetHeroSuggestions(){
+        apiClient.manager.resetHeroSuggestions()
+    }
+    
+    func moreHeroes(){
+        apiClient.manager.moreHeroes(_currentOffset, prefetchingImages: false)
+    }
+    
+    func prefetch(moreIndexPaths: Int){
+        apiClient.manager.moreHeroes(_currentOffset + moreIndexPaths, prefetchingImages: true)
+    }
+    
+    // MARK: Access to collection elements
+    func indexIsValid(row: Int, section: Int) -> Bool {
+        return row >= 0 && row < count && section >= 0 && section < sectionCount
+    }
+    
+    subscript(indexPath: IndexPath) -> Hero {
+        get {
+            indexPathRow = indexPath.row
+         //   assert(indexIsValid(row: indexPath.row, section: indexPath.section), "Index out of range")
+            if (indexPath.item == (count - 8)) && (count > _currentOffset){
+                _currentOffset += 20
+                moreHeroes()
+            }
+        return _heroes[indexPath.row]
+        }
+    }
+    
     
     //MARK: - API request 📡
     func listenToNotifications(){

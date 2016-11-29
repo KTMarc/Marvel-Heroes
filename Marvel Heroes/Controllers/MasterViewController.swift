@@ -17,7 +17,7 @@ enum toggle {
     case disabled
 }
 
-class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate, ModelUpdaterDelegate {
+class MasterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate, ModelUpdaterDelegate, UICollectionViewDataSourcePrefetching {
 
     //MARK: - Types
     typealias Model = MasterViewControllerModel
@@ -28,7 +28,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: - Properties
     private var searchController: UISearchController!
-    private var _currentOffset = 0
     private var _model = Model()
     private var _searchTimer: Timer?
     private var _keystrokes = ""
@@ -180,14 +179,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as! HeroCell
         
-        _model.indexPathRow = indexPath.row
-        let cellViewModel = HeroCellModel(hero: _model.heroes[indexPath.row])
+        let cellViewModel = HeroCellModel(hero: _model[indexPath])
         cell.presentCell(cellViewModel)
         
-        if (indexPath.item == (_model.count - 1)) && (_model.count > _currentOffset){
-            _currentOffset += 20
-            _model.moreHeroes(currentOffset: _currentOffset)
-        }
         return cell
     }
     
@@ -205,6 +199,17 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         return CGSize(width: 105, height: 105)
     }
 
+    
+    //MARK: - CollectionView Datasource Prefetching
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        //ImagePreloader.preloadImagesForIndexPaths(indexPaths) // happens on a background queue
+        _model.prefetch(moreIndexPaths: [indexPaths].count)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        //ImagePreloader.cancelPreloadImagesForIndexPaths(indexPaths) // again, happens on a background queue
+    }
     
     //MARK: - Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -225,3 +230,4 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
 }
+

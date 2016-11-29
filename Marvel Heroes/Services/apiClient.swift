@@ -33,6 +33,11 @@ enum StorageArchitecture {
     case other
 }
 
+enum Result<Value> {
+    case success(Value)
+    case fail(Error)
+}
+
 class apiClient: NSObject {
     
     // MARK: - Properties
@@ -54,7 +59,7 @@ class apiClient: NSObject {
     }
     
     //MARK: - IMAGES
-    func getImage(link: String, completion: ImageCacheCompletion) -> UIImage?{
+    func getImage(link: String, completion: ImageCacheCompletion){
         return _persistencyManager.getImage(link: link, completion: { (image) in
             print("imagen bajada")
         })
@@ -109,8 +114,8 @@ class apiClient: NSObject {
      - returns: An array of comics
      */
     
-    func moreHeroes(_ offset: Int){
-        _persistencyManager.getMoreHeroes(offset)
+    func moreHeroes(_ offset: Int, prefetchingImages: Bool){
+        _persistencyManager.getMoreHeroes(offset, prefetchingImages: prefetchingImages)
     }
     
     

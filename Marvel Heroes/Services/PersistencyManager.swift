@@ -65,9 +65,20 @@ class PersistencyManager: NSObject {
                     
                 case .modal_heroDetail_dismissed:
                     break
+                case .prefetchImages:
+                    let prefetchedHeroes = self._parser.parseHeroes("nothing")
+                    
+                    //let operation = Operation()
+                    for hero in prefetchedHeroes {
+                        self.getImage(link: hero.thumbnailUrl, completion: { image in
+                         print("Image \(hero.thumbnailUrl) downloaded")
+                        })
+                    }
+                    //self._heroes.append(contentsOf: prefetchedHeroes)
+                    break
                     
                 } //End of switch
-                //We completed our job and can the notification can be sent
+                //We completed our job and the notification can be sent
                 NotificationCenter.default.post(
                     name: Notification.Name(notification.rawValue), object: self)
             } else {
@@ -103,8 +114,12 @@ class PersistencyManager: NSObject {
         return _cache
     }
     
-    func getMoreHeroes(_ offset: Int) {
-        fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.heroes)
+    func getMoreHeroes(_ offset: Int, prefetchingImages: Bool) {
+        if prefetchingImages {
+            fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.prefetchImages)
+        } else {
+            fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.heroes)
+        }
     }
     
     //MARK: - SUGGESTIONS
@@ -156,25 +171,19 @@ class PersistencyManager: NSObject {
         return strokes.replacingOccurrences(of: " ", with: "%20")
     }
     
+    /**
+    Downloads images and places them in the cache
+     */
     
-    func getImage(link: String, completion: @escaping ImageCacheCompletion) -> UIImage?{
-        
-//        let entityUrl = URL(string: link)
-//        let imageUrl = entityUrl  // For recycled cells' late image loads.
-//        var entityImage = UIImage()
-//        if let cachedImage = entityUrl?.cachedImage {
-//            entityImage = cachedImage
-//            // Cached: set immediately.
-//        } else { // Not cached, so load then fade it in.
-//            
-//            entityUrl?.fetchImage { [weak self] downloadedImage in
-//                // Check the cell hasn't recycled while loading.
-//                completion(downloadedImage)
-//                }
-//            }
-//        }
-   //     return entityImage
-return nil
+    func getImage(link: String, completion: @escaping ImageCacheCompletion){
+        let entityUrl = URL(string: link)
+        if (entityUrl?.cachedImage) != nil {
+            return
+        } else {
+            entityUrl?.fetchImage(completion: { (image) in
+                return
+            })
+        }
     }
 
     
