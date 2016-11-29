@@ -96,34 +96,17 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <searchBar contentMode="redraw" placeholder="filter like this: &quot;X-Men&quot;" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krO-73-uAD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bVR-Ca-dls" id="0cD-Gf-gEn"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <constraints>
                             <constraint firstItem="eHn-r0-m4h" firstAttribute="top" secondItem="xmP-LT-Eho" secondAttribute="bottom" id="Dz8-Xy-uYZ"/>
                             <constraint firstItem="xmP-LT-Eho" firstAttribute="leading" secondItem="lUs-xD-4T6" secondAttribute="leading" id="FtQ-Se-aJh"/>
                             <constraint firstItem="xmP-LT-Eho" firstAttribute="top" secondItem="Jx0-PT-rGa" secondAttribute="bottom" id="Trx-kc-UTw"/>
-                            <constraint firstItem="scQ-2V-EJD" firstAttribute="top" secondItem="krO-73-uAD" secondAttribute="bottom" id="VBG-Vq-01u"/>
                             <constraint firstAttribute="trailing" secondItem="xmP-LT-Eho" secondAttribute="trailing" id="ap1-Dc-dus"/>
-                            <constraint firstItem="krO-73-uAD" firstAttribute="centerX" secondItem="lUs-xD-4T6" secondAttribute="centerX" id="dDF-Qr-D14"/>
-                            <constraint firstItem="krO-73-uAD" firstAttribute="width" secondItem="lUs-xD-4T6" secondAttribute="width" id="gqC-pi-fg2"/>
-                            <constraint firstItem="krO-73-uAD" firstAttribute="top" secondItem="Jx0-PT-rGa" secondAttribute="bottom" id="pJ6-Ce-fXR"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="VBG-Vq-01u"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Heroes" id="bVR-Ca-dls"/>
                     <connections>
                         <outlet property="collection" destination="scQ-2V-EJD" id="xcm-E3-96z"/>
-                        <outlet property="searchBar" destination="krO-73-uAD" id="b2T-5e-Q9s"/>
                         <segue destination="J9W-dP-w2Q" kind="show" identifier="DetailViewController" id="C5G-Ef-dsX"/>
                     </connections>
                 </viewController>
@@ -136,8 +119,6 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v8j-JH-R8j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KtB-vv-68Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -204,7 +185,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-rn-VuO" userLabel="Id Num">
-                                        <rect key="frame" x="465" y="458" width="80" height="16"/>
+                                        <rect key="frame" x="465" y="458.5" width="80" height="15.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="WGM-QE-pm7"/>
                                         </constraints>
@@ -281,7 +262,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No comics available 🙈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaw-p3-hiL">
-                                                <rect key="frame" x="175" y="110" width="250" height="17"/>
+                                                <rect key="frame" x="175" y="110.5" width="250" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="xYY-aV-Ujs"/>
                                                 </constraints>
@@ -290,7 +271,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Hlx-ve-mxr">
-                                                <rect key="frame" x="290" y="99" width="20" height="20"/>
+                                                <rect key="frame" x="290" y="98.5" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <constraints>
