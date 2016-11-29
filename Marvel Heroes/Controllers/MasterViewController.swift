@@ -24,6 +24,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: - Outlets
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var containerView: UIView!
     
     //MARK: - Properties
     private var searchController: UISearchController!
@@ -136,7 +137,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     ///Blurred image background
     func toggleBackgroundBlur () {
-        blurEffectView.frame =  view.bounds
+        blurEffectView.frame =  containerView.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         

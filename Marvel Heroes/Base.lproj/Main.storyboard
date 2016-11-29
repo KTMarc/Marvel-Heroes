@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmP-LT-Eho">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmP-LT-Eho" userLabel="Container">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="scQ-2V-EJD">
@@ -107,6 +107,7 @@
                     <navigationItem key="navigationItem" title="Heroes" id="bVR-Ca-dls"/>
                     <connections>
                         <outlet property="collection" destination="scQ-2V-EJD" id="xcm-E3-96z"/>
+                        <outlet property="containerView" destination="xmP-LT-Eho" id="3Az-ay-NBU"/>
                         <segue destination="J9W-dP-w2Q" kind="show" identifier="DetailViewController" id="C5G-Ef-dsX"/>
                     </connections>
                 </viewController>
@@ -119,7 +120,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v8j-JH-R8j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KtB-vv-68Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KtB-vv-68Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
