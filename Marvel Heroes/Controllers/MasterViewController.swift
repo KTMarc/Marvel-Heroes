@@ -35,6 +35,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     private var blurEffectView = UIVisualEffectView()
     private var blurToggle : toggle = .disabled
     
+    //MARK: For testing purposes
+    var countItems : Int {return collection.numberOfItems(inSection: 0)}
+    //weak var testingDelegate : ModelUpdaterDelegate?
+    
     //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +79,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func updateModel(){
         DispatchQueue.main.async(execute: {
             self.collection.reloadData()
+            //self.testingDelegate?.updateModel()
         })
     }
 
