@@ -34,6 +34,10 @@ class SuggestionsModel : ImagePresentable{
         listenToNotifications()
     }
     
+    func flushHeroes(){
+        _heroes = [Hero]()
+    }
+    
     func search(keystrokes: String){
         apiClient.manager.searchHeroes(keystrokes)
     }

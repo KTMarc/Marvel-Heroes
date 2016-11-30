@@ -90,6 +90,11 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         frame.size.height += 70.0
         tableView.frame = frame
     }
+    
+    func resetHeroSuggestions(){
+        _model.flushHeroes()
+        updateModel()
+    }
 }
 
 

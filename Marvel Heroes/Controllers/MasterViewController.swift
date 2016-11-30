@@ -132,17 +132,19 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         _model.resetHeroSuggestions()
+        (searchController.searchResultsController as! SuggestionsVC).resetHeroSuggestions()
         collection.reloadData()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         _model.resetHeroSuggestions()
+        (searchController.searchResultsController as! SuggestionsVC).resetHeroSuggestions()
         collection.reloadData()
     }
     
     ///Blurred image background
     func toggleBackgroundBlur () {
-        blurEffectView.frame =  containerView.bounds
+        blurEffectView.frame =  view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         

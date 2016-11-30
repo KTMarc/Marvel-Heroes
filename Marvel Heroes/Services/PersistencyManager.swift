@@ -141,8 +141,8 @@ class PersistencyManager: NSObject {
     
     func resetHeroSuggestions(){
         _suggestions = []
-        NotificationCenter.default.post(
-            name: Notification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: self)
+//        NotificationCenter.default.post(
+//            name: Notification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: self)
     }
     
     //MARK: - COMICS
