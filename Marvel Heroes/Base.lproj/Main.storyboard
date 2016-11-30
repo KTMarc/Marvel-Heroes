@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="17A131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,7 +26,7 @@
         <!--Heroes-->
         <scene sceneID="6KB-BL-FMB">
             <objects>
-                <viewController id="J0F-xy-8yd" customClass="MasterViewController" customModule="Marvel_Heroes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MasterViewControllerID" id="J0F-xy-8yd" customClass="MasterViewController" customModule="Marvel_Heroes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jx0-PT-rGa"/>
                         <viewControllerLayoutGuide type="bottom" id="eHn-r0-m4h"/>
@@ -263,7 +263,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No comics available 🙈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaw-p3-hiL">
-                                                <rect key="frame" x="175" y="110.5" width="250" height="17"/>
+                                                <rect key="frame" x="175" y="110" width="250" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="xYY-aV-Ujs"/>
                                                 </constraints>
@@ -272,7 +272,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Hlx-ve-mxr">
-                                                <rect key="frame" x="290" y="98.5" width="20" height="20"/>
+                                                <rect key="frame" x="290" y="99" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <constraints>

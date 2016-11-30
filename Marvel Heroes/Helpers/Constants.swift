@@ -44,15 +44,18 @@ struct Consts {
     //STORYBOARD IDs
     struct StoryboardIds {
         
-        static let HERO_DETAIL_VC = "HeroDetailVC"
-        //Heroes Master View Controller
+        //Master View Controller
+        static let MASTERVIEWCONTROLLER = "MasterViewControllerID"
         static let HERO_CELL = "HeroCell"
         
         //Suggestions table view Controller
         static let SUGGESTION_CELL = "SuggestionCell"
         
         //Hero Detail View Controller
+        static let HERO_DETAIL_VC = "HeroDetailVC"
         static let COMIC_CELL = "ComicCell"
+        
+        
     }
     
     //COPY
