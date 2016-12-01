@@ -25,7 +25,8 @@ class ComicCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func presentCell(_ presenter: heroCellPresentable) {
+    func presentCell(_ presenter: CellPresentable) {
+        //The ViewModel is the delegate, injected in HeroDetailVC
         delegate = presenter
         nameLbl.text = presenter.text
         nameLbl.textColor = presenter.textColor

@@ -12,7 +12,7 @@ import UIKit
  Custom Cell for Master table view
  */
 
-typealias heroCellPresentable = TextPresentable & ImagePresentable
+typealias CellPresentable = TextPresentable & ImagePresentable
 
 class HeroCell  : UICollectionViewCell {
     //MARK: - Outlets
@@ -27,7 +27,8 @@ class HeroCell  : UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func presentCell(_ presenter: heroCellPresentable) {
+    func presentCell(_ presenter: CellPresentable) {
+        //The delegate is HeroCellModel
         delegate = presenter
         nameLbl.text = presenter.text
         nameLbl.textColor = presenter.textColor

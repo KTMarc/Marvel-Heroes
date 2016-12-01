@@ -15,7 +15,7 @@ class MasterViewControllerModel{
     private var sectionCount: Int = 0
     private var _currentOffset = 0
     weak var delegate : ModelUpdaterDelegate?
-    var didUpdate: ((heroCellPresentable) -> Void)?
+    var didUpdate: ((CellPresentable) -> Void)?
     
     var heroes: [Hero] { return _heroes }
     var count: Int { return _heroes.count }

@@ -13,7 +13,7 @@ class ComicCellModel : ImagePresentable{
 
     private var _comic: Comic
     var comic: Comic { return _comic }
-    var didUpdate: ((heroCellPresentable) -> Void)?
+    var didUpdate: ((CellPresentable) -> Void)?
     var imageAddress: String { return comic.thumbnailUrl }
     
     init() {

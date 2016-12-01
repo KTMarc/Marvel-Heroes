@@ -17,7 +17,7 @@ class SuggestionsModel : ImagePresentable{
     var count: Int { return _heroes.count }
     var indexPathRow: Int = 0
     weak var delegate : ModelUpdaterDelegate?
-    var didUpdate: ((heroCellPresentable) -> Void)?
+    var didUpdate: ((CellPresentable) -> Void)?
     var imageAddress: String { return heroes[indexPathRow].thumbnailUrl }
     
     // MARK: - Initialization

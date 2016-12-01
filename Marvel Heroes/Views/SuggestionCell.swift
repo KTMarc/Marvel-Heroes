@@ -18,7 +18,7 @@ class SuggestionCell: UITableViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     
     //MARK: - Properties
-    private var delegate: heroCellPresentable?
+    weak var delegate: CellPresentable?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +30,7 @@ class SuggestionCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func presentCell(_ presenter: heroCellPresentable) {
+    func presentCell(_ presenter: CellPresentable) {
         delegate = presenter
         nameLabel.text = presenter.text.capitalized
         DispatchQueue.main.async(execute: { [weak self] () -> Void in

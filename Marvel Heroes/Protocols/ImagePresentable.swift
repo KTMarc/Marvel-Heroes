@@ -11,7 +11,7 @@ import UIKit
 protocol ImagePresentable : class{
     var imageAddress: String { get }
     var image: UIImage { get }
-    var didUpdate: ((heroCellPresentable) -> Void)? { get set }
+    var didUpdate: ((CellPresentable) -> Void)? { get set }
 }
 
 
@@ -29,7 +29,7 @@ extension ImagePresentable {
                 // Check the cell hasn't recycled while loading.
                 if initiallySetImageUrl == self?.imageAddress {
                     entityImage = downloadedImage
-                    self?.didUpdate!(self! as! heroCellPresentable)
+                    self?.didUpdate!(self! as! CellPresentable)
                 }
             }
         }

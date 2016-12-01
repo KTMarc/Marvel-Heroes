@@ -13,7 +13,7 @@ class HeroCellModel : ImagePresentable {
     
     private var _hero: Hero
     var hero: Hero { return _hero }
-    var didUpdate: ((heroCellPresentable) -> Void)?
+    var didUpdate: ((CellPresentable) -> Void)?
     var imageAddress: String { return hero.thumbnailUrl }
     init() {
         _hero = Hero()

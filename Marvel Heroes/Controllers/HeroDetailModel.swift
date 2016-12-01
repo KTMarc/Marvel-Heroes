@@ -20,7 +20,7 @@ class HeroDetailModel : ImagePresentable{
     var comicOffset = 0
     var indexPathRow = 0
     weak var delegate : ModelUpdaterDelegate?
-    var didUpdate: ((heroCellPresentable) -> Void)?
+    var didUpdate: ((CellPresentable) -> Void)?
     var imageAddress: String { return hero.thumbnailUrl }
 
     // MARK: - Initialization 🐣
