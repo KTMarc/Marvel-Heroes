@@ -1,3 +1,5 @@
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57233934365226010025aec2&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57233934365226010025aec2/build/latest)
+
 # Marvel Heroes iOS App
 This App fetches characters from the Marvel Comics public API.
 It also allows to search for more characters remotely via REST calls.
@@ -78,4 +80,3 @@ There is a wiki page for each character. This page has more information, but it 
 
 In the Hero Detail page we are showing Comics, but we could also show Stories, Events and Series the same way. But would be repeating the same calls to the server requesting different entities.
 
-[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57233934365226010025aec2&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57233934365226010025aec2/build/latest)
