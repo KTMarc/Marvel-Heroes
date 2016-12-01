@@ -20,7 +20,7 @@ class HeroCell  : UICollectionViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     
     //MARK: - Properties
-    private var delegate: heroCellPresentable?
+    weak var delegate: CellPresentable?
     
     //MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
