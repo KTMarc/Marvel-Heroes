@@ -25,11 +25,11 @@ extension ImagePresentable {
             entityImage = cachedImage
             // Cached: set immediately.
         } else { // Not cached, so load then fade it in.
-            entityUrl?.fetchImage { [weak self] downloadedImage in
+            entityUrl?.fetchImage { downloadedImage in
                 // Check the cell hasn't recycled while loading.
-                if initiallySetImageUrl == self?.imageAddress {
+                if initiallySetImageUrl == self.imageAddress {
                     entityImage = downloadedImage
-                    self?.didUpdate!(self! as! CellPresentable)
+                    self.didUpdate!(self as! CellPresentable)
                 }
             }
         }
