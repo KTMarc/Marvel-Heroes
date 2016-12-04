@@ -74,7 +74,6 @@ func ==(lhs: Hero, rhs: Hero) -> Bool {
     return  lhs.name == rhs.name &&
         lhs.heroId == rhs.heroId &&
         lhs.desc == rhs.desc &&
-        lhs.modified.timeIntervalSince1970 == rhs.modified.timeIntervalSince1970 &&
         lhs.thumbnailUrl == rhs.thumbnailUrl
 }
 

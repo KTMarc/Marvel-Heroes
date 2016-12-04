@@ -27,6 +27,8 @@ class Marvel_HeroesTests: XCTestCase {
     func testThatWeCanParseLocalJSONfile(){
         
         var heroes = [Hero]()
+        let idealHero = Hero(name: "3-D Man", heroId: 1011334, desc: Consts.Copies.NO_DESCRIPTION_AVAILABLE_COPY, modified: Date.init(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg")
+        
         let path = Bundle(for: Marvel_HeroesTests.self).path(forResource: "listCharacters", ofType: "json")
         
         if let data = try? Data(contentsOf: URL(fileURLWithPath: path!)){
@@ -37,6 +39,7 @@ class Marvel_HeroesTests: XCTestCase {
         
         heroes = parser.parseHeroes("kk")
         XCTAssertEqual(heroes.count, 20)
+        XCTAssertEqual(heroes[0], idealHero)
         }
     }
     

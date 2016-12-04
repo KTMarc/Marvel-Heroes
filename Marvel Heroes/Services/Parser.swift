@@ -48,13 +48,13 @@ class Parser: NSObject {
         return parseHero()
     }
 
-    func serialize() -> [NSDictionary]? {
+    func serialize() -> [Payload]? {
         guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
             else { print("error creating JSON"); return nil } ///-->Exit now if this is not true
         
-        guard let rootDict = json as? NSDictionary,
+        guard let rootDict = json as? Payload,
             let dataDict = rootDict["data"] as? Payload,
-            let resultsArray = dataDict["results"] as? [NSDictionary]
+            let resultsArray = dataDict["results"] as? [Payload]
             else { print("error creating the main Dictionary"); return nil} ///-->Exit now if this is not true
         return resultsArray
     }
@@ -68,7 +68,7 @@ class Parser: NSObject {
             //TODO: - Implement when SwiftyJSON supports Swift3
             
         case .functional:
-            guard let resultsArray : [NSDictionary] = serialize()
+            guard let resultsArray : [Payload] = serialize()
             else { print("Couldn't serialize and we didn´t even start to create objects"); break }
             heroes = resultsArray.flatMap({
                 //(resultsDict: NSDictionary) -> Hero in
@@ -100,7 +100,7 @@ class Parser: NSObject {
         //TODO: - Implement when SwiftyJSON supports Swift3
         
         case .functional:
-            guard let resultsArray : [NSDictionary] = serialize()
+            guard let resultsArray : [Payload] = serialize()
                 else { print("Couldn't serialize and we didn´t even start to create objects"); break }
             
             comics = resultsArray.flatMap({
