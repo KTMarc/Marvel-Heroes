@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias CellPresentable = TextPresentable & ImagePresentable
+
 protocol ImagePresentable : class{
     var imageAddress: String { get }
     var image: UIImage { get }

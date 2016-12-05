@@ -12,7 +12,6 @@ import UIKit
  Custom Cell for Master table view
  */
 
-typealias CellPresentable = TextPresentable & ImagePresentable
 
 class HeroCell  : UICollectionViewCell {
     //MARK: - Outlets

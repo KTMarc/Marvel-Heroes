@@ -66,6 +66,10 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.reloadData()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     //MARK: - Notifications 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)

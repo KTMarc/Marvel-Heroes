@@ -30,6 +30,10 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         _model.tearUp()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func search(keystrokes: String){
         _model.search(keystrokes: keystrokes)
     }
