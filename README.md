@@ -1,4 +1,6 @@
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=57233934365226010025aec2&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/57233934365226010025aec2/build/latest)
+[![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
+[![Xcode](https://img.shields.io/badge/Xcode-8.2beta2-blue.svg)](https://developer.apple.com/xcode)
 
 # Marvel Heroes iOS App
 This App fetches characters from the Marvel Comics public API.
