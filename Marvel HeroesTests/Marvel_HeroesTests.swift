@@ -34,10 +34,10 @@ class Marvel_HeroesTests: XCTestCase {
         if let data = try? Data(contentsOf: URL(fileURLWithPath: path!)){
         
         //This should not be tested directly instantiating the parser
-        let parser = Parser(dict: nil, data: data, parseType: .functional)
+        let parser = Parser(data: data, parseType: .functional)
         ///call the parser
         
-        heroes = parser.parseHeroes("kk")
+        heroes = parser.parseHeroes()
         XCTAssertEqual(heroes.count, 20)
         XCTAssertEqual(heroes[0], idealHero)
         }

@@ -22,12 +22,12 @@ class PersistencyManager: NSObject {
     private var _suggestions : [Hero] = []
     private var _comics : [Comic] = []
     //private let cache = Shared.JSONCache
-    private let _parser : Parser
+    private var _parseType: ParseType
     private let _storageArchitecture : StorageArchitecture
     private let _cache = NSCache<NSString,UIImage>()
     
     init(parseType: ParseType, storageArchitecture: StorageArchitecture){
-        _parser = Parser(parseType: parseType)
+        _parseType = parseType
         _storageArchitecture = storageArchitecture
         super.init()
     }
@@ -47,26 +47,25 @@ class PersistencyManager: NSObject {
         let URL = Foundation.URL(string: Consts.ApiURL.BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURL.CREDENTIALS)!
         //print(URL)
         
-        let mySession = URLSession(configuration: URLSessionConfiguration.default)
+        let mySession = URLSession(configuration: .default)
         let myRequest = URLRequest(url: URL)
         let task = mySession.dataTask(with: myRequest){ (data, response, error) in
             if let dataa = data {
-                self._parser.setData(dataa)
                 switch notification {
                     
                 case .heroes:
-                    self._heroes.append(contentsOf: self._parser.parseHeroes("nothing"))
+                    self._heroes.append(contentsOf: Parser(data: dataa, parseType: self._parseType).parseHeroes())
                     
                 case .comics:
-                    self._comics = self._parser.parseComics()
+                    self._comics = Parser(data: dataa, parseType: self._parseType).parseComics()
                     
                 case .suggestions:
-                    self._suggestions = self._parser.parseHeroes("nothing")
+                    self._suggestions = Parser(data: dataa, parseType: self._parseType).parseHeroes()
                     
                 case .modal_heroDetail_dismissed:
                     break
                 case .prefetchImages:
-                    let prefetchedHeroes = self._parser.parseHeroes("nothing")
+                    let prefetchedHeroes = Parser(data: dataa, parseType: self._parseType).parseHeroes()
                     
                     //let operation = Operation()
                     for hero in prefetchedHeroes {

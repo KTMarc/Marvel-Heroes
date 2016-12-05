@@ -14,36 +14,23 @@ import Foundation
  - parameter data: Needs to be initialized with a Dictionary
  */
 
-class Parser: NSObject {
+struct Parser {
     
-    typealias Payload = [String: AnyObject]
+    typealias Payload = [AnyHashable: AnyObject]
     
     // MARK: - Properties
     private var _data : Data?
-    private var _dict : NSDictionary?
+    private var _dict : Payload?
     private let _parseType : ParseType
     
     // MARK: - Initializers
-    init(dict: NSDictionary?, data: Data?, parseType: ParseType) {
-        self._dict = dict
+    init(data: Data?, parseType: ParseType) {
         self._data = data
         self._parseType = parseType
     }
     
-    convenience init(parseType: ParseType){
-        self.init(dict: nil, data:nil, parseType: parseType)
-    }
-    
-    func setData(_ data: Data){
-        _data = data
-    }
-    
-    func setDict(_ dict: NSDictionary){
-        _dict = dict
-    }
-    
     //MARK: - Methods
-    func parseHeroes(_ type: String) -> [Hero]{
+    func parseHeroes() -> [Hero]{
         
         return parseHero()
     }
@@ -123,6 +110,6 @@ class Parser: NSObject {
     
     } //Function end
     
-} //Class end
+}
 
 
