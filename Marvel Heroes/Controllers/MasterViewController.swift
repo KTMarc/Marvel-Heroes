@@ -31,9 +31,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     private var _model = Model()
     private var _searchTimer: Timer?
     private var _keystrokes = ""
-    private var blurEffect = UIBlurEffect()
-    private var blurEffectView = UIVisualEffectView()
-    private var blurToggle : toggle = .disabled
+    private var _blurEffect : UIBlurEffect?
+    private var _blurEffectView : UIVisualEffectView?
+    private var _blurToggle : toggle = .disabled
     
     //MARK: For testing purposes
     var countItems : Int {return collection.numberOfItems(inSection: 0)}
@@ -51,14 +51,14 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.delegate = self
         collection.dataSource = self
         collection.prefetchDataSource = self
+        //collection.isPrefetchingEnabled = true
         
         //UI
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "navBarLogo.png")
         navigationItem.titleView = imageView
-        blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +83,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     func updateModel(){
         DispatchQueue.main.async(execute: {
             self.collection.reloadData()
-            //self.testingDelegate?.updateModel()
         })
     }
 
@@ -148,23 +147,30 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     ///Blurred image background
     func toggleBackgroundBlur () {
-        blurEffectView.frame =  view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView)
         
-        switch blurToggle{
+        switch _blurToggle{
         case .disabled:
+            _blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            _blurEffectView = UIVisualEffectView(effect: _blurEffect)
+            _blurEffectView?.frame =  view.bounds
+            _blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.addSubview(_blurEffectView!)
             UIView.animate(withDuration: 0.5) {
-                //self.blurEffectView.effect = UIBlurEffect(style: .light)
-                self.blurEffectView.alpha = 1.0
+                self._blurEffectView?.effect = UIBlurEffect(style: .light)
             }
-            blurToggle = .enabled
+
+            _blurToggle = .enabled
             
         case .enabled:
-            UIView.animate(withDuration: 0.5) {
-                self.blurEffectView.alpha = 0.0
-            }
-            blurToggle = .disabled
+            guard let blurEffectToRemove = _blurEffectView else { break }
+    
+            UIView.animate(withDuration: 0.5, animations: {
+                blurEffectToRemove.effect = nil
+            }, completion: { (finished: Bool) -> Void in
+                blurEffectToRemove.removeFromSuperview()
+            })
+            
+            _blurToggle = .disabled
         }
     }
     
@@ -208,12 +214,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         return CGSize(width: 105, height: 105)
     }
-
     
     //MARK: - CollectionView Datasource Prefetching
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         //ImagePreloader.preloadImagesForIndexPaths(indexPaths) // happens on a background queue
+        
         _model.prefetch(moreIndexPaths: [indexPaths].count)
     }
     

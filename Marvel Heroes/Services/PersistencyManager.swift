@@ -25,6 +25,7 @@ class PersistencyManager: NSObject {
     private var _parseType: ParseType
     private let _storageArchitecture : StorageArchitecture
     private let _cache = NSCache<NSString,UIImage>()
+    private let _mySession = URLSession.shared
     
     init(parseType: ParseType, storageArchitecture: StorageArchitecture){
         _parseType = parseType
@@ -47,9 +48,8 @@ class PersistencyManager: NSObject {
         let URL = Foundation.URL(string: Consts.ApiURL.BASE + endPoint + "?" + "\(parameter)" + "offset=\(offset)&" + Consts.ApiURL.CREDENTIALS)!
         //print(URL)
         
-        let mySession = URLSession(configuration: .default)
         let myRequest = URLRequest(url: URL)
-        let task = mySession.dataTask(with: myRequest){ (data, response, error) in
+        let task = URLSession.shared.dataTask(with: myRequest){ (data, response, error) in
             if let dataa = data {
                 switch notification {
                     
@@ -85,6 +85,7 @@ class PersistencyManager: NSObject {
                     print(theError)
                 }
             }
+            
         }
         task.resume()
     } //End of fecthData
