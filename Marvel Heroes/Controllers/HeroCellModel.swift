@@ -23,6 +23,10 @@ class HeroCellModel : ImagePresentable {
         self.init()
         _hero = hero
     }
+    
+    deinit {
+        //print("\(self.text) CellViewModel is being deinitialized with reatain count \(CFGetRetainCount(self))")
+    }
 }
 
 // MARK: - ➕ Protocol Extensions conformance used to configure the cell for each hero

@@ -14,6 +14,7 @@ class MasterViewControllerModel{
     private var indexPathRow: Int = 0
     private var sectionCount: Int = 0
     private var _currentOffset = 0
+    private var _heroCellViewModels = [HeroCellModel]()
     weak var delegate : ModelUpdaterDelegate?
     var didUpdate: ((CellPresentable) -> Void)?
     
@@ -59,7 +60,7 @@ class MasterViewControllerModel{
         return row >= 0 && row < count && section >= 0 && section < sectionCount
     }
     
-    subscript(indexPath: IndexPath) -> Hero {
+    subscript(indexPath: IndexPath) -> HeroCellModel {
         get {
             indexPathRow = indexPath.row
          //   assert(indexIsValid(row: indexPath.row, section: indexPath.section), "Index out of range")
@@ -67,7 +68,12 @@ class MasterViewControllerModel{
                 _currentOffset += 20
                 moreHeroes()
             }
-        return _heroes[indexPath.row]
+            
+            if !(_heroCellViewModels.indices.contains(indexPath.row)){
+                _heroCellViewModels.append(HeroCellModel(hero: _heroes[indexPath.row]))
+                
+            }
+            return _heroCellViewModels[indexPath.row]
         }
     }
     

@@ -81,6 +81,20 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     //MARK: - Delegate methods
     func updateModel(){
+       // CATransaction.begin()
+       // CATransaction.setDisableActions(true)
+//        collection.performBatchUpdates({
+//            
+//            let indexPaths = (0...20).map{IndexPath(item: $0, section: 0)}
+//            if indexPaths.count > 0 {
+//                self.collection.insertItems(at: indexPaths)
+//            }
+//        }, completion: {
+//            finished in
+//            print("completed loading of new stuff, animating")
+//          //  self.collectionView!.contentOffset = CGPointMake(0, self.collectionView!.contentSize.height - bottomOffset)
+//            //CATransaction.commit()
+//        })
         DispatchQueue.main.async(execute: {
             self.collection.reloadData()
         })
@@ -195,8 +209,8 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.StoryboardIds.HERO_CELL, for: indexPath) as! HeroCell
         
-        let cellViewModel = HeroCellModel(hero: _model[indexPath])
-        cell.presentCell(cellViewModel)
+        //Presenting the cell with it´s HeroCellModel, which MasterviewControllerModel owns
+        cell.presentCell(_model[indexPath])
         
         return cell
     }
