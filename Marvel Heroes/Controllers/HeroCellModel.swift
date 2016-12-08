@@ -25,7 +25,7 @@ class HeroCellModel : ImagePresentable {
     }
     
     deinit {
-        //print("\(self.text) CellViewModel is being deinitialized with reatain count \(CFGetRetainCount(self))")
+        print("\(self.text) CellViewModel is being deinitialized with reatain count \(CFGetRetainCount(self))")
     }
 }
 

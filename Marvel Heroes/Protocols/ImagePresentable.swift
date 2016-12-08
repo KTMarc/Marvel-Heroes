@@ -20,8 +20,7 @@ protocol ImagePresentable : class{
 extension ImagePresentable {
     var image: UIImage {
         let initiallySetImageUrl = self.imageAddress // For recycled cells late image loads.
-        let entityUrl = URL(string: self.imageAddress)
-        //let initiallySetImageUrl = entityUrl  // For recycled cells' late image loads.
+        let entityUrl = URL(string: initiallySetImageUrl)
         var entityImage = UIImage()
         if let cachedImage = entityUrl?.cachedImage {
             entityImage = cachedImage

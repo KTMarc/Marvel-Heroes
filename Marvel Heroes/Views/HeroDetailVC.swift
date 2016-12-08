@@ -64,6 +64,10 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     //MARK: - UI
     func setupUI(){
         if let  _ = URL.init(string: self.model.hero.thumbnailUrl) {

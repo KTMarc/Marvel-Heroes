@@ -43,6 +43,10 @@ class Marvel_HeroesTests: XCTestCase {
         }
     }
     
+//    func testCharactersJSONFileHasData() {
+//        weak var expectation = self.expectation(description: "Download Data")
+//    }
+//    
     
     func testCharactersJSONFileIsDownloadedAndParsed() {
         weak var expectation = self.expectation(description: "Download, Parse and create objects")
@@ -56,8 +60,9 @@ class Marvel_HeroesTests: XCTestCase {
         
         apiClient.manager.fetchHeroes()
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 8, handler: nil)
         XCTAssertGreaterThan(heroes.count, 0)
+        XCTAssertEqual(heroes.count, 20)
     }
     
     
