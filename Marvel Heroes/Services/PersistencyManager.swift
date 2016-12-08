@@ -82,7 +82,7 @@ class PersistencyManager: NSObject {
                     name: Notification.Name(notification.rawValue), object: self)
             } else {
                 if let theError = error {
-                    print(theError)
+                    print("URLSession error: \(theError)")
                 }
             }
             

@@ -19,26 +19,31 @@ class HeroCell  : UICollectionViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     
     //MARK: - Properties
-    weak var delegate: CellPresentable?
+    weak var delegate: CellPresentable? //This will be a HeroCellModel instance
     
     //MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    func presentCell(_ presenter: CellPresentable) {
+    func presentCell(_ presenter: CellPresentable) { //Presenter is created via Dependency injection in the VC
         //The delegate is HeroCellModel
         delegate = presenter
         nameLbl.text = presenter.text
         nameLbl.textColor = presenter.textColor
-        DispatchQueue.main.async(execute: { [weak self] () -> Void in
-            self?.thumbImg.image = presenter.image
-            self?.thumbImg.layer.borderWidth = 1
-            self?.thumbImg.layer.masksToBounds = false
-            self?.thumbImg.layer.borderColor = UIColor.white.cgColor
-            self?.thumbImg.layer.cornerRadius = 10
-            self?.thumbImg.clipsToBounds = true
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.thumbImg.image = presenter.image
+            self.thumbImg.layer.borderWidth = 1
+            self.thumbImg.layer.masksToBounds = false
+            self.thumbImg.layer.borderColor = UIColor.white.cgColor
+            self.thumbImg.layer.cornerRadius = 10
+            self.thumbImg.clipsToBounds = true
         })
         delegate?.didUpdate = self.presentCell
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        delegate = nil
     }
 }

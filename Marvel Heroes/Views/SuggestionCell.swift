@@ -33,9 +33,9 @@ class SuggestionCell: UITableViewCell {
     func presentCell(_ presenter: CellPresentable) {
         delegate = presenter
         nameLabel.text = presenter.text.capitalized
-        DispatchQueue.main.async(execute: { [weak self] () -> Void in
-            self?.thumbImg.image = presenter.image
-            self?.thumbImg.contentMode = .scaleAspectFill
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.thumbImg.image = presenter.image
+            self.thumbImg.contentMode = .scaleAspectFill
         })
         delegate?.didUpdate = self.presentCell
     }

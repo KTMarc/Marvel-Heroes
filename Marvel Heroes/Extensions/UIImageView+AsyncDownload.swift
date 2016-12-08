@@ -24,9 +24,9 @@ extension UIImageView {
                 let image = UIImage(data: data)
                 else { return }
             
-            DispatchQueue.main.async(execute: { [weak self] () -> Void in
-                self?.image = image
-                self?.contentMode = mode
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.image = image
+                self.contentMode = mode
                 completion?()
             })
         }
