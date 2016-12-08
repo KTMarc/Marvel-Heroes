@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum ParserError: Error {
+    case rootDict
+    case dataDict
+    case resultsArray
+}
+
 /**
  Parses JSON files
  
@@ -39,10 +45,12 @@ struct Parser {
         guard let json = try? JSONSerialization.jsonObject(with: _data!, options: .allowFragments)
             else { print("error creating JSON"); return nil } ///-->Exit now if this is not true
         
-        guard let rootDict = json as? Payload,
-            let dataDict = rootDict["data"] as? Payload,
-            let resultsArray = dataDict["results"] as? [Payload]
-            else { print("error creating the main Dictionary"); return nil} ///-->Exit now if this is not true
+        guard let rootDict = json as? Payload else { print("error in step 1: creating the rootDict"); return nil}
+        guard let dataDict = rootDict["data"] as? Payload else {
+            print("error in step 2:  creating the data Dict")
+            print(rootDict)
+            return nil}
+        guard let resultsArray = dataDict["results"] as? [Payload] else { print("error in step 3:  creating the results dict"); return nil}
         return resultsArray
     }
     

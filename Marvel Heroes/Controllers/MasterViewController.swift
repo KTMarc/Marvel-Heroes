@@ -51,7 +51,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         collection.delegate = self
         collection.dataSource = self
         collection.prefetchDataSource = self
-        //collection.isPrefetchingEnabled = true
+        collection.isPrefetchingEnabled = false
         
         //UI
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
