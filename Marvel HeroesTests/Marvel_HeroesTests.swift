@@ -24,6 +24,7 @@ class Marvel_HeroesTests: XCTestCase {
     }
     
     
+    //MARK: - Parser
     func testThatWeCanParseLocalJSONfile(){
         
         var heroes = [Hero]()
