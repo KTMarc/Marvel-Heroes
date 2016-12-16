@@ -24,6 +24,10 @@
 		49249E4E1DD6015A00E28D6B /* ComicCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49249E4D1DD6015A00E28D6B /* ComicCellModel.swift */; };
 		49287B691DA81B8100203222 /* HeroDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49287B681DA81B8100203222 /* HeroDetailModel.swift */; };
 		492911811D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */; };
+		492B40681E03EDC600EDA2F1 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40641E03EDC600EDA2F1 /* RxBlocking.framework */; };
+		492B40691E03EDC600EDA2F1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40651E03EDC600EDA2F1 /* RxCocoa.framework */; };
+		492B406A1E03EDC600EDA2F1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40661E03EDC600EDA2F1 /* RxSwift.framework */; };
+		492B406B1E03EDC600EDA2F1 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40671E03EDC600EDA2F1 /* RxTest.framework */; };
 		492C5DE81DD8F7C800B4D8C6 /* HeroCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C5DE71DD8F7C800B4D8C6 /* HeroCellModel.swift */; };
 		492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D31CBA7E930086D348 /* AppDelegate.swift */; };
 		492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D51CBA7E930086D348 /* MasterViewController.swift */; };
@@ -102,6 +106,10 @@
 		49249E4D1DD6015A00E28D6B /* ComicCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicCellModel.swift; path = Controllers/ComicCellModel.swift; sourceTree = "<group>"; };
 		49287B681DA81B8100203222 /* HeroDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailModel.swift; path = Controllers/HeroDetailModel.swift; sourceTree = "<group>"; };
 		492911801D9316E1000AC9E9 /* SearchHeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchHeaderViewCollectionReusableView.swift; path = Views/SearchHeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
+		492B40641E03EDC600EDA2F1 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		492B40651E03EDC600EDA2F1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		492B40661E03EDC600EDA2F1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		492B40671E03EDC600EDA2F1 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		492C5DE71DD8F7C800B4D8C6 /* HeroCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroCellModel.swift; path = Controllers/HeroCellModel.swift; sourceTree = "<group>"; };
 		492D08D01CBA7E930086D348 /* Marvel Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D08D31CBA7E930086D348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +155,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492B40681E03EDC600EDA2F1 /* RxBlocking.framework in Frameworks */,
+				492B40691E03EDC600EDA2F1 /* RxCocoa.framework in Frameworks */,
+				492B406A1E03EDC600EDA2F1 /* RxSwift.framework in Frameworks */,
+				492B406B1E03EDC600EDA2F1 /* RxTest.framework in Frameworks */,
 				5460D93675DEBB7F3AABBF96 /* BuddyBuildSDK.framework in Frameworks */,
 				EB9A86323EB27BCBFD166D58 /* AssetsLibrary.framework in Frameworks */,
 				126C130BF0512D94FB8AD7AD /* CoreText.framework in Frameworks */,
@@ -377,6 +389,10 @@
 		B429D0EA3E5B5F72A63B1093 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				492B40641E03EDC600EDA2F1 /* RxBlocking.framework */,
+				492B40651E03EDC600EDA2F1 /* RxCocoa.framework */,
+				492B40661E03EDC600EDA2F1 /* RxSwift.framework */,
+				492B40671E03EDC600EDA2F1 /* RxTest.framework */,
 				359BD187187A716F280703BE /* Pods.framework */,
 				20AB4983A96C054621FF0D8B /* BuddyBuildSDK.framework */,
 				56B4D8AB9A32292F5E0EA352 /* AssetsLibrary.framework */,
@@ -401,6 +417,7 @@
 				492D08CC1CBA7E930086D348 /* Sources */,
 				492D08CD1CBA7E930086D348 /* Frameworks */,
 				492D08CE1CBA7E930086D348 /* Resources */,
+				492B40631E03EC7000EDA2F1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -537,6 +554,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		492B40631E03EC7000EDA2F1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		492D08CC1CBA7E930086D348 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -664,7 +701,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -707,7 +744,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
@@ -725,6 +762,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -745,6 +783,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Marvel Heroes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

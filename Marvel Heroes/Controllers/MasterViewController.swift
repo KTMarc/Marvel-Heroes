@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 /**
 Collection View with Hero objects
@@ -21,7 +22,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     //MARK: - Types
     typealias Model = MasterViewControllerModel
-    
+
     //MARK: - Outlets
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var containerView: UIView!
