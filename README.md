@@ -75,7 +75,7 @@ $ jazzy --min-acl private
 
 ##Considerations
 Didn't chose CORE DATA as the persistency. The reason is that the Marvel service has less than 1.5k character records and
-for simplicity JSON files are enough. The data is unlikely to change, so we save it in a NSCache using **Haneke** framework.
+for simplicity JSON files are enough. The data is unlikely to change, so we save it in a NSCache.
 
 Marvel character API doesn't offer a lot of information. Only name, description (most of them are empty), modification date and Id.
 There is a wiki page for each character. This page has more information, but it would require web scrapping, also it is out of the scope of this project. We could add a webView and load the html of the wiki.
