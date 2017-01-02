@@ -27,7 +27,6 @@
 		492B40681E03EDC600EDA2F1 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40641E03EDC600EDA2F1 /* RxBlocking.framework */; };
 		492B40691E03EDC600EDA2F1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40651E03EDC600EDA2F1 /* RxCocoa.framework */; };
 		492B406A1E03EDC600EDA2F1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40661E03EDC600EDA2F1 /* RxSwift.framework */; };
-		492B406B1E03EDC600EDA2F1 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492B40671E03EDC600EDA2F1 /* RxTest.framework */; };
 		492C5DE81DD8F7C800B4D8C6 /* HeroCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C5DE71DD8F7C800B4D8C6 /* HeroCellModel.swift */; };
 		492D08D41CBA7E930086D348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D31CBA7E930086D348 /* AppDelegate.swift */; };
 		492D08D61CBA7E930086D348 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D08D51CBA7E930086D348 /* MasterViewController.swift */; };
@@ -158,7 +157,6 @@
 				492B40681E03EDC600EDA2F1 /* RxBlocking.framework in Frameworks */,
 				492B40691E03EDC600EDA2F1 /* RxCocoa.framework in Frameworks */,
 				492B406A1E03EDC600EDA2F1 /* RxSwift.framework in Frameworks */,
-				492B406B1E03EDC600EDA2F1 /* RxTest.framework in Frameworks */,
 				5460D93675DEBB7F3AABBF96 /* BuddyBuildSDK.framework in Frameworks */,
 				EB9A86323EB27BCBFD166D58 /* AssetsLibrary.framework in Frameworks */,
 				126C130BF0512D94FB8AD7AD /* CoreText.framework in Frameworks */,
