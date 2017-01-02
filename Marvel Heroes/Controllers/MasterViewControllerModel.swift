@@ -5,7 +5,7 @@
 //  Created by Marc Humet on 24/7/16.
 //  Copyright © 2016 SPM. All rights reserved.
 //
-import UIKit
+import Foundation
 
 class MasterViewControllerModel{
     
