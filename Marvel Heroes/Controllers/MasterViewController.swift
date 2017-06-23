@@ -88,7 +88,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     /**
      Adjust Search Bar size when rotating devices
      */
-     func rotationDetected(){
+    @objc func rotationDetected(){
         searchController.searchBar.sizeToFit()
     }
     
@@ -183,7 +183,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-     func launchNetworkQuery(){
+    @objc func launchNetworkQuery(){
         (searchController.searchResultsController as! SuggestionsVC).search(keystrokes: _keystrokes)
     }
     

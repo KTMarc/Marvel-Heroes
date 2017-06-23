@@ -46,7 +46,7 @@ class Marvel_HeroesTestsMVVM: XCTestCase {
                 XCTFail("Expected delegate to be called")
                 return
             }
-            XCTAssertEqual(model.comics.count, 11)
+            XCTAssertEqual(model.comics.count, 12)
             XCTAssertTrue(result)
         }
     }

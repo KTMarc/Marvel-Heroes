@@ -96,10 +96,8 @@ class Marvel_HeroesTests: XCTestCase {
         apiClient.manager.fetchComics(heroId)
         
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(comics.count, 11)
+        XCTAssertEqual(comics.count, 12)
     }
-    
-    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
