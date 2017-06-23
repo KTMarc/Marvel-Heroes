@@ -34,12 +34,12 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         super.didReceiveMemoryWarning()
     }
     
-    func search(keystrokes: String){
+    @objc func search(keystrokes: String){
         _model.search(keystrokes: keystrokes)
     }
 
     //MARK: - ModelUpdaterDelegate method
-    func updateModel() {
+    @objc func updateModel() {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
@@ -47,7 +47,7 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
     
     
     //MARK: - UI
-    func setupUI(){
+    @objc func setupUI(){
         self.tableView.register(UINib(nibName:Consts.StoryboardIds.SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: Consts.StoryboardIds.SUGGESTION_CELL)
         tableView.backgroundColor = UIColor.gray
         tableView.separatorStyle = .none
@@ -81,21 +81,21 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         let vc = storyboard.instantiateViewController(withIdentifier: Consts.StoryboardIds.HERO_DETAIL_VC) as! HeroDetailVC
         vc.setModelWith(_model[heroAt: indexPath.row])
         vc.presentedModally = true
-        present(vc, animated: true) {_ in }
+        present(vc, animated: true) { }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
         updateTableViewSize()
     }
     
-    func updateTableViewSize(){
+    @objc func updateTableViewSize(){
         var frame : CGRect = tableView.frame
         frame.size = tableView.contentSize
         frame.size.height += 70.0
         tableView.frame = frame
     }
     
-    func resetHeroSuggestions(){
+    @objc func resetHeroSuggestions(){
         _model.flushHeroes()
         updateModel()
     }

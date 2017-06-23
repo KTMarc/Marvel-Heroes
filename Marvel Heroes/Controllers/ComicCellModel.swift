@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class ComicCellModel : ImagePresentable{
 
     private var _comic: Comic

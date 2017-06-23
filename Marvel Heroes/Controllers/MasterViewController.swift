@@ -36,7 +36,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     private var _blurToggle : toggle = .disabled
     
     //MARK: For testing purposes
-    var countItems : Int {return collection.numberOfItems(inSection: 0)}
+    @objc var countItems : Int {return collection.numberOfItems(inSection: 0)}
     //weak var testingDelegate : ModelUpdaterDelegate?
     
     //MARK: - View LifeCycle
@@ -58,7 +58,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "navBarLogo.png")
         navigationItem.titleView = imageView
-     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +70,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     //MARK: - Notifications 📡
-    func listenToNotifications(){
+    @objc func listenToNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         NotificationCenter.default.addObserver(
@@ -80,7 +79,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     //MARK: - Delegate methods
-    func updateModel(){
+    @objc func updateModel(){
         DispatchQueue.main.async(execute: {
             self.collection.reloadData()
         })
@@ -89,12 +88,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     /**
      Adjust Search Bar size when rotating devices
      */
-    func rotationDetected(){
+    @objc func rotationDetected(){
         searchController.searchBar.sizeToFit()
     }
     
     // MARK: - Search Results Controller 🔍
-    func configureSearchController() {
+    @objc func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsVC())
         searchController.definesPresentationContext = false
         searchController.searchResultsUpdater = self
@@ -107,7 +106,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
     }
-
     
     //MARK: - UI Search Controller Delegate
     func didPresentSearchController(_ searchController: UISearchController) {
@@ -146,7 +144,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     ///Blurred image background
-    func toggleBackgroundBlur () {
+    @objc func toggleBackgroundBlur () {
         
         switch _blurToggle{
         case .disabled:
@@ -185,10 +183,9 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    func launchNetworkQuery(){
+    @objc func launchNetworkQuery(){
         (searchController.searchResultsController as! SuggestionsVC).search(keystrokes: _keystrokes)
     }
-    
     
     //MARK: - Collection View Data Soure
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -200,7 +197,6 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _model.count

@@ -10,7 +10,6 @@ import XCTest
 
 @testable import Marvel_Heroes
 
-
 class ViewControllerTests: XCTestCase {
     
     var viewController: MasterViewController!
@@ -27,7 +26,6 @@ class ViewControllerTests: XCTestCase {
         // Test and Load the View at the Same Time!
         XCTAssertNotNil(navigationController.view)
         XCTAssertNotNil(viewController.view)
-        
     }
     
     override func tearDown() {
@@ -64,7 +62,6 @@ class ViewControllerTests: XCTestCase {
 //            }
     }
 }
-
 
 //TODO: Test Comic Cell loading called testThatWeCanAsyncDownloadImagesInComicCells
 //    let cell = ComicCell()

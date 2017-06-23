@@ -12,7 +12,6 @@ import UIKit
  Custom Cell for Master table view
  */
 
-
 class HeroCell  : UICollectionViewCell {
     //MARK: - Outlets
     @IBOutlet weak var thumbImg: UIImageView!

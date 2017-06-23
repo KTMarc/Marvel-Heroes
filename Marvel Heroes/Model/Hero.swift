@@ -68,7 +68,6 @@ struct Hero: Equatable{
     }
 }
 
-
 //MARK: Protocols and extensions
 func ==(lhs: Hero, rhs: Hero) -> Bool {
     return  lhs.name == rhs.name &&

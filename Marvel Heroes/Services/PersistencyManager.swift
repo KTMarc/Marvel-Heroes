@@ -93,7 +93,7 @@ class PersistencyManager: NSObject {
     
     
     //MARK: - HEROES
-    func fetchHeroes(){
+    @objc func fetchHeroes(){
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: 0, notification: Consts.Notifications.heroes)
     }
     
@@ -110,11 +110,11 @@ class PersistencyManager: NSObject {
     }
     
 
-    func getCache() -> NSCache<NSString,UIImage>{
+    @objc func getCache() -> NSCache<NSString,UIImage>{
         return _cache
     }
     
-    func getMoreHeroes(_ offset: Int, prefetchingImages: Bool) {
+    @objc func getMoreHeroes(_ offset: Int, prefetchingImages: Bool) {
         if prefetchingImages {
             fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: offset, notification: Consts.Notifications.prefetchImages)
         } else {
@@ -130,7 +130,7 @@ class PersistencyManager: NSObject {
      - parameter keystrokes: The text that user introduced in the searchBar
      */
     
-    func searchHeroes(_ keystrokes: String) {
+    @objc func searchHeroes(_ keystrokes: String) {
         
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "nameStartsWith=\(strokeSanitizer(keystrokes))&", offset: 0, notification: Consts.Notifications.suggestions)
     }
@@ -139,7 +139,7 @@ class PersistencyManager: NSObject {
         return _suggestions
     }
     
-    func resetHeroSuggestions(){
+    @objc func resetHeroSuggestions(){
         _suggestions = []
 //        NotificationCenter.default.post(
 //            name: Notification.Name(rawValue: Consts.Notifications.suggestions.rawValue), object: self)
@@ -153,7 +153,7 @@ class PersistencyManager: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    func fetchComics(_ heroId:Int) {
+    @objc func fetchComics(_ heroId:Int) {
         fetchData(Consts.ApiURL.CHARACTERS + "/\(heroId)/" + Consts.ApiURL.COMICS, parameter: "", offset: 0, notification: Consts.Notifications.comics)
         
     }
@@ -167,7 +167,7 @@ class PersistencyManager: NSObject {
      */
     
     //TODO: Cover more edge cases
-    func strokeSanitizer(_ strokes: String) -> String{
+    @objc func strokeSanitizer(_ strokes: String) -> String{
         return strokes.replacingOccurrences(of: " ", with: "%20")
     }
     
@@ -175,7 +175,7 @@ class PersistencyManager: NSObject {
     Downloads images and places them in the cache
      */
     
-    func getImage(link: String, completion: @escaping ImageCacheCompletion){
+    @objc func getImage(link: String, completion: @escaping ImageCacheCompletion){
         let entityUrl = URL(string: link)
         if (entityUrl?.cachedImage) != nil {
             return
@@ -190,7 +190,7 @@ class PersistencyManager: NSObject {
     /**
      Dummy Heroes creation
      */
-    func createSampleData() {
+    @objc func createSampleData() {
         
         _heroes.append(Hero.init(name: "Batman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: Date(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"))
         

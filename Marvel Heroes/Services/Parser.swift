@@ -31,7 +31,6 @@ struct Parser {
     
     //MARK: - Methods
     func parseHeroes() -> [Hero]{
-        
         return parseHero()
     }
 
@@ -73,7 +72,6 @@ struct Parser {
 
                 return Hero(name: name,heroId: theId,desc: desc,modified: Date(),thumbnailUrl: thumbnailCompletePath ?? "") ///if thumbnail is nil, we change it for ""
             })
-            
         }
         return heroes
     }
@@ -109,7 +107,6 @@ struct Parser {
         return comics
     
     } //Function end
-    
 }
 
 

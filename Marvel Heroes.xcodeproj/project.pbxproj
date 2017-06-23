@@ -464,19 +464,19 @@
 					492D08CF1CBA7E930086D348 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = GM2F4EG66J;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					492D08E51CBA7E930086D348 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = GM2F4EG66J;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						TestTargetID = 492D08CF1CBA7E930086D348;
 					};
 					492D08F01CBA7E930086D348 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = GM2F4EG66J;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						TestTargetID = 492D08CF1CBA7E930086D348;
 					};
 				};
@@ -732,7 +732,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-Heroes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -753,7 +753,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -766,7 +766,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel Heroes.app/Marvel Heroes";
 			};
 			name = Debug;
@@ -781,7 +781,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel Heroes.app/Marvel Heroes";
 			};
 			name = Release;
@@ -794,7 +794,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Marvel Heroes";
 			};
 			name = Debug;
@@ -808,7 +808,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MHS.com.spm.Marvel-HeroesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Marvel Heroes";
 			};
 			name = Release;

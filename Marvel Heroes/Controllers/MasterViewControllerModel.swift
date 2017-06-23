@@ -71,7 +71,6 @@ class MasterViewControllerModel{
         }
     }
     
-    
     //MARK: - API request 📡
     func listenToNotifications(){
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Consts.Notifications.heroes.rawValue), object: nil, queue: nil) {  [weak self] Notification in

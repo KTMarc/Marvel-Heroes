@@ -10,7 +10,6 @@ import Foundation
 
 struct Consts {
     
-    
     //API parameters
     
     /**
@@ -27,7 +26,6 @@ struct Consts {
         "hash":"27861456bf9a405a5e8320359485b698",
         ]
     
-    
     struct ApiURL {
         static let BASE = "http://gateway.marvel.com/v1/public/"
         static let CHARACTERS = "characters"
@@ -37,6 +35,7 @@ struct Consts {
     
     //SEGUES
     struct Segues {
+        
         //Heroes Master View Controller
         static let TO_HERO_DETAIL_VC = "DetailViewController"
     }
@@ -54,8 +53,6 @@ struct Consts {
         //Hero Detail View Controller
         static let HERO_DETAIL_VC = "HeroDetailVC"
         static let COMIC_CELL = "ComicCell"
-        
-        
     }
     
     //COPY

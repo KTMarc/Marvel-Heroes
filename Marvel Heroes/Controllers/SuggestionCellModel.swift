@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class SuggestionCellModel : ImagePresentable {
     
     private var _hero: Hero

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /**
-  Using the FAÇADE DESIGN PATTERN, which provides a single interface to a complex subsystem. Instead of exposing the user to a set of classes and their APIs, you only expose one simple unified API
+  Using the FAÇADE DESIGN PATTERN, which provides a single interface to a complex subsystem. Instead of exposing the user to a set of classes and their APIs, only one simple unified API is exposed
  */
 
 // MARK: - Types
@@ -48,7 +48,7 @@ class apiClient: NSObject {
 
     //Singleton definition:
     //supports lazy initialization because Swift lazily initializes class constants (and variables), and is thread safe by the definition of let
-    static let manager = apiClient(parseType: .functional, storageArchitecture: .other)
+    @objc static let manager = apiClient(parseType: .functional, storageArchitecture: .other)
     
     init(parseType: ParseType, storageArchitecture: StorageArchitecture) {
         _parseType = parseType
@@ -59,13 +59,13 @@ class apiClient: NSObject {
     }
     
     //MARK: - IMAGES
-    func getImage(link: String, completion: ImageCacheCompletion){
+    @objc func getImage(link: String, completion: ImageCacheCompletion){
         return _persistencyManager.getImage(link: link, completion: { (image) in
             print("imagen bajada")
         })
     }
     
-    func getCache() -> NSCache<NSString,UIImage>{
+    @objc func getCache() -> NSCache<NSString,UIImage>{
         return _persistencyManager.getCache()
     }
     
@@ -78,7 +78,7 @@ class apiClient: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    func fetchHeroes() {
+    @objc func fetchHeroes() {
          _persistencyManager.fetchHeroes()
     }
     
@@ -114,7 +114,7 @@ class apiClient: NSObject {
      - returns: An array of comics
      */
     
-    func moreHeroes(_ offset: Int, prefetchingImages: Bool){
+    @objc func moreHeroes(_ offset: Int, prefetchingImages: Bool){
         _persistencyManager.getMoreHeroes(offset, prefetchingImages: prefetchingImages)
     }
     
@@ -126,7 +126,7 @@ class apiClient: NSObject {
      - parameter keystrokes: The text that user introduced in the searchBar
      */
     
-    func searchHeroes(_ keystrokes: String){
+    @objc func searchHeroes(_ keystrokes: String){
         return _persistencyManager.searchHeroes(keystrokes)
     }
     
@@ -143,7 +143,7 @@ class apiClient: NSObject {
      Cleans the Suggestions View Controller and leaves it ready for the next keystroke or deletion
      */
     
-    func resetHeroSuggestions(){
+    @objc func resetHeroSuggestions(){
         return _persistencyManager.resetHeroSuggestions()
     }
     
@@ -157,7 +157,7 @@ class apiClient: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    func fetchComics(_ heroId: Int){
+    @objc func fetchComics(_ heroId: Int){
          _persistencyManager.fetchComics(heroId)
     }
     

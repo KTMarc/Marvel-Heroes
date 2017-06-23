@@ -23,7 +23,6 @@ class Marvel_HeroesTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func testThatWeCanParseLocalJSONfile(){
         
         var heroes = [Hero]()
@@ -60,8 +59,6 @@ class Marvel_HeroesTests: XCTestCase {
         XCTAssertGreaterThan(heroes.count, 0)
     }
     
-    
-    
     func testThatWeCanFindSpiderMan() {
         
         //3D Man
@@ -79,7 +76,6 @@ class Marvel_HeroesTests: XCTestCase {
         }
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertGreaterThan(heroes.count, 1)
-        
     }
     
 

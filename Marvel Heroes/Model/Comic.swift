@@ -37,7 +37,6 @@ struct Comic: Equatable {
         var thumbnailUrl: String {
             return _thumbnailUrl
         }
-        
     }
     
 //MARK: Protocols and extensions

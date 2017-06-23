@@ -8,13 +8,12 @@
 
 import UIKit
 
-
 /**
  Downloads a remote image in the background.
  */
 
 extension UIImageView {
-    func downloadAsyncFrom(_ link: String, contentMode mode: UIViewContentMode, completion: (() -> ())? = nil) {
+    @objc func downloadAsyncFrom(_ link: String, contentMode mode: UIViewContentMode, completion: (() -> ())? = nil) {
         guard let url = URL(string: link) else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard

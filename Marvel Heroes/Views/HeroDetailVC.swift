@@ -29,7 +29,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var blurImage: UIImageView!
     @IBAction func dismissButton(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: {_ in })
+        self.dismiss(animated: true, completion: { })
     }
     @IBOutlet weak var comicsActivityIndicator: UIActivityIndicatorView!
     
@@ -38,8 +38,8 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     private var model = Model()
 
     //MARK: - Properties
-    var blurView = UIVisualEffectView()
-    var presentedModally = false
+    @objc var blurView = UIVisualEffectView()
+    @objc var presentedModally = false
 
     /**
      Meant to be called from the parent VC
@@ -65,7 +65,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: - UI
-    func setupUI(){
+    @objc func setupUI(){
         if let  _ = URL.init(string: self.model.hero.thumbnailUrl) {
             //Big Hero image
             self.image.image = model.image
@@ -136,7 +136,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: - Delegate methods
-    func updateModel(){
+    @objc func updateModel(){
         if model.count == 0{
             self.comicsEmptyStateLabel.isHidden = false
         }
@@ -148,7 +148,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: - Navigation
-    func dismissVC(){
+    @objc func dismissVC(){
         _ = navigationController?.popViewController(animated: true)
     }
     
