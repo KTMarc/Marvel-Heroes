@@ -38,8 +38,8 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     private var model = Model()
 
     //MARK: - Properties
-    @objc var blurView = UIVisualEffectView()
-    @objc var presentedModally = false
+     var blurView = UIVisualEffectView()
+     var presentedModally = false
 
     /**
      Meant to be called from the parent VC
@@ -65,7 +65,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: - UI
-    @objc func setupUI(){
+     func setupUI(){
         if let  _ = URL.init(string: self.model.hero.thumbnailUrl) {
             //Big Hero image
             self.image.image = model.image
@@ -136,7 +136,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: - Delegate methods
-    @objc func updateModel(){
+     func updateModel(){
         if model.count == 0{
             self.comicsEmptyStateLabel.isHidden = false
         }
@@ -148,7 +148,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: - Navigation
-    @objc func dismissVC(){
+     func dismissVC(){
         _ = navigationController?.popViewController(animated: true)
     }
     

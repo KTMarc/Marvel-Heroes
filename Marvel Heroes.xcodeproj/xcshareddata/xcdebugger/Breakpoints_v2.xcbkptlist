@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Services/PersistencyManager.swift"
-            timestampString = "519926814.987527"
+            timestampString = "519927831.256835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -24,7 +24,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Marvel Heroes/Services/PersistencyManager.swift"
-            timestampString = "519926814.987627"
+            timestampString = "519927831.256941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -47,7 +47,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Services/PersistencyManager.swift"
-            timestampString = "519926814.987688"
+            timestampString = "519927831.256983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -61,7 +61,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Services/PersistencyManager.swift"
-            timestampString = "519926814.987732"
+            timestampString = "519927831.257017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -75,7 +75,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Services/PersistencyManager.swift"
-            timestampString = "519926814.987769"
+            timestampString = "519927831.25705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Extensions/UIImageView+AsyncDownload.swift"
-            timestampString = "519926814.987849"
+            timestampString = "519927831.257109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36">
+            startingLineNumber = "35"
+            endingLineNumber = "35">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -190,7 +190,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/UIViewExtensions.swift"
-            timestampString = "519926814.987924"
+            timestampString = "519927831.257171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -204,11 +204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.987968"
+            timestampString = "519927831.257208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.Log">
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.989468"
+            timestampString = "519927831.257245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -248,11 +248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.991138"
+            timestampString = "519927831.257278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -294,11 +294,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.991512"
+            timestampString = "519927831.257311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.991883"
+            timestampString = "519927831.257346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -322,11 +322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.99228"
+            timestampString = "519927831.257379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -336,11 +336,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.992682"
+            timestampString = "519927831.257412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -350,11 +350,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.99308"
+            timestampString = "519927831.257445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -364,11 +364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.993483"
+            timestampString = "519927831.257477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.993909"
+            timestampString = "519927831.257508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.Log">
@@ -408,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.994335"
+            timestampString = "519927831.25754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -422,11 +422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Marvel Heroes/Controllers/MasterViewController.swift"
-            timestampString = "519926814.994821"
+            timestampString = "519927831.257571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.Log">
@@ -533,7 +533,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Marvel Heroes/Views/HeroDetailVC.swift"
-            timestampString = "519926814.995402"
+            timestampString = "519927831.257632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
@@ -555,7 +555,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Marvel Heroes/Controllers/SuggestionsVC.swift"
-            timestampString = "519926814.995914"
+            timestampString = "519927831.25767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"

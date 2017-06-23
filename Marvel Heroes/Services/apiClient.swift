@@ -48,7 +48,7 @@ class apiClient: NSObject {
 
     //Singleton definition:
     //supports lazy initialization because Swift lazily initializes class constants (and variables), and is thread safe by the definition of let
-    @objc static let manager = apiClient(parseType: .functional, storageArchitecture: .other)
+     static let manager = apiClient(parseType: .functional, storageArchitecture: .other)
     
     init(parseType: ParseType, storageArchitecture: StorageArchitecture) {
         _parseType = parseType
@@ -59,16 +59,15 @@ class apiClient: NSObject {
     }
     
     //MARK: - IMAGES
-    @objc func getImage(link: String, completion: ImageCacheCompletion){
+     func getImage(link: String, completion: ImageCacheCompletion){
         return _persistencyManager.getImage(link: link, completion: { (image) in
             print("imagen bajada")
         })
     }
     
-    @objc func getCache() -> NSCache<NSString,UIImage>{
+     func getCache() -> NSCache<NSString,UIImage>{
         return _persistencyManager.getCache()
     }
-    
     
     //MARK: - HEROES
     /**
@@ -78,7 +77,7 @@ class apiClient: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    @objc func fetchHeroes() {
+     func fetchHeroes() {
          _persistencyManager.fetchHeroes()
     }
     
@@ -114,7 +113,7 @@ class apiClient: NSObject {
      - returns: An array of comics
      */
     
-    @objc func moreHeroes(_ offset: Int, prefetchingImages: Bool){
+     func moreHeroes(_ offset: Int, prefetchingImages: Bool){
         _persistencyManager.getMoreHeroes(offset, prefetchingImages: prefetchingImages)
     }
     
@@ -126,7 +125,7 @@ class apiClient: NSObject {
      - parameter keystrokes: The text that user introduced in the searchBar
      */
     
-    @objc func searchHeroes(_ keystrokes: String){
+     func searchHeroes(_ keystrokes: String){
         return _persistencyManager.searchHeroes(keystrokes)
     }
     
@@ -143,7 +142,7 @@ class apiClient: NSObject {
      Cleans the Suggestions View Controller and leaves it ready for the next keystroke or deletion
      */
     
-    @objc func resetHeroSuggestions(){
+     func resetHeroSuggestions(){
         return _persistencyManager.resetHeroSuggestions()
     }
     
@@ -157,7 +156,7 @@ class apiClient: NSObject {
      - parameter heroId: The Id of the Hero to get the comics from
      */
     
-    @objc func fetchComics(_ heroId: Int){
+     func fetchComics(_ heroId: Int){
          _persistencyManager.fetchComics(heroId)
     }
     

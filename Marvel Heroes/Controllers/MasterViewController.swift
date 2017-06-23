@@ -36,7 +36,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     private var _blurToggle : toggle = .disabled
     
     //MARK: For testing purposes
-    @objc var countItems : Int {return collection.numberOfItems(inSection: 0)}
+     var countItems : Int {return collection.numberOfItems(inSection: 0)}
     //weak var testingDelegate : ModelUpdaterDelegate?
     
     //MARK: - View LifeCycle
@@ -70,7 +70,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     //MARK: - Notifications 📡
-    @objc func listenToNotifications(){
+     func listenToNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.rotationDetected), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         NotificationCenter.default.addObserver(
@@ -79,7 +79,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     //MARK: - Delegate methods
-    @objc func updateModel(){
+     func updateModel(){
         DispatchQueue.main.async(execute: {
             self.collection.reloadData()
         })
@@ -88,12 +88,12 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     /**
      Adjust Search Bar size when rotating devices
      */
-    @objc func rotationDetected(){
+     func rotationDetected(){
         searchController.searchBar.sizeToFit()
     }
     
     // MARK: - Search Results Controller 🔍
-    @objc func configureSearchController() {
+     func configureSearchController() {
         searchController = UISearchController(searchResultsController: SuggestionsVC())
         searchController.definesPresentationContext = false
         searchController.searchResultsUpdater = self
@@ -144,7 +144,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     ///Blurred image background
-    @objc func toggleBackgroundBlur () {
+     func toggleBackgroundBlur () {
         
         switch _blurToggle{
         case .disabled:
@@ -183,7 +183,7 @@ class MasterViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    @objc func launchNetworkQuery(){
+     func launchNetworkQuery(){
         (searchController.searchResultsController as! SuggestionsVC).search(keystrokes: _keystrokes)
     }
     

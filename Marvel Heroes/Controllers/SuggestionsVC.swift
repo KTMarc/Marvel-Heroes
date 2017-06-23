@@ -34,12 +34,12 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         super.didReceiveMemoryWarning()
     }
     
-    @objc func search(keystrokes: String){
+     func search(keystrokes: String){
         _model.search(keystrokes: keystrokes)
     }
 
     //MARK: - ModelUpdaterDelegate method
-    @objc func updateModel() {
+     func updateModel() {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
@@ -47,7 +47,7 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
     
     
     //MARK: - UI
-    @objc func setupUI(){
+     func setupUI(){
         self.tableView.register(UINib(nibName:Consts.StoryboardIds.SUGGESTION_CELL, bundle: nil), forCellReuseIdentifier: Consts.StoryboardIds.SUGGESTION_CELL)
         tableView.backgroundColor = UIColor.gray
         tableView.separatorStyle = .none
@@ -88,14 +88,14 @@ class SuggestionsVC: UITableViewController, ModelUpdaterDelegate{
         updateTableViewSize()
     }
     
-    @objc func updateTableViewSize(){
+     func updateTableViewSize(){
         var frame : CGRect = tableView.frame
         frame.size = tableView.contentSize
         frame.size.height += 70.0
         tableView.frame = frame
     }
     
-    @objc func resetHeroSuggestions(){
+     func resetHeroSuggestions(){
         _model.flushHeroes()
         updateModel()
     }

@@ -13,7 +13,7 @@ import UIKit
  */
 
 extension UIImageView {
-    @objc func downloadAsyncFrom(_ link: String, contentMode mode: UIViewContentMode, completion: (() -> ())? = nil) {
+     func downloadAsyncFrom(_ link: String, contentMode mode: UIViewContentMode, completion: (() -> ())? = nil) {
         guard let url = URL(string: link) else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard
