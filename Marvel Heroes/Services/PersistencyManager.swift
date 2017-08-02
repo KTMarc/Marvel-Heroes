@@ -16,7 +16,6 @@ typealias ImageCacheCompletion = (UIImage) -> Void
  Works together with the parser class to serialize objects from JSON.
  */
 
-
 class PersistencyManager: NSObject {
     private var _heroes : [Hero] = []
     private var _suggestions : [Hero] = []
@@ -33,7 +32,6 @@ class PersistencyManager: NSObject {
         super.init()
     }
     
-
     /**
      First attempt to fetch the required JSON from (in order) memory, disk or NSURLCache
      
@@ -90,10 +88,8 @@ class PersistencyManager: NSObject {
         task.resume()
     } //End of fecthData
     
-    
-    
     //MARK: - HEROES
-     func fetchHeroes(){
+    func fetchHeroes(){
         fetchData(Consts.ApiURL.CHARACTERS, parameter: "", offset: 0, notification: Consts.Notifications.heroes)
     }
     
@@ -108,7 +104,6 @@ class PersistencyManager: NSObject {
         
         return hero[0]
     }
-    
 
      func getCache() -> NSCache<NSString,UIImage>{
         return _cache
@@ -155,7 +150,6 @@ class PersistencyManager: NSObject {
     
      func fetchComics(_ heroId:Int) {
         fetchData(Consts.ApiURL.CHARACTERS + "/\(heroId)/" + Consts.ApiURL.COMICS, parameter: "", offset: 0, notification: Consts.Notifications.comics)
-        
     }
     
     func getComics() -> [Comic] {
@@ -185,7 +179,6 @@ class PersistencyManager: NSObject {
             })
         }
     }
-
     
     /**
      Dummy Heroes creation
@@ -196,6 +189,4 @@ class PersistencyManager: NSObject {
         
         _heroes.append(Hero.init(name: "Superman", heroId: 1900, desc: "Lorem fistrum diodenoo", modified: Date(), thumbnailUrl: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/510c08f345938.jpg"))
     }
-    
-    
 }

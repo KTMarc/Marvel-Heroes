@@ -1,5 +1,3 @@
-
-
 //
 //  HeroDetailVC.swift
 //  Marvel Heroes
@@ -14,7 +12,6 @@ import UIKit
  Detail View for Hero 
  Includes a Collection View with Comics
  */
-
 
 class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, ModelUpdaterDelegate {
     //MARK: - Outlets
@@ -148,8 +145,7 @@ class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //MARK: - Navigation
-     func dismissVC(){
+    @objc func dismissVC(){
         _ = navigationController?.popViewController(animated: true)
     }
-    
 }

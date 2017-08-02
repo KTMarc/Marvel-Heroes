@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="17A131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v8j-JH-R8j">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -120,7 +120,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v8j-JH-R8j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KtB-vv-68Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KtB-vv-68Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -146,7 +146,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieP-a9-3PX">
-                                <rect key="frame" x="0.0" y="64" width="600" height="792"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="836"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRb-NQ-ZVG" userLabel="blur image">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="258"/>
@@ -180,13 +180,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="cFG-Oo-jRL" userLabel="Name">
-                                        <rect key="frame" x="35" y="457" width="380" height="18"/>
+                                        <rect key="frame" x="35" y="457" width="380" height="23.5"/>
                                         <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-rn-VuO" userLabel="Id Num">
-                                        <rect key="frame" x="465" y="458.5" width="80" height="15.5"/>
+                                        <rect key="frame" x="465" y="459" width="80" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="WGM-QE-pm7"/>
                                         </constraints>
@@ -195,7 +195,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="gQt-B3-tCf" userLabel="Description">
-                                        <rect key="frame" x="10" y="505" width="560" height="30"/>
+                                        <rect key="frame" x="10" y="510.5" width="560" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="wgR-gS-exD"/>
                                         </constraints>
@@ -204,10 +204,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHB-CD-TpE" userLabel="Collection Container">
-                                        <rect key="frame" x="0.0" y="575" width="600" height="297"/>
+                                        <rect key="frame" x="0.0" y="580.5" width="600" height="300.5"/>
                                         <subviews>
                                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="38x-x3-ccL">
-                                                <rect key="frame" x="10" y="27" width="590" height="270"/>
+                                                <rect key="frame" x="10" y="30.5" width="590" height="270"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KpX-Xa-KqW">
                                                     <size key="itemSize" width="117" height="164"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -229,7 +229,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="1wD-dU-Tb8">
-                                                                    <rect key="frame" x="0.0" y="90" width="55" height="12"/>
+                                                                    <rect key="frame" x="0.0" y="90" width="55" height="14"/>
                                                                     <fontDescription key="fontDescription" name="GothamXNarrow-Book" family="Gotham XNarrow" pointSize="12"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -257,13 +257,13 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appearing in:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gz-zO-isX" userLabel="Appears in:">
-                                                <rect key="frame" x="10" y="10" width="89.5" height="12"/>
+                                                <rect key="frame" x="10" y="10" width="77.5" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="13"/>
                                                 <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No comics available 🙈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uaw-p3-hiL">
-                                                <rect key="frame" x="175" y="110" width="250" height="17"/>
+                                                <rect key="frame" x="175" y="110.5" width="250" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="xYY-aV-Ujs"/>
                                                 </constraints>
@@ -272,7 +272,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Hlx-ve-mxr">
-                                                <rect key="frame" x="290" y="99" width="20" height="20"/>
+                                                <rect key="frame" x="290" y="101" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <constraints>

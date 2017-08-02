@@ -10,12 +10,11 @@ import UIKit
 
 typealias CellPresentable = TextPresentable & ImagePresentable
 
-protocol ImagePresentable : class{
+protocol ImagePresentable : class {
     var imageAddress: String { get }
     var image: UIImage { get }
     var didUpdate: ((CellPresentable) -> Void)? { get set }
 }
-
 
 extension ImagePresentable {
     var image: UIImage {

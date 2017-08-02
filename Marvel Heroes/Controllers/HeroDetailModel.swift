@@ -36,7 +36,7 @@ class HeroDetailModel : ImagePresentable{
     }
     
     /**
-     Prepares the the ViewModel.
+     Prepares the ViewModel.
      Called just one time right after initialization.
      Configures notifications and requests comics to the API
      */
@@ -69,7 +69,6 @@ class HeroDetailModel : ImagePresentable{
         }
     }
 }
-
 
 // MARK: - Protocol conformance used to configure the cell for each comic
 extension HeroDetailModel : TextPresentable {
